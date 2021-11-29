@@ -8,7 +8,7 @@
       <a href="#">Randevu al</a>
     </div>
     <div class="log-in">
-      <a href="#">KAYIT OL/GİRİŞ YAP</a>
+      <a href="#">KAYIT OL / GİRİŞ YAP</a>
     </div>
   </div>
 </template>

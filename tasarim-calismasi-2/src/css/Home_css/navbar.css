@@ -9,22 +9,29 @@
     width: 15%;
     text-align: center;
     padding: 10px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 32px;
+    padding-bottom: 32px;
 }
 .navbar .menu {
     margin-left: auto;
     margin-right: auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 32px;
+    padding-bottom: 32px;
 }
 .navbar .menu a{
     margin-right: 15px;
 }
 .navbar .log-in {
-    width: 15%;
+    width: 14%;
     text-align: center;
     padding: 10px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+}
+.navbar .log-in a {
+    color: #96DFCE;
+    border: 2px solid #9eded8;
+    padding: 15px;
+}
+.navbar .log-in a:hover {
+    background: #9eded8;
+    color: white;
 }

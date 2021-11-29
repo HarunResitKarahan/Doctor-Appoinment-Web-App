@@ -1,7 +1,7 @@
 <template>
   <div class="slide-area">
       <div class="image">
-          <img style="border-radius: 30px;" src="@/./assets/hospital.webp" width="600" height="400" alt="">
+          <img style="border-radius: 30px;" src="@/./assets/hospital.png" width="600" height="400" alt="">
       </div>
       <div class="appointment-tab">
           <h2>Doktorunu Seç, </h2>
