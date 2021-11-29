@@ -20,10 +20,24 @@
   margin: 0;
   padding: 0;
 }
+* .h4 {
+  color: rgba(0, 0, 0, 0.726);
+  font-size: 32px;
+  font-weight: 500;
+}
+* .h5 {
+  color: rgba(0, 0, 0, 0.555);
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
 * input:focus {
   outline: none;
 }
 body {
   margin: 0;
+}
+#app {
+  overflow: hidden;
 }
 </style>
