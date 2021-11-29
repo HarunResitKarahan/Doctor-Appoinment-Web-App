@@ -1,13 +1,15 @@
 <template>
   <div class="slide-area">
-      <div class="photo-area">
-          asd
-      </div>
+      <Navbar />
   </div>
 </template>
 
 <script>
+import Navbar from "@/components/Homepage/Navbar.vue";
 export default {
-  name: "SlideArea"
+  name: "SlideArea",
+  components: {
+    Navbar,
+  },
 };
 </script>
