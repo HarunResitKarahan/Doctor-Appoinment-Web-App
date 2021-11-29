@@ -7,8 +7,19 @@
 
 <style lang="scss">
 * {
+  font-family: 'Epilogue', sans-serif;
+}
+* a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}
+* p {
   margin: 0;
   padding: 0;
-  font-family: 'Epilogue', sans-serif;
+}
+body {
+  margin: 0;
 }
 </style>
