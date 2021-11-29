@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'AppointmentSystemDb',
-        'USER': 'newsuser',
+        'USER': 'dbuser',
         'PASSWORD': '38887030636h',
         'HOST': '127.0.0.1',
         'PORT:': '1433',
