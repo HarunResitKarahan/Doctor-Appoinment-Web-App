@@ -1,5 +1,5 @@
 .slide-area{
-    background-image: url("https://images3.alphacoders.com/749/thumb-1920-749383.png");
+    background-image: url("https://cdna.artstation.com/p/assets/images/images/025/143/918/large/anshu-modi-hospital-corridor-1.jpg?1584785019");
     background-repeat: no-repeat;
     background-size: cover;
     height: 800px;
@@ -11,6 +11,7 @@
     cursor: pointer;
     position: absolute;
     top: 50%;
+    margin-left: 50px;
 }
 .slide-area::after {
     content: ">";
@@ -19,4 +20,5 @@
     position: absolute;
     top: 50%;
     right: 0;
+    margin-right: 50px;
 }
