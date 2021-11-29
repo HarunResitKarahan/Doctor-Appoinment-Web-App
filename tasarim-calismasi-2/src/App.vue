@@ -8,6 +8,7 @@
 <style lang="scss">
 * {
   font-family: 'Epilogue', sans-serif;
+  transition: all 0.5s ease;
 }
 * a {
   text-decoration: none;
@@ -18,6 +19,9 @@
 * p {
   margin: 0;
   padding: 0;
+}
+* input:focus {
+  outline: none;
 }
 body {
   margin: 0;
