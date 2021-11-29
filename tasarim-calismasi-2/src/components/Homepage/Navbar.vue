@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
-    <div>
-      asd
+    <div class="logo">
+      <h4>HARUN</h4>
     </div>
   </div>
 </template>
