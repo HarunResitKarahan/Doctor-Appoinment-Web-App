@@ -1,6 +1,8 @@
 <template>
   <div class="slide-area">
-      asd
+      <div class="photo-area">
+          asd
+      </div>
   </div>
 </template>
 
