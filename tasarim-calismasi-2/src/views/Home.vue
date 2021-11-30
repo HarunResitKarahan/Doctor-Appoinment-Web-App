@@ -3,6 +3,7 @@
     <Navbar />
     <SlideArea />
     <Clinic />
+    <Footer />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Navbar from "@/components/Homepage/Navbar.vue";
 import SlideArea from "@/components/Homepage/SlideArea.vue";
 import Clinic from "@/components/Homepage/Clinics.vue";
+import Footer from "@/components/Homepage/Footer.vue";
 
 export default {
   name: "Home",
@@ -17,6 +19,7 @@ export default {
     Navbar,
     SlideArea,
     Clinic,
+    Footer,
   },
   mounted() {  
     document.title = "Ana Sayfa";  

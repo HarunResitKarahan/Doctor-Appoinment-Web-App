@@ -6,6 +6,7 @@ import store from "./store";
 import "@/css/Home_css/navbar.css";
 import "@/css/Home_css/slide-area.css";
 import "@/css/Home_css/clinic.css";
+import "@/css/Home_css/footer.css";
 
 import "@/scripts/Home_js/clinic.js";
 createApp(App).use(store).use(router).mount("#app");
