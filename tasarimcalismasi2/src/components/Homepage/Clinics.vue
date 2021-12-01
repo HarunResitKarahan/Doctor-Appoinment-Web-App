@@ -3,7 +3,7 @@
     <p class="h4" style="margin-bottom: 15px;">Poliklinikler ve Uzmanlar</p>
     <p class="h5">Sistem üzerindeki mevcut poliklinikleri ve uzmanları görebilirsniiz</p>
     <div class="policlinics">
-        <VueSlickCarousel v-bind="settings" style="width: 80%;">
+        <VueSlickCarousel v-bind="settings" style="width: 65%;">
           <template v-for="item in policlinics" >
             <div class="policlinics-card" :key="item">
                 <p>{{item}}</p>
@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       settings: {
-        arrows: true,
+        arrows: false,
         speed: 500,
         variableWidth: true,
         infinite: true,
