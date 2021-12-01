@@ -1,4 +1,11 @@
 .footer {
-    height: 200px;
-    background: #3eb6ab;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    padding: 30px;
+    height: 400px;
+    background: #5fb6ad;
+}
+.footer .brand {
+    margin-top: auto;
 }

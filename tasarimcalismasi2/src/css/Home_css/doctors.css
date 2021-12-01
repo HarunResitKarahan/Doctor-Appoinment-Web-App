@@ -1,0 +1,85 @@
+.doctor {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: #f5fbfb;
+}
+.doctor .doctor-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin: auto;
+    margin-top: 60px;
+    max-width: 80%;
+}
+.doctor .doctor-cards .cards {
+    background: white;
+    padding: 15px;
+    margin-right: 50px;
+    text-align: left;
+    box-shadow: 2px 2px 13px rgba(0, 0, 0, 10%);
+}
+.doctor .doctor-cards .cards p {
+    display: flex;
+    align-items: center;
+}
+.doctor .doctor-cards .cards p .material-icons {
+    font-size: 15px;
+    margin-right: 5px;
+    color: #7fada8;
+}
+.doctor .doctor-cards .cards .star {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    font-size: 10px;
+    font-weight: 500;
+}
+.doctor .doctor-cards .cards .star .material-icons {
+    font-size: 15px;
+    padding: 1px;
+    margin-right: 2px;
+    color: rgb(255, 185, 88);
+}
+.doctor .doctor-cards .cards .doctor-name {
+    margin-top: 18px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.767);
+    margin-bottom: 0;
+} 
+.doctor .doctor-cards .cards .doctor-departmant {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.699);
+    margin-bottom: 3px;
+}
+.doctor .doctor-cards .cards .doctor-location {
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.733);
+    line-height: 2px;
+    margin-bottom: 9px;
+}
+.doctor .doctor-cards .cards .doctor-soon-appointmant {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.733);
+    line-height: 2px;
+}
+.doctor .doctor-cards .cards .sent {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+}
+.doctor .doctor-cards .cards .sent a{
+    background: white;
+    color: #4DC6E2;
+    border: 1px solid #4DC6E2;
+    font-size: 14px;
+    padding: 12px;
+}
+.doctor .doctor-cards .cards .sent a:hover {
+    background: #4DC6E2;
+    color: white;
+}

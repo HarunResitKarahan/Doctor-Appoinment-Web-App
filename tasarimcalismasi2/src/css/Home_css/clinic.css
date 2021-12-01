@@ -1,32 +1,38 @@
 .clinic {
     text-align: center;
     margin-top: 80px;
-    height: 1000px;
 }
 .clinic .policlinics {
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    margin: auto;
     margin-top: 60px;
-    max-width: 80%;
+}
+.slick-track {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.slick-slide {
+    margin-right: 45px;
+}
+.slick-next:before {
+    color: black;
+}
+.slick-prev:before {
+    color: black;
 }
 .clinic .policlinics .policlinics-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
     border-radius: 100px;
-    margin-right: 7px;
     background: rgb(158, 222, 216);
+    box-shadow: 0px 6px 16px 0px rgba(202, 202, 202, 0.73);
 }
 .clinic .policlinics .policlinics-card p {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 150px;
     padding: 5px;
+    color: rgba(0, 0, 0, 0.733);
 }
 /* .clinic .policlinics::before {
     content: "<";
