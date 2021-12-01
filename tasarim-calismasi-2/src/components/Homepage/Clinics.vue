@@ -3,10 +3,15 @@
     <p class="h4" style="margin-bottom: 15px;">Poliklinikler ve Uzmanlar</p>
     <p class="h5">Sistem üzerindeki mevcut poliklinikleri ve uzmanları görebilirsniiz</p>
     <div data-slick='{"slidesToShow": 4, "slidesToScroll": 4}' class="policlinics">
-        <template v-for="item in data" :key="item">
-           <div style="flex: 1;" class="policlinics-card">
-               <p>.</p>
+        <template v-for="item in policlinics" :key="item">
+           <div style="flex: 10%;" class="policlinics-card">
+               <p>{{item}}</p>
            </div>
+        </template>
+    </div>
+    <div class="doctors">
+        <template v-for="item in doctors" :key="item">
+          <p>{{item}}</p>
         </template>
     </div>
   </div>
@@ -22,6 +27,7 @@ export default {
     return {
       data: [' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' '],
       policlinics: ['DAHİLİYE', 'KULAK BURUN BOĞAZ(K.B.B.)', 'CİLDİYE (DERMATOLOJİ)', 'FİZİK TEDAVİ VE REHABİLİTASYON', 'ORTOPEDİ VE TRAVMATOLOJİ', 'KARDİYOLOJİ', 'GÖZ HASTALIKLARI', 'NÖROLOJİ', 'PSİKİYATRİ(RUH HEKİMLİĞİ)', 'GÖĞÜS HASTALIKLARI', 'GÖĞÜS CERRAHİ', 'ÇOCUK HASTALIKLARI', 'KALP DAMAR CERRAHİ', 'KADIN DOĞUM', 'ÇOCUK CERRAHİ', 'BEYİN VE SİNİR CERRAHİSİ', 'ÜROLOJİ (BEVLİYE)', 'GENEL CERRAHİ'],
+      doctors: ['Ahmet', 'Mehmet', 'Fatma', 'Furkan'],
     }
   },
   mounted () {

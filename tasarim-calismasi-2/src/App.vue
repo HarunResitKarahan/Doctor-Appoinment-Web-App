@@ -5,6 +5,7 @@
   <router-view />
 </template>
 
+
 <style lang="scss">
 * {
   font-family: 'Epilogue', sans-serif;

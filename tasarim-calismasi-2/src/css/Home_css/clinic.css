@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     position: relative;
     margin: auto;
     margin-top: 60px;
@@ -16,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 15px;
     border-radius: 100px;
     margin-right: 7px;
     background: rgb(158, 222, 216);
@@ -25,7 +27,6 @@
     align-items: center;
     height: 150px;
     padding: 5px;
-    font-size: 10px;
 }
 /* .clinic .policlinics::before {
     content: "<";
