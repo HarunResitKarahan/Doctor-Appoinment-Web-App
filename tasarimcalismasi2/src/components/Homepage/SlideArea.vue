@@ -4,8 +4,7 @@
           <img style="border-radius: 30px;" src="@/./assets/hospital.png" width="600" height="400" alt="">
       </div>
       <div class="appointment-tab">
-          <h2>Doktorunu Seç, </h2>
-          <h2>Randevunu Al</h2>
+          <h2>Doktorunu Seç, Randevunu Al</h2>
           <div class="inputs">
               <div style="margin-top: 35px" class="location">
                   <span>Şehir</span>
