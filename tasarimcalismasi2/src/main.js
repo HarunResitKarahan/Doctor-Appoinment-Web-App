@@ -15,6 +15,8 @@ import '@/css/Home_css/clinic.css'
 import '@/css/Home_css/doctors.css'
 import '@/css/Home_css/footer.css'
 
+import '@/css/Login_css/login.css'
+
 import './scripts/Home_js/clinic.js'
 
 Vue.use(BootstrapVue)

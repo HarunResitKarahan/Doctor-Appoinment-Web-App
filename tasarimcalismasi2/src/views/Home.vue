@@ -1,5 +1,6 @@
 <template>
   <div class='home'>
+    <Login />
     <Navbar />
     <SlideArea />
     <Clinic />
@@ -14,6 +15,7 @@ import SlideArea from '@/components/Homepage/SlideArea.vue'
 import Clinic from '@/components/Homepage/Clinics.vue'
 import Footer from '@/components/Homepage/Footer.vue'
 import Doctors from '@/components/Homepage/Doctors.vue'
+import Login from '@/components/Login/Login.vue'
 
 export default {
   name: 'Home',
@@ -22,7 +24,8 @@ export default {
     SlideArea,
     Clinic,
     Footer,
-    Doctors
+    Doctors,
+    Login
   },
   mounted () {
     document.title = 'Ana Sayfa'
