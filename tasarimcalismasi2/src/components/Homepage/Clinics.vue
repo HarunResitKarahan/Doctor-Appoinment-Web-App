@@ -27,6 +27,7 @@ export default {
   data () {
     return {
       settings: {
+        dots: true,
         arrows: false,
         speed: 500,
         variableWidth: true,

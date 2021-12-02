@@ -8,25 +8,28 @@
           </div>
 
           <div class="col-xs-6 col-md-3">
-            <h6>Categories</h6>
+            <h6>Bölümler</h6>
             <ul class="footer-links">
-              <li><a href="#">C<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">UI Design<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">PHP<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">Java<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">Android<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">Templates<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Dahiliye<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Kulak Burun Boğaz<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Cildiye<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Fizik Tedavi<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Ortopedi<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Kardiyoloji<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Kalp Damar Cerrahi<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Çocuk Cerrahi<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
             </ul>
           </div>
 
           <div class="col-xs-6 col-md-3">
-            <h6>Quick Links</h6>
-            <ul class="footer-links">
-              <li><a href="#">About Us<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">Contact Us<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">Contribute<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">Privacy Policy<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
-              <li><a href="#">Sitemap<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+            <ul class="footer-links" style="margin-top: 31.19px">
+              <li><a href="#">Göz Hastalıkları<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Nöroloji<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Psikiyatri<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Göğüs Hastalıkları<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Göğüs Cerrahi<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Çocuk Hastalıkları<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
+              <li><a href="#">Kadın Doğum<div class="underline" style="background: white; margin-top: 3px;"></div></a></li>
             </ul>
           </div>
         </div>
