@@ -1,5 +1,5 @@
 .slide-area{
-    padding: 45px 45px 45px 45px;
+    padding: 45px 125px 45px 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
     width: 700px;
 }
 .slide-area .appointment-tab {
-    width: 350px;
+    width: 375px;
     background: white;
     border-radius: 30px;
     padding: 30px;

@@ -31,7 +31,7 @@ export default {
         arrows: false,
         speed: 500,
         variableWidth: true,
-        infinite: true,
+        infinite: false,
         slidesToScroll: 3,
         swipeToSlide: true
       },
