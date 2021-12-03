@@ -19,7 +19,9 @@ export default {
   name: 'Navbar',
   methods: {
     loginPage () {
-      $('.login').show()
+      $('.login').css('display', 'flex')
+      $('.login .login-card').css('display', 'block')
+      $('.login .register-card').css('display', 'none')
     }
   }
 }
