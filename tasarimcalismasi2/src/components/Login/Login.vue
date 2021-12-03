@@ -1,6 +1,9 @@
 <template>
   <div class="login">
       <div class="login-card">
+          <span @click="loginPageClose" class="material-icons" style="position: absolute;right: 40px; top: 30px;font-size: 22px;color: rgba(0, 0, 0, 0.6);cursor: pointer;">
+            highlight_off
+          </span>
           <p class="h2">GİRİŞ YAPIN</p>
           <div class="username">
               <span>Kullanıcı Adı: </span>
@@ -26,6 +29,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'Login',
   data () {
@@ -33,6 +37,9 @@ export default {
     }
   },
   methods: {
+    loginPageClose () {
+      $('.login').hide()
+    }
   }
 }
 </script>
