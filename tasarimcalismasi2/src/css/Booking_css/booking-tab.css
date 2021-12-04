@@ -1,6 +1,7 @@
 .booking-tab {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: #f8f9fa;
     padding: 30px 0 30px 0;
 }
@@ -19,5 +20,23 @@
     margin-left: 10px;
 }
 .booking-tab .doctor-info-tab .doctor-info .doctor-name {
+    font-size: 18px;
     font-weight: 500;
+}
+.booking-tab .schedule-tab {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 55%;
+    border: 1px solid rgba(0,0,0,.125);
+    line-height: 1.5;
+    margin-top: 2%;
+}
+.booking-tab .schedule-tab .day {
+    width: 100%;
+    border: 0 solid rgba(0,0,0,.125);
+    border-bottom-width: 1px;
+}
+.booking-tab .schedule-tab .time {
+    width: 100%;
 }

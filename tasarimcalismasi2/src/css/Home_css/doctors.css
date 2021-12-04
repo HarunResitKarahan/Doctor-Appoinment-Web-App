@@ -32,14 +32,14 @@
     margin-right: 5px;
     color: #7fada8;
 }
-.doctor .doctor-cards .cards .star {
+ .star {
     display: flex;
     align-items: flex-end;
     margin-bottom: 20px;
     font-size: 10px;
     font-weight: 500;
 }
-.doctor .doctor-cards .cards .star .material-icons {
+.star .material-icons {
     font-size: 15px;
     padding: 1px;
     margin-right: 2px;
