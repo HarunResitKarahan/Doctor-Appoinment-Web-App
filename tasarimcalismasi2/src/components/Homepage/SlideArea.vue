@@ -32,7 +32,7 @@
                   </select>
               </div>
               <div class="search">
-                  <p>Randevu Bul</p>
+                  <router-link to="/about"><p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p></router-link>
               </div>
           </div>
       </div>

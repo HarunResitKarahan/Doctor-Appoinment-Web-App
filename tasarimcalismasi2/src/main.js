@@ -15,7 +15,9 @@ import '@/css/Home_css/clinic.css'
 import '@/css/Home_css/doctors.css'
 import '@/css/Home_css/footer.css'
 
-import '@/css/Login_css/login.css'
+import '@/css/Home_css/Login_css/login.css'
+
+import '@/css/Booking_css/sub-navbar.css'
 
 import './scripts/Home_js/clinic.js'
 

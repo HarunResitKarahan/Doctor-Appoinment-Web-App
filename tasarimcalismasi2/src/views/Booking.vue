@@ -1,15 +1,20 @@
 <template>
-  <div class="about">
-     <template v-for="(item, index) in responseData" >
+  <div class="booking">
+    <Navbar />
+     <!-- <template v-for="(item, index) in responseData" >
         <p class="change" :key="item.message">{{ index }} {{ item }}</p>
-      </template>
+      </template> -->
   </div>
 </template>
 
 <script>
+import Navbar from '@/components/Homepage/Navbar.vue'
+
 export default {
-  name: 'About',
-  // Home.vue 'un kapsadığı componentlar belirtildi.
+  name: 'Booking',
+  components: {
+    Navbar
+  },
   data () {
     return {
       responseData: []
