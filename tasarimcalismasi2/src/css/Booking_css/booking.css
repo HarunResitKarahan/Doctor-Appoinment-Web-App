@@ -1,0 +1,12 @@
+.booking .navbar {
+    box-shadow: none;
+}
+.booking .navbar .log-in a {
+    color: #66b7cb;
+    border: 2px solid #66b7cb;
+    padding: 15px;
+}
+.booking .navbar .log-in a:hover {
+    background: #66b7cb;
+    color: white;
+}

@@ -17,7 +17,9 @@ import '@/css/Home_css/footer.css'
 
 import '@/css/Home_css/Login_css/login.css'
 
+import '@/css/Booking_css/booking.css'
 import '@/css/Booking_css/sub-navbar.css'
+import '@/css/Booking_css/booking-tab.css'
 
 import './scripts/Home_js/clinic.js'
 
