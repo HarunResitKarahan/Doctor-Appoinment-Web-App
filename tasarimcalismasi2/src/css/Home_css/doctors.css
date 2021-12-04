@@ -45,6 +45,15 @@
     margin-right: 2px;
     color: rgb(255, 185, 88);
 }
+.doctor-rank .star {
+    font-size: 14px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+.doctor-rank .star .material-icons {
+    font-size: 24px;
+    margin-right: -5px;
+}
 .doctor .doctor-cards .cards .doctor-name {
     margin-top: 18px;
     font-weight: 500;
@@ -83,6 +92,10 @@
 .doctor .doctor-cards .cards .sent a:hover {
     background: #4DC6E2;
     color: white;
+}
+.doctor-rank .after {
+    height: 22px;
+    margin-left: 8px;
 }
 .after::after {
     content: " ";

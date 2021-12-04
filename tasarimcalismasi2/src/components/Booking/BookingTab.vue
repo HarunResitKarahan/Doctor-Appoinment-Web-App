@@ -10,11 +10,12 @@
             </div>
             <div class="doctor-rank">
                 <div class="star">
-                    <span class="material-icons" >star</span ><p class="after">4.7</p><p>154 Değerlendirme</p>
+                    <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">4.7</p><p style="height: 22px;">154 Değerlendirme</p>
                 </div>
             </div>
             <div class="doctor-departmant">
-                .
+                <span class="material-icons" style="color: rgb(255, 0, 0, 0.500); font-size: 24px;padding: 1px;
+    margin-right: 2px;">emergency</span><p style="padding-top: 2px;">Şevket Yılmaz Devlet Hastanesi</p>
             </div>
         </div>
     </div>
