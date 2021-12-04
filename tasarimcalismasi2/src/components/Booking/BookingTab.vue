@@ -22,13 +22,21 @@
     <div class="schedule-tab">
         <div class="day">
             <template v-for="item in days">
-                <p :key="item">
-                    {{item}}
-                </p>
+                <div class="date" :key="item">
+                    <p>{{item}}</p>
+                    <p>4 Aralık 2021</p>
+                </div>
             </template>
         </div>
         <div class="time">
-            .
+            <div v-for="item in days" :key="item">
+                <div style="display: none;" >{{item}}</div>
+                <template v-for="item in time">
+                    <div class="appointment" :key="item">
+                        <p>{{item}}</p>
+                    </div>
+                </template>
+            </div>
         </div>
     </div>
   </div>
@@ -40,7 +48,8 @@ export default {
   name: 'BookingTab',
   data () {
     return {
-      days: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma']
+      days: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+      time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30']
     }
   },
   mounted () {
