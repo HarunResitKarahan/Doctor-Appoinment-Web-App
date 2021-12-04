@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 
 export default {
   name: 'BookingTab',
@@ -54,6 +55,14 @@ export default {
   },
   mounted () {
     document.title = 'Randevu Al'
+    $(document).ready(function () {
+      $('.appointment').click(function () {
+        $('.appointment').css('background-color', '#e9e9e9')// background-color: #e9e9e9;color: #757575;
+        $('.appointment').css('color', '#757575')
+        $(this).css('background-color', '#66b7cb')// background-color: #e9e9e9;color: #757575;
+        $(this).css('color', 'white')
+      })
+    })
   }
 }
 </script>
