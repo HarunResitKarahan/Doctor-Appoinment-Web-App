@@ -73,6 +73,7 @@
     width: 100%;
     padding: 45px;
     padding-top: 15px;
+    padding-bottom: 15px;
 }
 .booking-tab .schedule-tab .time div{
     width: 95%;
@@ -93,4 +94,21 @@
 .booking-tab .schedule-tab .time div .appointment:hover {
     background-color: rgb(168, 168, 168);
     color: white;
+}
+.booking-tab .schedule-tab .make-a-apointment {
+    display: flex;
+    justify-content: right;
+    padding: 15px 45px 45px 45px;
+}
+.booking-tab .schedule-tab .make-a-apointment p {
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+    width: 25%;
+    padding: 15px;
+    background: rgb(80, 228, 233);
+}
+.booking-tab .schedule-tab .make-a-apointment p:hover {
+    background-color: #66b7cb;
 }

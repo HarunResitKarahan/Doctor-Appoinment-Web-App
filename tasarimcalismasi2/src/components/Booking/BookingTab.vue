@@ -28,14 +28,19 @@
                 </div>
             </template>
         </div>
-        <div class="time">
-            <div v-for="item in days" :key="item">
-                <div style="display: none;" >{{item}}</div>
-                <template v-for="item in time">
-                    <div class="appointment" :key="item">
-                        <p>{{item}}</p>
-                    </div>
-                </template>
+        <div class="schedule">
+            <div class="time">
+                <div v-for="item in days" :key="item">
+                    <div style="display: none;" >{{item}}</div>
+                    <template v-for="item in time">
+                        <div class="appointment" :key="item">
+                            <p>{{item}}</p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="make-a-apointment">
+                <p>RANDEVU AL</p>
             </div>
         </div>
     </div>
@@ -50,7 +55,7 @@ export default {
   data () {
     return {
       days: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
-      time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30']
+      time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30']
     }
   },
   mounted () {
