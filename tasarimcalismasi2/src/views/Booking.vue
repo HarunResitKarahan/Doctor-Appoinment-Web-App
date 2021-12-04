@@ -3,6 +3,7 @@
     <Navbar />
     <SubNavbar />
     <BookingTab />
+    <Footer />
      <!-- <template v-for="(item, index) in responseData" >
         <p class="change" :key="item.message">{{ index }} {{ item }}</p>
       </template> -->
@@ -13,13 +14,15 @@
 import Navbar from '@/components/Homepage/Navbar.vue'
 import SubNavbar from '@/components/Booking/SubNavbar.vue'
 import BookingTab from '@/components/Booking/BookingTab.vue'
+import Footer from '@/components/Homepage/Footer.vue'
 
 export default {
   name: 'Booking',
   components: {
     Navbar,
     SubNavbar,
-    BookingTab
+    BookingTab,
+    Footer
   },
   data () {
     return {
