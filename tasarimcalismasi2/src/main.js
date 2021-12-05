@@ -21,6 +21,8 @@ import '@/css/Booking_css/booking.css'
 import '@/css/Booking_css/sub-navbar.css'
 import '@/css/Booking_css/booking-tab.css'
 
+import '@/css/DoctorSearch_css/doctor-search.css'
+
 import './scripts/Home_js/clinic.js'
 
 Vue.use(BootstrapVue)

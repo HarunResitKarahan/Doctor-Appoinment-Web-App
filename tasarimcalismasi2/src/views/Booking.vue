@@ -1,7 +1,7 @@
 <template>
   <div class="booking">
     <Navbar />
-    <SubNavbar />
+    <SubNavbar :title="title"/>
     <BookingTab />
     <Footer />
     <Login />
@@ -29,8 +29,13 @@ export default {
   },
   data () {
     return {
+      title: '',
       responseData: []
     }
+  },
+  mounted () {
+    document.title = 'Randevu Al'
+    this.title = document.title
   },
   // Serverdan Anasayfa için veriler çekildi
   created () {

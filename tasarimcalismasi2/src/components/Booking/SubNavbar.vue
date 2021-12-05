@@ -1,12 +1,15 @@
 <template>
   <div class="sub-navbar">
-    <p>Anasayfa > Randevu</p>
+    <p>Anasayfa > {{title}}</p>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'SubNavbar'
+  name: 'SubNavbar',
+  props: {
+    title: String
+  }
 }
 </script>

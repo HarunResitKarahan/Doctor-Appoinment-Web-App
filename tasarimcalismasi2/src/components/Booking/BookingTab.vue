@@ -59,7 +59,6 @@ export default {
     }
   },
   mounted () {
-    document.title = 'Randevu Al'
     $(document).ready(function () {
       $('.appointment').click(function () {
         $('.appointment').css('background-color', '#e9e9e9')// background-color: #e9e9e9;color: #757575;
