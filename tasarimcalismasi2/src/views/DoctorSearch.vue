@@ -1,5 +1,6 @@
 <template>
   <div class="doctor-search">
+      <Login />
       <Navbar />
       <SubNavbar :title = "title"/>
   </div>
@@ -8,6 +9,7 @@
 <script>
 import Navbar from '@/components/Homepage/Navbar.vue'
 import SubNavbar from '@/components/Booking/SubNavbar.vue'
+import Login from '@/components/Login/Login.vue'
 
 export default {
   name: 'DoctorSearch',
@@ -18,7 +20,8 @@ export default {
   },
   components: {
     Navbar,
-    SubNavbar
+    SubNavbar,
+    Login
   },
   mounted () {
     document.title = 'Doktor Ara'
