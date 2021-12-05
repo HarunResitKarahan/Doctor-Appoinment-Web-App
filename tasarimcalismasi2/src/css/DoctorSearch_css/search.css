@@ -1,0 +1,46 @@
+.doctor-search .search-content {
+    background-color: #f8f9fa;
+}
+.doctor-search .search-content .search {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.doctor-search .search-content .search .filter-search {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    text-align: center;
+    background-color: white;
+}
+.doctor-search .search-content .search .filter-search h5{
+    font-size: 18px;
+    padding: 16px 24px;
+    border: 0 solid rgba(0, 0, 0, 0.075);
+    border-bottom-width: 1px;
+    text-align: left;
+}
+.doctor-search .search-content .search .filter-search .card-body {
+    padding: 24px;
+    text-align: left;
+}
+.doctor-search .search-content .search .filter-search .card-body input {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    padding: 6px 15px;
+    line-height: 2;
+    font-size: 14px;
+}
+.doctor-search .search-content .search .filter-search .card-body .checkbox {
+    width: 100%;
+    font-size: 15px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.doctor-search .search-content .search .filter-search .card-body .checkbox input {
+    width: 10%;
+    height: 14px;
+}
+.doctor-search .search-content .search .filter-search .card-body .checkbox p {
+    width: 90% !important;
+    height: 19px;
+}

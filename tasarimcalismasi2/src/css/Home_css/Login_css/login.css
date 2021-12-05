@@ -77,7 +77,7 @@
     display: flex;
     justify-content: space-between;
 }
-.login .login-card .remind-me .checkbox {
+.checkbox {
     display: flex;
     width: 30%;
     position: relative;
@@ -87,7 +87,7 @@
     letter-spacing: 0;
     text-transform: none;
 }
-.login .login-card .remind-me .checkbox input {
+ .checkbox input {
     margin: 0;
     cursor: pointer;
 }
