@@ -22,6 +22,8 @@ import '@/css/Booking_css/sub-navbar.css'
 import '@/css/Booking_css/booking-tab.css'
 
 import '@/css/DoctorSearch_css/doctor-search.css'
+import '@/css/DoctorSearch_css/search.css'
+import '@/css/DoctorSearch_css/show-doctors.css'
 
 import './scripts/Home_js/clinic.js'
 

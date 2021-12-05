@@ -3,6 +3,10 @@
       <Login />
       <Navbar />
       <SubNavbar :title = "title"/>
+      <div class="search-content">
+        <Search />
+        <ShowDoctors />
+      </div>
   </div>
 </template>
 
@@ -10,6 +14,8 @@
 import Navbar from '@/components/Homepage/Navbar.vue'
 import SubNavbar from '@/components/Booking/SubNavbar.vue'
 import Login from '@/components/Login/Login.vue'
+import Search from '@/components/DoctorSearch/Search.vue'
+import ShowDoctors from '@/components/DoctorSearch/ShowDoctors.vue'
 
 export default {
   name: 'DoctorSearch',
@@ -21,7 +27,9 @@ export default {
   components: {
     Navbar,
     SubNavbar,
-    Login
+    Login,
+    Search,
+    ShowDoctors
   },
   mounted () {
     document.title = 'Doktor Ara'

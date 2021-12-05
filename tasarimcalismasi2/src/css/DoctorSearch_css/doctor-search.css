@@ -13,3 +13,7 @@
 .doctor-search .sub-navbar {
     background-color: #3781c2;
 }
+
+.doctor-search .search-content {
+    display: flex;
+}
