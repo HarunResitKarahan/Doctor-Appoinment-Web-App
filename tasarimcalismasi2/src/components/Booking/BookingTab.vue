@@ -23,8 +23,8 @@
         <div class="day">
             <template v-for="item in days">
                 <div class="date" :key="item">
-                    <p>{{item}}</p>
-                    <p class="h5">4 Aralık 2021</p>
+                    <p style="color: #272B41">{{item}}</p>
+                    <p class="h5" style="color: #757575;">4 Aralık 2021</p>
                 </div>
             </template>
         </div>
