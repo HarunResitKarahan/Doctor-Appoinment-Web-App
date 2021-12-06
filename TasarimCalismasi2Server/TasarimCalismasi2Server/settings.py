@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'TasarimCalismasi2Server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'AppointmentSystemDb',
+        'NAME': 'AppointmentSystemDB',
         'USER': 'newsuser',
         'PASSWORD': '38887030636h',
         'HOST': '127.0.0.1',
@@ -112,6 +112,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
 ]
 
 

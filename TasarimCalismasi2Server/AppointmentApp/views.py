@@ -14,6 +14,7 @@ def PatientApi(request, id = 0):
         return JsonResponse(patient_serializer.data, safe = False)
     elif request.method == 'POST':
         patient_data = JSONParser().parse(request)
+        print(patient_data)
         patient_serializer = PatientSerializer(data = patient_data)
         if patient_serializer.is_valid():
             patient_serializer.save()

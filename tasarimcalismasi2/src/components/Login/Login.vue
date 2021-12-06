@@ -7,11 +7,11 @@
           <p class="h2">GİRİŞ YAPIN</p>
           <div class="username">
               <span>Kullanıcı Adı: </span>
-              <input type="text">
+              <input v-model="username" type="text">
           </div>
           <div class="password">
               <span>Şifre: </span>
-              <input type="password">
+              <input v-model="password" type="password">
           </div>
           <div class="remind-me">
               <label class="checkbox">
@@ -21,7 +21,7 @@
                   <p>Şifremi Unuttum?</p>
               </div>
           </div>
-          <div class="log-in">
+          <div @click="signin(username, password)" class="log-in">
               <p>Giriş Yap</p>
           </div>
           <p @click="registerPageOpen" class="register">Kayıtlı Değil misiniz ?</p>
@@ -33,25 +33,25 @@
           <p class="h2">KAYIT OLUN</p>
           <div class="username">
               <span>Kullanıcı Adı: </span>
-              <input type="text">
+              <input v-model="nick" type="text">
           </div>
           <div class="username">
               <span>Ad: </span>
-              <input type="text">
+              <input v-model="name" type="text">
           </div>
           <div class="username">
               <span>Soyad: </span>
-              <input type="text">
+              <input v-model="surname" type="text">
           </div>
           <div class="username">
               <span>E-posta: </span>
-              <input type="text">
+              <input v-model="email" type="text">
           </div>
           <div class="password">
               <span>Şifre: </span>
-              <input type="password">
+              <input v-model="registerpassword" type="password">
           </div>
-          <div class="log-in">
+          <div @click="registerbutton(nick, name, surname, email, registerpassword)" class="log-in">
               <p>Kayıt Ol</p>
           </div>
           <p @click="loginPageOpen" class="register">Üye misiniz ?</p>
@@ -65,7 +65,14 @@ export default {
   name: 'Login',
   data () {
     return {
+      localpassword: '',
+      localusername: '',
+      issignin: ''
     }
+  },
+  created () {
+    this.localusername = localStorage.username
+    this.issignin = localStorage.issignin
   },
   methods: {
     loginPageClose () {
@@ -78,6 +85,42 @@ export default {
     registerPageOpen () {
       $('.login-card').css('display', 'none')
       $('.register-card').css('display', 'block')
+    },
+    signinbutton (nick, password) {
+      fetch('http://localhost:8000/patient', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nickname: nick,
+          userpassword: password
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.issignin = data
+          if (this.issignin === 'Giriş Başarılı') {
+            localStorage.username = nick
+            localStorage.issignin = this.issignin
+            this.localusername = localStorage.username
+            setInterval(function () { location.reload() }, 500)
+          }
+        })
+    },
+    registerbutton (nick, name, surname, email, registerpassword) {
+      fetch('http://localhost:8000/patient', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nickname: nick,
+          patientName: name,
+          patientSurname: surname,
+          patientEmail: email,
+          userpassword: registerpassword
+        })
+      })
+        .then(response => response.json())
+        .then(data => { console.log(data) })// this.isregistered = data
+      // setInterval(function () { location.reload() }, 500)
     }
   }
 }
