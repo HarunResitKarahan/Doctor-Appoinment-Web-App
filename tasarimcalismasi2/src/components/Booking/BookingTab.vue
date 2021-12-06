@@ -2,7 +2,7 @@
   <div class="booking-tab">
     <div class="doctor-info-tab">
         <div class="doctor-image">
-            <img src="@/assets/doctor11.jpg" width="80" height="80">
+            <img src="@/assets/doctor11.jpg" width="100" height="100">
         </div>
         <div class="doctor-info">
             <div class="doctor-name">
@@ -13,7 +13,7 @@
                     <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">4.7</p><p style="height: 22px;">154 Değerlendirme</p>
                 </div>
             </div>
-            <div class="doctor-departmant" style="margin-top: 5px;">
+            <div class="doctor-departmant" style="margin-top: 10px;">
                 <span class="material-icons" style="color: rgb(0, 0, 0, 0.500); font-size: 24px;padding: 1px;
     margin-right: 2px;">location_on</span><p style="padding-top: 3px;">Şevket Yılmaz Devlet Hastanesi</p>
             </div>

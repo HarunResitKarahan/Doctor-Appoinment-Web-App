@@ -23,6 +23,7 @@
     padding-left: 4px;
     font-size: 16px;
     font-weight: 500;
+    margin-bottom: 4px;
 }
  .doctor-departmant {
     display: flex;
@@ -41,35 +42,25 @@
 }
 .booking-tab .schedule-tab .day {
     display: flex;
-    justify-content: center;
     border: 0 solid rgba(0,0,0,.125);
     border-bottom-width: 1px;
-    padding: 15px 15px 0 15px;
-}
-.booking-tab .schedule-tab .day::before {
-    content: "<";
-    font-size: 24px;
-    font-weight: 700;
-    margin-right: 20px;
-}
-.booking-tab .schedule-tab .day::after {
-    content: ">";
-    font-size: 24px;
-    font-weight: 700;
-    margin-left: 20px;
+    padding: 20px 45px;
 }
 .booking-tab .schedule-tab .day .date {
+    flex: auto;
     text-align: center;
     text-transform: uppercase;
-    margin-right: 60px;
     line-height: 1.2;
+}
+.booking-tab .schedule-tab .day .date .h5 {
+    margin-top: 5px;
+    font-size: 14px;
 }
 .booking-tab .schedule-tab .day .date:last-child {
     margin-right: 0;
 }
 .booking-tab .schedule-tab .time {
     display: flex;
-    justify-content: space-around;
     width: 100%;
     padding: 45px;
     padding-top: 15px;
@@ -86,9 +77,10 @@
 .booking-tab .schedule-tab .time div .appointment {
     background-color: #e9e9e9;
     cursor: pointer;
-    margin-bottom: 10px;
     border: 1px solid #e9e9e9;
-    padding: 5px 5px;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 5px;
     transition: color 0.2s ease;
 }
 .booking-tab .schedule-tab .time div .appointment:hover {
@@ -107,8 +99,8 @@
     color: white;
     width: 25%;
     padding: 15px;
-    background: rgb(80, 228, 233);
+    background: rgb(80, 151, 233);
 }
 .booking-tab .schedule-tab .make-a-apointment p:hover {
-    background-color: #66b7cb;
+    background-color: rgb(55, 135, 226);
 }
