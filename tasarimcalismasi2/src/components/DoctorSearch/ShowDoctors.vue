@@ -1,6 +1,7 @@
 <template>
   <div class="show-doctors">
-    <div class="doctor-card">
+    <template v-for="item in doctors">
+      <div class="doctor-card" :key="item">
         <div class="doctor-image">
           <img src="@/assets/doctor22.jpg" width="150" height="150">
         </div>
@@ -13,11 +14,14 @@
                 </div>
           </div>
           <div class="doctor-departmant">
-                <span class="material-icons" style="color: rgb(2550, 0, 0, 0.300); font-size: 24px;padding: 1px;
-    margin-right: 2px;">emergency</span><p style="padding-top: 3.5px;">Şevket Yılmaz Devlet Hastanesi</p>
-            </div>
+              <span class="material-icons" style="color: rgb(2550, 0, 0, 0.300); font-size: 24px;padding: 1px; margin-right: 2px;">emergency</span><p style="padding-top: 3.5px;">Şevket Yılmaz Devlet Hastanesi</p>
+          </div>
+          <div class="make-appointment">
+            <router-link to="/randevu" class="appointment"><p>Randevu Al</p></router-link>
+          </div>
         </div>
     </div>
+    </template>
   </div>
 </template>
 
@@ -27,7 +31,7 @@ export default {
   name: 'ShowDoctors',
   data () {
     return {
-      policlinics: ['DAHİLİYE', 'KULAK BURUN BOĞAZ (K.B.B.)', 'CİLDİYE (DERMATOLOJİ)', 'FİZİK TEDAVİ VE REHABİLİTASYON', 'ORTOPEDİ VE TRAVMATOLOJİ', 'KARDİYOLOJİ', 'GÖZ HASTALIKLARI', 'NÖROLOJİ', 'PSİKİYATRİ (RUH HEKİMLİĞİ)', 'GÖĞÜS HASTALIKLARI', 'GÖĞÜS CERRAHİ', 'ÇOCUK HASTALIKLARI', 'KALP DAMAR CERRAHİ', 'KADIN DOĞUM', 'ÇOCUK CERRAHİ', 'BEYİN VE SİNİR CERRAHİSİ', 'ÜROLOJİ (BEVLİYE)', 'GENEL CERRAHİ']
+      doctors: ['Ahmet Furkan ÇELİK', 'Mehmet Akif ÇELİKTÜRK', 'Fatma ARICI', 'Enes DEMİR']
     }
   }
 }

@@ -1,11 +1,37 @@
 .show-doctors {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
     margin-top: 30px;
 }
 .show-doctors .doctor-card {
     display: flex;
+    flex: auto;
+    height: fit-content;
+    background-color: #fff;
+    margin: 0 30px 15px 0;
     padding: 24px;
     border: 1px solid rgba(0, 0, 0, 0.075);
 }
 .show-doctors .doctor-card .doctor-image {
     margin: 0 20px 0 0;
+}
+.show-doctors .doctor-card .doctor-info {
+    width: 100%;
+}
+.show-doctors .doctor-card .make-appointment {
+    width: fit-content;
+    margin-left: auto;
+}
+.show-doctors .doctor-card .make-appointment p {
+    background-color: #f8f9fa;
+    color: #3781c2;
+    border: 1px solid #3781c2; 
+    font-weight: 400;
+    padding: 15px;
+    border-radius: 3px;
+}
+.show-doctors .doctor-card .make-appointment .appointment p:hover {
+    background-color: #3781c2;
+    color: white;
 }

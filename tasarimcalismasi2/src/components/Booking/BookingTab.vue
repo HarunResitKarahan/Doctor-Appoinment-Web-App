@@ -13,9 +13,9 @@
                     <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">4.7</p><p style="height: 22px;">154 Değerlendirme</p>
                 </div>
             </div>
-            <div class="doctor-departmant">
-                <span class="material-icons" style="color: rgb(255, 0, 0, 0.500); font-size: 24px;padding: 1px;
-    margin-right: 2px;">emergency</span><p style="padding-top: 2px;">Şevket Yılmaz Devlet Hastanesi</p>
+            <div class="doctor-departmant" style="margin-top: 5px;">
+                <span class="material-icons" style="color: rgb(0, 0, 0, 0.500); font-size: 24px;padding: 1px;
+    margin-right: 2px;">location_on</span><p style="padding-top: 3px;">Şevket Yılmaz Devlet Hastanesi</p>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
             <template v-for="item in days">
                 <div class="date" :key="item">
                     <p>{{item}}</p>
-                    <p>4 Aralık 2021</p>
+                    <p class="h5">4 Aralık 2021</p>
                 </div>
             </template>
         </div>
@@ -54,7 +54,7 @@ export default {
   name: 'BookingTab',
   data () {
     return {
-      days: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+      days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT'],
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30']
     }
   },
