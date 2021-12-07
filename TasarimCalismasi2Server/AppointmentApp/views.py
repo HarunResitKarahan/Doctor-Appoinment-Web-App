@@ -17,7 +17,7 @@ def PatientApi(request, id = 0):
     elif request.method == 'POST':
         patient_data = JSONParser().parse(request)
         patient_data['patientPassword'] = make_password(patient_data['patientPassword'])
-        patient_data['patientID'] = int(patient_data['patientID'])
+        print(type(patient_data['patientID']))
         # print(check_password(patient_data['patientPassword']))
         patient_serializer = PatientSerializer(data = patient_data)
         print(patient_serializer)

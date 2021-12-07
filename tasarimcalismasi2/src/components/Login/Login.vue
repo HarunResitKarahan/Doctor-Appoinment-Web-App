@@ -54,6 +54,12 @@
           <div @click="registerbutton(id, name, surname, email, registerpassword)" class="log-in">
               <p>Kayıt Ol</p>
           </div>
+          <template v-if="isregistered == 'Added Successfully'">
+            <p style="color: lime;margin: 5px 0;">Başarıyla Kayıt Olundu.</p>
+          </template>
+          <template v-if="isregistered == 'Failed to Add'">
+            <p style="color: red;margin: 5px 0;">Kayıt Olunamadı Kimlik Numarası Zaten Kayıtlı</p>
+          </template>
           <p @click="loginPageOpen" class="register">Üye misiniz ?</p>
       </div>
   </div>
@@ -67,7 +73,8 @@ export default {
     return {
       localpassword: '',
       localusername: '',
-      issignin: ''
+      issignin: '',
+      isregistered: ''
     }
   },
   created () {
@@ -115,13 +122,16 @@ export default {
           patientName: name,
           patientSurname: surname,
           patientEmail: email,
-          patientPassword: registerpassword,
-          patientCreateTime: new Date()
+          patientPassword: registerpassword
         })
       })
         .then(response => response.json())
-        .then(data => { console.log(data) })// this.isregistered = data
-      // setInterval(function () { location.reload() }, 500)
+        .then(data => {
+          this.isregistered = data
+          if (data === 'Added Successfully') {
+            setInterval(function () { location.reload() }, 1500)
+          }
+        })
     }
   }
 }
