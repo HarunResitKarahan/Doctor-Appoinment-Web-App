@@ -20,7 +20,6 @@ def PatientApi(request, id = 0):
         print(type(patient_data['patientID']))
         # print(check_password(patient_data['patientPassword']))
         patient_serializer = PatientSerializer(data = patient_data)
-        print(patient_serializer)
         if patient_serializer.is_valid():
             print(patient_serializer)
             patient_serializer.save()
@@ -38,3 +37,13 @@ def PatientApi(request, id = 0):
         patient=Patient.objects.get(patientID = id)
         patient.delete()
         return JsonResponse("Deleted Successfully",safe=False)
+
+def PatientApiSignIn(request, id = 0):
+    if request.method == 'POST':
+        patient_data = JSONParser().parse(request)
+        patient=Patient.objects.get(patientID = patient_data['patientID'])
+        print(patient)
+        print(check_password(patient_data['patientPassword'], patient['patientPassword']))
+        # if patient_serializer.is_valid():
+        #     return JsonResponse("Sign In", safe = False)
+        return JsonResponse("Failed to Sign in", safe = False)

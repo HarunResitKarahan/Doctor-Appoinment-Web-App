@@ -51,15 +51,15 @@
               <span>Şifre: </span>
               <input v-model="registerpassword" type="password">
           </div>
-          <div @click="registerbutton(id, name, surname, email, registerpassword)" class="log-in">
-              <p>Kayıt Ol</p>
-          </div>
           <template v-if="isregistered == 'Added Successfully'">
             <p style="color: lime;margin: 5px 0;">Başarıyla Kayıt Olundu.</p>
           </template>
           <template v-if="isregistered == 'Failed to Add'">
             <p style="color: red;margin: 5px 0;">Kayıt Olunamadı Kimlik Numarası Zaten Kayıtlı</p>
           </template>
+          <div @click="registerbutton(id, name, surname, email, registerpassword)" class="log-in">
+              <p>Kayıt Ol</p>
+          </div>
           <p @click="loginPageOpen" class="register">Üye misiniz ?</p>
       </div>
   </div>
@@ -93,25 +93,23 @@ export default {
       $('.login-card').css('display', 'none')
       $('.register-card').css('display', 'block')
     },
-    signinbutton (nick, password) {
-      fetch('http://localhost:8000/patient', {
+    signinbutton (username, password) {
+      fetch('http://localhost:8000/patient/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          nickname: nick,
-          userpassword: password
+          patientID: username,
+          patientPassword: password
         })
       })
         .then(response => response.json())
-        .then(data => {
-          this.issignin = data
-          if (this.issignin === 'Giriş Başarılı') {
-            localStorage.username = nick
-            localStorage.issignin = this.issignin
-            this.localusername = localStorage.username
-            setInterval(function () { location.reload() }, 500)
-          }
-        })
+        .then(data => { console.log(data) })
+        // this.issignin = data
+        //   if (this.issignin === 'Giriş Başarılı') {
+        //     localStorage.username = nick
+        //     localStorage.issignin = this.issignin
+        //     this.localusername = localStorage.username
+        //     setInterval(function () { location.reload() }, 500)
     },
     registerbutton (id, name, surname, email, registerpassword) {
       fetch('http://localhost:8000/patient', {

@@ -4,5 +4,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     url(r'^patient$', views.PatientApi),
-    url(r'^patient/([0-9]+)$', views.PatientApi)
+    url(r'^patient/signin$', views.PatientApiSignIn)
+    # url('patient/signin', views.PatientApiSignIn)
 ]
