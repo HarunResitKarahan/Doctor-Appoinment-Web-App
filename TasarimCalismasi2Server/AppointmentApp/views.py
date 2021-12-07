@@ -38,12 +38,13 @@ def PatientApi(request, id = 0):
         patient.delete()
         return JsonResponse("Deleted Successfully",safe=False)
 
+@csrf_exempt
 def PatientApiSignIn(request, id = 0):
     if request.method == 'POST':
         patient_data = JSONParser().parse(request)
-        patient=Patient.objects.get(patientID = patient_data['patientID'])
-        print(patient)
-        print(check_password(patient_data['patientPassword'], patient['patientPassword']))
-        # if patient_serializer.is_valid():
-        #     return JsonResponse("Sign In", safe = False)
-        return JsonResponse("Failed to Sign in", safe = False)
+        try:
+            patient = Patient.objects.filter(patientID = patient_data['patientID']).values()   
+            if check_password(patient_data['patientPassword'], patient[0]['patientPassword']) == True:
+                return JsonResponse("Giriş Başarılı", safe = False)
+        except IndexError:
+            return JsonResponse("Giriş Başarısız", safe = False)

@@ -21,6 +21,12 @@
                   <p>Şifremi Unuttum?</p>
               </div>
           </div>
+          <template v-if="issignin == 'Giriş Başarılı'">
+            <p style="color: lime;margin: 5px 0;">Giriş Başarılı</p>
+          </template>
+          <template v-if="issignin == 'Giriş Başarısız'">
+            <p style="color: red;margin: 5px 0;">Giriş Başarısız</p>
+          </template>
           <div @click="signin(username, password)" class="log-in">
               <p>Giriş Yap</p>
           </div>
@@ -78,8 +84,8 @@ export default {
     }
   },
   created () {
-    this.localusername = localStorage.username
-    this.issignin = localStorage.issignin
+    // this.localusername = localStorage.username
+    // this.issignin = localStorage.issignin
   },
   methods: {
     loginPageClose () {
@@ -93,7 +99,7 @@ export default {
       $('.login-card').css('display', 'none')
       $('.register-card').css('display', 'block')
     },
-    signinbutton (username, password) {
+    signin (username, password) {
       fetch('http://localhost:8000/patient/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -103,13 +109,15 @@ export default {
         })
       })
         .then(response => response.json())
-        .then(data => { console.log(data) })
-        // this.issignin = data
-        //   if (this.issignin === 'Giriş Başarılı') {
-        //     localStorage.username = nick
-        //     localStorage.issignin = this.issignin
-        //     this.localusername = localStorage.username
-        //     setInterval(function () { location.reload() }, 500)
+        .then(data => {
+          this.issignin = data
+          if (this.issignin === 'Giriş Başarılı') {
+            localStorage.username = username
+            localStorage.issignin = this.issignin
+            this.localusername = localStorage.username
+            setInterval(function () { location.reload() }, 1500)
+          }
+        })
     },
     registerbutton (id, name, surname, email, registerpassword) {
       fetch('http://localhost:8000/patient', {
