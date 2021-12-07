@@ -32,8 +32,8 @@
           </span>
           <p class="h2">KAYIT OLUN</p>
           <div class="username">
-              <span>Kullanıcı Adı: </span>
-              <input v-model="nick" type="text">
+              <span>TC NO: </span>
+              <input v-model="id" type="number">
           </div>
           <div class="username">
               <span>Ad: </span>
@@ -51,7 +51,7 @@
               <span>Şifre: </span>
               <input v-model="registerpassword" type="password">
           </div>
-          <div @click="registerbutton(nick, name, surname, email, registerpassword)" class="log-in">
+          <div @click="registerbutton(id, name, surname, email, registerpassword)" class="log-in">
               <p>Kayıt Ol</p>
           </div>
           <p @click="loginPageOpen" class="register">Üye misiniz ?</p>
@@ -106,16 +106,17 @@ export default {
           }
         })
     },
-    registerbutton (nick, name, surname, email, registerpassword) {
+    registerbutton (id, name, surname, email, registerpassword) {
       fetch('http://localhost:8000/patient', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          nickname: nick,
+          patientID: id,
           patientName: name,
           patientSurname: surname,
           patientEmail: email,
-          userpassword: registerpassword
+          patientPassword: registerpassword,
+          patientCreateTime: new Date()
         })
       })
         .then(response => response.json())

@@ -6,6 +6,8 @@ from django.http.response import JsonResponse
 from AppointmentApp.models import Patient
 from AppointmentApp.serializers import PatientSerializer
 
+from django.contrib.auth.hashers import make_password,check_password
+
 @csrf_exempt
 def PatientApi(request, id = 0):
     if request.method == 'GET':
@@ -14,9 +16,13 @@ def PatientApi(request, id = 0):
         return JsonResponse(patient_serializer.data, safe = False)
     elif request.method == 'POST':
         patient_data = JSONParser().parse(request)
-        print(patient_data)
+        patient_data['patientPassword'] = make_password(patient_data['patientPassword'])
+        patient_data['patientID'] = int(patient_data['patientID'])
+        # print(check_password(patient_data['patientPassword']))
         patient_serializer = PatientSerializer(data = patient_data)
+        print(patient_serializer)
         if patient_serializer.is_valid():
+            print(patient_serializer)
             patient_serializer.save()
             return JsonResponse("Added Successfully", safe = False)
         return JsonResponse("Failed to Add", safe = False)

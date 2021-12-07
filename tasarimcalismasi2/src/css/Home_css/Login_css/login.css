@@ -156,6 +156,11 @@
     flex-direction: column;
     align-items: flex-start;
 }
+.login .register-card .username input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  margin: 0;
+}
 .login .register-card .username span {
     margin: 0 0 10px 10px;
     color: white;
