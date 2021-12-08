@@ -1,6 +1,11 @@
 <template>
   <div class="profile-component">
-      aasd
+      <div class="profile-info col-4">
+        asd
+      </div>
+      <div class="booking-history col-8">
+        asd
+      </div>
   </div>
 </template>
 

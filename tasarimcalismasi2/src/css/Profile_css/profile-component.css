@@ -1,0 +1,11 @@
+.profile .profile-component {
+    display: flex;
+}
+.profile .profile-component .profile-info {
+    display: flex;
+    justify-content: center;
+}
+.profile .profile-component .booking-history {
+    display: flex;
+    justify-content: center;
+}

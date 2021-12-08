@@ -26,6 +26,7 @@ import '@/css/DoctorSearch_css/search.css'
 import '@/css/DoctorSearch_css/show-doctors.css'
 
 import '@/css/Profile_css/profile.css'
+import '@/css/Profile_css/profile-component.css'
 
 import './scripts/Home_js/clinic.js'
 
