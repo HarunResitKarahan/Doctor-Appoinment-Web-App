@@ -84,6 +84,7 @@
           </tr>
           <tr>
             <td><div style="display: flex;
+                        align-items: center;
                         width: 100%;
                         padding: 20px 5px;
                         border: 0 solid #f0f0f0;
@@ -93,9 +94,7 @@
                 <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
               </div>
               <div>
-                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Dahiliye)</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
+                <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
               </div>
             </div></td>
             <td>Maria Anders</td>
