@@ -20,7 +20,7 @@
 .navbar .dropdown-content {
     display: none;
     position: absolute;
-    top: 0;
+    left: -25%;
     background-color: #f1f1f1;
     z-index: 1;
 }
@@ -33,13 +33,13 @@
 }
 .navbar .dropdown-content a:hover{
     background: #6c757d;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 .navbar .btn-secondary {
     background-color: rgba(255, 255, 255, 0);
     border-color: rgba(255, 255, 255, 0);
 }
-.navbar .dropdown:hover {
+.navbar .btn-secondary:hover {
     background-color: #6c757d;
 }
 .navbar .log-in {

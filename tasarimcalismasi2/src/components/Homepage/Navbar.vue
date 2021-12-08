@@ -13,16 +13,17 @@
       </div>
     </template>
     <template v-if="issignin == 'Giriş Başarılı'">
-      <router-link style="margin-left: 8px;margin-right: 8px" to="/profile" :style="issignin === 'Giriş Başarılı' ? 'display: inline' : 'display: none;'"><span>Hoşgeldin: {{localusername}}</span></router-link>
+      <div style="margin-right: 30px;display:flex;justify-content: center;width: 5%;">
        <a href="#" class="dropdown">
               <!-- Profile ulaşmak için profile butonu oluşturuldu -->
-              <b-icon-person-fill id="btn" class="person"/>
-              <b-icon-caret-down-fill class="chevron-down"/>
+              <b-icon-person id="btn" style="border: 1px solid rgb(71, 70, 71);color: rgb(71, 70, 71);border-radius: 100%;height: 40px;width:40px;padding: 3px;" class="person"/>
+              <b-icon-caret-down-fill style="color: rgb(71, 70, 71);height: 10px;width:10px;vertical-align: middle !important;" class="chevron-down"/>
               <div class="dropdown-content" align="left">
                 <router-link to="/profile" style="display: none;" :style="issignin === 'Giriş Başarılı' ? 'display: block' : ''">Profile</router-link>
                 <a @click="signout" href="#" :style="issignin === 'Giriş Başarılı' ? '' : 'display: none'">Çıkış</a>
               </div>
             </a>
+      </div>
     </template>
   </div>
 </template>
