@@ -16,10 +16,53 @@
         <div style="text-align: left;
                     width: 100%;
                     margin-top:30px;
-                    border: 0 solid #f0f0f0;
-                    border-bottom-width: 1px;
                     padding: 15px; ">
-            <p class="h6" style="margin:0">Son Randevular</p>
+            <p class="h6" style="margin:0;margin-bottom: 5px;">Son Randevular</p>
+            <div style="display: flex;
+                        width: 100%;
+                        padding: 20px 5px;
+                        border: 0 solid #f0f0f0;
+                        border-top-width: 1px;
+                        border-bottom-width: 1px;">
+              <div>
+                <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+              </div>
+              <div>
+                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Dahiliye)</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
+              </div>
+            </div>
+            <div style="display: flex;
+                        width: 100%;
+                        padding: 20px 5px;
+                        border: 0 solid #f0f0f0;
+                        border-top-width: 1px;
+                        border-bottom-width: 1px;">
+              <div>
+                <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
+              </div>
+              <div>
+                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Fatma Aksu</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Cildiye)</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
+              </div>
+            </div>
+            <div style="display: flex;
+                        width: 100%;
+                        padding: 20px 5px;
+                        border: 0 solid #f0f0f0;
+                        border-top-width: 1px;
+                        border-bottom-width: 1px;">
+              <div>
+                <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+              </div>
+              <div>
+                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Göz Hastalıkları)</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
+              </div>
+            </div>
         </div>
         </div>
       </div>
