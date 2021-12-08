@@ -8,3 +8,4 @@ class Patient(models.Model):
     patientEmail = models.CharField(max_length=200)
     patientPassword = models.CharField(max_length=200)
     patientCreateTime = models.DateTimeField(default=timezone.now)
+    

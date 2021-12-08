@@ -84,8 +84,8 @@ export default {
     }
   },
   created () {
-    // this.localusername = localStorage.username
-    // this.issignin = localStorage.issignin
+    this.localusername = localStorage.username
+    this.issignin = localStorage.issignin
   },
   methods: {
     loginPageClose () {
