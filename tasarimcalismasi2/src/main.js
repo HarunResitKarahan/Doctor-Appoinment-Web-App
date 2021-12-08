@@ -25,6 +25,8 @@ import '@/css/DoctorSearch_css/doctor-search.css'
 import '@/css/DoctorSearch_css/search.css'
 import '@/css/DoctorSearch_css/show-doctors.css'
 
+import '@/css/Profile_css/profile.css'
+
 import './scripts/Home_js/clinic.js'
 
 Vue.use(BootstrapVue)
