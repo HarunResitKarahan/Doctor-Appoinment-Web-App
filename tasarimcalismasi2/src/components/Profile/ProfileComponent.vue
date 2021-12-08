@@ -1,6 +1,6 @@
 <template>
   <div class="profile-component">
-      <div class="profile-info col-4">
+      <div class="profile-info col-3">
         <div class="card-body">
           <img src="@/assets/malephoto.png" width="150" height="150">
           <p style="font-weight: 500;">Harun Reşit KARAHAN</p>
@@ -66,8 +66,43 @@
         </div>
         </div>
       </div>
-      <div class="booking-history col-8">
-        asd
+      <div class="booking-history col-9">
+        <div style="padding: 20px;
+                    border: 0 solid #f0f0f0;
+                    border-bottom-width: 1px;
+                    width: 100%;
+                    text-align: center;
+                    height: fit-content;">
+          <p style="font-weight: 500;letter-spacing: 1.8px;">Randevu Geçmişi</p>
+        </div>
+        <table style="width: 100%;">
+          <tr>
+            <th>Doktor</th>
+            <th>Bölüm</th>
+            <th>Randevu Tarihi</th>
+            <th>Country</th>
+          </tr>
+          <tr>
+            <td><div style="display: flex;
+                        width: 100%;
+                        padding: 20px 5px;
+                        border: 0 solid #f0f0f0;
+                        border-top-width: 1px;
+                        border-bottom-width: 1px;">
+              <div>
+                <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+              </div>
+              <div>
+                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Dahiliye)</p>
+                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
+              </div>
+            </div></td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Germany</td>
+          </tr>
+        </table>
       </div>
   </div>
 </template>
