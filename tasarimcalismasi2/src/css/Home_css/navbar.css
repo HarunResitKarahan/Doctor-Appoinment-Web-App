@@ -45,6 +45,7 @@
 .navbar .log-in {
     text-align: center;
     padding: 10px;
+    display: flex;
 }
 .navbar .log-in a {
     color: #96DFCE;
