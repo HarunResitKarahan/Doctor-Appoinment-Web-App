@@ -115,7 +115,7 @@ export default {
             localStorage.username = username
             localStorage.issignin = this.issignin
             this.localusername = localStorage.username
-            setInterval(function () { location.reload() }, 1500)
+            setInterval(function () { location.reload() }, 750)
           }
         })
     },
