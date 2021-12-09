@@ -3,16 +3,17 @@
 }
 .profile .sub-navbar p {
     padding: 30px 35px;
+    background-color: rgb(132, 168, 235);
 }
 .profile .site-footer {
-    background-color: #3781c2;
+    background-color: rgb(132, 168, 235);
 }
 .profile .navbar .log-in a {
-    color: #3781c2;
-    border: 2px solid #3781c2;
+    color: rgb(132, 168, 235);
+    border: 2px solid rgb(132, 168, 235);
     padding: 15px;
 }
 .profile .navbar .log-in a:hover {
-    background: #3781c2; /* #66b7cb */
+    background: rgb(132, 168, 235); /* #66b7cb */
     color: white;
 }
