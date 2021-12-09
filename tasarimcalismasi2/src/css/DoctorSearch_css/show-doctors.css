@@ -6,7 +6,7 @@
 }
 .show-doctors .doctor-card {
     display: flex;
-    flex: auto;
+    flex: 100%;
     height: fit-content;
     background-color: #fff;
     margin: 0 30px 15px 0;
@@ -25,13 +25,13 @@
 }
 .show-doctors .doctor-card .make-appointment p {
     background-color: #f8f9fa;
-    color: #3781c2;
-    border: 1px solid #3781c2; 
+    color: rgb(132, 168, 235);
+    border: 1px solid rgb(132, 168, 235); 
     font-weight: 400;
     padding: 15px;
     border-radius: 3px;
 }
 .show-doctors .doctor-card .make-appointment .appointment p:hover {
-    background-color: #3781c2;
+    background-color: rgb(132, 168, 235);
     color: white;
 }

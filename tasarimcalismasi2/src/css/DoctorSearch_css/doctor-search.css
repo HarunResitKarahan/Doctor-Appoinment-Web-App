@@ -1,6 +1,9 @@
 .doctor-search .navbar {
     box-shadow: none;
 }
+.doctor-search .sub-navbar {
+    padding: 30px 35px;
+}
 .doctor-search .site-footer {
     background-color: rgb(132, 168, 235);
 }
