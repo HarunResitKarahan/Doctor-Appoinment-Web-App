@@ -21,12 +21,14 @@
     </div>
     <div class="schedule-tab">
         <div class="day">
-            <template v-for="item in days">
-                <div class="date" :key="item">
-                    <p style="color: #272B41">{{item}}</p>
-                    <p class="h5" style="color: #757575;">4 Aralık 2021</p>
-                </div>
-            </template>
+            <VueSlickCarousel v-bind="settings">
+                <template v-for="item in days">
+                    <div class="date" :key="item">
+                        <p style="color: #272B41">{{item}}</p>
+                        <p class="h5" style="color: #757575;">4 Aralık 2021</p>
+                    </div>
+                </template>
+            </VueSlickCarousel>
         </div>
         <div class="schedule">
             <div class="time">
@@ -49,11 +51,23 @@
 
 <script>
 import $ from 'jquery'
+import VueSlickCarousel from 'vue-slick-carousel'
 
 export default {
   name: 'BookingTab',
+  components: {
+    VueSlickCarousel
+  },
   data () {
     return {
+      settings: {
+        arrows: true,
+        speed: 1000,
+        variableWidth: true,
+        infinite: false,
+        slidesToScroll: 3,
+        swipeToSlide: true
+      },
       days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT'],
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30']
     }

@@ -41,16 +41,26 @@
     margin-top: 1.5%;
 }
 .booking-tab .schedule-tab .day {
-    display: flex;
     border: 0 solid rgba(0,0,0,.125);
     border-bottom-width: 1px;
-    padding: 20px 45px;
+    padding: 0 45px;
 }
 .booking-tab .schedule-tab .day .date {
-    flex: auto;
     text-align: center;
     text-transform: uppercase;
     line-height: 1.2;
+    width: 170px !important;
+    cursor: pointer;
+    padding: 15px 0;
+}
+.booking-tab .schedule-tab .day .slick-track {
+    padding: 0;
+}
+.slick-slide {
+    margin: 0;
+}
+.booking-tab .schedule-tab .day .date:hover {
+    background-color: blanchedalmond;
 }
 .booking-tab .schedule-tab .day .date .h5 {
     margin-top: 5px;
