@@ -25,13 +25,13 @@
 }
 .show-doctors .doctor-card .make-appointment p {
     background-color: #f8f9fa;
-    color: rgb(132, 168, 235);
-    border: 1px solid rgb(132, 168, 235); 
+    color: rgb(73, 201, 188);
+    border: 1px solid rgb(73, 201, 188); 
     font-weight: 400;
     padding: 15px;
     border-radius: 3px;
 }
 .show-doctors .doctor-card .make-appointment .appointment p:hover {
-    background-color: rgb(132, 168, 235);
+    background-color: rgb(73, 201, 188);
     color: white;
 }

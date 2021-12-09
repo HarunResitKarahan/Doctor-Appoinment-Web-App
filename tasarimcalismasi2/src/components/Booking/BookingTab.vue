@@ -22,10 +22,10 @@
     <div class="schedule-tab">
         <div class="day">
             <VueSlickCarousel v-bind="settings">
-                <template v-for="item in days">
+                <template v-for="(item,index) in days">
                     <div class="date" :key="item">
                         <p style="color: #272B41">{{item}}</p>
-                        <p class="h5" style="color: #757575;">4 Aralık 2021</p>
+                        <p class="h5" style="color: #757575;">{{index + 1}} Aralık 2021</p>
                     </div>
                 </template>
             </VueSlickCarousel>
@@ -68,7 +68,7 @@ export default {
         slidesToScroll: 3,
         swipeToSlide: true
       },
-      days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT'],
+      days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30']
     }
   },
@@ -77,7 +77,7 @@ export default {
       $('.appointment').click(function () {
         $('.appointment').css('background-color', '#e9e9e9')// background-color: #e9e9e9;color: #757575;
         $('.appointment').css('color', '#757575')
-        $(this).css('background-color', '#66b7cb')// background-color: #e9e9e9;color: #757575;
+        $(this).css('background-color', 'rgb(0 205 255)')// background-color: #e9e9e9;color: #757575;
         $(this).css('color', 'white')
       })
     })
