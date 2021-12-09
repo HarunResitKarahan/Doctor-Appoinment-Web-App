@@ -22,7 +22,7 @@
               </div>
           </div>
           <template v-if="issignin == 'Giriş Başarılı'">
-            <p style="color: lime;margin: 5px 0;">Giriş Başarılı</p>
+            <p style="color: lime;">Giriş Başarılı</p>
           </template>
           <template v-if="issignin == 'Giriş Başarısız'">
             <p style="color: red;margin: 5px 0;">Giriş Başarısız</p>

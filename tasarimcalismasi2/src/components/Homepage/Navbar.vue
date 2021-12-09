@@ -40,7 +40,7 @@ export default {
     signout () {
       localStorage.removeItem('username')
       localStorage.removeItem('issignin')
-      setInterval(function () { location.reload() }, 500)
+      setInterval(function () { location.reload() }, 100)
     }
   },
   created () {
