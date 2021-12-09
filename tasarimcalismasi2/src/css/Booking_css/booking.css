@@ -1,18 +1,21 @@
 .booking .navbar {
     box-shadow: none;
 }
+.booking .sub-navbar {
+    background-color: rgb(132, 168, 235);
+}
 .booking .sub-navbar p {
     padding: 30px 35px;
 }
 .booking .site-footer {
-    background-color: #3781c2;
+    background-color: rgb(132, 168, 235);
 }
 .booking .navbar .log-in a {
-    color: #3781c2;
-    border: 2px solid #3781c2;
+    color: rgb(132, 168, 235);
+    border: 2px solid rgb(132, 168, 235);
     padding: 15px;
 }
 .booking .navbar .log-in a:hover {
-    background: #3781c2; /* #66b7cb */
+    background: rgb(132, 168, 235); /* #66b7cb */
     color: white;
 }
