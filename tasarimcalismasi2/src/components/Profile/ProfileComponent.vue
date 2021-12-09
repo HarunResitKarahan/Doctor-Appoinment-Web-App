@@ -75,65 +75,127 @@
                     height: fit-content;">
           <p style="font-weight: 500;letter-spacing: 1.8px;">Randevu Geçmişi</p>
         </div>
-        <table style="width: 100%;">
-          <tr>
-            <th>Doktor</th>
-            <th>Bölüm</th>
-            <th>Randevu Tarihi</th>
-            <th>Hastane</th>
-          </tr>
-          <tr>
-            <td><div style="display: flex;
-                        align-items: center;
-                        width: 100%;">
-              <div>
-                <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-              </div>
-              <div>
-                <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
-              </div>
-            </div></td>
-            <td><div>Cildiye</div></td>
-            <td><div>9 Aralık 2021 10:30</div> </td>
-            <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-          </tr>
-          <tr>
-            <td><div style="display: flex;
-                        align-items: center;
-                        width: 100%;">
-              <div>
-                <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
-              </div>
-              <div>
-                <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Fatma Aksu</p>
-              </div>
-            </div></td>
-            <td><div>Dahiliye</div></td>
-            <td><div>9 Aralık 2021 10:30</div> </td>
-            <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-          </tr>
-          <tr>
-            <td><div style="display: flex;
-                        align-items: center;
-                        width: 100%;">
-              <div>
-                <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-              </div>
-              <div>
-                <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
-              </div>
-            </div></td>
-            <td><div>Göz Hastalıkları</div></td>
-            <td><div>9 Aralık 2021 10:30</div> </td>
-            <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-          </tr>
-        </table>
+        <div style="overflow: auto;width: 100%">
+          <table style="width: 100%;">
+            <tr>
+              <th>Doktor</th>
+              <th>Bölüm</th>
+              <th>Randevu Tarihi</th>
+              <th>Hastane</th>
+            </tr>
+            <tr>
+              <td><div style="display: flex;
+                          align-items: center;
+                          width: 100%;">
+                <div>
+                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+                <div>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
+                </div>
+              </div></td>
+              <td><div>Cildiye</div></td>
+              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+            </tr>
+            <tr>
+              <td><div style="display: flex;
+                          align-items: center;
+                          width: 100%;">
+                <div>
+                  <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+                <div>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Fatma Aksu</p>
+                </div>
+              </div></td>
+              <td><div>Dahiliye</div></td>
+              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+            </tr>
+            <tr>
+              <td><div style="display: flex;
+                          align-items: center;
+                          width: 100%;">
+                <div>
+                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+                <div>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
+                </div>
+              </div></td>
+              <td><div>Göz Hastalıkları</div></td>
+              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+            </tr>
+            <tr>
+              <td><div style="display: flex;
+                          align-items: center;
+                          width: 100%;">
+                <div>
+                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+                <div>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
+                </div>
+              </div></td>
+              <td><div>Göz Hastalıkları</div></td>
+              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+            </tr>
+            <tr>
+              <td><div style="display: flex;
+                          align-items: center;
+                          width: 100%;">
+                <div>
+                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+                <div>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
+                </div>
+              </div></td>
+              <td><div>Göz Hastalıkları</div></td>
+              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+            </tr>
+            <tr>
+              <td><div style="display: flex;
+                          align-items: center;
+                          width: 100%;">
+                <div>
+                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+                <div>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
+                </div>
+              </div></td>
+              <td><div>Göz Hastalıkları</div></td>
+              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+            </tr>
+            <tr>
+              <td><div style="display: flex;
+                          align-items: center;
+                          width: 100%;">
+                <div>
+                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+                <div>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
+                </div>
+              </div></td>
+              <td><div>Göz Hastalıkları</div></td>
+              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+            </tr>
+          </table>
+        </div>
       </div>
   </div>
 </template>
 
 <script>
-// import $ from 'jquery'
+import $ from 'jquery'
 export default {
   name: 'ProfileComponent',
   data () {
@@ -145,6 +207,13 @@ export default {
   created () {
     this.localusername = localStorage.username
     this.issignin = localStorage.issignin
+    $(document).ready(function () {
+      var height = $('.card-body').css('height')
+      $('.booking-history').css('height', height)
+      // const left = document.querySelector('.card-body').style.height
+      // console.log(left)
+      // document.querySelector('.booking-history').style.height = left
+    })
   }
 }
 </script>
