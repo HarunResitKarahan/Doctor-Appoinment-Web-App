@@ -35,6 +35,9 @@
     font-size: 15px;
     align-items: center;
     margin-bottom: 8px;
+    padding: 5px;
+    border: 0px solid rgb(132, 168, 235);
+    border-bottom-width: 0px;
 }
 .doctor-search .search-content .search .filter-search .card-body .checkbox input {
     width: 10%;
