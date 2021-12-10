@@ -7,11 +7,11 @@
     justify-content: center;
     margin-top: 60px;
 }
-.slick-track {
+.policlinics .slick-track {
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.slick-slide {
+.policlinics .slick-slide {
     margin-right: 45px;
 }
 .slick-next:before {
