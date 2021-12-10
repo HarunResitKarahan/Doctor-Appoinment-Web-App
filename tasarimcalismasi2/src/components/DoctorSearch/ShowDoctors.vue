@@ -3,7 +3,7 @@
     <template v-for="item in doctors">
       <div class="doctor-card" :key="item">
         <div class="doctor-image">
-          <img src="@/assets/doctor22.jpg" width="150" height="150">
+          <img src="@/assets/maledoctor.png" width="150" height="150">
         </div>
         <div class="doctor-info">
           <p style="color: #2E3842;font-size: 20px;font-weight: 500;">Fatma Gül</p>
