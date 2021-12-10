@@ -78,7 +78,11 @@
     padding-bottom: 15px;
 }
 .booking-tab .schedule-tab .time div{
-    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     border-radius: 3px;
     color: #757575;
     font-size: 14px;
@@ -90,6 +94,8 @@
     cursor: pointer;
     border: 1px solid #e9e9e9;
     margin: auto;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
     margin-bottom: 10px;
     padding: 12px;
     transition: color 0.2s ease;
@@ -100,12 +106,12 @@
 .booking-tab .schedule-tab .make-a-apointment {
     display: flex;
     justify-content: right;
-    padding: 15px 45px 45px 45px;
+    padding: 15px 45px;
 }
 .booking-tab .schedule-tab .make-a-apointment p {
     text-align: center;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
     width: 25%;
     padding: 15px;

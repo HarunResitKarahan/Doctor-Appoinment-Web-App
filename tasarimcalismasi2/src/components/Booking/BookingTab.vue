@@ -32,8 +32,7 @@
         </div>
         <div class="schedule">
             <div class="time">
-                <div v-for="item in days" :key="item">
-                    <div style="display: none;" >{{item}}</div>
+                <div>
                     <template v-for="item in time">
                         <div class="appointment" :key="item">
                             <p>{{item}}</p>
