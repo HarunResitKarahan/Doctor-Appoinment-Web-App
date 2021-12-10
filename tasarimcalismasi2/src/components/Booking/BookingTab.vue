@@ -83,7 +83,7 @@ export default {
       })
       $('.date').click(function () {
         $('.date').css('background-color', 'white')
-        $(this).css('background-color', 'rgb(219, 219, 219)')
+        $(this).css('background-color', '#00c4f4')
       })
     })
   }
