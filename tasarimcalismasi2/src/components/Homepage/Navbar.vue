@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div class="logo">
-      <router-link to="/">HARUN KARAHAN</router-link>
+      <router-link to="/"><img src="@/assets/logo4.png" width="165" height="44" style="float: left;margin-left: 15px"></router-link>
     </div>
     <!-- <div class="menu">
       <a href="#">Ana Sayfa</a>
