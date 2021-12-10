@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="schedule-tab">
-        <div class="day">
+        <div @click="selectedDay" class="day">
             <VueSlickCarousel v-bind="settings">
                 <template v-for="(item,index) in days">
                     <div class="date" :key="item">
@@ -74,10 +74,16 @@ export default {
   mounted () {
     $(document).ready(function () {
       $('.appointment').click(function () {
-        $('.appointment').css('background-color', '#e9e9e9')// background-color: #e9e9e9;color: #757575;
-        $('.appointment').css('color', '#757575')
-        $(this).css('background-color', 'rgb(0 205 255)')// background-color: #e9e9e9;color: #757575;
-        $(this).css('color', 'white')
+        if ($(this).hasClass('selected')) {
+          $(this).removeClass('selected')
+        } else {
+          $('.appointment').removeClass('selected')
+          $(this).addClass('selected')
+        }
+      })
+      $('.date').click(function () {
+        $('.date').css('background-color', 'white')
+        $(this).css('background-color', 'rgb(219, 219, 219)')
       })
     })
   }

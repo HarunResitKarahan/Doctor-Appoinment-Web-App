@@ -70,6 +70,9 @@
 .booking-tab .schedule-tab .day .date:last-child {
     margin-right: 0;
 }
+.booking-tab .schedule-tab .day .slick-slide:nth-child(1) {
+    background-color: rgb(219, 219, 219);
+}
 .booking-tab .schedule-tab .time {
     display: flex;
     width: 100%;
@@ -99,6 +102,10 @@
     margin-bottom: 10px;
     padding: 12px;
     transition: color 0.2s ease;
+}
+.booking-tab .schedule-tab .time div .selected {
+    background-color: #00cdff !important;
+    color: white !important;
 }
 .booking-tab .schedule-tab .time div .appointment:hover {
     background-color: rgb(214, 214, 214);
