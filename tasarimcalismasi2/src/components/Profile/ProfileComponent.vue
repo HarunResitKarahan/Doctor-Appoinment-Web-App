@@ -81,39 +81,9 @@
               <th>Doktor</th>
               <th>Bölüm</th>
               <th>Randevu Tarihi</th>
-              <th>Hastane</th>
+              <th>Puanla</th>
             </tr>
-            <tr>
-              <td><div style="display: flex;
-                          align-items: center;
-                          width: 100%;">
-                <div>
-                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
-                <div>
-                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
-                </div>
-              </div></td>
-              <td><div>Cildiye</div></td>
-              <td><div>9 Aralık 2021 10:30</div> </td>
-              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-            </tr>
-            <tr>
-              <td><div style="display: flex;
-                          align-items: center;
-                          width: 100%;">
-                <div>
-                  <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
-                <div>
-                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Fatma Aksu</p>
-                </div>
-              </div></td>
-              <td><div>Dahiliye</div></td>
-              <td><div>9 Aralık 2021 10:30</div> </td>
-              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-            </tr>
-            <tr>
+            <tr v-for="item in 10" :key="item">
               <td><div style="display: flex;
                           align-items: center;
                           width: 100%;">
@@ -126,67 +96,7 @@
               </div></td>
               <td><div>Göz Hastalıkları</div></td>
               <td><div>9 Aralık 2021 10:30</div> </td>
-              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-            </tr>
-            <tr>
-              <td><div style="display: flex;
-                          align-items: center;
-                          width: 100%;">
-                <div>
-                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
-                <div>
-                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
-                </div>
-              </div></td>
-              <td><div>Göz Hastalıkları</div></td>
-              <td><div>9 Aralık 2021 10:30</div> </td>
-              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-            </tr>
-            <tr>
-              <td><div style="display: flex;
-                          align-items: center;
-                          width: 100%;">
-                <div>
-                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
-                <div>
-                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
-                </div>
-              </div></td>
-              <td><div>Göz Hastalıkları</div></td>
-              <td><div>9 Aralık 2021 10:30</div> </td>
-              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-            </tr>
-            <tr>
-              <td><div style="display: flex;
-                          align-items: center;
-                          width: 100%;">
-                <div>
-                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
-                <div>
-                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
-                </div>
-              </div></td>
-              <td><div>Göz Hastalıkları</div></td>
-              <td><div>9 Aralık 2021 10:30</div> </td>
-              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
-            </tr>
-            <tr>
-              <td><div style="display: flex;
-                          align-items: center;
-                          width: 100%;">
-                <div>
-                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
-                <div>
-                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
-                </div>
-              </div></td>
-              <td><div>Göz Hastalıkları</div></td>
-              <td><div>9 Aralık 2021 10:30</div> </td>
-              <td><div>Şevket Yılmaz Devlet Hastanesi</div></td>
+              <td style="display: flex;justify-content: space-between;align-items: center;height: 86.5px;width: 80%;" ><div class="rate"  v-for="item in 11" :key="item" style="display:flex;align-items: center;justify-content: center; width: 24px;height: 24px;border: 2px solid gray;border-radius: 100%;transition-duration: 0s;"><span style="font-size: 12px;font-weight: 600;padding-top: 2px;">{{item}}</span></div></td>
             </tr>
           </table>
         </div>
@@ -210,9 +120,15 @@ export default {
     $(document).ready(function () {
       var height = $('.card-body').css('height')
       $('.booking-history').css('height', height)
-      // const left = document.querySelector('.card-body').style.height
-      // console.log(left)
-      // document.querySelector('.booking-history').style.height = left
+      $('.rate').hover(function () {
+        $(this).next().prevAll('.rate:nth-child(n + 1):nth-child(-n + 3)').css({ 'background-color': '#ff6240', color: 'white' })
+        $(this).next().prevAll('.rate:nth-child(n + 4):nth-child(-n + 7)').css({ 'background-color': '#f6a31c', color: 'white' })
+        $(this).next().prevAll('.rate:nth-child(n + 8):nth-child(-n + 10)').css({ 'background-color': '#29cc81', color: 'white' })
+      }, function () {
+        $(this).next().prevAll('.rate:nth-child(n + 1):nth-child(-n + 3)').css({ 'background-color': 'white', color: '#ff6240' })
+        $(this).next().prevAll('.rate:nth-child(n + 4):nth-child(-n + 7)').css({ 'background-color': 'white', color: '#f6a31c' })
+        $(this).next().prevAll('.rate:nth-child(n + 8):nth-child(-n + 10)').css({ 'background-color': 'white', color: '#29cc81' })
+      })
     })
   }
 }

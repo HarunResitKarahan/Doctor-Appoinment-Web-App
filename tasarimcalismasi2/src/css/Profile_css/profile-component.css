@@ -35,8 +35,33 @@ table tr td {
     border: 0 solid #f0f0f0;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    cursor: pointer;
 }
 table tr:hover {
     background-color: rgba(132, 168, 235, 0.096);
+}
+.rate {
+    cursor: pointer;
+}
+/* .rate:hover:nth-child(n + 1):nth-child(-n + 3) {
+    background-color: #ff6240 !important;
+    color: white !important;
+}
+.rate:hover:nth-child(n + 4):nth-child(-n + 7) {
+    background-color: #f6a31c !important;
+    color: white !important;
+} */
+.rate:nth-child(n + 11) {
+    display: none !important;
+}
+.rate:nth-child(n + 1):nth-child(-n + 3) {
+    border-color: #ff6240 !important;
+    color: #ff6240 ;
+}
+.rate:nth-child(n + 4):nth-child(-n + 7) {
+    border-color: #f6a31c !important;
+    color: #f6a31c ;
+}
+.rate:nth-child(n + 8):nth-child(-n + 10) {
+    border-color: #29cc81 !important;
+    color: #29cc81 ;
 }
