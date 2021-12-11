@@ -96,8 +96,25 @@
               </div></td>
               <td><div>Göz Hastalıkları</div></td>
               <td><div>9 Aralık 2021 10:30</div> </td>
-              <td style="display: flex;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" ><div class="rate"  v-for="item in 11" :key="item" style="display:flex;align-items: center;justify-content: center; width: 24px;height: 24px;border: 2px solid gray;border-radius: 100%;transition-duration: 0s;"><span style="font-size: 12px;font-weight: 600;padding-top: 2px;">{{item}}</span></div></td>
-              <td class="show-rate" style="display: none;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" ><div class="rate" v-for="item in 11" :key="item" style="display:flex;align-items: center;justify-content: center; width: 24px;height: 24px;border: 2px solid gray;border-radius: 100%;transition-duration: 0s;"><span style="font-size: 12px;font-weight: 600;padding-top: 2px;">{{item}}</span></div></td>
+              <td style="display: flex;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" >
+                <div class="rate"  v-for="item in 11" :key="item" style="display:flex;
+                                                                         align-items: center;
+                                                                         justify-content: center;
+                                                                         width: 24px;
+                                                                         height: 24px;
+                                                                         border: 2px solid gray;
+                                                                         border-radius: 100%;
+                                                                         transition-duration: 0s;">
+                  <span style="font-size: 12px;
+                               font-weight: 600;
+                               padding-top: 2px;">
+                    {{item}}
+                  </span>
+                </div>
+                <div class="rate-show" style="display:none; text-align: center;">
+                  Randevuya Verdiğiniz Puan:
+                </div>
+              </td>
             </tr>
           </table>
         </div>
@@ -135,8 +152,11 @@ export default {
         $(this).next().prevAll('.rate:nth-child(n + 8):nth-child(-n + 10)').css({ 'background-color': 'white', color: '#29cc81' })
       })
       $('.rate').click(function () {
-        $(this).parent('td').hide()
-        $('.show-rate').css('display', 'flex')
+        var rate = $(this).text()
+        $(this).parent('td').find('.rate').hide()
+        $(this).parent('td').find('.rate-show').append(rate)
+        $(this).parent('td').css('justify-content', 'center')
+        $(this).parent('td').find('.rate-show').css('display', 'block')
       })
     })
   }
