@@ -25,6 +25,11 @@
 table {
     text-align: center;
 }
+table tr {
+    border: 0 solid #f0f0f0;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
 table tr th {
     text-align: left;
     padding: 15px;
@@ -32,9 +37,6 @@ table tr th {
 table tr td {
     text-align: left;
     padding: 15px;
-    border: 0 solid #f0f0f0;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
 }
 table tr:hover {
     background-color: rgba(132, 168, 235, 0.096);
