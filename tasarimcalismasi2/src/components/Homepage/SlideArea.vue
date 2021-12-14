@@ -28,10 +28,10 @@
                   <span>Bölüm</span>
                   <select v-model="department" name="department" id="department">
                     <option value="" selected disabled hidden>Bölüm Seçin</option>
-                    <option value="GÖZ HASTALIKLARI">GÖZ HASTALIKLARI</option>
-                    <option value="BEYİN VE SİNİR CERRAHİSİ">BEYİN VE SİNİR CERRAHİSİ</option>
-                    <option value="NÖROLOJİ">NÖROLOJİ</option>
-                    <option value="GENEL CERRAHİ">GENEL CERRAHİ</option>
+                    <option value="Göz Hastalıkları">GÖZ HASTALIKLARI</option>
+                    <option value="Beyin ve Sinir Cerrahisi">BEYİN VE SİNİR CERRAHİSİ</option>
+                    <option value="Nöroloji">NÖROLOJİ</option>
+                    <option value="Genel Cerrahi">GENEL CERRAHİ</option>
                   </select>
               </div>
               <div class="search">
