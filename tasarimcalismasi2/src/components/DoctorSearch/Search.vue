@@ -14,7 +14,7 @@
             <h6 style="font-size: 15px;margin-top: 20px;">Poliklinik</h6>
             <template v-for="item in policlinics">
               <label class="checkbox" :key="item">
-                <input type="checkbox"><p style="text-align: left;">{{item}}</p>
+                <input type="checkbox" :value="item.departmanName"><p style="text-align: left;">{{item.departmanName}}</p>
               </label>
             </template>
         </div>
@@ -33,8 +33,17 @@ export default {
   },
   data () {
     return {
-      policlinics: ['Dahiliye', 'Kulak Burun Boğaz (K.B.B)', 'Cildiye (Dermatoloji)', 'Fizik Tedavi ve Rehabilitasyon', 'Ortopedi ve Travmatoloji', 'Kardiyoloji', 'Göz Hastalıkları', 'Nöroloji', 'Psikiyatri (Ruh Hekimliği)', 'Göğüs Hastalıkları', 'Göğüs Cerrahi', 'Çocuk Hastalıkları', 'Kalp Damar Cerrahi', 'Kadın Doğum', 'Çocuk Cerrahi', 'Beyin ve Sinir Cerrahisi', 'Üroloji (Bevliye)', 'Genel Cerrahi']
+      policlinics: []
     }
+  },
+  created () {
+    fetch('http://localhost:8000/department/getclinics', {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.policlinics = data
+      })
   },
   mounted () {
     document.getElementById('date').valueAsDate = new Date()
