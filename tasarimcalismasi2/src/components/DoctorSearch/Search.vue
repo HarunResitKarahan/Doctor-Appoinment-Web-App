@@ -26,6 +26,11 @@
 
 export default {
   name: 'Search',
+  props: {
+    department: String,
+    location: String,
+    sex: String
+  },
   data () {
     return {
       policlinics: ['Dahiliye', 'Kulak Burun Boğaz (K.B.B)', 'Cildiye (Dermatoloji)', 'Fizik Tedavi ve Rehabilitasyon', 'Ortopedi ve Travmatoloji', 'Kardiyoloji', 'Göz Hastalıkları', 'Nöroloji', 'Psikiyatri (Ruh Hekimliği)', 'Göğüs Hastalıkları', 'Göğüs Cerrahi', 'Çocuk Hastalıkları', 'Kalp Damar Cerrahi', 'Kadın Doğum', 'Çocuk Cerrahi', 'Beyin ve Sinir Cerrahisi', 'Üroloji (Bevliye)', 'Genel Cerrahi']

@@ -4,7 +4,7 @@
       <Navbar />
       <SubNavbar :title = "title"/>
       <div class="search-content">
-        <Search />
+        <Search :department="$route.params.department" :sex="$route.params.sex" :location="$route.params.location" />
         <ShowDoctors />
       </div>
       <Footer />
