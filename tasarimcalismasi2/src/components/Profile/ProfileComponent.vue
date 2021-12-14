@@ -1,5 +1,6 @@
 <template>
   <div class="profile-component">
+    {{userinfo}}
       <div class="profile-info col-3">
         <div class="card-body">
           <img src="@/assets/femalephoto.png" width="150" height="150">
@@ -129,12 +130,25 @@ export default {
   data () {
     return {
       issignin: '',
-      isregistered: ''
+      isregistered: '',
+      userinfo: ''
     }
   },
   created () {
     this.localusername = localStorage.username
     this.issignin = localStorage.issignin
+    fetch('http://localhost:8000/patient/getuser', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        patientID: localStorage.username
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.userinfo = data
+        // this.date = data[0].userCreateTime.split('T')
+      })
   },
   mounted () {
     $(document).ready(function () {

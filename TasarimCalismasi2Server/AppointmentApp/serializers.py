@@ -6,3 +6,8 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Patient
         fields=('patientID', 'patientName', 'patientSurname', 'patientEmail', 'patientPassword')
+
+class GetPatientSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Patient
+        fields=('patientID', 'patientName', 'patientSurname', 'patientEmail', 'patientPassword', 'patientCreateTime')

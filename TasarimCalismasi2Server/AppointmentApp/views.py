@@ -4,7 +4,7 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
 from AppointmentApp.models import Patient
-from AppointmentApp.serializers import PatientSerializer
+from AppointmentApp.serializers import PatientSerializer,GetPatientSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
 
@@ -48,3 +48,11 @@ def PatientApiSignIn(request, id = 0):
                 return JsonResponse("Giriş Başarılı", safe = False)
         except IndexError:
             return JsonResponse("Giriş Başarısız", safe = False)
+
+@csrf_exempt
+def PatientApiGetUser(request, id = 0):
+    if request.method == 'POST':
+        patient_data = JSONParser().parse(request)
+        patient = Patient.objects.filter(patientID = patient_data['patientID']).values()
+        patient_serializer = GetPatientSerializer(patient, many = True)
+        return JsonResponse(patient_serializer.data, safe = False)
