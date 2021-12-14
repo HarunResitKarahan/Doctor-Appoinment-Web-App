@@ -6,15 +6,15 @@
             <input type="date" id="date">
             <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
             <label class="checkbox">
-                  <input type="checkbox"><p style="text-align: left;">Erkek</p>
+                  <input type="checkbox" :checked="sex == 'Erkek' ? 'checked' : ''"><p style="text-align: left;">Erkek</p>
             </label>
             <label class="checkbox">
-                  <input type="checkbox"><p style="text-align: left;">Kadın</p>
+                  <input type="checkbox" :checked="sex == 'Kadın' ? 'checked' : ''"><p style="text-align: left;">Kadın</p>
             </label>
             <h6 style="font-size: 15px;margin-top: 20px;">Poliklinik</h6>
             <template v-for="item in policlinics">
               <label class="checkbox" :key="item">
-                <input type="checkbox" :checked="department == item.departmanName ? checked : ''"><p style="text-align: left;">{{item.departmanName}}</p>
+                <input type="checkbox" :checked="department == item.departmanName ? 'checked' : ''"><p style="text-align: left;">{{item.departmanName}}</p>
               </label>
             </template>
         </div>
