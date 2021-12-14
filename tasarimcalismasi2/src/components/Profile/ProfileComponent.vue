@@ -1,10 +1,9 @@
 <template>
   <div class="profile-component">
-    {{userinfo}}
       <div class="profile-info col-3">
         <div class="card-body">
           <img src="@/assets/femalephoto.png" width="150" height="150">
-          <p style="font-weight: 500;">Harun Reşit KARAHAN</p>
+          <p style="font-weight: 500;">{{userinfo.patientName}} {{userinfo.patientSurname}}</p>
           <p style="color: #757575;
                     font-size: 13px;
                     font-weight: normal;
@@ -13,7 +12,7 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;"
-                    ><b>TC Kimlik No:</b> 38887030636 </p>
+                    ><b>TC Kimlik No:</b> {{userinfo.patientID}} </p>
         <div style="text-align: left;
                     width: 100%;
                     margin-top:30px;
@@ -146,7 +145,7 @@ export default {
     })
       .then(res => res.json())
       .then(data => {
-        this.userinfo = data
+        this.userinfo = data[0]
         // this.date = data[0].userCreateTime.split('T')
       })
   },
