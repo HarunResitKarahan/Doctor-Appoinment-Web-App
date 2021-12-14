@@ -23,7 +23,7 @@
 </template>
 
 <script>
-
+import $ from 'jquery'
 export default {
   name: 'Search',
   props: {
@@ -47,6 +47,11 @@ export default {
   },
   mounted () {
     document.getElementById('date').valueAsDate = new Date()
+    $(document).ready(function () {
+      $('label.checkbox').on('click', function () {
+        $('label .checkbox input[type="checkbox"]').not(this).prop('checked', false)
+      })
+    })
   }
 }
 </script>
