@@ -14,7 +14,7 @@
             <h6 style="font-size: 15px;margin-top: 20px;">Poliklinik</h6>
             <template v-for="item in policlinics">
               <label class="checkbox" :key="item">
-                <input type="checkbox" :value="item.departmanName"><p style="text-align: left;">{{item.departmanName}}</p>
+                <input type="checkbox" :checked="department == item.departmanName ? checked : ''"><p style="text-align: left;">{{item.departmanName}}</p>
               </label>
             </template>
         </div>
