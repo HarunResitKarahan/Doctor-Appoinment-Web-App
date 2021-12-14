@@ -135,6 +135,8 @@ export default {
   created () {
     this.localusername = localStorage.username
     this.issignin = localStorage.issignin
+  },
+  mounted () {
     $(document).ready(function () {
       // ----height option----
       var height = $('.card-body').css('height')
