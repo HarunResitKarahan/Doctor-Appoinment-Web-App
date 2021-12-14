@@ -36,7 +36,7 @@
               </div>
               <div class="search">
                 <template v-if="location == '' || sex == '' || department == ''">
-                  <p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p>
+                  <p style="background-color: rgb(126, 187, 181);border-radius: 15px;color: white; font-weight: 400;padding: 20px;">Randevu Bul</p>
                 </template>
                 <template v-if="location != '' && sex != '' && department != ''">
                   <router-link :to="{ name: 'DoctorSearch', params: { location: location, sex: sex, department: department } }"><p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p></router-link>
