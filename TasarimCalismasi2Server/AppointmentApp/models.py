@@ -28,6 +28,7 @@ class Doctor(models.Model):
     doctorID = models.AutoField(primary_key=True)
     doctorName = models.CharField(max_length=200)
     doctorSurname = models.CharField(max_length=200)
+    doctorSex = models.CharField(max_length=200)
     doctorScore = models.CharField(max_length=200)
     departmanID = models.ForeignKey(Departman, default= None, on_delete=models.CASCADE)
     hospitalID = models.ForeignKey(Hospital, default= None, on_delete=models.CASCADE)
@@ -38,7 +39,7 @@ class Appointment(models.Model):
     appointmentDoctorID =  models.ForeignKey(Doctor, default= None, on_delete=models.CASCADE)
     appointmentDepartmanID =  models.ForeignKey(Departman, default= None, on_delete=models.CASCADE)
     appointmentTime = models.CharField(max_length=200)
-    appointmentPoint = models.CharField(max_length=200)
+    appointmentPoint = models.CharField(max_length=200, null = True)
 
 class Recommendation(models.Model):
     recommendationPatientID = models.ForeignKey(Patient, default= None, on_delete=models.CASCADE)

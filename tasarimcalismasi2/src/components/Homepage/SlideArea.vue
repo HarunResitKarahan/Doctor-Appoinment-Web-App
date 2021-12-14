@@ -8,31 +8,39 @@
           <div class="inputs">
               <div style="margin-top: 35px" class="location">
                   <span>Şehir</span>
-                  <select style="margin-bottom: 15px;" name="department" id="department">
-                    <option value="bursa">Bursa</option>
-                    <option value="istanbul">İstanbul</option>
-                    <option value="izmir">İzmir</option>
-                    <option value="ankara">Ankara</option>
+                  <select v-model="location" style="margin-bottom: 15px;" name="department" id="department" default="Bölüm Seçin">
+                    <option value="" selected disabled hidden>Şehir Seçin</option>
+                    <option value="Bursa">Bursa</option>
+                    <option value="İstanbul">İstanbul</option>
+                    <option value="İzmir">İzmir</option>
+                    <option value="Ankara">Ankara</option>
                   </select>
               </div>
               <div class="location">
                   <span>Cinsiyet</span>
-                  <select name="sex" id="sex">
-                    <option value="male">Erkek</option>
-                    <option value="female">Kadın</option>
+                  <select v-model="sex" name="sex" id="sex">
+                    <option value="" selected disabled hidden>Cinsiyet Seçin</option>
+                    <option value="Erkek">Erkek</option>
+                    <option value="Kadın">Kadın</option>
                   </select>
               </div>
               <div class="location">
                   <span>Bölüm</span>
-                  <select name="department" id="department">
-                    <option value="göz">GÖZ HASTALIKLARI</option>
-                    <option value="beyin">BEYİN VE SİNİR CERRAHİSİ</option>
-                    <option value="noroloji">NÖROLOJİ</option>
-                    <option value="cerrahi">GENEL CERRAHİ</option>
+                  <select v-model="department" name="department" id="department">
+                    <option value="" selected disabled hidden>Bölüm Seçin</option>
+                    <option value="GÖZ HASTALIKLARI">GÖZ HASTALIKLARI</option>
+                    <option value="BEYİN VE SİNİR CERRAHİSİ">BEYİN VE SİNİR CERRAHİSİ</option>
+                    <option value="NÖROLOJİ">NÖROLOJİ</option>
+                    <option value="GENEL CERRAHİ">GENEL CERRAHİ</option>
                   </select>
               </div>
               <div class="search">
-                  <router-link to="/doktor-ara"><p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p></router-link>
+                <template v-if="location == '' || sex == '' || department == ''">
+                  <p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p>
+                </template>
+                <template v-if="location != '' && sex != '' && department != ''">
+                  <router-link :to="{ name: 'DoctorSearch', params: { location: location, sex: sex, department: department } }"><p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p></router-link>
+                </template>
               </div>
           </div>
       </div>
@@ -41,6 +49,13 @@
 
 <script>
 export default {
-  name: 'SlideArea'
+  name: 'SlideArea',
+  data () {
+    return {
+      location: '',
+      sex: '',
+      department: ''
+    }
+  }
 }
 </script>
