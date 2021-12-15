@@ -6,7 +6,7 @@
         </div>
         <div class="doctor-info">
             <div class="doctor-name">
-                {{doctor.doctorName}}
+                {{doctorID}}
             </div>
             <div class="doctor-rank">
                 <div class="star">
@@ -55,7 +55,7 @@ import VueSlickCarousel from 'vue-slick-carousel'
 export default {
   name: 'BookingTab',
   props: {
-    doctor: Array
+    doctorID: String
   },
   components: {
     VueSlickCarousel
@@ -73,6 +73,21 @@ export default {
       days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30']
     }
+  },
+  created () {
+    fetch('http://localhost:8000/doctor/getdoctor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        departmanName: this.department,
+        cityName: this.location,
+        doctorSex: this.gender
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.doctor = data
+      })
   },
   mounted () {
     $(document).ready(function () {
