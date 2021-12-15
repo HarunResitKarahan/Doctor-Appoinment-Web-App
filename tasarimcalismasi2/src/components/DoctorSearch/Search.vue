@@ -32,8 +32,8 @@
                     <input @click="onlyOneForgender($event)" @change="change($event)" type="checkbox" name="checkgender" :checked="gender == 'Kadın' ? 'checked' : false"><p style="text-align: left;">Kadın</p>
               </label>
             </div>
-            <div>
               <h6 style="font-size: 15px;margin-top: 20px;">Poliklinik</h6>
+            <div style="height: 500px;overflow: auto;">
               <template v-for="(item,index) in policlinics">
                 <label class="checkbox" :key="index">
                   <input @click="onlyOneForClinics($event)" @change="change($event)" type="checkbox" name="checkclinics" :checked="department == item.departmanName ? 'checked' : false"><p style="text-align: left;">{{item.departmanName}}</p>

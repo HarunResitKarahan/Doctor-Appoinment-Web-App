@@ -25,7 +25,7 @@
 }
 .doctor-search .search-content .search .filter-search .card-body .selected-options {
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 18px;
 }
 .doctor-search .search-content .search .filter-search .card-body .selected-options .cards {
     display: flex;
