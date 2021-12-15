@@ -114,7 +114,7 @@ export default {
         } else {
           this.location = undefined
         }
-      } else {
+      } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
