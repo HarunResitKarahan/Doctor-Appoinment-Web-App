@@ -18,7 +18,7 @@
               </div>
               <div class="location">
                   <span>Cinsiyet</span>
-                  <select v-model="sex" name="sex" id="sex">
+                  <select v-model="gender" name="sex" id="sex">
                     <option value="" selected disabled hidden>Cinsiyet Seçin</option>
                     <option value="Erkek">Erkek</option>
                     <option value="Kadın">Kadın</option>
@@ -35,11 +35,11 @@
                   </select>
               </div>
               <div class="search">
-                <template v-if="location == '' || sex == '' || department == ''">
+                <template v-if="location == '' || gender == '' || department == ''">
                   <p style="background-color: rgb(126, 187, 181);border-radius: 15px;color: white; font-weight: 400;padding: 20px;">Randevu Bul</p>
                 </template>
-                <template v-if="location != '' && sex != '' && department != ''">
-                  <router-link :to="{ name: 'DoctorSearch', params: { location: location, sex: sex, department: department } }"><p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p></router-link>
+                <template v-if="location != '' && gender != '' && department != ''">
+                  <router-link :to="{ name: 'DoctorSearch', params: { location: location, gender: gender, department: department } }"><p style="color: #212529; font-weight: 400;padding: 20px;">Randevu Bul</p></router-link>
                 </template>
               </div>
           </div>
@@ -53,7 +53,7 @@ export default {
   data () {
     return {
       location: '',
-      sex: '',
+      gender: '',
       department: ''
     }
   }

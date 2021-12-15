@@ -4,32 +4,45 @@
         <h5>Filtreli Arama</h5>
         <div class="card-body">
             <input type="date" id="date">
-            <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
-            <label class="checkbox">
-                  <input type="checkbox" :checked="sex == 'Erkek' ? 'checked' : ''"><p style="text-align: left;">Erkek</p>
-            </label>
-            <label class="checkbox">
-                  <input type="checkbox" :checked="sex == 'Kadın' ? 'checked' : ''"><p style="text-align: left;">Kadın</p>
-            </label>
-            <h6 style="font-size: 15px;margin-top: 20px;">Poliklinik</h6>
-            <template v-for="item in policlinics">
-              <label class="checkbox" :key="item">
-                <input type="checkbox" :checked="department == item.departmanName ? 'checked' : ''"><p style="text-align: left;">{{item.departmanName}}</p>
+            <div>
+              <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
+              <label class="checkbox">
+                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Erkek' ? 'checked' : false"><p style="text-align: left;">Erkek</p>
               </label>
-            </template>
+              <label class="checkbox">
+                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Kadın' ? 'checked' : false"><p style="text-align: left;">Kadın</p>
+              </label>
+            </div>
+            <div>
+              <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
+              <label class="checkbox">
+                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Erkek' ? 'checked' : false"><p style="text-align: left;">Erkek</p>
+              </label>
+              <label class="checkbox">
+                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Kadın' ? 'checked' : false"><p style="text-align: left;">Kadın</p>
+              </label>
+            </div>
+            <div>
+              <h6 style="font-size: 15px;margin-top: 20px;">Poliklinik</h6>
+              <template v-for="item in policlinics">
+                <label class="checkbox" :key="item">
+                  <input @click="onlyOneForClinics($event)" type="checkbox" name="checkclinics" :checked="department == item.departmanName ? 'checked' : false"><p style="text-align: left;">{{item.departmanName}}</p>
+                </label>
+              </template>
+            </div>
         </div>
     </div>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 export default {
   name: 'Search',
   props: {
     department: String,
     location: String,
-    sex: String
+    gender: String
   },
   data () {
     return {
@@ -47,11 +60,20 @@ export default {
   },
   mounted () {
     document.getElementById('date').valueAsDate = new Date()
-    $(document).ready(function () {
-      $('label.checkbox').on('click', function () {
-        $('label .checkbox input[type="checkbox"]').not(this).prop('checked', false)
+  },
+  methods: {
+    onlyOneForgender: function (event) {
+      var checkboxgender = document.getElementsByName('checkgender')
+      checkboxgender.forEach((item) => {
+        if (item !== event.target) item.checked = false
       })
-    })
+    },
+    onlyOneForClinics (event) {
+      var checkboxes = document.getElementsByName('checkclinics')
+      checkboxes.forEach((item) => {
+        if (item !== event.target) item.checked = false
+      })
+    }
   }
 }
 </script>
