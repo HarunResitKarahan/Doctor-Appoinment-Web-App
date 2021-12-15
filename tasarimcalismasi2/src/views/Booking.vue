@@ -2,7 +2,7 @@
   <div class="booking">
     <Navbar />
     <SubNavbar :title="title"/>
-    <BookingTab />
+    <BookingTab :doctor="$route.params.doctor"/>
     <Footer />
     <Login />
      <!-- <template v-for="(item, index) in responseData" >

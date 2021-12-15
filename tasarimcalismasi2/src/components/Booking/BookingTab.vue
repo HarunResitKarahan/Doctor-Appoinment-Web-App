@@ -6,7 +6,7 @@
         </div>
         <div class="doctor-info">
             <div class="doctor-name">
-                Enes DEMİR
+                {{doctor.doctorName}}
             </div>
             <div class="doctor-rank">
                 <div class="star">
@@ -54,6 +54,9 @@ import VueSlickCarousel from 'vue-slick-carousel'
 
 export default {
   name: 'BookingTab',
+  props: {
+    doctor: Array
+  },
   components: {
     VueSlickCarousel
   },
