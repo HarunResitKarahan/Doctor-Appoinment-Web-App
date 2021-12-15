@@ -76,10 +76,15 @@ def CityGetCitys(request, id = 0):
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
-        print(request_data)
         department = Departman.objects.filter(departmanName = request_data['departmanName']).values()
-        print(department)
         doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID']).values()
-        print(doctor)
+        doctor_serializer = DoctorSerializer(doctor, many = True)
+        return JsonResponse(doctor_serializer.data, safe = False)
+
+@csrf_exempt
+def DoctorGetDoctorById(request, id = 0):
+    if request.method == 'POST':
+        request_data = JSONParser().parse(request)
+        doctor = Doctor.objects.filter(doctorID = request_data['doctorID']).values()
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
