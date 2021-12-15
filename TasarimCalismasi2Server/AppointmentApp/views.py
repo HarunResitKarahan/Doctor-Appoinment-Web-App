@@ -4,7 +4,7 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
 from AppointmentApp.models import Doctor, Patient, Departman, City
-from AppointmentApp.serializers import PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer
+from AppointmentApp.serializers import PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
 
@@ -75,5 +75,5 @@ def CityGetCitys(request, id = 0):
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'GET':
         doctor = Doctor.objects.all()
-        doctor_serializer = CitySerializer(doctor, many = True)
+        doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)

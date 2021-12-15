@@ -26,7 +26,7 @@ class CitySerializer(serializers.HyperlinkedModelSerializer):
         model = City
         fields=['cityName']
 
-class DoktorSerializer(serializers.HyperlinkedModelSerializer):
+class DoctorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Doctor
-        fields=['doctorID', 'doctorName', 'doctorSurname']
+        fields=['doctorID', 'doctorName', 'doctorSurname', 'doctorCreateTime', 'departmanID_id', 'hospitalID_id', 'doctorScore', 'doctorSex']

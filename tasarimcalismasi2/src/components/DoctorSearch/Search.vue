@@ -57,7 +57,8 @@ export default {
   data () {
     return {
       policlinics: [],
-      city: []
+      city: [],
+      doctor: []
     }
   },
   created () {
@@ -113,7 +114,21 @@ export default {
         } else {
           this.location = undefined
         }
-      } // checkclinics
+      } else {
+        fetch('http://localhost:8000/doctor/getdoctor', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            departmanName: this.department,
+            cityName: this.location,
+            doctorSex: this.gender
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+          })
+      }
     },
     hide (event, prop) {
       if (prop === 'location') {

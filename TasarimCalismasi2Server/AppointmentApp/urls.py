@@ -8,5 +8,6 @@ urlpatterns = [
     url('patient/signin', views.PatientApiSignIn),
     url('patient/getuser', views.PatientApiGetUser),
     url('department/getclinics', views.DepartmentGetClinics),
-    url('city/getcitys', views.CityGetCitys)
+    url('city/getcitys', views.CityGetCitys),
+    url('doctor/getdoctor', views.DoctorGetDoctors)
 ]
