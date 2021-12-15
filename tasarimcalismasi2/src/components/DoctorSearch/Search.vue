@@ -4,14 +4,13 @@
         <h5>Filtreli Arama</h5>
         <div class="card-body">
             <input type="date" id="date">
-            <div>
-              <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
-              <label class="checkbox">
-                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Erkek' ? 'checked' : false"><p style="text-align: left;">Erkek</p>
-              </label>
-              <label class="checkbox">
-                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Kadın' ? 'checked' : false"><p style="text-align: left;">Kadın</p>
-              </label>
+              <h6 style="font-size: 15px;margin-top: 20px;">Şehir</h6>
+            <div style="height: 150px;overflow: auto;">
+              <template v-for="item in city">
+                <label class="checkbox" :key="item">
+                      <input @click="onlyOneForLocation($event)" type="checkbox" name="checklocation" :checked="location == item.cityName ? 'checked' : false"><p style="text-align: left;">{{item.cityName}}</p>
+                </label>
+              </template>
             </div>
             <div>
               <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
@@ -46,7 +45,8 @@ export default {
   },
   data () {
     return {
-      policlinics: []
+      policlinics: [],
+      city: []
     }
   },
   created () {
@@ -56,6 +56,13 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.policlinics = data
+      })
+    fetch('http://localhost:8000/city/getcitys', {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.city = data
       })
   },
   mounted () {
@@ -70,6 +77,12 @@ export default {
     },
     onlyOneForClinics (event) {
       var checkboxes = document.getElementsByName('checkclinics')
+      checkboxes.forEach((item) => {
+        if (item !== event.target) item.checked = false
+      })
+    },
+    onlyOneForLocation (event) {
+      var checkboxes = document.getElementsByName('checklocation')
       checkboxes.forEach((item) => {
         if (item !== event.target) item.checked = false
       })
