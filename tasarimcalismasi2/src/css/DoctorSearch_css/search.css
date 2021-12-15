@@ -23,6 +23,28 @@
     padding: 24px;
     text-align: left;
 }
+.doctor-search .search-content .search .filter-search .card-body .selected-options {
+    margin-bottom: 5px;
+}
+.doctor-search .search-content .search .filter-search .card-body .selected-options .cards {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    background-color: rgba(73, 201, 188, 0.849);
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px;
+    border-radius: 15px;
+}
+.doctor-search .search-content .search .filter-search .card-body .selected-options .cards span:hover {
+    color: rgb(255, 132, 132);
+    border-color: rgb(255, 132, 132) !important;
+}
+.doctor-search .search-content .search .filter-search .card-body .selected-options .cards p {
+    padding-top: 1px;
+    margin-right: 10px;
+}
 .doctor-search .search-content .search .filter-search .card-body input {
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.205);
@@ -44,6 +66,5 @@
     height: 14px;
 }
 .doctor-search .search-content .search .filter-search .card-body .checkbox p {
-    width: 90% !important;
     height: 19px;
 }

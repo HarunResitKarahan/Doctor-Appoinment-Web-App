@@ -3,6 +3,9 @@
     <div class="filter-search">
         <h5>Filtreli Arama</h5>
         <div class="card-body">
+          <div class="selected-options">
+            <div class="cards"><span class="material-icons" style="font-size: 14px;border: 1px solid white;cursor: pointer;border-radius: 100%;margin-right: 5px;">close</span><p>{{location}}</p></div>
+          </div>
             <input type="date" id="date">
               <h6 style="font-size: 15px;margin-top: 20px;">Şehir</h6>
             <div style="height: 150px;overflow: auto;">
@@ -69,6 +72,26 @@ export default {
     document.getElementById('date').valueAsDate = new Date()
   },
   methods: {
+    onlyOneForLocation (event) {
+      this.location = event.target.parentElement.lastChild.textContent
+      var checkboxgender = document.getElementsByName('checklocation')
+      checkboxgender.forEach((item) => {
+        if (item !== event.target) item.checked = false
+      })
+      // this.location = event.target.lastChild.textContent
+      // var checkboxes = document.getElementsByName('checklocation')
+      // console.log(checkboxes[0].firstChild)
+      // console.log(checkboxes[0].lastChild)
+      // console.log(event.target)
+      // console.log('------------------------------------------')
+      // checkboxes.forEach((item) => {
+      //   if (item === event.target || item.firstChild === event.target || item.lastChild === event.target) {
+      //     item.firstChild.checked = true
+      //   } else {
+      //     item.firstChild.checked = false
+      //   }
+      // })
+    },
     onlyOneForgender: function (event) {
       var checkboxgender = document.getElementsByName('checkgender')
       checkboxgender.forEach((item) => {
@@ -77,12 +100,6 @@ export default {
     },
     onlyOneForClinics (event) {
       var checkboxes = document.getElementsByName('checkclinics')
-      checkboxes.forEach((item) => {
-        if (item !== event.target) item.checked = false
-      })
-    },
-    onlyOneForLocation (event) {
-      var checkboxes = document.getElementsByName('checklocation')
       checkboxes.forEach((item) => {
         if (item !== event.target) item.checked = false
       })
