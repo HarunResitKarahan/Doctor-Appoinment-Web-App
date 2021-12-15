@@ -3,10 +3,7 @@
       <Login />
       <Navbar />
       <SubNavbar :title = "title"/>
-      <div class="search-content">
-        <Search :department="$route.params.department" :gender="$route.params.gender" :location="$route.params.location" />
-        <ShowDoctors />
-      </div>
+      <Search :department="$route.params.department" :gender="$route.params.gender" :location="$route.params.location" />
       <Footer />
   </div>
 </template>
@@ -17,7 +14,6 @@ import Footer from '@/components/Homepage/Footer.vue'
 import SubNavbar from '@/components/Booking/SubNavbar.vue'
 import Login from '@/components/Login/Login.vue'
 import Search from '@/components/DoctorSearch/Search.vue'
-import ShowDoctors from '@/components/DoctorSearch/ShowDoctors.vue'
 
 export default {
   name: 'DoctorSearch',
@@ -31,7 +27,6 @@ export default {
     SubNavbar,
     Login,
     Search,
-    ShowDoctors,
     Footer
   },
   mounted () {
