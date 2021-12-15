@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from AppointmentApp.models import Patient, Departman, City
+from AppointmentApp.models import Doctor, Patient, Departman, City
 from AppointmentApp.serializers import PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer
 
 from django.contrib.auth.hashers import make_password,check_password
@@ -70,3 +70,10 @@ def CityGetCitys(request, id = 0):
         city = City.objects.all()
         city_serializer = CitySerializer(city, many = True)
         return JsonResponse(city_serializer.data, safe = False)
+
+@csrf_exempt
+def DoctorGetDoctors(request, id = 0):
+    if request.method == 'GET':
+        doctor = Doctor.objects.all()
+        doctor_serializer = CitySerializer(doctor, many = True)
+        return JsonResponse(doctor_serializer.data, safe = False)

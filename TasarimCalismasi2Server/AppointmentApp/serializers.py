@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from AppointmentApp.models import Patient,Appointment, Departman,City
+from AppointmentApp.models import Patient,Appointment, Departman,City,Doctor
 
 class PatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -25,3 +25,8 @@ class CitySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = City
         fields=['cityName']
+
+class DoktorSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Doctor
+        fields=['doctorID', 'doctorName', 'doctorSurname']
