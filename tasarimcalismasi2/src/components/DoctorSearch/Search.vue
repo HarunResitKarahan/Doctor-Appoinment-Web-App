@@ -19,24 +19,24 @@
             <div style="height: 150px;overflow: auto;">
               <template v-for="(item,index) in city">
                 <label class="checkbox" :key="index">
-                      <input @click="onlyOneForLocation($event)" type="checkbox" name="checklocation" :checked="location == item.cityName ? 'checked' : false"><p style="text-align: left;">{{item.cityName}}</p>
+                      <input @click="onlyOneForLocation($event)" @change="change($event)" type="checkbox" name="checklocation" :checked="location == item.cityName ? 'checked' : false"><p style="text-align: left;">{{item.cityName}}</p>
                 </label>
               </template>
             </div>
             <div>
               <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
               <label class="checkbox">
-                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Erkek' ? 'checked' : false"><p style="text-align: left;">Erkek</p>
+                    <input @click="onlyOneForgender($event)" @change="change($event)" type="checkbox" name="checkgender" :checked="gender == 'Erkek' ? 'checked' : false"><p style="text-align: left;">Erkek</p>
               </label>
               <label class="checkbox">
-                    <input @click="onlyOneForgender($event)" type="checkbox" name="checkgender" :checked="gender == 'Kadın' ? 'checked' : false"><p style="text-align: left;">Kadın</p>
+                    <input @click="onlyOneForgender($event)" @change="change($event)" type="checkbox" name="checkgender" :checked="gender == 'Kadın' ? 'checked' : false"><p style="text-align: left;">Kadın</p>
               </label>
             </div>
             <div>
               <h6 style="font-size: 15px;margin-top: 20px;">Poliklinik</h6>
               <template v-for="(item,index) in policlinics">
                 <label class="checkbox" :key="index">
-                  <input @click="onlyOneForClinics($event)" type="checkbox" name="checkclinics" :checked="department == item.departmanName ? 'checked' : false"><p style="text-align: left;">{{item.departmanName}}</p>
+                  <input @click="onlyOneForClinics($event)" @change="change($event)" type="checkbox" name="checkclinics" :checked="department == item.departmanName ? 'checked' : false"><p style="text-align: left;">{{item.departmanName}}</p>
                 </label>
               </template>
             </div>
@@ -78,6 +78,9 @@ export default {
   },
   mounted () {
     document.getElementById('date').valueAsDate = new Date()
+    // $('.checkbox input').on('change', () => {
+    //   console.log('değişti')
+    // })
   },
   methods: {
     onlyOneForLocation (event) {
@@ -100,6 +103,17 @@ export default {
       checkboxes.forEach((item) => {
         if (item !== event.target) item.checked = false
       })
+    },
+    change (event) {
+      if (event.target.checked === false) {
+        if (event.target.attributes.name.textContent === 'checkclinics') {
+          this.department = undefined
+        } else if (event.target.attributes.name.textContent === 'checkgender') {
+          this.gender = undefined
+        } else {
+          this.location = undefined
+        }
+      } // checkclinics
     },
     hide (event, prop) {
       if (prop === 'location') {
