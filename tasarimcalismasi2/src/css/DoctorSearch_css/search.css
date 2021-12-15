@@ -24,6 +24,7 @@
     text-align: left;
 }
 .doctor-search .search-content .search .filter-search .card-body .selected-options {
+    display: flex;
     margin-bottom: 5px;
 }
 .doctor-search .search-content .search .filter-search .card-body .selected-options .cards {
@@ -35,6 +36,7 @@
     font-size: 12px;
     font-weight: 400;
     padding: 8px;
+    margin-right: 10px;
     border-radius: 15px;
 }
 .doctor-search .search-content .search .filter-search .card-body .selected-options .cards span:hover {
