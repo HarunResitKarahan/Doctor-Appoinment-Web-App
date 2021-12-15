@@ -29,9 +29,11 @@
 
 export default {
   name: 'ShowDoctors',
+  props: {
+    doctor: Array
+  },
   data () {
     return {
-      doctors: ['Ahmet Furkan ÇELİK', 'Mehmet Akif ÇELİKTÜRK', 'Fatma ARICI', 'Enes DEMİR']
     }
   }
 }

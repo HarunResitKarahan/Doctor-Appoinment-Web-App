@@ -81,6 +81,5 @@ def DoctorGetDoctors(request, id = 0):
         print(department)
         doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID']).values()
         print(doctor)
-        # doctor_serializer = DoctorSerializer(doctor, many = True)
-        # return JsonResponse(doctor_serializer.data, safe = False)
-        return JsonResponse(1, safe = False)
+        doctor_serializer = DoctorSerializer(doctor, many = True)
+        return JsonResponse(doctor_serializer.data, safe = False)

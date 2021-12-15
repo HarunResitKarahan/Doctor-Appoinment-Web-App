@@ -44,7 +44,7 @@
           </div>
       </div>
     </div>
-    <ShowDoctors/>
+    <ShowDoctors :doctor="doctor"/>
   </div>
 </template>
 
@@ -87,9 +87,6 @@ export default {
   },
   mounted () {
     document.getElementById('date').valueAsDate = new Date()
-    // $('.checkbox input').on('change', () => {
-    //   console.log('değişti')
-    // })
   },
   methods: {
     onlyOneForLocation (event) {
@@ -134,7 +131,7 @@ export default {
         })
           .then(response => response.json())
           .then(data => {
-            console.log(data)
+            this.doctor = data
           })
       }
     },
