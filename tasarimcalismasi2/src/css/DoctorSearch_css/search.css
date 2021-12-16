@@ -25,12 +25,16 @@
 }
 .doctor-search .search-content .search .filter-search .card-body .selected-options {
     display: flex;
-    margin-bottom: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 .doctor-search .search-content .search .filter-search .card-body .selected-options .cards {
     display: flex;
+    flex: max-content;
+    margin-bottom: 3px;
     align-items: center;
     width: fit-content;
+    max-width: fit-content;
     background-color: rgba(73, 201, 188, 0.849);
     color: white;
     font-size: 12px;
