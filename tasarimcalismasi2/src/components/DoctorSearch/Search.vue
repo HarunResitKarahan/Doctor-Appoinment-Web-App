@@ -150,13 +150,17 @@ export default {
       if (event.target.checked === false) {
         if (event.target.attributes.name.textContent === 'checkclinics') {
           this.department = undefined
+          this.doctor = []
         } else if (event.target.attributes.name.textContent === 'checkgender') {
           this.gender = undefined
+          this.doctor = []
         } else if (event.target.attributes.name.textContent === 'checkhospital') {
           this.hospitalName = undefined
+          this.doctor = []
         } else {
           this.location = undefined
           this.hospital = undefined
+          this.doctor = []
         }
       } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
@@ -189,13 +193,11 @@ export default {
             this.hospital = data
           })
       }
-      if (event.target.checked === false && event.target.attributes.name.textContent === 'checkhospital') {
-        this.doctor = []
-      }
     },
     hide (event, prop) {
       if (prop === 'location') {
         this.location = undefined
+        this.hospital = []
       } else if (prop === 'hospital') {
         this.hospitalName = undefined
       } else if (prop === 'gender') {
