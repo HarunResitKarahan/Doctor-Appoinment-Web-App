@@ -98,16 +98,22 @@ export default {
       .then(data => {
         this.city = data
       })
-    fetch('http://localhost:8000/hospital/gethospital', {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(data => {
-        this.hospital = data
-      })
   },
   mounted () {
     document.getElementById('date').valueAsDate = new Date()
+    if (this.location !== undefined) {
+      fetch('http://localhost:8000/hospital/gethospital', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cityName: this.location
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.hospital = data
+        })
+    }
   },
   methods: {
     onlyOneForLocation (event) {
@@ -163,6 +169,19 @@ export default {
           .then(response => response.json())
           .then(data => {
             this.doctor = data
+          })
+      }
+      if (event.target.attributes.name.textContent === 'checklocation' && event.target.checked === true) {
+        fetch('http://localhost:8000/hospital/gethospital', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cityName: this.location
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            this.hospital = data
           })
       }
     },
