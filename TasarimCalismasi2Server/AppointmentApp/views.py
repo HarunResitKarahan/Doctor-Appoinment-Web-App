@@ -74,19 +74,24 @@ def CityGetCitys(request, id = 0):
 
 @csrf_exempt
 def HospitalGetHospital(request, id = 0):
-    if request.method == 'POST':
-        request_data = JSONParser().parse(request)
-        city = City.objects.filter(cityName = request_data['cityName']).values()
-        hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity = city[0]['cityID']).values()
+    if request.method == 'GET':
+        hospital = Hospital.objects.all()
         hospital_serializer = HospitalSerializer(hospital, many = True)
+        # request_data = JSONParser().parse(request)
+        # city = City.objects.filter(cityName = request_data['cityName']).values()
+        # hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity_id = city[0]['cityID']).values()
+        # hospital_serializer = HospitalSerializer(hospital, many = True)
         return JsonResponse(hospital_serializer.data, safe = False)
 
 @csrf_exempt
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
+        print(request_data)
         department = Departman.objects.filter(departmanName = request_data['departmanName']).values()
-        doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID']).values()
+        city = City.objects.filter(cityName = request_data['cityName']).values()
+        hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity_id = city[0]['cityID']).values()
+        doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalCity_id']).values()
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
 

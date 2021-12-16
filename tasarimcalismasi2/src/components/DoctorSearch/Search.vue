@@ -5,8 +5,12 @@
           <h5>Filtreli Arama</h5>
           <div class="card-body">
             <div class="selected-options">
+              <!-- flex 60% -->
               <template v-if="location != undefined">
                 <div class="cards"><span @click="hide($event, 'location')" class="material-icons" style="font-size: 14px;border: 1px solid white;cursor: pointer;border-radius: 100%;margin-right: 5px;">close</span><p>{{location}}</p></div>
+              </template>
+              <template v-if="hospitalName != undefined">
+                <div class="cards"><span @click="hide($event, 'hospital')" class="material-icons" style="font-size: 14px;border: 1px solid white;cursor: pointer;border-radius: 100%;margin-right: 5px;">close</span><p>{{hospitalName}}</p></div>
               </template>
               <template v-if="gender != undefined">
                 <div class="cards"><span @click="hide($event, 'gender')" class="material-icons" style="font-size: 14px;border: 1px solid white;cursor: pointer;border-radius: 100%;margin-right: 5px;">close</span><p>{{gender}}</p></div>
@@ -21,6 +25,14 @@
                 <template v-for="(item,index) in city">
                   <label class="checkbox" :key="index">
                         <input @click="onlyOneForLocation($event)" @change="change($event)" type="checkbox" name="checklocation" :checked="location == item.cityName ? 'checked' : false"><p style="text-align: left;">{{item.cityName}}</p>
+                  </label>
+                </template>
+              </div>
+              <h6 style="font-size: 15px;margin-top: 20px;">Hastane</h6>
+              <div style="height: 150px;overflow: auto;">
+                <template v-for="(item,index) in hospital">
+                  <label class="checkbox" :key="index">
+                        <input @click="onlyOneForHospital($event)" @change="change($event)" type="checkbox" name="checkhospital" :checked="hospitalName == item.hospitalName ? 'checked' : false"><p style="text-align: left;">{{item.hospitalName}}</p>
                   </label>
                 </template>
               </div>
@@ -67,7 +79,8 @@ export default {
       policlinics: [],
       city: [],
       doctor: [],
-      hospital: []
+      hospital: [],
+      hospitalName: undefined
     }
   },
   created () {
@@ -104,6 +117,13 @@ export default {
         if (item !== event.target) item.checked = false
       })
     },
+    onlyOneForHospital (event) {
+      this.hospitalName = event.target.parentElement.lastChild.textContent
+      var checkboxes = document.getElementsByName('checkhospital')
+      checkboxes.forEach((item) => {
+        if (item !== event.target) item.checked = false
+      })
+    },
     onlyOneForgender: function (event) {
       this.gender = event.target.parentElement.lastChild.textContent
       var checkboxgender = document.getElementsByName('checkgender')
@@ -124,17 +144,20 @@ export default {
           this.department = undefined
         } else if (event.target.attributes.name.textContent === 'checkgender') {
           this.gender = undefined
+        } else if (event.target.attributes.name.textContent === 'checkhospital') {
+          this.hospitalName = undefined
         } else {
           this.location = undefined
         }
-      } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined) {
+      } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             departmanName: this.department,
             cityName: this.location,
-            doctorSex: this.gender
+            doctorSex: this.gender,
+            hospitalName: this.hospitalName
           })
         })
           .then(response => response.json())
@@ -146,6 +169,8 @@ export default {
     hide (event, prop) {
       if (prop === 'location') {
         this.location = undefined
+      } else if (prop === 'hospital') {
+        this.hospitalName = undefined
       } else if (prop === 'gender') {
         this.gender = undefined
       } else {
