@@ -28,6 +28,7 @@
                   </label>
                 </template>
               </div>
+              <template v-if="hospital.length > 0">
               <h6 style="font-size: 15px;margin-top: 20px;">Hastane</h6>
               <div style="height: 150px;overflow: auto;">
                 <template v-for="(item,index) in hospital">
@@ -36,6 +37,7 @@
                   </label>
                 </template>
               </div>
+              </template>
               <div>
                 <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
                 <label class="checkbox">
@@ -154,6 +156,7 @@ export default {
           this.hospitalName = undefined
         } else {
           this.location = undefined
+          this.hospital = undefined
         }
       } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
@@ -172,6 +175,8 @@ export default {
           })
       }
       if (event.target.attributes.name.textContent === 'checklocation' && event.target.checked === true) {
+        this.hospitalName = undefined
+        this.doctor = []
         fetch('http://localhost:8000/hospital/gethospital', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
