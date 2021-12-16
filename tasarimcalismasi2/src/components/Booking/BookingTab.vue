@@ -76,7 +76,7 @@ export default {
     }
   },
   created () {
-    fetch('http://localhost:8000/doctor/getdoctorbyid', {
+    fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

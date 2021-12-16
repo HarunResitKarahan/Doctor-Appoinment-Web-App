@@ -10,5 +10,5 @@ urlpatterns = [
     url('department/getclinics', views.DepartmentGetClinics),
     url('city/getcitys', views.CityGetCitys),
     url('doctor/getdoctor', views.DoctorGetDoctors),
-    url('doctor/getdoctorbyid', views.DoctorGetDoctorById),
+    url('doctor/bookingdoctorinfo', views.DoctorGetDoctorById),
 ]
