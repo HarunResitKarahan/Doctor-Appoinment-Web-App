@@ -58,7 +58,7 @@
           </div>
       </div>
     </div>
-    <ShowDoctors :doctor="doctor" :department="department"/>
+    <ShowDoctors :doctor="doctor" :department="department" :hospitalName="hospitalName"/>
   </div>
 </template>
 
