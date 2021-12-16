@@ -87,11 +87,13 @@ def HospitalGetHospital(request, id = 0):
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
-        print(request_data)
         department = Departman.objects.filter(departmanName = request_data['departmanName']).values()
+        print(department)
         city = City.objects.filter(cityName = request_data['cityName']).values()
+        print(city)
         hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity_id = city[0]['cityID']).values()
-        doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalCity_id']).values()
+        print(hospital)
+        doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalID']).values()
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
 
