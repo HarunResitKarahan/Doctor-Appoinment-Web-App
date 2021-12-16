@@ -28,7 +28,9 @@
     </div>
     </template>
     <template v-if="doctor.length == 0">
-      asd
+      <div class="no-found-doctor">
+        <p>Aradığınız Kriterlere Uygun Doktor Bulunamadı</p>
+      </div>
     </template>
   </div>
 </template>
