@@ -3,7 +3,7 @@
       <Login />
       <Navbar />
       <SubNavbar :title = "title"/>
-      <Search :Department="$route.params.department" :Gender="$route.params.gender" :Location="$route.params.location" />
+      <Search :department="$route.params.department" :gender="$route.params.gender" :location="$route.params.location" />
       <Footer />
   </div>
 </template>
