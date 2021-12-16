@@ -2,7 +2,7 @@
   <div class="booking">
     <Navbar />
     <SubNavbar :title="title"/>
-    <BookingTab :doctorID="$route.params.doctorID"/>
+    <BookingTab :doctorID="$route.params.doctorID" :hospitalName="$route.params.hospitalName"/>
     <Footer />
     <Login />
      <!-- <template v-for="(item, index) in responseData" >
@@ -39,13 +39,13 @@ export default {
   },
   // Serverdan Anasayfa için veriler çekildi
   created () {
-    fetch('http://localhost:8000/patient', {
-      method: 'get'
-    })
-      .then((response) => response.json())
-      .then(data => {
-        this.responseData = data
-      })
+    // fetch('http://localhost:8000/patient', {
+    //   method: 'get'
+    // })
+    //   .then((response) => response.json())
+    //   .then(data => {
+    //     this.responseData = data
+    //   })
   }
 }
 </script>

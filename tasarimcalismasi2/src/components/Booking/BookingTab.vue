@@ -6,16 +6,16 @@
         </div>
         <div class="doctor-info">
             <div class="doctor-name">
-                {{doctorID}}
+                {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
             <div class="doctor-rank">
                 <div class="star">
-                    <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">4.7</p><p style="height: 22px;">154 Değerlendirme</p>
+                    <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">{{doctor[0].doctorScore}}</p><p style="height: 22px;">154 Değerlendirme</p>
                 </div>
             </div>
             <div class="doctor-departmant" style="margin-top: 10px;">
                 <span class="material-icons" style="color: rgb(0, 0, 0, 0.500); font-size: 24px;padding: 1px;
-    margin-right: 2px;">location_on</span><p style="padding-top: 3px;">Şevket Yılmaz Devlet Hastanesi</p>
+    margin-right: 2px;">location_on</span><p style="padding-top: 3px;">{{hospitalName}}</p>
             </div>
         </div>
     </div>
@@ -55,7 +55,8 @@ import VueSlickCarousel from 'vue-slick-carousel'
 export default {
   name: 'BookingTab',
   props: {
-    doctorID: String
+    doctorID: String,
+    hospitalName: String
   },
   components: {
     VueSlickCarousel
