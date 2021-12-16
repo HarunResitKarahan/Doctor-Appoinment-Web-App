@@ -27,9 +27,9 @@
         </div>
     </div>
     </template>
-    <!-- <template v-if="">
+    <template v-if="doctor.length == 0">
       asd
-    </template> -->
+    </template>
   </div>
 </template>
 

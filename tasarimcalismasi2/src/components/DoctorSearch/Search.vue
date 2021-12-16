@@ -174,7 +174,7 @@ export default {
             this.doctor = data
           })
       }
-      if (event.target.attributes.name.textContent === 'checklocation' && event.target.checked === true) {
+      if (event.target.checked === true && event.target.attributes.name.textContent === 'checklocation') {
         this.hospitalName = undefined
         this.doctor = []
         fetch('http://localhost:8000/hospital/gethospital', {
@@ -188,6 +188,9 @@ export default {
           .then(data => {
             this.hospital = data
           })
+      }
+      if (event.target.checked === false && event.target.attributes.name.textContent === 'checkhospital') {
+        this.doctor = []
       }
     },
     hide (event, prop) {
