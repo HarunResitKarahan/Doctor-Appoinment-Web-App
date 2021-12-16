@@ -17,6 +17,7 @@
 .show-doctors .no-found-doctor {
     height: 100%;
     margin: auto;
+    margin-top: 15%;
 }
 .show-doctors .doctor-card .doctor-image {
     margin: 0 20px 0 0;

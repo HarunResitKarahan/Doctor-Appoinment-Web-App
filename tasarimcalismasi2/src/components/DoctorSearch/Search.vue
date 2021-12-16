@@ -82,10 +82,16 @@ export default {
       city: [],
       doctor: [],
       hospital: [],
+      // department: '',
+      // location: '',
+      // gender: '',
       hospitalName: undefined
     }
   },
   created () {
+    // this.doctor = this.Doctor
+    // this.location = this.Location
+    // this.gender = this.Gender
     fetch('http://localhost:8000/department/getclinics', {
       method: 'GET'
     })
@@ -157,10 +163,11 @@ export default {
         } else if (event.target.attributes.name.textContent === 'checkhospital') {
           this.hospitalName = undefined
           this.doctor = []
-        } else {
+        } else if (event.target.attributes.name.textContent === 'checklocation') {
           this.location = undefined
-          this.hospital = undefined
           this.doctor = []
+          this.hospitalName = undefined
+          this.hospital = []
         }
       } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
@@ -196,8 +203,8 @@ export default {
     },
     hide (event, prop) {
       if (prop === 'location') {
-        this.location = undefined
         this.hospital = []
+        this.location = undefined
       } else if (prop === 'hospital') {
         this.hospitalName = undefined
       } else if (prop === 'gender') {

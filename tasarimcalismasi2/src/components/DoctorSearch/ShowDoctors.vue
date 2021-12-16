@@ -29,7 +29,7 @@
     </template>
     <template v-if="doctor.length == 0">
       <div class="no-found-doctor">
-        <p>Aradığınız Kriterlere Uygun Doktor Bulunamadı</p>
+        <p style="font-size: 36px;color: #c3c3c3;">Aradığınız Kriterlere Uygun Doktor Bulunamadı</p>
       </div>
     </template>
   </div>
