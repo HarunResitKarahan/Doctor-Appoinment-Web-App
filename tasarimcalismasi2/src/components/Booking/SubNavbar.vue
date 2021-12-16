@@ -1,6 +1,6 @@
 <template>
   <div class="sub-navbar">
-    <p>Anasayfa > {{title}}</p>
+    <p><router-link to="/" style="color: white;font-weight: 400;">Anasayfa</router-link> > {{title}}</p>
   </div>
 </template>
 
