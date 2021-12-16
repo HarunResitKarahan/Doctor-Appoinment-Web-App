@@ -66,7 +66,8 @@ export default {
     return {
       policlinics: [],
       city: [],
-      doctor: []
+      doctor: [],
+      hospital: []
     }
   },
   created () {
@@ -83,6 +84,13 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.city = data
+      })
+    fetch('http://localhost:8000/hospital/gethospital', {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.hospital = data
       })
   },
   mounted () {

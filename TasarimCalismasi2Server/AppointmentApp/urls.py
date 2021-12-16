@@ -9,6 +9,7 @@ urlpatterns = [
     url('patient/getuser', views.PatientApiGetUser),
     url('department/getclinics', views.DepartmentGetClinics),
     url('city/getcitys', views.CityGetCitys),
+    url('hospital/gethospital', views.HospitalGetHospital),
     url('doctor/getdoctor', views.DoctorGetDoctors),
     url('doctor/bookingdoctorinfo', views.DoctorGetDoctorById),
 ]
