@@ -34,13 +34,18 @@ class Doctor(models.Model):
     hospitalID = models.ForeignKey(Hospital, default= None, on_delete=models.CASCADE)
     doctorCreateTime = models.DateTimeField(default=timezone.now)
 
+class Recommendation(models.Model):
+    recommendationPatientID = models.ForeignKey(Patient, default= None, on_delete=models.CASCADE)
+    recommendationDoctorID =  models.ForeignKey(Doctor, default= None, on_delete=models.CASCADE)
+
+class Schedule(models.Model):
+    scheduleID = models.AutoField(primary_key=True)
+    scheduleTime = models.CharField(max_length=200)
+    scheduleDate = models.DateTimeField(default=timezone.now)
+
 class Appointment(models.Model):
     appointmentPatientID = models.ForeignKey(Patient, default= None, on_delete=models.CASCADE)
     appointmentDoctorID =  models.ForeignKey(Doctor, default= None, on_delete=models.CASCADE)
     appointmentDepartmanID =  models.ForeignKey(Departman, default= None, on_delete=models.CASCADE)
-    appointmentTime = models.CharField(max_length=200)
+    appointmentTime = models.ForeignKey(Schedule, default= None, on_delete=models.CASCADE)
     appointmentPoint = models.CharField(max_length=200, null = True)
-
-class Recommendation(models.Model):
-    recommendationPatientID = models.ForeignKey(Patient, default= None, on_delete=models.CASCADE)
-    recommendationDoctorID =  models.ForeignKey(Doctor, default= None, on_delete=models.CASCADE)

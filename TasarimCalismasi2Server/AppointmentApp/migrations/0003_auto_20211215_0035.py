@@ -22,7 +22,6 @@ class Migration(migrations.Migration):
             name='Appointment',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('appointmentTime', models.CharField(max_length=200)),
                 ('appointmentPoint', models.CharField(max_length=200, null=True)),
                 ('appointmentDepartmanID', models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='AppointmentApp.departman')),
                 ('appointmentDoctorID', models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='AppointmentApp.doctor')),
