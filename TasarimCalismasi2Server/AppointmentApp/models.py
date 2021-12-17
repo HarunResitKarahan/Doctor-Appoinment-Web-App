@@ -40,7 +40,6 @@ class Recommendation(models.Model):
 
 class Schedule(models.Model):
     scheduleID = models.AutoField(primary_key=True)
-    scheduleTime = models.CharField(max_length=200)
     scheduleDate = models.DateTimeField(default=timezone.now)
 
 class Appointment(models.Model):

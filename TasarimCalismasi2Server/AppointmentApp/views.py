@@ -4,8 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from AppointmentApp.models import Doctor, Hospital, Patient, Departman, City
-from AppointmentApp.serializers import HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
+from AppointmentApp.models import Doctor, Hospital, Patient, Departman, City, Schedule
+from AppointmentApp.serializers import HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer, ScheduleSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
 
@@ -102,3 +102,28 @@ def DoctorGetDoctorById(request, id = 0):
         doctor = Doctor.objects.filter(doctorID = request_data['doctorID']).values()
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
+
+
+@csrf_exempt
+def ScheduleGetTime(request, id = 0):
+    if request.method == 'GET':
+        schedule = Schedule.objects.all()
+        schedule_serializer = ScheduleSerializer(schedule, many = True)
+        return JsonResponse(schedule_serializer.data, safe = False)
+    elif request.method == 'POST':
+        request_data = JSONParser().parse(request)
+        schedule = Schedule.objects.all()
+        schedule_serializer = ScheduleSerializer(schedule, many = True)
+        return JsonResponse(schedule_serializer.data, safe = False)
+    elif request.method=='PUT':
+        patient_data = JSONParser().parse(request)
+        patient = Patient.objects.get(patientID = patient_data['patientID'])
+        patient_serializer = PatientSerializer(patient, data=patient_data)
+        if patient_serializer.is_valid():
+            patient_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
+    elif request.method=='DELETE':
+        patient=Patient.objects.get(patientID = id)
+        patient.delete()
+        return JsonResponse("Deleted Successfully",safe=False)

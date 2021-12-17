@@ -19,7 +19,7 @@
               <div class="cards"><span @click="hide($event, 'department')" class="material-icons" style="font-size: 14px;border: 1px solid white;cursor: pointer;border-radius: 100%;margin-right: 5px;">close</span><p>{{department}}</p></div>
               </template>
             </div>
-              <input type="date" id="date">
+              <input v-model="date" type="date" id="date">
                 <h6 style="font-size: 15px;margin-top: 20px;">Şehir</h6>
               <div style="height: 150px;overflow: auto;">
                 <template v-for="(item,index) in city">
@@ -82,6 +82,7 @@ export default {
       city: [],
       doctor: [],
       hospital: [],
+      date: '',
       // department: '',
       // location: '',
       // gender: '',
