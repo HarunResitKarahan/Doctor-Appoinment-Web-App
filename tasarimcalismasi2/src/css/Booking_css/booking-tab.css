@@ -10,7 +10,6 @@
     background-color: white;
     width: 70%;
     padding: 24px;
-    border: 1px solid rgba(0,0,0,.125);
     line-height: 1.7;
 }
 .booking-tab .doctor-info-tab .doctor-image img{
@@ -36,13 +35,9 @@
     flex-direction: column;
     background-color: white;
     width: 70%;
-    border: 1px solid rgba(0,0,0,.125);
     line-height: 1.5;
-    margin-top: 1.5%;
 }
 .booking-tab .schedule-tab .day {
-    border: 0 solid rgba(0,0,0,.125);
-    border-bottom-width: 1px;
     padding: 0 45px;
 }
 .booking-tab .schedule-tab .day .date {

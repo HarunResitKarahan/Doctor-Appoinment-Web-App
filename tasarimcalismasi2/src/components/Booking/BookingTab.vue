@@ -2,7 +2,7 @@
   <div class="booking-tab">
     <div class="doctor-info-tab">
         <div class="doctor-image">
-            <img src="@/assets/doctor11.jpg" width="100" height="100">
+            <img src="@/assets/doctor11.jpg" width="160" height="160">
         </div>
         <div class="doctor-info">
             <div class="doctor-name">
