@@ -8,6 +8,7 @@
             <div class="doctor-name">
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
+            <p style="font-size: 14px;color: #757575;margin-bottom: 5px;">{{department}}</p>
             <div class="doctor-rank">
                 <div class="star">
                     <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">{{doctor[0].doctorScore}}</p><p style="height: 22px;">154 Değerlendirme</p>
@@ -56,7 +57,8 @@ export default {
   name: 'BookingTab',
   props: {
     doctorID: String,
-    hospitalName: String
+    hospitalName: String,
+    department: String
   },
   components: {
     VueSlickCarousel
