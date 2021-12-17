@@ -8,7 +8,7 @@
             <div class="doctor-name">
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
-            <p style="font-size: 14px;color: #757575;margin-bottom: 5px;">{{department}}</p>
+            <p style="font-size: 14px;color: #757575;margin-bottom: 5px;padding-left: 4px;">{{department}}</p>
             <div class="doctor-rank">
                 <div class="star">
                     <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">{{doctor[0].doctorScore}}</p><p style="height: 22px;">154 Değerlendirme</p>
@@ -25,7 +25,7 @@
             <VueSlickCarousel v-bind="settings">
                 <template v-for="(item,index) in days">
                     <div class="date" :key="item">
-                        <p style="color: #272B41">{{item}}</p>
+                        <p style="color: #272B41;">{{item}}</p>
                         <p class="h5" style="color: #757575;">{{index + 1}} Aralık 2021</p>
                     </div>
                 </template>
