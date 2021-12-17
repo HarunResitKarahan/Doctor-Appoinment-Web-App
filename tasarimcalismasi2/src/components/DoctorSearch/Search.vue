@@ -109,7 +109,25 @@ export default {
       })
   },
   mounted () {
-    document.getElementById('date').valueAsDate = new Date()
+    var today = new Date()
+    var dd = today.getDate()
+    var dd2 = today.getDate() + 14
+    var mm = today.getMonth() + 1
+    var yyyy = today.getFullYear()
+    if (dd < 10) {
+      dd = '0' + dd
+    }
+    if (dd2 < 10) {
+      dd2 = '0' + dd2
+    }
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+    today = yyyy + '-' + mm + '-' + dd
+    var today2 = yyyy + '-' + mm + '-' + dd2
+    document.getElementById('date').setAttribute('min', today)
+    document.getElementById('date').setAttribute('max', today2)
+
     if (this.location !== undefined) {
       fetch('http://localhost:8000/hospital/gethospital', {
         method: 'POST',

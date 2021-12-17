@@ -39,4 +39,4 @@ class DoctorSerializer(serializers.HyperlinkedModelSerializer):
 class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Schedule
-        fields=['scheduleTime', 'scheduleDate']
+        fields=['scheduleDate']

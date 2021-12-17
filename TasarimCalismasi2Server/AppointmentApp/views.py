@@ -112,13 +112,13 @@ def ScheduleGetTime(request, id = 0):
         return JsonResponse(schedule_serializer.data, safe = False)
     elif request.method == 'POST':
         request_data = JSONParser().parse(request)
-        schedule = Schedule.objects.all()
+        schedule = Schedule.objects.filter(scheduleDate = request_data['scheduleDate']).values()
         schedule_serializer = ScheduleSerializer(schedule, many = True)
         return JsonResponse(schedule_serializer.data, safe = False)
     elif request.method=='PUT':
-        patient_data = JSONParser().parse(request)
-        patient = Patient.objects.get(patientID = patient_data['patientID'])
-        patient_serializer = PatientSerializer(patient, data=patient_data)
+        schedule_data = JSONParser().parse(request)
+        patient = Patient.objects.get(patientID = schedule_data['patientID'])
+        patient_serializer = PatientSerializer(patient, data=schedule_data)
         if patient_serializer.is_valid():
             patient_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
