@@ -94,7 +94,6 @@ def DoctorGetDoctors(request, id = 0):
         # print(appointment)
         # print(datetime.strptime(str(appointment[0]['appointmentTime']), "%Y-%m-%d %H:%M:%S").date()) # %H:%M:%S
         # print(request_data['appointmentTime'])
-        print(doctor)
         randevuAlinmisDoktorlar = []
         for item in appointment:
             if not item['appointmentDoctorID_id'] in randevuAlinmisDoktorlar:
@@ -113,8 +112,6 @@ def DoctorGetDoctors(request, id = 0):
         for item in doctor:
             if not item['doctorID'] in randevuAlinmisDoktorlar:
                 doctor = doctor.exclude(doctorID = item['doctorID'])
-        print(randevuAlinmisDoktorlar)
-        print(doctor)
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
 
