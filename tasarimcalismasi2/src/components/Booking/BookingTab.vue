@@ -93,7 +93,18 @@ export default {
   },
   methods: {
     getappointment (event) {
-      console.log(event.target.parentNode)
+      console.log(event.target.parentNode.lastChild.textContent)
+      fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          doctorID: this.doctorID
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.doctor = data
+        })
     }
   },
   created () {
@@ -102,7 +113,6 @@ export default {
     this.dateday = Number(String(this.current).split(' ')[2])
     this.datemonth = this.current.getMonth()
     this.day = this.current.getDay()
-    console.log(this.days[this.day - 1])
     // this.current = this.current.getDate()
     fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
       method: 'POST',
