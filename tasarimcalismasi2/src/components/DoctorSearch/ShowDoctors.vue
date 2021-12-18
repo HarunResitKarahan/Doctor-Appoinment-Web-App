@@ -99,9 +99,6 @@ export default {
           hash = hash.concat(id)
           getstar = $('.doctor-rank').find(hash)
           star = $(getstar).find('linearGradient stop')
-          if (item.doctorID === 13) {
-            console.log($(getstar).find('linearGradient stop'))
-          }
           if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
             var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
           } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {

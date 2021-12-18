@@ -30,10 +30,10 @@
     <div class="schedule-tab">
         <div @click="selectedDay" class="day">
             <VueSlickCarousel v-bind="settings">
-                <template v-for="(item,index) in days">
-                    <div class="date" :key="item">
-                        <p style="color: #272B41;">{{item}}</p>
-                        <p class="h5" style="color: #757575;">{{index + 1}} Aralık 2021</p>
+                <template v-for="index in 14">
+                    <div class="date" :key="index">
+                        <p style="color: #272B41;">{{days[(day + index) - 2]}}</p>
+                        <p class="h5" style="color: #757575;">{{(dateday + index) - 1}} {{months[datemonth]}} {{dateyear}}</p>
                     </div>
                 </template>
             </VueSlickCarousel>
@@ -80,12 +80,25 @@ export default {
         slidesToScroll: 3,
         swipeToSlide: true
       },
-      days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
+      days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
+      months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+      dateday: Number,
+      dateyear: Number,
+      datemonth: Number,
+      day: Number,
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
-      doctor: []
+      doctor: [],
+      current: undefined
     }
   },
   created () {
+    this.current = new Date()
+    this.dateyear = Number(String(this.current).split(' ')[3])
+    this.dateday = Number(String(this.current).split(' ')[2])
+    this.datemonth = this.current.getMonth()
+    this.day = this.current.getDay()
+    console.log(this.days[this.day - 1])
+    // this.current = this.current.getDate()
     fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
