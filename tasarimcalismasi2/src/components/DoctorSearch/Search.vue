@@ -18,6 +18,9 @@
               <template v-if="department != undefined">
               <div class="cards"><span @click="hide($event, 'department')" class="material-icons" style="font-size: 14px;border: 1px solid white;cursor: pointer;border-radius: 100%;margin-right: 5px;">close</span><p>{{department}}</p></div>
               </template>
+              <template v-if="date != undefined">
+              <div class="cards"><span @click="hide($event, 'date')" class="material-icons" style="font-size: 14px;border: 1px solid white;cursor: pointer;border-radius: 100%;margin-right: 5px;">close</span><p>{{datereverse}}</p></div>
+              </template>
             </div>
               <input @change="datechange" v-model="date" type="date" id="date">
                 <h6 style="font-size: 15px;margin-top: 20px;">Şehir</h6>
@@ -83,6 +86,7 @@ export default {
       doctor: [],
       hospital: [],
       date: undefined,
+      datereverse: '',
       // department: '',
       // location: '',
       // gender: '',
@@ -127,7 +131,6 @@ export default {
     var today2 = yyyy + '-' + mm + '-' + dd2
     document.getElementById('date').setAttribute('min', today)
     document.getElementById('date').setAttribute('max', today2)
-
     if (this.location !== undefined) {
       fetch('http://localhost:8000/hospital/gethospital', {
         method: 'POST',
@@ -172,6 +175,7 @@ export default {
       })
     },
     datechange () {
+      this.datereverse = String(this.date).split('-').reverse().join('/')
       if (this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined && this.date !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
           method: 'POST',
@@ -248,6 +252,8 @@ export default {
         this.hospitalName = undefined
       } else if (prop === 'gender') {
         this.gender = undefined
+      } else if (prop === 'date') {
+        this.date = undefined
       } else {
         this.department = undefined
       }
