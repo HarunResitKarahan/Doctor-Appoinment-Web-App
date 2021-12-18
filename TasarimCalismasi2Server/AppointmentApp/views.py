@@ -91,16 +91,30 @@ def DoctorGetDoctors(request, id = 0):
         hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity_id = city[0]['cityID']).values()
         doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalID']).values()
         appointment = Appointment.objects.filter(appointmentDepartmanID_id = department[0]['departmanID']).values()
-        print(appointment)
-        print(datetime.strptime(str(appointment[0]['appointmentTime']), "%Y-%m-%d %H:%M:%S").date()) # %H:%M:%S
-        print(request_data['appointmentTime'])
-        sayac = 0
+        # print(appointment)
+        # print(datetime.strptime(str(appointment[0]['appointmentTime']), "%Y-%m-%d %H:%M:%S").date()) # %H:%M:%S
+        # print(request_data['appointmentTime'])
+        print(doctor)
         randevuAlinmisDoktorlar = []
         for item in appointment:
-            print(doctor)
-            if item['appointmentDoctorID_id'] in randevuAlinmisDoktorlar:
+            if not item['appointmentDoctorID_id'] in randevuAlinmisDoktorlar:
                 randevuAlinmisDoktorlar.append(item['appointmentDoctorID_id'])
+        for item in randevuAlinmisDoktorlar:
+            sayac = 0
+            appointment = Appointment.objects.filter(appointmentDoctorID_id = item).values()
+            for i in appointment:
+                print(i['appointmentTime'].date())
+                print(datetime.strptime(request_data['appointmentTime'], "%Y-%m-%d").date())
+                if i['appointmentTime'].date() == datetime.strptime(request_data['appointmentTime'], "%Y-%m-%d").date():
+                    sayac = sayac + 1
+            print(sayac)
+            if sayac == 13:
+                randevuAlinmisDoktorlar.remove(item)
+        for item in doctor:
+            if not item['doctorID'] in randevuAlinmisDoktorlar:
+                doctor = doctor.exclude(doctorID = item['doctorID'])
         print(randevuAlinmisDoktorlar)
+        print(doctor)
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
 
