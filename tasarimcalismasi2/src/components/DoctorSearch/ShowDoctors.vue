@@ -60,7 +60,7 @@
 </template>
 
 <script>
-// import $ from 'jquery'
+import $ from 'jquery'
 export default {
   name: 'ShowDoctors',
   props: {
@@ -73,51 +73,52 @@ export default {
     }
   },
   watch: {
-    doctor () {
+    doctor: function () {
       this.star()
-      // console.log(star[6].attributes[1].value)
     }
-    // document.querySelector('linearGradient stop').attributes[0].value = '80%'
   },
   methods: {
     star () {
-      var star = document.querySelectorAll('linearGradient stop')
-      console.log(star.attributes[1])
-      this.doctor.forEach(item => {
-        console.log(Number(item.doctorScore))
-        if (Number(item.doctorScore) > 1 && Number(item.doctorScore) < 2) {
-          console.log('girdi 1 - 2 arası')
-          star[0].attributes[1].value = 'rgb(255, 185, 88)'
-          star[1].attributes[1].value = 'rgb(255, 185, 88)'
-        } else if (Number(item.doctorScore) > 2 && Number(item.doctorScore) < 3) {
-          console.log('girdi 2 - 3 arası')
-          star[0].attributes[1].value = 'rgb(255, 185, 88)'
-          star[1].attributes[1].value = 'rgb(255, 185, 88)'
-          star[2].attributes[1].value = 'rgb(255, 185, 88)'
-          star[3].attributes[1].value = 'rgb(255, 185, 88)'
-        } else if (Number(item.doctorScore) > 3 && Number(item.doctorScore) < 4) {
-          console.log('girdi 3 - 4 arası')
-          star[0].attributes[1].value = 'rgb(255, 185, 88)'
-          star[1].attributes[1].value = 'rgb(255, 185, 88)'
-          star[2].attributes[1].value = 'rgb(255, 185, 88)'
-          star[3].attributes[1].value = 'rgb(255, 185, 88)'
-          star[4].attributes[1].value = 'rgb(255, 185, 88)'
-          star[5].attributes[1].value = 'rgb(255, 185, 88)'
-          star[6].attributes[1].value = 'white'
-          star[7].attributes[1].value = 'white'
-          star[8].attributes[1].value = 'white'
-          star[9].attributes[1].value = 'white'
-        } else if (Number(item.doctorScore) > 4 && Number(item.doctorScore) < 5) {
-          console.log('girdi 4 - 5 arası')
-          star[0].attributes[1].value = 'rgb(255, 185, 88)'
-          star[1].attributes[1].value = 'rgb(255, 185, 88)'
-          star[2].attributes[1].value = 'rgb(255, 185, 88)'
-          star[3].attributes[1].value = 'rgb(255, 185, 88)'
-          star[4].attributes[1].value = 'rgb(255, 185, 88)'
-          star[5].attributes[1].value = 'rgb(255, 185, 88)'
-          star[6].attributes[1].value = 'rgb(255, 185, 88)'
-          star[7].attributes[1].value = 'rgb(255, 185, 88)'
-        }
+      var doctor = this.doctor
+      $('linearGradient').ready(function () {
+        var star = document.querySelectorAll('linearGradient stop')
+        doctor.forEach(item => {
+          console.log(Number(item.doctorScore))
+          if (Number(item.doctorScore) > 1 && Number(item.doctorScore) < 2) {
+            console.log('girdi 1 - 2 arası')
+            star[0].attributes[1].value = 'rgb(255, 185, 88)'
+            console.log(star[0].attributes[1].value = 'rgb(255, 185, 88)')
+            star[1].attributes[1].value = 'rgb(255, 185, 88)'
+          } else if (Number(item.doctorScore) > 2 && Number(item.doctorScore) < 3) {
+            console.log('girdi 2 - 3 arası')
+            star[0].attributes[1].value = 'rgb(255, 185, 88)'
+            star[1].attributes[1].value = 'rgb(255, 185, 88)'
+            star[2].attributes[1].value = 'rgb(255, 185, 88)'
+            star[3].attributes[1].value = 'rgb(255, 185, 88)'
+          } else if (Number(item.doctorScore) > 3 && Number(item.doctorScore) < 4) {
+            console.log('girdi 3 - 4 arası')
+            star[0].attributes[1].value = 'rgb(255, 185, 88)'
+            star[1].attributes[1].value = 'rgb(255, 185, 88)'
+            star[2].attributes[1].value = 'rgb(255, 185, 88)'
+            star[3].attributes[1].value = 'rgb(255, 185, 88)'
+            star[4].attributes[1].value = 'rgb(255, 185, 88)'
+            star[5].attributes[1].value = 'rgb(255, 185, 88)'
+            star[6].attributes[1].value = 'white'
+            star[7].attributes[1].value = 'white'
+            star[8].attributes[1].value = 'white'
+            star[9].attributes[1].value = 'white'
+          } else if (Number(item.doctorScore) > 4 && Number(item.doctorScore) < 5) {
+            console.log('girdi 4 - 5 arası')
+            star[0].attributes[1].value = 'rgb(255, 185, 88)'
+            star[1].attributes[1].value = 'rgb(255, 185, 88)'
+            star[2].attributes[1].value = 'rgb(255, 185, 88)'
+            star[3].attributes[1].value = 'rgb(255, 185, 88)'
+            star[4].attributes[1].value = 'rgb(255, 185, 88)'
+            star[5].attributes[1].value = 'rgb(255, 185, 88)'
+            star[6].attributes[1].value = 'rgb(255, 185, 88)'
+            star[7].attributes[1].value = 'rgb(255, 185, 88)'
+          }
+        })
       })
     }
   }
