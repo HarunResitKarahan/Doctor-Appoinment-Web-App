@@ -143,8 +143,8 @@ def ScheduleGetTime(request, id = 0):
                 appointment = appointment.exclude(appointmentTime = i['appointmentTime'])
             elif i['appointmentTime'].date() == datetime.strptime(request_data['scheduleDate'], "%Y-%m-%d").date():
                 sayac = sayac + 1
-        # if sayac == 13:
-        #         return JsonResponse("1", safe = False)
+        if sayac == 13:
+            return JsonResponse("Randevu Dolu", safe = False)
         # schedule = Appointment.objects.filter(appointmentTime = request_data['scheduleDate']).values()
         # schedule_serializer = AppointmentSerializer(schedule, many = True)
         return JsonResponse("1", safe = False)

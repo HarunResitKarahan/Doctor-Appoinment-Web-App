@@ -61,7 +61,7 @@
           </div>
       </div>
     </div>
-    <ShowDoctors :doctor="doctor" :department="department" :hospitalName="hospitalName"/>
+    <ShowDoctors :doctor="doctor" :department="department" :hospitalName="hospitalName" :date="date"/>
   </div>
 </template>
 

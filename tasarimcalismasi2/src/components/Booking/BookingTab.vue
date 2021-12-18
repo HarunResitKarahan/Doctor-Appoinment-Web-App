@@ -104,6 +104,7 @@ export default {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({
       //     scheduleDate: event.target.parentNode.lastChild.textContent
+      //     doctorID: doctor[0]['doctorID']
       //   })
       // })
       //   .then(response => response.json())

@@ -2,7 +2,7 @@
   <div class="booking">
     <Navbar />
     <SubNavbar :title="title"/>
-    <BookingTab :doctorID="$route.params.doctorID" :hospitalName="$route.params.hospitalName" :department="$route.params.department"/>
+    <BookingTab :doctorID="$route.params.doctorID" :hospitalName="$route.params.hospitalName" :department="$route.params.department" :date="$route.params.date"/>
     <Footer />
     <Login />
      <!-- <template v-for="(item, index) in responseData" >
