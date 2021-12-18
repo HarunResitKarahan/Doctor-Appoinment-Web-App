@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
 from AppointmentApp.models import Appointment, Doctor, Hospital, Patient, Departman, City
-from AppointmentApp.serializers import HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
+from AppointmentApp.serializers import AppointmentSerializer, HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
 
@@ -126,26 +126,26 @@ def DoctorGetDoctorById(request, id = 0):
         return JsonResponse(doctor_serializer.data, safe = False)
 
 
-# @csrf_exempt
-# def ScheduleGetTime(request, id = 0):
-#     if request.method == 'GET':
-#         schedule = Schedule.objects.all()
-#         schedule_serializer = ScheduleSerializer(schedule, many = True)
-#         return JsonResponse(schedule_serializer.data, safe = False)
-#     elif request.method == 'POST':
-#         request_data = JSONParser().parse(request)
-#         schedule = Schedule.objects.filter(scheduleDate = request_data['scheduleDate']).values()
-#         schedule_serializer = ScheduleSerializer(schedule, many = True)
-#         return JsonResponse(schedule_serializer.data, safe = False)
-#     elif request.method=='PUT':
-#         schedule_data = JSONParser().parse(request)
-#         patient = Patient.objects.get(patientID = schedule_data['patientID'])
-#         patient_serializer = PatientSerializer(patient, data=schedule_data)
-#         if patient_serializer.is_valid():
-#             patient_serializer.save()
-#             return JsonResponse("Updated Successfully",safe=False)
-#         return JsonResponse("Failed to Update")
-#     elif request.method=='DELETE':
-#         patient=Patient.objects.get(patientID = id)
-#         patient.delete()
-#         return JsonResponse("Deleted Successfully",safe=False)
+@csrf_exempt
+def ScheduleGetTime(request, id = 0):
+    if request.method == 'GET':
+        schedule = Appointment.objects.all()
+        schedule_serializer = AppointmentSerializer(schedule, many = True)
+        return JsonResponse(schedule_serializer.data, safe = False)
+    elif request.method == 'POST':
+        request_data = JSONParser().parse(request)
+        schedule = Appointment.objects.filter(scheduleDate = request_data['scheduleDate']).values()
+        schedule_serializer = AppointmentSerializer(schedule, many = True)
+        return JsonResponse(schedule_serializer.data, safe = False)
+    elif request.method=='PUT':
+        schedule_data = JSONParser().parse(request)
+        patient = Appointment.objects.get(patientID = schedule_data['patientID'])
+        patient_serializer = AppointmentSerializer(patient, data=schedule_data)
+        if patient_serializer.is_valid():
+            patient_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
+    elif request.method=='DELETE':
+        patient=Appointment.objects.get(patientID = id)
+        patient.delete()
+        return JsonResponse("Deleted Successfully",safe=False)
