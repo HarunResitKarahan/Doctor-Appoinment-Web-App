@@ -19,25 +19,35 @@
                     <linearGradient :id="`${item.doctorID}a`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
+                        <stop offset="60%" stop-color="white"/>
+                        <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}1`">
                         <stop offset="0%" stop-color="white"/>
+                        <stop offset="100%" stop-color="white"/>
+                        <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}2`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
+                        <stop offset="60%" stop-color="white"/>
+                        <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}3`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
+                        <stop offset="60%" stop-color="white"/>
+                        <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}4`">
                         <stop offset="0%" stop-color="white"/>
+                        <stop offset="100%" stop-color="white"/>
+                        <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><p class="after">{{item.doctorScore}}</p><p style="height: 22px;">154 Değerlendirme</p>
                 </div>
@@ -101,18 +111,43 @@ export default {
             star[7].attributes[1].value = 'white'
             star[8].attributes[1].value = 'white'
             star[9].attributes[1].value = 'white'
+            star[10].attributes[1].value = 'rgb(255, 185, 88)'
+            star[11].attributes[1].value = 'rgb(255, 185, 88)'
+            star[12].attributes[1].value = 'white'
+            star[13].attributes[1].value = 'white'
+            star[14].attributes[1].value = 'white'
+            star[15].attributes[1].value = 'white'
+            star[16].attributes[1].value = 'white'
+            star[17].attributes[1].value = 'white'
+            star[18].attributes[1].value = 'white'
+            star[19].attributes[1].value = 'white'
           } else if (Number(item.doctorScore) > 2 && Number(item.doctorScore) < 3) {
             console.log('girdi 2 - 3 arası')
+            console.log(Math.trunc((Number(item.doctorScore) % 1) * 100))
+            var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100))
+            var text2 = '%'
+            var concat = text1.concat(text2)
             star[0].attributes[1].value = 'rgb(255, 185, 88)'
             star[1].attributes[1].value = 'rgb(255, 185, 88)'
             star[2].attributes[1].value = 'rgb(255, 185, 88)'
             star[3].attributes[1].value = 'rgb(255, 185, 88)'
-            star[4].attributes[1].value = 'white'
-            star[5].attributes[1].value = 'white'
+            star[4].attributes[1].value = 'rgb(255, 185, 88)'
+            star[5].attributes[0].value = concat
+            star[5].attributes[1].value = 'rgb(255, 185, 88)'
             star[6].attributes[1].value = 'white'
             star[7].attributes[1].value = 'white'
             star[8].attributes[1].value = 'white'
             star[9].attributes[1].value = 'white'
+            star[10].attributes[1].value = 'white'
+            star[11].attributes[1].value = 'white'
+            star[12].attributes[1].value = 'white'
+            star[13].attributes[1].value = 'white'
+            star[14].attributes[1].value = 'white'
+            star[15].attributes[1].value = 'white'
+            star[16].attributes[1].value = 'white'
+            star[17].attributes[1].value = 'white'
+            star[18].attributes[1].value = 'white'
+            star[19].attributes[1].value = 'white'
           } else if (Number(item.doctorScore) > 3 && Number(item.doctorScore) < 4) {
             console.log('girdi 3 - 4 arası')
             star[0].attributes[1].value = 'rgb(255, 185, 88)'
@@ -125,6 +160,16 @@ export default {
             star[7].attributes[1].value = 'white'
             star[8].attributes[1].value = 'white'
             star[9].attributes[1].value = 'white'
+            star[10].attributes[1].value = 'white'
+            star[11].attributes[1].value = 'white'
+            star[12].attributes[1].value = 'white'
+            star[13].attributes[1].value = 'white'
+            star[14].attributes[1].value = 'white'
+            star[15].attributes[1].value = 'white'
+            star[16].attributes[1].value = 'white'
+            star[17].attributes[1].value = 'white'
+            star[18].attributes[1].value = 'white'
+            star[19].attributes[1].value = 'white'
           } else if (Number(item.doctorScore) > 4 && Number(item.doctorScore) < 5) {
             console.log('girdi 4 - 5 arası')
             star[0].attributes[1].value = 'rgb(255, 185, 88)'
@@ -137,6 +182,16 @@ export default {
             star[7].attributes[1].value = 'rgb(255, 185, 88)'
             star[8].attributes[1].value = 'white'
             star[9].attributes[1].value = 'white'
+            star[10].attributes[1].value = 'white'
+            star[11].attributes[1].value = 'white'
+            star[12].attributes[1].value = 'white'
+            star[13].attributes[1].value = 'white'
+            star[14].attributes[1].value = 'white'
+            star[15].attributes[1].value = 'white'
+            star[16].attributes[1].value = 'white'
+            star[17].attributes[1].value = 'white'
+            star[18].attributes[1].value = 'white'
+            star[19].attributes[1].value = 'white'
           }
         })
       })
