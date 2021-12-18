@@ -172,7 +172,7 @@ export default {
       })
     },
     datechange () {
-      if (this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined) {
+      if (this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined && this.date !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

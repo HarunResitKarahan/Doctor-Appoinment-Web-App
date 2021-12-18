@@ -102,7 +102,6 @@ def DoctorGetDoctors(request, id = 0):
             sayac = 0
             appointment = Appointment.objects.filter(appointmentDoctorID_id = item).values()
             for i in appointment:
-                print(datetime.strptime(request_data['appointmentTime'], "%Y-%m-%d").date())
                 if i['appointmentTime'].date() == datetime.strptime(request_data['appointmentTime'], "%Y-%m-%d").date():
                     sayac = sayac + 1
             if sayac == 13:
