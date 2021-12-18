@@ -31,8 +31,8 @@
         <div @click="selectedDay" class="day">
             <VueSlickCarousel v-bind="settings">
                 <template v-for="index in 14">
-                    <div class="date" :key="index">
-                        <p style="color: #272B41;">{{days[(day + index) - 2]}}</p>
+                    <div @click="getappointment($event)" class="date" :key="index">
+                        <p style="color: #272B41;">{{days[(day + index) - 1]}}</p>
                         <p class="h5" style="color: #757575;">{{(dateday + index) - 1}} {{months[datemonth]}} {{dateyear}}</p>
                     </div>
                 </template>
@@ -80,7 +80,7 @@ export default {
         slidesToScroll: 3,
         swipeToSlide: true
       },
-      days: ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
+      days: ['PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
       dateday: Number,
       dateyear: Number,
@@ -89,6 +89,11 @@ export default {
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       doctor: [],
       current: undefined
+    }
+  },
+  methods: {
+    getappointment (event) {
+      console.log(event.target.parentNode)
     }
   },
   created () {
