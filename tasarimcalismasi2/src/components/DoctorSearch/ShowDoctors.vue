@@ -95,67 +95,49 @@ export default {
       $('linearGradient').ready(function () {
         doctor.forEach(item => {
           getstar = document.getElementById(String(item.doctorID))
-          console.log(getstar)
           star = getstar.querySelectorAll('linearGradient stop')
-          console.log(star)
-          console.log(Number(item.doctorScore))
+          if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
+            var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
+          } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {
+            text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) - 10)
+          } else {
+            text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100))
+          }
+          var text2 = '%'
+          var concat = text1.concat(text2)
           if (Number(item.doctorScore) > 1 && Number(item.doctorScore) < 2) {
             console.log('girdi 1 - 2 arası')
             star[0].attributes[1].value = 'rgb(255, 185, 88)'
             star[1].attributes[1].value = 'rgb(255, 185, 88)'
+            star[3].attributes[0].value = '0%'
             star[2].attributes[1].value = 'white'
+            star[3].attributes[0].value = '0%'
             star[3].attributes[1].value = 'white'
-            star[4].attributes[1].value = 'white'
-            star[5].attributes[1].value = 'white'
-            star[6].attributes[1].value = 'white'
-            star[7].attributes[1].value = 'white'
-            star[8].attributes[1].value = 'white'
-            star[9].attributes[1].value = 'white'
-            star[10].attributes[1].value = 'rgb(255, 185, 88)'
-            star[11].attributes[1].value = 'rgb(255, 185, 88)'
-            star[12].attributes[1].value = 'white'
-            star[13].attributes[1].value = 'white'
-            star[14].attributes[1].value = 'white'
-            star[15].attributes[1].value = 'white'
-            star[16].attributes[1].value = 'white'
-            star[17].attributes[1].value = 'white'
-            star[18].attributes[1].value = 'white'
-            star[19].attributes[1].value = 'white'
+            star[4].attributes[0].value = '0%'
+            star[4].attributes[1].value = 'rgb(255, 185, 88)'
+            star[5].attributes[0].value = concat
+            star[5].attributes[1].value = 'rgb(255, 185, 88)'
+            star[6].attributes[0].value = concat
           } else if (Number(item.doctorScore) > 2 && Number(item.doctorScore) < 3) {
             console.log('girdi 2 - 3 arası')
-            console.log(Math.trunc((Number(item.doctorScore) % 1) * 100))
-            var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100))
-            var text2 = '%'
-            var concat = text1.concat(text2)
             star[0].attributes[1].value = 'rgb(255, 185, 88)'
             star[1].attributes[1].value = 'rgb(255, 185, 88)'
             star[2].attributes[1].value = 'rgb(255, 185, 88)'
             star[3].attributes[1].value = 'rgb(255, 185, 88)'
+            star[4].attributes[0].value = '0%'
             star[4].attributes[1].value = 'rgb(255, 185, 88)'
             star[5].attributes[0].value = concat
             star[5].attributes[1].value = 'rgb(255, 185, 88)'
-            star[6].attributes[1].value = 'white'
-            star[7].attributes[1].value = 'white'
-            star[8].attributes[1].value = 'white'
-            star[9].attributes[1].value = 'white'
-            star[10].attributes[1].value = 'white'
-            star[11].attributes[1].value = 'white'
-            star[12].attributes[1].value = 'white'
-            star[13].attributes[1].value = 'white'
-            star[14].attributes[1].value = 'white'
-            star[15].attributes[1].value = 'white'
-            star[16].attributes[1].value = 'white'
-            star[17].attributes[1].value = 'white'
-            star[18].attributes[1].value = 'white'
-            star[19].attributes[1].value = 'white'
+            star[6].attributes[0].value = concat
+            star[6].attributes[1].value = 'rgb(255, 185, 88)'
           } else if (Number(item.doctorScore) > 3 && Number(item.doctorScore) < 4) {
             console.log('girdi 3 - 4 arası')
             star[0].attributes[1].value = 'rgb(255, 185, 88)'
             star[1].attributes[1].value = 'rgb(255, 185, 88)'
             star[2].attributes[1].value = 'rgb(255, 185, 88)'
             star[3].attributes[1].value = 'rgb(255, 185, 88)'
-            star[4].attributes[1].value = 'rgb(255, 185, 88)'
-            star[5].attributes[1].value = 'rgb(255, 185, 88)'
+            star[4].attributes[1].value = 'white'
+            star[5].attributes[1].value = 'white'
             star[6].attributes[1].value = 'white'
             star[7].attributes[1].value = 'white'
             star[8].attributes[1].value = 'white'
@@ -180,16 +162,18 @@ export default {
             star[5].attributes[1].value = 'rgb(255, 185, 88)'
             star[6].attributes[1].value = 'rgb(255, 185, 88)'
             star[7].attributes[1].value = 'rgb(255, 185, 88)'
-            star[8].attributes[1].value = 'white'
-            star[9].attributes[1].value = 'white'
-            star[10].attributes[1].value = 'white'
-            star[11].attributes[1].value = 'white'
-            star[12].attributes[1].value = 'white'
-            star[13].attributes[1].value = 'white'
-            star[14].attributes[1].value = 'white'
-            star[15].attributes[1].value = 'white'
-            star[16].attributes[1].value = 'white'
-            star[17].attributes[1].value = 'white'
+            star[8].attributes[1].value = 'rgb(255, 185, 88)'
+            star[9].attributes[1].value = 'rgb(255, 185, 88)'
+            star[10].attributes[1].value = 'rgb(255, 185, 88)'
+            star[11].attributes[1].value = 'rgb(255, 185, 88)'
+            star[12].attributes[1].value = 'rgb(255, 185, 88)'
+            star[13].attributes[1].value = 'rgb(255, 185, 88)'
+            star[14].attributes[1].value = 'rgb(255, 185, 88)'
+            star[15].attributes[1].value = 'rgb(255, 185, 88)'
+            star[16].attributes[1].value = 'rgb(255, 185, 88)'
+            star[17].attributes[0].value = concat
+            star[17].attributes[1].value = 'rgb(255, 185, 88)'
+            star[18].attributes[0].value = concat
             star[18].attributes[1].value = 'white'
             star[19].attributes[1].value = 'white'
           }
