@@ -88,23 +88,37 @@ export default {
       day: Number,
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       doctor: [],
-      current: undefined
+      current: undefined,
+      asd: undefined
     }
   },
   methods: {
     getappointment (event) {
       console.log(event.target.parentNode.lastChild.textContent)
-      fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          doctorID: this.doctorID
-        })
+      var date = event.target.parentNode.lastChild.textContent.split(' ')
+      var month = this.getmonth(date[1])
+      date = date[2] + '-' + String(month) + '-' + date[0]
+      console.log(date)
+      // fetch('http://localhost:8000/doctoroo/bkingdoctorinfo', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     scheduleDate: event.target.parentNode.lastChild.textContent
+      //   })
+      // })
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     this.doctor = data
+      //   })
+    },
+    getmonth (month) {
+      var i = 0
+      this.months.forEach((item, index) => {
+        if (item === month) {
+          i = index
+        }
       })
-        .then(response => response.json())
-        .then(data => {
-          this.doctor = data
-        })
+      return i + 1
     }
   },
   created () {
