@@ -196,7 +196,8 @@ export default {
             departmanName: this.department,
             cityName: this.location,
             doctorSex: this.gender,
-            hospitalName: this.hospitalName
+            hospitalName: this.hospitalName,
+            appointmentTime: this.date
           })
         })
           .then(response => response.json())

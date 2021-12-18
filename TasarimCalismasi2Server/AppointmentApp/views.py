@@ -1,10 +1,11 @@
 import re
 from django.shortcuts import render
+from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from AppointmentApp.models import Doctor, Hospital, Patient, Departman, City
+from AppointmentApp.models import Appointment, Doctor, Hospital, Patient, Departman, City
 from AppointmentApp.serializers import HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
@@ -86,12 +87,20 @@ def DoctorGetDoctors(request, id = 0):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
         department = Departman.objects.filter(departmanName = request_data['departmanName']).values()
-        print(department)
         city = City.objects.filter(cityName = request_data['cityName']).values()
-        print(city)
         hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity_id = city[0]['cityID']).values()
-        print(hospital)
         doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalID']).values()
+        appointment = Appointment.objects.filter(appointmentDepartmanID_id = department[0]['departmanID']).values()
+        print(appointment)
+        print(datetime.strptime(str(appointment[0]['appointmentTime']), "%Y-%m-%d %H:%M:%S").date()) # %H:%M:%S
+        print(request_data['appointmentTime'])
+        sayac = 0
+        randevuAlinmisDoktorlar = []
+        for item in appointment:
+            print(doctor)
+            if item['appointmentDoctorID_id'] in randevuAlinmisDoktorlar:
+                randevuAlinmisDoktorlar.append(item['appointmentDoctorID_id'])
+        print(randevuAlinmisDoktorlar)
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
 
