@@ -33,7 +33,7 @@
                 <template v-for="index in 14">
                     <div @click="getappointment($event)" class="date" :key="index">
                         <p style="color: #272B41;">{{days[(day + index) - 1]}}</p>
-                        <p class="h5" style="color: #757575;">{{(dateday + index) - 1}} {{months[datemonth]}} {{dateyear}}</p>
+                        <p class="h5" style="color: #757575;">{{(dateday + index) - 1}} {{months[datemonth - 1]}} {{dateyear}}</p>
                     </div>
                 </template>
             </VueSlickCarousel>
@@ -65,7 +65,8 @@ export default {
   props: {
     doctorID: String,
     hospitalName: String,
-    department: String
+    department: String,
+    date: String
   },
   components: {
     VueSlickCarousel
@@ -88,9 +89,7 @@ export default {
       day: Number,
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       bookedtime: [],
-      doctor: [],
-      current: undefined,
-      asd: undefined
+      doctor: []
     }
   },
   methods: {
@@ -100,6 +99,7 @@ export default {
       var month = this.getmonth(date[1])
       date = date[2] + '-' + String(month) + '-' + date[0]
       console.log(date)
+      console.log(this.bookedtime)
       fetch('http://localhost:8000/schedule/getschedule', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -124,11 +124,10 @@ export default {
     }
   },
   created () {
-    this.current = new Date()
-    this.dateyear = Number(String(this.current).split(' ')[3])
-    this.dateday = Number(String(this.current).split(' ')[2])
-    this.datemonth = this.current.getMonth()
-    this.day = this.current.getDay()
+    this.dateyear = Number(this.date.split('-')[0])
+    this.dateday = Number(this.date.split('-')[2])
+    this.datemonth = Number(this.date.split('-')[1])
+    this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
     // this.current = this.current.getDate()
     fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
       method: 'POST',
@@ -141,6 +140,18 @@ export default {
       .then(data => {
         this.doctor = data
       })
+    // fetch('http://localhost:8000/schedule/getschedule', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     scheduleDate: date,
+    //     doctorID: this.doctor[0].doctorID
+    //   })
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     this.bookedtime = data
+    //   })
   },
   mounted () {
     $(document).ready(function () {

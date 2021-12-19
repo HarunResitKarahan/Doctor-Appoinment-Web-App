@@ -149,6 +149,7 @@ def ScheduleGetTime(request, id = 0):
             arrayTime.append(item['appointmentTime'].strftime("%H:%M"))
         # schedule_serializer = AppointmentSerializer(appointment, many = True)
         # return JsonResponse(schedule_serializer.data, safe = False)
+        print(arrayTime)
         return JsonResponse(arrayTime, safe = False)
     elif request.method=='PUT':
         schedule_data = JSONParser().parse(request)
