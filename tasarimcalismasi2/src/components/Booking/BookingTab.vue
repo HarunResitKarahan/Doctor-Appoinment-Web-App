@@ -39,7 +39,7 @@
             </VueSlickCarousel>
         </div>
         <div class="schedule">
-          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{date}}</p></div>
+          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday) - 1}} {{months[datemonth - 1]}} {{dateyear}}</p></div>
             <div class="time">
                 <div>
                     <template v-for="item in time">
@@ -95,7 +95,6 @@ export default {
   },
   methods: {
     getappointment (event) {
-      console.log(event.target.parentNode.lastChild.textContent)
       var date = event.target.parentNode.lastChild.textContent.split(' ')
       var month = this.getmonth(date[1])
       date = date[2] + '-' + String(month) + '-' + date[0]
@@ -110,7 +109,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.bookedtime = data
-          $('.schedule .datetext p').text(date)
+          $('.schedule .datetext p').text(event.target.parentNode.lastChild.textContent)
           if (this.bookedtime.length > 0) {
             this.bookedtime.forEach((item) => {
               $('.appointment p').text((index, currentcontent) => {
