@@ -110,7 +110,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.bookedtime = data
-          $('.schedule .datetext').text(date)
+          $('.schedule .datetext p').text(date)
           if (this.bookedtime.length > 0) {
             this.bookedtime.forEach((item) => {
               $('.appointment p').text((index, currentcontent) => {
