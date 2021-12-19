@@ -39,6 +39,7 @@
             </VueSlickCarousel>
         </div>
         <div class="schedule">
+          <p class="datetext">{{date}}</p>
             <div class="time">
                 <div>
                     <template v-for="item in time">
@@ -109,6 +110,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.bookedtime = data
+          $('.schedule .datetext').text(date)
           if (this.bookedtime.length > 0) {
             this.bookedtime.forEach((item) => {
               $('.appointment p').text((index, currentcontent) => {
