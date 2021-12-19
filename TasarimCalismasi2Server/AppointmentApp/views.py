@@ -135,8 +135,6 @@ def ScheduleGetTime(request, id = 0):
     elif request.method == 'POST':
         request_data = JSONParser().parse(request)
         appointment = Appointment.objects.filter(appointmentDoctorID_id = request_data['doctorID']).values()
-        print(request_data['scheduleDate'])
-        print(appointment)
         sayac = 0
         for i in appointment:
             if i['appointmentTime'].date() != datetime.strptime(request_data['scheduleDate'], "%Y-%m-%d").date():
@@ -145,9 +143,13 @@ def ScheduleGetTime(request, id = 0):
                 sayac = sayac + 1
         if sayac == 13:
             return JsonResponse("Randevu Dolu", safe = False)
-        # schedule = Appointment.objects.filter(appointmentTime = request_data['scheduleDate']).values()
-        # schedule_serializer = AppointmentSerializer(schedule, many = True)
-        return JsonResponse("1", safe = False)
+        arrayTime = []
+        for index,item in appointment:
+            print(index)
+            arrayTime[index] = item['appointmentTime'].date()
+        # schedule_serializer = AppointmentSerializer(appointment, many = True)
+        # return JsonResponse(schedule_serializer.data, safe = False)
+        return JsonResponse(arrayTime, safe = False)
     elif request.method=='PUT':
         schedule_data = JSONParser().parse(request)
         patient = Appointment.objects.get(patientID = schedule_data['patientID'])
