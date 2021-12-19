@@ -134,6 +134,7 @@ def ScheduleGetTime(request, id = 0):
         return JsonResponse(schedule_serializer.data, safe = False)
     elif request.method == 'POST':
         request_data = JSONParser().parse(request)
+        print(request_data)
         appointment = Appointment.objects.filter(appointmentDoctorID_id = request_data['doctorID']).values()
         sayac = 0
         for i in appointment:
@@ -145,7 +146,7 @@ def ScheduleGetTime(request, id = 0):
             return JsonResponse("Randevu Dolu", safe = False)
         arrayTime = []
         for item in appointment:
-            arrayTime.append(item['appointmentTime'].date())
+            arrayTime.append(item['appointmentTime'].strftime("%H:%M"))
         # schedule_serializer = AppointmentSerializer(appointment, many = True)
         # return JsonResponse(schedule_serializer.data, safe = False)
         return JsonResponse(arrayTime, safe = False)

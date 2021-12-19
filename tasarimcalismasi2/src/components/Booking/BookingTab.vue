@@ -87,6 +87,7 @@ export default {
       datemonth: Number,
       day: Number,
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
+      bookedtime: [],
       doctor: [],
       current: undefined,
       asd: undefined
@@ -99,18 +100,18 @@ export default {
       var month = this.getmonth(date[1])
       date = date[2] + '-' + String(month) + '-' + date[0]
       console.log(date)
-      // fetch('http://localhost:8000/doctoroo/bkingdoctorinfo', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     scheduleDate: event.target.parentNode.lastChild.textContent
-      //     doctorID: doctor[0]['doctorID']
-      //   })
-      // })
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     this.doctor = data
-      //   })
+      fetch('http://localhost:8000/schedule/getschedule', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          scheduleDate: date,
+          doctorID: this.doctor[0].doctorID
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.bookedtime = data
+        })
     },
     getmonth (month) {
       var i = 0
