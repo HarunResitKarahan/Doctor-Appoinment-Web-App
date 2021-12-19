@@ -144,9 +144,8 @@ def ScheduleGetTime(request, id = 0):
         if sayac == 13:
             return JsonResponse("Randevu Dolu", safe = False)
         arrayTime = []
-        for index,item in appointment:
-            print(index)
-            arrayTime[index] = item['appointmentTime'].date()
+        for item in appointment:
+            arrayTime.append(item['appointmentTime'].date())
         # schedule_serializer = AppointmentSerializer(appointment, many = True)
         # return JsonResponse(schedule_serializer.data, safe = False)
         return JsonResponse(arrayTime, safe = False)
