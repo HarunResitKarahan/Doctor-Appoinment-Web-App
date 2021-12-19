@@ -41,7 +41,6 @@
         <div class="schedule">
             <div class="time">
                 <div>
-                  {{bookedtime}}
                     <template v-for="item in time">
                         <div class="appointment" :key="item">
                             <p>{{item}}</p>
@@ -99,8 +98,6 @@ export default {
       var date = event.target.parentNode.lastChild.textContent.split(' ')
       var month = this.getmonth(date[1])
       date = date[2] + '-' + String(month) + '-' + date[0]
-      console.log(date)
-      console.log(this.bookedtime)
       fetch('http://localhost:8000/schedule/getschedule', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -112,6 +109,17 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.bookedtime = data
+          if (this.bookedtime.length > 0) {
+            this.bookedtime.forEach((item) => {
+              $('.appointment p').text((index, currentcontent) => {
+                if (currentcontent === item) {
+                  $('.appointment:nth-child(' + (index + 1) + ')').attr('class', 'booked')
+                }
+              })
+            })
+          } else {
+            $('.booked').attr('class', 'appointment')
+          }
         })
     },
     getmonth (month) {
@@ -144,12 +152,23 @@ export default {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             scheduleDate: this.date,
-            doctorID: this.doctor[0].doctorID
+            doctorID: data[0].doctorID
           })
         })
           .then(response => response.json())
           .then(data => {
             this.bookedtime = data
+            if (this.bookedtime.length > 0) {
+              this.bookedtime.forEach((item) => {
+                $('.appointment p').text((index, currentcontent) => {
+                  if (currentcontent === item) {
+                    $('.appointment:nth-child(' + (index + 1) + ')').attr('class', 'booked')
+                  }
+                })
+              })
+            } else {
+              $('.booked').attr('class', 'appointment')
+            }
           })
       })
   },

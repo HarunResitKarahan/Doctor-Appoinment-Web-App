@@ -1,10 +1,10 @@
 <template>
   <div class="booking">
     <Navbar />
-    <SubNavbar :title="title"/>
-    <BookingTab :doctorID="$route.params.doctorID" :hospitalName="$route.params.hospitalName" :department="$route.params.department" :date="$route.params.date"/>
-    <Footer />
     <Login />
+    <SubNavbar :title="title"/>
+    <BookingTab :doctorID="String($route.params.doctorID)" :hospitalName="$route.params.hospitalName" :department="$route.params.department" :date="$route.params.date"/>
+    <Footer />
      <!-- <template v-for="(item, index) in responseData" >
         <p class="change" :key="item.message">{{ index }} {{ item }}</p>
       </template> -->
