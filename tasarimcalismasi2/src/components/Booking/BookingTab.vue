@@ -39,7 +39,7 @@
             </VueSlickCarousel>
         </div>
         <div class="schedule">
-          <p class="datetext">{{date}}</p>
+          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{date}}</p></div>
             <div class="time">
                 <div>
                     <template v-for="item in time">

@@ -37,6 +37,22 @@
     width: 70%;
     line-height: 1.5;
 }
+.booking-tab .schedule-tab .schedule .datetext{
+    display: flex;
+    align-items: center;
+    padding: 0 45px;
+}
+.booking-tab .schedule-tab .schedule .datetext span {
+    color: #757575;
+    font-size: 20px;
+}
+.booking-tab .schedule-tab .schedule .datetext .h5 {
+    margin-bottom: 0;
+    padding-top: 3px;
+    padding-left: 2px;
+    font-size: 14px;
+    color: #757575;
+}
 .booking-tab .schedule-tab .day {
     padding: 0 45px;
     margin: 10px 0;
