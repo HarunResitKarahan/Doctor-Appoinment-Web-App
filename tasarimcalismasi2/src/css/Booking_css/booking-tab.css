@@ -118,7 +118,7 @@
     padding: 12px;
     transition: color 0.2s ease;
 }
-.booking-tab .schedule-tab .time div .appointment:nth-child(2) {
+.booking-tab .schedule-tab .time div .appointment .booked{
     background-color: white;
     color: rgba(0, 0, 0, 0.164);
     cursor: default;

@@ -19,11 +19,9 @@ def PatientApi(request, id = 0):
     elif request.method == 'POST':
         patient_data = JSONParser().parse(request)
         patient_data['patientPassword'] = make_password(patient_data['patientPassword'])
-        print(type(patient_data['patientID']))
         # print(check_password(patient_data['patientPassword']))
         patient_serializer = PatientSerializer(data = patient_data)
         if patient_serializer.is_valid():
-            print(patient_serializer)
             patient_serializer.save()
             return JsonResponse("Added Successfully", safe = False)
         return JsonResponse("Failed to Add", safe = False)
@@ -90,7 +88,6 @@ def DoctorGetDoctors(request, id = 0):
         city = City.objects.filter(cityName = request_data['cityName']).values()
         hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity_id = city[0]['cityID']).values()
         doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalID']).values()
-        print(doctor)
         appointment = Appointment.objects.filter(appointmentDepartmanID_id = department[0]['departmanID']).values()
         # print(appointment)
         # print(datetime.strptime(str(appointment[0]['appointmentTime']), "%Y-%m-%d %H:%M:%S").date()) # %H:%M:%S
@@ -112,7 +109,6 @@ def DoctorGetDoctors(request, id = 0):
                 randevuAlinmisDoktorlar.remove(item)
         for item in doctor:
             if not item['doctorID'] in randevuAlinmisDoktorlar:
-                print(item['doctorID'])
                 doctor = doctor.exclude(doctorID = item['doctorID'])
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
@@ -134,7 +130,6 @@ def ScheduleGetTime(request, id = 0):
         return JsonResponse(schedule_serializer.data, safe = False)
     elif request.method == 'POST':
         request_data = JSONParser().parse(request)
-        print(request_data)
         appointment = Appointment.objects.filter(appointmentDoctorID_id = request_data['doctorID']).values()
         sayac = 0
         for i in appointment:

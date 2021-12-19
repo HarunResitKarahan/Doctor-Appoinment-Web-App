@@ -41,6 +41,7 @@
         <div class="schedule">
             <div class="time">
                 <div>
+                  {{bookedtime}}
                     <template v-for="item in time">
                         <div class="appointment" :key="item">
                             <p>{{item}}</p>
@@ -128,7 +129,6 @@ export default {
     this.dateday = Number(this.date.split('-')[2])
     this.datemonth = Number(this.date.split('-')[1])
     this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
-    // this.current = this.current.getDate()
     fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -139,19 +139,19 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.doctor = data
+        fetch('http://localhost:8000/schedule/getschedule', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            scheduleDate: this.date,
+            doctorID: this.doctor[0].doctorID
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            this.bookedtime = data
+          })
       })
-    // fetch('http://localhost:8000/schedule/getschedule', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     scheduleDate: date,
-    //     doctorID: this.doctor[0].doctorID
-    //   })
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     this.bookedtime = data
-    //   })
   },
   mounted () {
     $(document).ready(function () {
