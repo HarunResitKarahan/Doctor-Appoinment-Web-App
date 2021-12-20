@@ -1,9 +1,16 @@
+.success-comp {
+    padding: 100px 60px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .appointment-successful .success {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 225px 60px;
-    background-color: #f8f9fa;
+    padding: 30px;
+    width: fit-content;
 } 
 .appointment-successful .success .verify {
     width: fit-content;
