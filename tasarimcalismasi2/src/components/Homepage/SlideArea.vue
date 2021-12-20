@@ -28,10 +28,9 @@
                   <span>Bölüm</span>
                   <select v-model="department" name="department" id="department">
                     <option value="" selected disabled hidden>Bölüm Seçin</option>
-                    <option value="Göz Hastalıkları">GÖZ HASTALIKLARI</option>
-                    <option value="Beyin ve Sinir Cerrahisi">BEYİN VE SİNİR CERRAHİSİ</option>
-                    <option value="Nöroloji">NÖROLOJİ</option>
-                    <option value="Genel Cerrahi">GENEL CERRAHİ</option>
+                    <template v-for="(item,index) in policlinics">
+                      <option :value="item.departmanName" :key="index">{{item.departmanName}}</option>
+                    </template>
                   </select>
               </div>
               <div class="search">
@@ -54,8 +53,26 @@ export default {
     return {
       location: '',
       gender: '',
-      department: ''
+      department: '',
+      policlinics: [],
+      city: []
     }
+  },
+  created () {
+    fetch('http://localhost:8000/department/getclinics', {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.policlinics = data
+      })
+    fetch('http://localhost:8000/city/getcitys', {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.city = data
+      })
   }
 }
 </script>
