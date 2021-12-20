@@ -28,6 +28,8 @@ import '@/css/DoctorSearch_css/show-doctors.css'
 import '@/css/Profile_css/profile.css'
 import '@/css/Profile_css/profile-component.css'
 
+import '@/css/AppointmentSuccess_css/appointment-success.css'
+
 import './scripts/Home_js/clinic.js'
 
 Vue.use(BootstrapVue)

@@ -1,0 +1,27 @@
+.appointment-successful .navbar {
+    box-shadow: none;
+}
+.appointment-successful .navbar .logo {
+    padding: 17px;
+}
+.appointment-successful .navbar .log-in {
+    display: none;
+}
+.appointment-successful .sub-navbar {
+    background-color: rgb(73, 201, 188);
+}
+.appointment-successful .sub-navbar p {
+    padding: 30px 35px;
+}
+.appointment-successful .site-footer {
+    background-color: rgb(73, 201, 188);
+}
+.appointment-successful .navbar .log-in a {
+    color: rgb(73, 201, 188);
+    border: 2px solid rgb(73, 201, 188);
+    padding: 15px;
+}
+.appointment-successful .navbar .log-in a:hover {
+    background: rgb(73, 201, 188); /* #66b7cb */
+    color: white;
+}

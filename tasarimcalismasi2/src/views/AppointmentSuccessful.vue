@@ -1,5 +1,5 @@
 <template>
-  <div class="appointmentsuccessful">
+  <div class="appointment-successful">
     <Navbar />
     <Footer />
   </div>
