@@ -43,14 +43,14 @@
             <div class="time">
                 <div>
                     <template v-for="item in time">
-                        <div class="appointment" :key="item">
+                        <div @click="selectedTime($event)" class="appointment" :key="item">
                             <p>{{item}}</p>
                         </div>
                     </template>
                 </div>
             </div>
             <div class="make-a-apointment">
-                <p>RANDEVU AL</p>
+                <router-link :to="{ name: 'MakeAppointment', params: { } }"><p>RANDEVU AL</p></router-link>
             </div>
         </div>
     </div>
@@ -88,6 +88,7 @@ export default {
       dateyear: Number,
       datemonth: Number,
       day: Number,
+      selectedtime: '',
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       bookedtime: [],
       doctor: []
@@ -142,6 +143,25 @@ export default {
           item.lastChild.style.removeProperty('color')
         }
       })
+    },
+    selectedTime (event) {
+      if ($(event.target).hasClass('appointment')) {
+        if ($(event.target).hasClass('selected')) {
+          $(event.target).removeClass('selected')
+        } else {
+          $('.appointment').removeClass('selected')
+          $(event.target).addClass('selected')
+          this.selectedtime = event.target.firstChild.textContent
+        }
+      } else if (event.target.tagName === 'P') {
+        if ($(event.target.parentNode).hasClass('selected')) {
+          $(event.target.parentNode).removeClass('selected')
+        } else {
+          $('.appointment').removeClass('selected')
+          $(event.target.parentNode).addClass('selected')
+          this.selectedtime = event.target.textContent
+        }
+      }
     },
     getmonth (month) {
       var i = 0
@@ -201,6 +221,7 @@ export default {
   mounted () {
     $(document).ready(function () {
       $('.appointment').click(function () {
+        console.log('tıklandı')
         if ($(this).hasClass('selected')) {
           $(this).removeClass('selected')
         } else {

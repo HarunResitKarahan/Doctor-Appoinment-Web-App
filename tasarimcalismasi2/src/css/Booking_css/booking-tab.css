@@ -167,7 +167,7 @@
     justify-content: right;
     padding: 15px 45px;
 }
-.booking-tab .schedule-tab .make-a-apointment p {
+.booking-tab .schedule-tab .make-a-apointment a {
     text-align: center;
     cursor: pointer;
     border-radius: 5px;
@@ -176,6 +176,6 @@
     padding: 15px;
     background: rgb(73, 201, 188);
 }
-.booking-tab .schedule-tab .make-a-apointment p:hover {
-    background-color: rgb(73, 201, 188);
+.booking-tab .schedule-tab .make-a-apointment a:hover {
+    background-color: rgb(55, 214, 198);
 }
