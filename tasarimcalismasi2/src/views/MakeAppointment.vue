@@ -1,14 +1,13 @@
 <template>
-<div class="asd">
-    asd
-</div>
+<!-- eslint-disable-next-line vue/comment-directive -->
+  <div>asd</div>
 </template>
 
 <script>
 export default {
   name: 'MakeAppointment',
   mounted () {
-    document.title = 'Randevu'
+    document.title = 'Randevu Alındı'
   }
 }
 </script>
