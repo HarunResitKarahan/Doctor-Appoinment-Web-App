@@ -112,9 +112,14 @@ export default {
           $('.datetext p').text(event.target.parentNode.lastChild.textContent)
           if (this.bookedtime.length > 0) {
             this.bookedtime.forEach((item) => {
-              $('.appointment p').text((index, currentcontent) => {
+              $('.time div .appointment p').text((index, currentcontent) => {
+                if (item[0] === '0') {
+                  item = item.split('')
+                  item.shift()
+                  item = item.join('')
+                }
                 if (currentcontent === item) {
-                  $('.appointment:nth-child(' + (index + 1) + ')').attr('class', 'booked')
+                  $('.time div:contains(' + currentcontent + ')').attr('class', 'booked')
                 }
               })
             })
@@ -176,9 +181,14 @@ export default {
             this.bookedtime = data
             if (this.bookedtime.length > 0) {
               this.bookedtime.forEach((item) => {
-                $('.appointment p').text((index, currentcontent) => {
+                $('.time div .appointment p').text((index, currentcontent) => {
+                  if (item[0] === '0') {
+                    item = item.split('')
+                    item.shift()
+                    item = item.join('')
+                  }
                   if (currentcontent === item) {
-                    $('.appointment:nth-child(' + (index + 1) + ')').attr('class', 'booked')
+                    $('.time div:contains(' + currentcontent + ')').attr('class', 'booked')
                   }
                 })
               })
