@@ -2,11 +2,14 @@
   <div class="success">
     <div class="verify"><span class="material-icons">verified</span></div>
     <div class="appointment-info">
-        <p class="successfull">BAŞARIYLA RANDEVU ALINDI<span class="material-icons">check</span></p>
+        <p class="successfull"><i>BAŞARIYLA RANDEVU ALINDI</i><span class="material-icons">check</span></p>
         <div class="successfull-info">
-            <p>Randevu Bilgileri: </p>
+            <p><i>Randevu Bilgileri: </i></p>
             <ul>
-                <li>asd</li>
+                <li><i><strong>Tarih:</strong></i><i> 20 Aralık 2021</i></li>
+                <li><i><strong>Doktor:</strong></i><i> Enes Demir</i></li>
+                <li><i><strong>Bölüm:</strong></i><i> Dahiliye</i></li>
+                <li><i><strong>Hastane:</strong></i><i> Şevket Yılmaz Devlet Hastanesi</i></li>
             </ul>
         </div>
     </div>

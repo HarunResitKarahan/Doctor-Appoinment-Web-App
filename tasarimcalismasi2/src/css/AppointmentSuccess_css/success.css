@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 150px 60px;
+    padding: 225px 60px;
     background-color: #f8f9fa;
 } 
 .appointment-successful .success .verify {
@@ -30,5 +30,11 @@
 .appointment-successful .success .appointment-info .successfull-info {
     margin-top: 10px;
     color: #757575;
+    font-weight: 500;
     font-size: 22px;
+}
+.appointment-successful .success .appointment-info li {
+    font-size: 18px;
+    margin-top: 7px;
+    font-weight: 400;
 }
