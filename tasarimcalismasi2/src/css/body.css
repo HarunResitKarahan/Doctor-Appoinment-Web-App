@@ -30,6 +30,9 @@
   * input:focus {
     outline: none;
   }
+  * li {
+    list-style-type: none;
+  }
   body {
     margin: 0;
   }
