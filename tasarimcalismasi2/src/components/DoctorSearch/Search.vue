@@ -177,6 +177,7 @@ export default {
     datechange () {
       this.datereverse = String(this.date).split('-').reverse().join('/')
       if (this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined && this.date !== undefined) {
+        console.log('1.fetch')
         fetch('http://localhost:8000/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -212,6 +213,8 @@ export default {
           this.hospital = []
         }
       } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined) {
+        console.log('2.fetch')
+        console.log(this.hospitalName)
         fetch('http://localhost:8000/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -247,15 +250,20 @@ export default {
     hide (event, prop) {
       if (prop === 'location') {
         this.hospital = []
+        this.doctor = []
         this.location = undefined
       } else if (prop === 'hospital') {
         this.hospitalName = undefined
+        this.doctor = []
       } else if (prop === 'gender') {
         this.gender = undefined
+        this.doctor = []
       } else if (prop === 'date') {
         this.date = undefined
+        this.doctor = []
       } else {
         this.department = undefined
+        this.doctor = []
       }
       var checkboxes = document.getElementsByClassName('checkbox')
       checkboxes.forEach((item) => {
