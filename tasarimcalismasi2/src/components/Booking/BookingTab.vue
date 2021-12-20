@@ -95,12 +95,6 @@ export default {
   },
   methods: {
     getappointment (event) {
-      $('.date').css('background-color', 'white')
-      $('.date:firstchild').css('color', '#212529')
-      $('.date:lastchild').css('color', '#757575')
-      event.target.parentNode.style.backgroundColor = 'rgb(73, 201, 188)'
-      event.target.parentNode.firstChild.style.color = 'white'
-      event.target.parentNode.lastChild.style.color = 'white'
       var date = event.target.parentNode.lastChild.textContent.split(' ')
       var month = this.getmonth(date[1])
       date = date[2] + '-' + String(month) + '-' + date[0]
@@ -128,6 +122,18 @@ export default {
             $('.booked').attr('class', 'appointment')
           }
         })
+      this.selectedDate(event)
+    },
+    selectedDate (event) {
+      var checkboxes = document.getElementsByClassName('date')
+      checkboxes.forEach((item) => {
+        if (item === event.target.parentNode) {
+          console.log(item)
+          event.target.parentNode.style.backgroundColor = 'rgba(73, 201, 188, 0.685)'
+        } else {
+          item.style.backgroundColor = 'white'
+        }
+      })
     },
     getmonth (month) {
       var i = 0
