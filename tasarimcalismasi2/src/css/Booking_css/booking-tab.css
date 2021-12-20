@@ -80,6 +80,7 @@
     width: 170px !important;
     cursor: pointer;
     border-radius: 2px;
+    background-color: white;
 }
 .booking-tab .schedule-tab .day .date p {
     padding-top: 7px;

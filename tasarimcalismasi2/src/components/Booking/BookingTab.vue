@@ -12,7 +12,7 @@
           </div>
         </template>
         <div class="doctor-info">
-          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday) - 1}} {{months[datemonth - 1]}} {{dateyear}}</p></div>
+          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday)}} {{months[datemonth - 1]}} {{dateyear}}</p></div>
             <div class="doctor-name">
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
@@ -128,10 +128,13 @@ export default {
       var checkboxes = document.getElementsByClassName('date')
       checkboxes.forEach((item) => {
         if (item === event.target.parentNode) {
-          console.log(item)
           event.target.parentNode.style.backgroundColor = 'rgba(73, 201, 188, 0.685)'
+          event.target.parentNode.firstChild.style.color = 'white'
+          event.target.parentNode.lastChild.style.color = 'white'
         } else {
-          item.style.backgroundColor = 'white'
+          item.style.removeProperty('background-color')
+          item.firstChild.style.removeProperty('color')
+          item.lastChild.style.removeProperty('color')
         }
       })
     },
