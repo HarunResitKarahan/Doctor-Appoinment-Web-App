@@ -1,3 +1,34 @@
 .appointment-successful .success {
-    background-color: violet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 60px;
+    background-color: #f8f9fa;
 } 
+.appointment-successful .success .verify {
+    width: fit-content;
+    margin-right: 15px;
+}
+.appointment-successful .success .verify .material-icons {
+    font-size: 250px;
+    color: rgb(73, 201, 188);
+}
+.appointment-successful .success .appointment-info .successfull{
+    font-weight: 700;
+    color: #757575;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+.appointment-successful .success .appointment-info .successfull{
+    display: flex;
+}
+.appointment-successful .success .appointment-info .successfull .material-icons{
+    font-size: 45px;
+    line-height: 35px;
+    color: rgb(73, 201, 188);
+}
+.appointment-successful .success .appointment-info .successfull-info {
+    margin-top: 10px;
+    color: #757575;
+    font-size: 22px;
+}
