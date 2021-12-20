@@ -12,6 +12,7 @@
           </div>
         </template>
         <div class="doctor-info">
+          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday) - 1}} {{months[datemonth - 1]}} {{dateyear}}</p></div>
             <div class="doctor-name">
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
@@ -39,7 +40,6 @@
             </VueSlickCarousel>
         </div>
         <div class="schedule">
-          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday) - 1}} {{months[datemonth - 1]}} {{dateyear}}</p></div>
             <div class="time">
                 <div>
                     <template v-for="item in time">
@@ -95,6 +95,12 @@ export default {
   },
   methods: {
     getappointment (event) {
+      $('.date').css('background-color', 'white')
+      $('.date:firstchild').css('color', '#212529')
+      $('.date:lastchild').css('color', '#757575')
+      event.target.parentNode.style.backgroundColor = 'rgb(73, 201, 188)'
+      event.target.parentNode.firstChild.style.color = 'white'
+      event.target.parentNode.lastChild.style.color = 'white'
       var date = event.target.parentNode.lastChild.textContent.split(' ')
       var month = this.getmonth(date[1])
       date = date[2] + '-' + String(month) + '-' + date[0]
@@ -109,7 +115,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.bookedtime = data
-          $('.schedule .datetext p').text(event.target.parentNode.lastChild.textContent)
+          $('.datetext p').text(event.target.parentNode.lastChild.textContent)
           if (this.bookedtime.length > 0) {
             this.bookedtime.forEach((item) => {
               $('.appointment p').text((index, currentcontent) => {
