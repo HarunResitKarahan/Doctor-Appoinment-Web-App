@@ -250,6 +250,7 @@ export default {
     hide (event, prop) {
       if (prop === 'location') {
         this.hospital = []
+        this.hospitalName = undefined
         this.doctor = []
         this.location = undefined
       } else if (prop === 'hospital') {
