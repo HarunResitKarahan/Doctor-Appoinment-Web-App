@@ -16,7 +16,7 @@
         </div>
     </div>
     <div>
-        asd
+       <router-link to="/"><p class="return-homepage">Ana Sayfa'ya Dön</p></router-link>
     </div>
   </div>
 </template>

@@ -5,6 +5,15 @@
     align-items: center;
     flex-direction: column;
 }
+.success-comp .router-link-active .return-homepage {
+    padding: 20px;
+    background-color: rgb(73, 201, 188);
+    color: white;
+    border-radius: 5px;
+}
+.success-comp .router-link-active .return-homepage:hover{
+    background-color: rgb(92, 206, 194);
+}
 .appointment-successful .success {
     display: flex;
     justify-content: center;
