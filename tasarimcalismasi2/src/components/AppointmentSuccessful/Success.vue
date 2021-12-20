@@ -6,7 +6,7 @@
         <div class="successfull-info">
             <p><i>Randevu Bilgileri: </i></p>
             <ul>
-                <li><i><strong>Tarih:</strong></i><i> 20 Aralık 2021</i></li>
+                <li><i><strong>Tarih:</strong></i><i> 20 Aralık 2021 9:30</i></li>
                 <li><i><strong>Doktor:</strong></i><i> Enes Demir</i></li>
                 <li><i><strong>Bölüm:</strong></i><i> Dahiliye</i></li>
                 <li><i><strong>Hastane:</strong></i><i> Şevket Yılmaz Devlet Hastanesi</i></li>
