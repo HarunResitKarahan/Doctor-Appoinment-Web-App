@@ -80,7 +80,6 @@
     width: 170px !important;
     cursor: pointer;
     border-radius: 2px;
-    background-color: white;
 }
 .booking-tab .schedule-tab .day .date p {
     padding-top: 7px;
@@ -108,10 +107,10 @@
     margin-right: 0;
 }
 /* .booking-tab .schedule-tab .day .slick-slide:nth-child(1) {
-    background-color: rgb(73, 201, 188);
+    background-color: rgba(73, 201, 188, 0.685);
     color: white;
-} */
-/* .booking-tab .schedule-tab .day .slick-slide:nth-child(1) .h5 {
+}
+.booking-tab .schedule-tab .day .slick-slide:nth-child(1) .h5 {
     color: white;
 } */
 .booking-tab .schedule-tab .time {
