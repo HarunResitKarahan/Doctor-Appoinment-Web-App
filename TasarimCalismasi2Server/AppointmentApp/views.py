@@ -82,6 +82,10 @@ def HospitalGetHospital(request, id = 0):
 
 @csrf_exempt
 def DoctorGetDoctors(request, id = 0):
+    if request.method == 'GET':
+        doctors = Doctor.objects.all()
+        doctor_serializer = DoctorSerializer(doctors, many = True)
+        return JsonResponse(doctor_serializer.data, safe = False)
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
         department = Departman.objects.filter(departmanName = request_data['departmanName']).values()
