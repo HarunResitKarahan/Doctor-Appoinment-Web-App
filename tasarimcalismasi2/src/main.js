@@ -29,6 +29,7 @@ import '@/css/Profile_css/profile.css'
 import '@/css/Profile_css/profile-component.css'
 
 import '@/css/AppointmentSuccess_css/appointment-success.css'
+import '@/css/AppointmentSuccess_css/success.css'
 
 import './scripts/Home_js/clinic.js'
 
