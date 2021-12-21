@@ -7,7 +7,7 @@
           <template v-for="item in doctors" >
             <div class="cards" :key = "item">
                 <img src="@/assets/doctor1.jpg" width="240" height="160" style="border-radius: 10px;">
-                <p class="doctor-name">{{item}}</p>
+                <p class="doctor-name">{{item.doctorName}} {{item.doctorSurname}}</p>
                 <p class="doctor-departmant">(Dahiliye)</p>
                 <div class="star">
                     <span class="material-icons" >star</span ><p class="after">4.7</p><p>154 Değerlendirme</p>

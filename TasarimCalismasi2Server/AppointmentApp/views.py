@@ -86,8 +86,14 @@ def HospitalGetHospital(request, id = 0):
 @csrf_exempt
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'GET':
-        doctors = Doctor.objects.all().order_by('-doctorScore')
-        print(doctors)
+        doctors = Doctor.objects.all().order_by('-doctorScore').values()
+        for item in doctors:
+            print(item['hospitalID_id'])
+            hospital = Hospital.objects.filter(hospitalID = item['hospitalID_id']).values()
+            print(hospital['hospitalName'])
+            item['hospitalID_id'] = hospital['hospitalName']
+            department = Departman.objects.filter(departmanID = item['departmanID_id']).values()
+            item['departmanID_id'] = department['departmanName']
         doctor_serializer = DoctorSerializer(doctors, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
     if request.method == 'POST':
