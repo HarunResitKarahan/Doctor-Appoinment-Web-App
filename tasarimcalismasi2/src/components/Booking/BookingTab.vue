@@ -175,10 +175,17 @@ export default {
     }
   },
   created () {
-    this.dateyear = Number(this.date.split('-')[0])
-    this.dateday = Number(this.date.split('-')[2])
-    this.datemonth = Number(this.date.split('-')[1])
-    this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
+    if (this.months.includes(this.date.split('-')[1])) {
+      this.dateyear = Number(this.date.split('-')[0])
+      this.dateday = Number(this.date.split('-')[2])
+      this.datemonth = Number(this.months.indexOf(this.date.split('-')[1]) + 1)
+      this.day = new Date(Number(this.date.split('-')[0]), Number(this.months.indexOf(this.date.split('-')[1])), Number(this.date.split('-')[2])).getDay()
+    } else {
+      this.dateyear = Number(this.date.split('-')[0])
+      this.dateday = Number(this.date.split('-')[2])
+      this.datemonth = Number(this.date.split('-')[1])
+      this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
+    }
     fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

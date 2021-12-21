@@ -15,7 +15,7 @@
                 <p class="doctor-location"><span class="material-icons">place</span>{{item.hospitalID_id}}</p>
                 <p class="doctor-soon-appointmant"><span class="material-icons">schedule</span>Randevu Tarihi {{item.doctorCreateTime}}</p>
                 <div class="sent">
-                    <router-link :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: item.hospitalID_id, department: item.departmanID_id, date: item.doctorCreateTime } }">
+                    <router-link :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: item.hospitalID_id, department: item.departmanID_id, date: item.doctorCreateTime.split(' ').reverse().join('-') } }">
                       Randevu Al
                     </router-link>
                 </div>
