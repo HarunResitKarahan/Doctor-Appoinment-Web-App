@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="make-a-apointment">
-                <router-link to="/randevu-alındı"><p>RANDEVU AL</p></router-link>
+                <router-link :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
                 <!-- :to="{ name: 'MakeAppointment', params: { } }" -->
             </div>
         </div>

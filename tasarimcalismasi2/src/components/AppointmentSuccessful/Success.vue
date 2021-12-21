@@ -23,6 +23,12 @@
 
 <script>
 export default {
-  name: 'Success'
+  name: 'Success',
+  props: {
+    doctor: Array,
+    dateyear: Number,
+    datemonth: Number,
+    dateday: Number
+  }
 }
 </script>
