@@ -15,6 +15,9 @@
     margin-top: 60px;
     max-width: 80%;
 }
+.doctor .doctor-cards .slick-track {
+    padding: 15px 0;
+}
 .doctor .doctor-cards .cards {
     width: auto !important;
     background: white;
