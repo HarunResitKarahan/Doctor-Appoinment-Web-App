@@ -89,6 +89,7 @@ def DoctorGetDoctors(request, id = 0):
         doctors = Doctor.objects.all().order_by('-doctorScore').values()
         today = datetime.now()
         increasedtoday = datetime.now()
+        months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
         for item in doctors:
             hospital = Hospital.objects.filter(hospitalID = item['hospitalID_id']).values()
             item['hospitalID_id'] = hospital[0]['hospitalName']
@@ -104,9 +105,21 @@ def DoctorGetDoctors(request, id = 0):
                     if counter == 13:
                         increasedtoday = today + timedelta(days=1)
                     else:
-                        item['doctorCreateTime'] = str(increasedtoday.date())
+                        splitedDate = str(increasedtoday.date()).split('-')
+                        splitedDate[1] = months[int(splitedDate[1]) - 1]
+                        year = splitedDate[0]
+                        splitedDate[0] = splitedDate[2]
+                        splitedDate[2] = year
+                        newyear = ' '.join(splitedDate)
+                        item['doctorCreateTime'] = newyear
             else:
-                item['doctorCreateTime'] = str(today.date())
+                splitedDate = str(today.date()).split('-')
+                splitedDate[1] = months[int(splitedDate[1]) - 1]
+                year = splitedDate[0]
+                splitedDate[0] = splitedDate[2]
+                splitedDate[2] = year
+                newyear = ' '.join(splitedDate)
+                item['doctorCreateTime'] = newyear
         doctor_serializer = DoctorSerializer(doctors, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
     if request.method == 'POST':
