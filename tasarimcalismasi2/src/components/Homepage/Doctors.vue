@@ -8,11 +8,11 @@
             <div class="cards" :key = "item">
                 <img src="@/assets/doctor1.jpg" width="240" height="160" style="border-radius: 10px;">
                 <p class="doctor-name">{{item.doctorName}} {{item.doctorSurname}}</p>
-                <p class="doctor-departmant">(Dahiliye)</p>
+                <p class="doctor-departmant">({{item.departmanID_id}})</p>
                 <div class="star">
-                    <span class="material-icons" >star</span ><p class="after">4.7</p><p>154 Değerlendirme</p>
+                    <span class="material-icons" >star</span ><p class="after">{{item.doctorScore}}</p><p>154 Değerlendirme</p>
                 </div>
-                <p class="doctor-location"><span class="material-icons">place</span>Şevket Yılmaz Devlet Hastanesi</p>
+                <p class="doctor-location"><span class="material-icons">place</span>{{item.hospitalID_id}}</p>
                 <p class="doctor-soon-appointmant"><span class="material-icons">schedule</span>Randevu Tarihi 23 Ocak 2022</p>
                 <div class="sent">
                     <a href="#" class="sent">Randevu Al</a>
