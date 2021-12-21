@@ -13,7 +13,7 @@
                     <span class="material-icons" >star</span ><p class="after">{{item.doctorScore}}</p><p>154 Değerlendirme</p>
                 </div>
                 <p class="doctor-location"><span class="material-icons">place</span>{{item.hospitalID_id}}</p>
-                <p class="doctor-soon-appointmant"><span class="material-icons">schedule</span>Randevu Tarihi 23 Ocak 2022</p>
+                <p class="doctor-soon-appointmant"><span class="material-icons">schedule</span>Randevu Tarihi {{item.doctorCreateTime}}</p>
                 <div class="sent">
                     <a href="#" class="sent">Randevu Al</a>
                 </div>
