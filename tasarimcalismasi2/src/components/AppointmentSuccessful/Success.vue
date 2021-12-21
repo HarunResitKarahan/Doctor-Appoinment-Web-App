@@ -29,6 +29,7 @@ export default {
     dateyear: Number,
     datemonth: Number,
     dateday: Number
-  }
+  },
+  created () {}
 }
 </script>
