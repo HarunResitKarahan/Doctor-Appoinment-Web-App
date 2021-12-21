@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render
-from datetime import datetime
+from datetime import datetime,timedelta
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
@@ -87,11 +87,26 @@ def HospitalGetHospital(request, id = 0):
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'GET':
         doctors = Doctor.objects.all().order_by('-doctorScore').values()
+        today = datetime.now()
+        increasedtoday = datetime.now()
         for item in doctors:
             hospital = Hospital.objects.filter(hospitalID = item['hospitalID_id']).values()
             item['hospitalID_id'] = hospital[0]['hospitalName']
             department = Departman.objects.filter(departmanID = item['departmanID_id']).values()
             item['departmanID_id'] = department[0]['departmanName']
+            #-------------------------------------------------------------
+            appointment = Appointment.objects.filter(appointmentDoctorID_id = item['doctorID']).values()
+            if len(appointment) > 0:
+                counter = 0
+                for i in appointment:
+                    if i['appointmentTime'].date() == today.date() and i['appointmentTime'].date() >= today.date():
+                        counter = counter + 1
+                    if counter == 13:
+                        increasedtoday = today + timedelta(days=1)
+                    else:
+                        item['doctorCreateTime'] = str(increasedtoday.date())
+            else:
+                item['doctorCreateTime'] = str(today.date())
         doctor_serializer = DoctorSerializer(doctors, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
     if request.method == 'POST':
