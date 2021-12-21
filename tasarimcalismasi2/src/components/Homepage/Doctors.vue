@@ -6,7 +6,12 @@
         <VueSlickCarousel v-if="doctors.length > 0" :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
           <template v-for="item in doctors" >
             <div class="cards" :key = "item">
-                <img src="@/assets/doctor1.jpg" width="240" height="160" style="border-radius: 10px;">
+                <template v-if="item.doctorSex == 'Erkek'">
+                  <img src="@/assets/doctor1.jpg" width="240" height="160" style="border-radius: 10px;">
+                </template>
+                <template v-else>
+                   <img src="@/assets/doctor2.jpg" width="240" height="160" style="border-radius: 10px;">
+                </template>
                 <p class="doctor-name">{{item.doctorName}} {{item.doctorSurname}}</p>
                 <p class="doctor-departmant">({{item.departmanID_id}})</p>
                 <div class="star">
