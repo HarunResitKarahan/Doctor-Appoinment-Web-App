@@ -3,7 +3,7 @@
       <p class="h4" style="margin-bottom: 15px;">En Beğenilen Doktorlardan Randevu Al</p>
       <p class="h5">Sistemdeki En Beğenilen Doktorlardan Randevu Alabilirsiniz.</p>
       <div class="doctor-cards">
-        <VueSlickCarousel v-bind="settings" style="width: 80%;">
+        <VueSlickCarousel v-if="doctors.length > 0" :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
           <template v-for="item in doctors" >
             <div class="cards" :key = "item">
                 <img src="@/assets/doctor1.jpg" width="240" height="160" style="border-radius: 10px;">
@@ -36,14 +36,6 @@ export default {
   },
   data () {
     return {
-      settings: {
-        arrows: true,
-        speed: 1000,
-        variableWidth: true,
-        infinite: false,
-        slidesToScroll: 3,
-        swipeToSlide: true
-      },
       data: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       doctors: []
     }
