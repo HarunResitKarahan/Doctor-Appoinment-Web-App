@@ -45,8 +45,17 @@ export default {
         swipeToSlide: true
       },
       data: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-      doctors: ['Ahmet Furkan ÇELİK', 'Mehmet Akif ÇELİKTÜRK', 'Fatma ARICI', 'Enes DEMİR']
+      doctors: []
     }
+  },
+  created () {
+    fetch('http://localhost:8000/doctor/getdoctor', {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.doctors = data
+      })
   }
 }
 </script>

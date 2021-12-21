@@ -10,6 +10,9 @@ from AppointmentApp.serializers import AppointmentSerializer, HospitalSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
 
+def Sort (e):
+    return e['doctorScore']
+
 @csrf_exempt
 def PatientApi(request, id = 0):
     if request.method == 'GET':
@@ -83,7 +86,8 @@ def HospitalGetHospital(request, id = 0):
 @csrf_exempt
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'GET':
-        doctors = Doctor.objects.all()
+        doctors = Doctor.objects.all().order_by('-doctorScore')
+        print(doctors)
         doctor_serializer = DoctorSerializer(doctors, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
     if request.method == 'POST':
