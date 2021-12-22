@@ -50,7 +50,9 @@
                 </div>
             </div>
             <div class="make-a-apointment">
-                <router-link :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
+                <!-- <router-link :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link> -->
+                    <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
+                    <a>RANDEVU AL</a>
                 <!-- :to="{ name: 'MakeAppointment', params: { } }" -->
             </div>
         </div>
@@ -60,7 +62,9 @@
 
 <script>
 import $ from 'jquery'
+// import Vue from 'vue'
 import VueSlickCarousel from 'vue-slick-carousel'
+// import { mapState } from 'vuex'
 
 export default {
   name: 'BookingTab',
@@ -149,6 +153,7 @@ export default {
       if ($(event.target).hasClass('appointment')) {
         if ($(event.target).hasClass('selected')) {
           $(event.target).removeClass('selected')
+          this.selectedtime = ''
         } else {
           $('.appointment').removeClass('selected')
           $(event.target).addClass('selected')
@@ -157,11 +162,19 @@ export default {
       } else if (event.target.tagName === 'P') {
         if ($(event.target.parentNode).hasClass('selected')) {
           $(event.target.parentNode).removeClass('selected')
+          this.selectedtime = ''
         } else {
           $('.appointment').removeClass('selected')
           $(event.target.parentNode).addClass('selected')
           this.selectedtime = event.target.textContent
         }
+      }
+      if (this.selectedtime === '') {
+        $('.make-a-apointment a:nth-child(1)').hide()
+        $('.make-a-apointment a:nth-child(2)').show()
+      } else {
+        $('.make-a-apointment a:nth-child(2)').hide()
+        $('.make-a-apointment a:nth-child(1)').show()
       }
     },
     getmonth (month) {
@@ -175,6 +188,7 @@ export default {
     }
   },
   created () {
+    $('.make-a-apointment a:nth-child(1)').hide()
     if (this.months.includes(this.date.split('-')[1])) {
       this.dateyear = Number(this.date.split('-')[0])
       this.dateday = Number(this.date.split('-')[2])
@@ -225,25 +239,24 @@ export default {
             }
           })
       })
-  },
-  mounted () {
-    $(document).ready(function () {
-      $('.appointment').click(function () {
-        console.log('tıklandı')
-        if ($(this).hasClass('selected')) {
-          $(this).removeClass('selected')
-        } else {
-          $('.appointment').removeClass('selected')
-          $(this).addClass('selected')
-        }
-      })
-      $('.date').click(function () {
-        $('.date').css('background-color', 'white')
-        $('.date p').css('color', '#757575')
-        $(this).css('background-color', 'rgb(73, 201, 188)')
-        $(this).find('p').css('color', 'white')
-      })
-    })
   }
+  // mounted () {
+  //   $(document).ready(function () {
+  //     $('.appointment').click(function () {
+  //       if ($(this).hasClass('selected')) {
+  //         $(this).removeClass('selected')
+  //       } else {
+  //         $('.appointment').removeClass('selected')
+  //         $(this).addClass('selected')
+  //       }
+  //     })
+  //     $('.date').click(function () {
+  //       $('.date').css('background-color', 'white')
+  //       $('.date p').css('color', '#757575')
+  //       $(this).css('background-color', 'rgb(73, 201, 188)')
+  //       $(this).find('p').css('color', 'white')
+  //     })
+  //   })
+  // }
 }
 </script>
