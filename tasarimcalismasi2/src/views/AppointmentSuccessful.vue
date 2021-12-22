@@ -1,7 +1,7 @@
 <template>
   <div class="appointment-successful">
     <Navbar />
-    <Success :dateday="$route.params.dateday" :datemonth="$route.params.datemonth" :dateyear="$route.params.dateyear" :doctor="$route.params.doctor"/>
+    <Success :dateday="$route.params.dateday" :datemonth="$route.params.datemonth" :dateyear="$route.params.dateyear" :selectedtime="$route.params.selectedtime" :doctor="$route.params.doctor"/>
     <Footer />
   </div>
 </template>

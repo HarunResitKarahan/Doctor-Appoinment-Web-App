@@ -28,6 +28,7 @@ export default {
     doctor: Array,
     dateyear: Number,
     datemonth: Number,
+    selectedtime: String,
     dateday: Number
   },
   created () {}

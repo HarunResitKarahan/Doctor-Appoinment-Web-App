@@ -51,7 +51,7 @@
             </div>
             <div class="make-a-apointment">
                 <!-- <router-link :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link> -->
-                    <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
+                    <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, selectedtime: selectedtime, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
                     <a>RANDEVU AL</a>
                 <!-- :to="{ name: 'MakeAppointment', params: { } }" -->
             </div>
