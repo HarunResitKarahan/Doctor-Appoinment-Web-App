@@ -28,6 +28,7 @@
 .show-doctors .doctor-card .make-appointment {
     width: fit-content;
     margin-left: auto;
+    cursor: pointer;
 }
 .show-doctors .doctor-card .make-appointment p {
     background-color: #f8f9fa;
@@ -37,7 +38,7 @@
     padding: 15px;
     border-radius: 3px;
 }
-.show-doctors .doctor-card .make-appointment .appointment p:hover {
+.show-doctors .doctor-card .make-appointment p:hover {
     background-color: rgb(73, 201, 188);
     color: white;
 }

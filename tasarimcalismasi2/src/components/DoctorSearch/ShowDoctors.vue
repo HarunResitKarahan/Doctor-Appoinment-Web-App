@@ -56,7 +56,12 @@
               <span class="material-icons" style="color: rgb(2550, 0, 0, 0.300); font-size: 24px;padding: 1px; margin-right: 2px;">emergency</span><p style="padding-top: 3.5px;">{{hospitalName}}</p>
           </div>
           <div class="make-appointment">
-            <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: hospitalName, department: department, date: date } }"><p>Randevu Al</p></router-link>
+            <template v-if="issignin != 'Giriş Başarılı'">
+                <p @click="loginPage">Randevu Al</p>
+            </template>
+            <template v-if="issignin == 'Giriş Başarılı'">
+                <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: hospitalName, department: department, date: date } }"><p>Randevu Al</p></router-link>
+            </template>
           </div>
         </div>
     </div>
@@ -81,6 +86,7 @@ export default {
   },
   data () {
     return {
+      issignin: ''
     }
   },
   watch: {
