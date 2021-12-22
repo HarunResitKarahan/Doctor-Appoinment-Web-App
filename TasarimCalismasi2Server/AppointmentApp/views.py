@@ -198,3 +198,11 @@ def ScheduleGetTime(request, id = 0):
         patient=Appointment.objects.get(patientID = id)
         patient.delete()
         return JsonResponse("Deleted Successfully",safe=False)
+@csrf_exempt
+def ScheduleMakeSchedule(request, id = 0):
+    if request.method == 'POST':
+        request_data = JSONParser().parse(request)
+        appointment = Appointment.objects.filter(appointmentDoctorID_id = request_data['doctorID']).values()
+        schedule_serializer = AppointmentSerializer(appointment, many = True)
+        return JsonResponse(schedule_serializer.data, safe = False)
+        
