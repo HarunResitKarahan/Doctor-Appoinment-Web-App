@@ -89,6 +89,11 @@ export default {
     }
   },
   methods: {
+    loginPage () {
+      $('.login').css('display', 'flex')
+      $('.login .login-card').css('display', 'block')
+      $('.login .register-card').css('display', 'none')
+    },
     star () {
       var doctor = this.doctor
       var getstar
@@ -172,6 +177,9 @@ export default {
         })
       })
     }
+  },
+  created () {
+    this.issignin = localStorage.issignin
   }
 }
 </script>

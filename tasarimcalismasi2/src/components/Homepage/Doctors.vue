@@ -20,9 +20,16 @@
                 <p class="doctor-location"><span class="material-icons">place</span>{{item.hospitalID_id}}</p>
                 <p class="doctor-soon-appointmant"><span class="material-icons">schedule</span>Randevu Tarihi {{item.doctorCreateTime}}</p>
                 <div class="sent">
-                    <router-link :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: item.hospitalID_id, department: item.departmanID_id, date: item.doctorCreateTime.split(' ').reverse().join('-') } }">
-                      Randevu Al
-                    </router-link>
+                  <template v-if="issignin != 'Giriş Başarılı'">
+                    <div @click="loginPage" class="sent">
+                        <a>Randevu Al</a>
+                    </div>
+                  </template>
+                  <template v-if="issignin == 'Giriş Başarılı'">
+                    <div class="sent">
+                      <router-link :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: item.hospitalID_id, department: item.departmanID_id, date: item.doctorCreateTime.split(' ').reverse().join('-') } }">Randevu Al</router-link>
+                    </div>
+                  </template>
                 </div>
             </div>
           </template>
@@ -35,6 +42,7 @@
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import $ from 'jquery'
 
 export default {
   name: 'Doctors',
@@ -44,10 +52,19 @@ export default {
   data () {
     return {
       data: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-      doctors: []
+      doctors: [],
+      issignin: ''
+    }
+  },
+  methods: {
+    loginPage () {
+      $('.login').css('display', 'flex')
+      $('.login .login-card').css('display', 'block')
+      $('.login .register-card').css('display', 'none')
     }
   },
   created () {
+    this.issignin = localStorage.issignin
     fetch('http://localhost:8000/doctor/getdoctor', {
       method: 'GET'
     })
