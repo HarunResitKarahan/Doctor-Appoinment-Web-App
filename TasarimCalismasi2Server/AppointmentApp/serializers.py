@@ -21,6 +21,7 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Departman
         fields=['departmanName']
+
 class CitySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = City
@@ -35,6 +36,38 @@ class DoctorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Doctor
         fields=['doctorID', 'doctorName', 'doctorSurname', 'doctorCreateTime', 'departmanID_id', 'hospitalID_id', 'doctorScore', 'doctorSex']
+
+class DoctorForeignSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Doctor
+        fields=['doctorID']
+
+class DepartmentForeignSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Departman
+        fields=['departmanID']
+
+class PatientForeignSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Patient
+        fields=['patientID']
+
+class Appointmen2Serializer(serializers.HyperlinkedModelSerializer):
+    appointmentDepartmanID_id = DepartmentForeignSerializer()
+    appointmentDoctorID_id = DoctorForeignSerializer()
+    appointmentPatientID_id = PatientForeignSerializer()
+    # appointmentDepartmanID_id = DepartmentForeignSerializer(source='departmanID',read_only=True)
+    # appointmentDoctorID_id = DoctorForeignSerializer(source='doctorID',read_only=True)
+    # appointmentPatientID_id = PatientForeignSerializer(source='patientID',read_only=True)
+    # appointmentDepartmanID_id = serializers.IntegerField(source='departmanID', read_only=True)
+    # appointmentDoctorID_id = serializers.IntegerField(source='doctorID', read_only=True)
+    # appointmentPatientID_id = serializers.CharField(source='patientID', read_only=True)
+    # appointmentDepartmanID_id = serializers.SlugRelatedField(slug_field='departmanID',read_only=True)
+    # appointmentDoctorID_id = serializers.SlugRelatedField(slug_field='doctorID', read_only=True)
+    # appointmentPatientID_id = serializers.SlugRelatedField(slug_field='patientID', read_only=True)
+    class Meta:
+        model = Appointment
+        fields=('appointmentTime', 'appointmentPoint', 'appointmentDepartmanID_id', 'appointmentDoctorID_id', 'appointmentPatientID_id')
 
 # class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
 #     class Meta:
