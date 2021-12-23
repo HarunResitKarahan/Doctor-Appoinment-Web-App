@@ -199,7 +199,7 @@ export default {
       }
     },
     randevuekle () {
-      this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate, dateday: this.dateday, datemonth: this.datemonth, dateyear: this.dateyear, doctor: this.doctor } })
+      this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate, dateday: this.dateday, datemonth: this.datemonth, dateyear: this.dateyear, doctor: this.doctor, hospitalName: this.hospitalName, department: this.hospitalName } })
     },
     getmonth (month) {
       var i = 0

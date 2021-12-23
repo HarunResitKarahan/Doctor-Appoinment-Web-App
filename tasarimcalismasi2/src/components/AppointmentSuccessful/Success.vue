@@ -8,8 +8,8 @@
             <div class="successfull-info">
                 <p><i>Randevu Bilgileri: </i></p>
                 <ul>
-                    <li><i><strong>Tarih:</strong></i><i> 20 Aralık 2021 9:30</i></li>
-                    <li><i><strong>Doktor:</strong></i><i> Enes Demir</i></li>
+                    <li><i><strong>Tarih:</strong></i><i> {{this.$route.params.dateday}} {{months[this.$route.params.datemonth - 1]}} {{this.$route.params.dateyear}} {{this.$route.params.selectedtime}}</i></li>
+                    <li><i><strong>Doktor:</strong></i><i> {{this.$route.params.doctor[0].doctorName}} {{this.$route.params.doctor[0].doctorSurname}}</i></li>
                     <li><i><strong>Bölüm:</strong></i><i> Dahiliye</i></li>
                     <li><i><strong>Hastane:</strong></i><i> Şevket Yılmaz Devlet Hastanesi</i></li>
                 </ul>
@@ -32,6 +32,10 @@ export default {
     selectedtime: undefined,
     dateday: Number
   },
-  created () {}
+  data () {
+    return {
+      months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+    }
+  }
 }
 </script>
