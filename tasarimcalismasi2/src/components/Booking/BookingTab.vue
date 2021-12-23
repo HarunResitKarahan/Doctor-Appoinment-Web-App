@@ -52,7 +52,7 @@
             <div class="make-a-apointment">
                 <!-- <router-link :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link> -->
                     <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { selectedtime: selectedtimeupdate, dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
-                    <a>RANDEVU AL</a>
+                    <a @click="randevuekle">RANDEVU AL</a>
                 <!-- :to="{ name: 'MakeAppointment', params: { } }" -->
             </div>
         </div>
@@ -161,31 +161,33 @@ export default {
       })
     },
     selectedTime (event) {
-      if ($(event.target).hasClass('appointment')) {
-        if ($(event.target).hasClass('selected')) {
-          $(event.target).removeClass('selected')
-          // this.selectedtime = ''
-          // this.$set(this.$data, 'selectedtime', '')
-          this.selectedtimeupdate = ''
-        } else {
-          $('.appointment').removeClass('selected')
-          $(event.target).addClass('selected')
-          // this.selectedtime = event.target.firstChild.textContent
-          // this.$set(this.$data, 'selectedtime', event.target.firstChild.textContent)
-          this.selectedtimeupdate = event.target.firstChild.textContent
-        }
-      } else if (event.target.tagName === 'P') {
-        if ($(event.target.parentNode).hasClass('selected')) {
-          $(event.target.parentNode).removeClass('selected')
-          // this.selectedtime = ''
-          // this.$set(this.$data, 'selectedtime', '')
-          this.selectedtimeupdate = ''
-        } else {
-          $('.appointment').removeClass('selected')
-          $(event.target.parentNode).addClass('selected')
-          // this.selectedtime = event.target.textContent
-          // this.$set(this.$data, 'selectedtime', event.target.textContent)
-          this.selectedtimeupdate = event.target.textContent
+      if (!$(event.target).hasClass('booked')) {
+        if ($(event.target).hasClass('appointment')) {
+          if ($(event.target).hasClass('selected')) {
+            $(event.target).removeClass('selected')
+            // this.selectedtime = ''
+            // this.$set(this.$data, 'selectedtime', '')
+            this.selectedtimeupdate = ''
+          } else {
+            $('.appointment').removeClass('selected')
+            $(event.target).addClass('selected')
+            // this.selectedtime = event.target.firstChild.textContent
+            // this.$set(this.$data, 'selectedtime', event.target.firstChild.textContent)
+            this.selectedtimeupdate = event.target.firstChild.textContent
+          }
+        } else if (event.target.tagName === 'P') {
+          if ($(event.target.parentNode).hasClass('selected')) {
+            $(event.target.parentNode).removeClass('selected')
+            // this.selectedtime = ''
+            // this.$set(this.$data, 'selectedtime', '')
+            this.selectedtimeupdate = ''
+          } else {
+            $('.appointment').removeClass('selected')
+            $(event.target.parentNode).addClass('selected')
+            // this.selectedtime = event.target.textContent
+            // this.$set(this.$data, 'selectedtime', event.target.textContent)
+            this.selectedtimeupdate = event.target.textContent
+          }
         }
       }
       // $('.make-a-apointment').html(this.template)
