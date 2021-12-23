@@ -199,7 +199,13 @@ def ScheduleGetTime(request, id = 0):
 def ScheduleMakeSchedule(request, id = 0):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
-        appointment = Appointment.objects.filter(appointmentDoctorID_id = request_data['doctorID']).values()
-        schedule_serializer = AppointmentSerializer(appointment, many = True)
-        return JsonResponse(schedule_serializer.data, safe = False)
+        request_data['appointmentDepartmanID_id'] = int(request_data['appointmentDepartmanID_id'])
+        request_data['appointmentDoctorID_id'] = int(request_data['appointmentDoctorID_id'])
+        request_data['appointmentPatientID_id'] = int(request_data['appointmentPatientID_id'])
+        schedule_serializer = AppointmentSerializer(data = request_data)
+        print(schedule_serializer)
+        if schedule_serializer.is_valid():
+            schedule_serializer.save()
+            return JsonResponse("Added Successfully", safe = False)
+        return JsonResponse("Failed to", safe = False)
         

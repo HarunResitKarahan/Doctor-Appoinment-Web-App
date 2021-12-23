@@ -36,6 +36,8 @@ export default {
     return {
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
     }
+  },
+  created () {
   }
 }
 </script>
