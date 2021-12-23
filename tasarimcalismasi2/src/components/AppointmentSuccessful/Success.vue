@@ -10,8 +10,8 @@
                 <ul>
                     <li><i><strong>Tarih:</strong></i><i> {{this.$route.params.dateday}} {{months[this.$route.params.datemonth - 1]}} {{this.$route.params.dateyear}} {{this.$route.params.selectedtime}}</i></li>
                     <li><i><strong>Doktor:</strong></i><i> {{this.$route.params.doctor[0].doctorName}} {{this.$route.params.doctor[0].doctorSurname}}</i></li>
-                    <li><i><strong>Bölüm:</strong></i><i> Dahiliye</i></li>
-                    <li><i><strong>Hastane:</strong></i><i> Şevket Yılmaz Devlet Hastanesi</i></li>
+                    <li><i><strong>Bölüm:</strong></i><i> {{this.$route.params.department}}</i></li>
+                    <li><i><strong>Hastane:</strong></i><i> {{this.$route.params.hospitalName}}</i></li>
                 </ul>
             </div>
         </div>
