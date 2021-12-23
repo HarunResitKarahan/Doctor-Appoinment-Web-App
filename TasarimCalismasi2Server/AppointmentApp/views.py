@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
 from AppointmentApp.models import Appointment, Doctor, Hospital, Patient, Departman, City
-from AppointmentApp.serializers import AppointmentSerializer, HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
+from AppointmentApp.serializers import Appointmen2Serializer, AppointmentSerializer, HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
 
@@ -201,15 +201,18 @@ def ScheduleMakeSchedule(request, id = 0):
         request_data = JSONParser().parse(request)
         request_data['appointmentDepartmanID_id'] = int(request_data['appointmentDepartmanID_id'])
         request_data['appointmentDoctorID_id'] = int(request_data['appointmentDoctorID_id'])
-        request_data['appointmentPatientID_id'] = int(request_data['appointmentPatientID_id'])
+        request_data['appointmentPatientID_id'] = str(request_data['appointmentPatientID_id'])
+        # request_data['appointmentDepartmanID_id'] = Departman.objects.filter(departmanID = request_data['appointmentDepartmanID_id'])
+        # request_data['appointmentDoctorID_id'] = Doctor.objects.filter(doctorID = request_data['appointmentDoctorID_id'])
+        # request_data['appointmentPatientID_id'] = Patient.objects.filter(patientID = request_data['appointmentPatientID_id'])
         split = request_data['appointmentTime'].split('-')
         request_data['appointmentTime'] = datetime(int(split[0]), int(split[1]), int(split[2]), int(split[3]), int(split[4]))
         if request_data['appointmentPoint'] == '':
             request_data['appointmentPoint'] = None
-        schedule_serializer = AppointmentSerializer(data = request_data)
-        print(schedule_serializer)
-        if not schedule_serializer.is_valid():
-            print(schedule_serializer.errors)
+        schedule_serializer = Appointmen2Serializer(data = request_data)
+        # print(schedule_serializer)
+        # if not schedule_serializer.is_valid():
+        #     print(schedule_serializer.errors)
         if schedule_serializer.is_valid():
             schedule_serializer.save()
             return JsonResponse("Added Successfully", safe = False)
