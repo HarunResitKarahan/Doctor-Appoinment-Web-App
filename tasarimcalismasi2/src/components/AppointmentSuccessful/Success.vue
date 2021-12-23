@@ -1,5 +1,6 @@
 <template>
   <div class="success-comp">
+    {{this.$route.params}}
       <div class="success">
         <div class="verify"><span class="material-icons">verified</span></div>
         <div class="appointment-info">

@@ -51,9 +51,9 @@
             </div>
             <div class="make-a-apointment">
                 <!-- <router-link :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link> -->
-                    <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
-                    <router-view/>
-                    <a @click="randevuekle">RANDEVU AL</a>
+                    <!-- <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link> -->
+                    <a @click="randevuekle" style="display: none;"><p>RANDEVU AL</p></a>
+                    <a>RANDEVU AL</a>
                 <!-- :to="{ name: 'MakeAppointment', params: { } }" -->
             </div>
         </div>
@@ -73,8 +73,7 @@ export default {
     doctorID: String,
     hospitalName: String,
     department: String,
-    date: String,
-    selectedtime: String
+    date: String
   },
   components: {
     VueSlickCarousel
@@ -168,14 +167,12 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
-            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           } else {
             $('.appointment').removeClass('selected')
             $(event.target).addClass('selected')
             // this.selectedtime = event.target.firstChild.textContent
             // this.$set(this.$data, 'selectedtime', event.target.firstChild.textContent)
             this.selectedtimeupdate = event.target.firstChild.textContent
-            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           }
         } else if (event.target.tagName === 'P') {
           if ($(event.target.parentNode).hasClass('selected')) {
@@ -183,14 +180,12 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
-            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           } else {
             $('.appointment').removeClass('selected')
             $(event.target.parentNode).addClass('selected')
             // this.selectedtime = event.target.textContent
             // this.$set(this.$data, 'selectedtime', event.target.textContent)
             this.selectedtimeupdate = event.target.textContent
-            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           }
         }
       }
@@ -202,6 +197,9 @@ export default {
         $('.make-a-apointment a:nth-child(2)').hide()
         $('.make-a-apointment a:nth-child(1)').show()
       }
+    },
+    randevuekle () {
+      this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate, dateday: this.dateday, datemonth: this.datemonth, dateyear: this.dateyear, doctor: this.doctor } })
     },
     getmonth (month) {
       var i = 0
