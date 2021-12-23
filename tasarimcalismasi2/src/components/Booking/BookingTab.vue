@@ -168,14 +168,14 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
-            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
+            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           } else {
             $('.appointment').removeClass('selected')
             $(event.target).addClass('selected')
             // this.selectedtime = event.target.firstChild.textContent
             // this.$set(this.$data, 'selectedtime', event.target.firstChild.textContent)
             this.selectedtimeupdate = event.target.firstChild.textContent
-            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
+            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           }
         } else if (event.target.tagName === 'P') {
           if ($(event.target.parentNode).hasClass('selected')) {
@@ -183,14 +183,14 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
-            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
+            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           } else {
             $('.appointment').removeClass('selected')
             $(event.target.parentNode).addClass('selected')
             // this.selectedtime = event.target.textContent
             // this.$set(this.$data, 'selectedtime', event.target.textContent)
             this.selectedtimeupdate = event.target.textContent
-            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
+            // this.$router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate } })
           }
         }
       }
