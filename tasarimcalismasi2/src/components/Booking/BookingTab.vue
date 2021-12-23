@@ -51,7 +51,8 @@
             </div>
             <div class="make-a-apointment">
                 <!-- <router-link :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link> -->
-                    <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { selectedtime: selectedtimeupdate, dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
+                    <router-link style="display: none;" :to="{name: 'AppointmentSuccessful', params: { dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>
+                    <router-view/>
                     <a @click="randevuekle">RANDEVU AL</a>
                 <!-- :to="{ name: 'MakeAppointment', params: { } }" -->
             </div>
@@ -96,8 +97,7 @@ export default {
       day: Number,
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       bookedtime: [],
-      doctor: [],
-      template: '<router-link style="display: none;" :to="{name: "AppointmentSuccessful", params: { selectedtime: selectedtimeupdate, dateday: dateday, datemonth: datemonth, dateyear: dateyear, doctor: doctor }}"><p>RANDEVU AL</p></router-link>'
+      doctor: []
     }
   },
   computed: {
@@ -168,12 +168,14 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
+            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
           } else {
             $('.appointment').removeClass('selected')
             $(event.target).addClass('selected')
             // this.selectedtime = event.target.firstChild.textContent
             // this.$set(this.$data, 'selectedtime', event.target.firstChild.textContent)
             this.selectedtimeupdate = event.target.firstChild.textContent
+            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
           }
         } else if (event.target.tagName === 'P') {
           if ($(event.target.parentNode).hasClass('selected')) {
@@ -181,12 +183,14 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
+            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
           } else {
             $('.appointment').removeClass('selected')
             $(event.target.parentNode).addClass('selected')
             // this.selectedtime = event.target.textContent
             // this.$set(this.$data, 'selectedtime', event.target.textContent)
             this.selectedtimeupdate = event.target.textContent
+            router.push({ name: 'AppointmentSuccessful', params: { selectedtime: this.selectedtimeupdate }})
           }
         }
       }

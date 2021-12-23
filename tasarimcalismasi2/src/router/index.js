@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import DoctorSearch from '../views/DoctorSearch.vue'
-import Profile from '../views/Profile.vue'
-import AppointmentSuccessful from '../views/AppointmentSuccessful.vue'
 
 Vue.use(VueRouter)
 
@@ -16,17 +13,17 @@ const routes = [
   {
     path: '/doktor-ara',
     name: 'DoctorSearch',
-    component: DoctorSearch
+    component: () => import(/* webpackChunkName: "about" */ '../views/DoctorSearch.vue')
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile
+    component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue')
   },
   {
     path: '/randevu-alindi',
     name: 'AppointmentSuccessful',
-    component: AppointmentSuccessful
+    component: () => import(/* webpackChunkName: "about" */ '../views/AppointmentSuccessful.vue')
   },
   {
     path: '/randevu',
