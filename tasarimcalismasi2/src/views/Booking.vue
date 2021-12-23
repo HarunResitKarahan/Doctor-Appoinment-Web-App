@@ -4,7 +4,6 @@
     <Login />
     <SubNavbar :title="title"/>
     <BookingTab :doctorID="String($route.params.doctorID)" :hospitalName="$route.params.hospitalName" :department="$route.params.department" :date="$route.params.date"/>
-    <Success />
     <Footer />
      <!-- <template v-for="(item, index) in responseData" >
         <p class="change" :key="item.message">{{ index }} {{ item }}</p>
@@ -18,7 +17,6 @@ import SubNavbar from '@/components/Booking/SubNavbar.vue'
 import BookingTab from '@/components/Booking/BookingTab.vue'
 import Footer from '@/components/Homepage/Footer.vue'
 import Login from '@/components/Login/Login.vue'
-import Success from '@/components/AppointmentSuccessful/Success.vue'
 
 export default {
   name: 'Booking',
@@ -26,7 +24,6 @@ export default {
     Navbar,
     SubNavbar,
     BookingTab,
-    Success,
     Footer,
     Login
   },
