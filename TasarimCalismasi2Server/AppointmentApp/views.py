@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render
-from datetime import datetime,timedelta
+from datetime import date, datetime,timedelta
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
@@ -202,6 +202,8 @@ def ScheduleMakeSchedule(request, id = 0):
         request_data['appointmentDepartmanID_id'] = int(request_data['appointmentDepartmanID_id'])
         request_data['appointmentDoctorID_id'] = int(request_data['appointmentDoctorID_id'])
         request_data['appointmentPatientID_id'] = int(request_data['appointmentPatientID_id'])
+        split = request_data['appointmentTime'].split('-')
+        request_data['appointmentTime'] = datetime(int(split[0]), int(split[1]), int(split[2]), int(split[3]), int(split[4]))
         schedule_serializer = AppointmentSerializer(data = request_data)
         print(schedule_serializer)
         if schedule_serializer.is_valid():
