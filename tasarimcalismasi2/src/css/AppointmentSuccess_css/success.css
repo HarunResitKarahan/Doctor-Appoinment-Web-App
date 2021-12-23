@@ -1,55 +1,55 @@
-.success-comp {
+.booking .success-comp {
     padding: 100px 60px;
     background-color: #f8f9fa;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.success-comp .router-link-active .return-homepage {
+.booking .success-comp .router-link-active .return-homepage {
     padding: 20px;
     background-color: rgb(73, 201, 188);
     color: white;
     border-radius: 5px;
 }
-.success-comp .router-link-active .return-homepage:hover{
+.booking .success-comp .router-link-active .return-homepage:hover{
     background-color: rgb(92, 206, 194);
 }
-.appointment-successful .success {
+.booking .success {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 30px;
     width: fit-content;
 } 
-.appointment-successful .success .verify {
+.booking .success .verify {
     width: fit-content;
     margin-right: 15px;
 }
-.appointment-successful .success .verify .material-icons {
+.booking .success .verify .material-icons {
     font-size: 250px;
     color: rgb(73, 201, 188);
 }
-.appointment-successful .success .appointment-info .successfull{
+.booking .success .appointment-info .successfull{
     font-weight: 700;
     color: #757575;
     font-size: 32px;
     letter-spacing: 1px;
 }
-.appointment-successful .success .appointment-info .successfull{
+.booking .success .appointment-info .successfull{
     display: flex;
 }
-.appointment-successful .success .appointment-info .successfull .material-icons{
+.booking .success .appointment-info .successfull .material-icons{
     font-size: 45px;
     line-height: 35px;
     color: rgb(73, 201, 188);
 }
-.appointment-successful .success .appointment-info .successfull-info {
+.booking .success .appointment-info .successfull-info {
     margin-top: 10px;
     color: #757575;
     font-weight: 500;
     font-size: 22px;
 }
-.appointment-successful .success .appointment-info li {
+.booking .success .appointment-info li {
     font-size: 18px;
     margin-top: 7px;
     font-weight: 400;
