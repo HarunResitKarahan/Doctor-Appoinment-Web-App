@@ -204,8 +204,12 @@ def ScheduleMakeSchedule(request, id = 0):
         request_data['appointmentPatientID_id'] = int(request_data['appointmentPatientID_id'])
         split = request_data['appointmentTime'].split('-')
         request_data['appointmentTime'] = datetime(int(split[0]), int(split[1]), int(split[2]), int(split[3]), int(split[4]))
+        if request_data['appointmentPoint'] == '':
+            request_data['appointmentPoint'] = None
         schedule_serializer = AppointmentSerializer(data = request_data)
         print(schedule_serializer)
+        if not schedule_serializer.is_valid():
+            print(schedule_serializer.errors)
         if schedule_serializer.is_valid():
             schedule_serializer.save()
             return JsonResponse("Added Successfully", safe = False)
