@@ -96,7 +96,8 @@ export default {
       day: Number,
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       bookedtime: [],
-      doctor: []
+      doctor: [],
+      selectedtime: ''
     }
   },
   computed: {
@@ -167,6 +168,7 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
+            console.log(this.selectedtimeupdate)
           } else {
             $('.appointment').removeClass('selected')
             $(event.target).addClass('selected')
@@ -175,17 +177,17 @@ export default {
             this.selectedtimeupdate = event.target.firstChild.textContent
           }
         } else if (event.target.tagName === 'P') {
-          if ($(event.target.parentNode).hasClass('selected')) {
-            $(event.target.parentNode).removeClass('selected')
-            // this.selectedtime = ''
-            // this.$set(this.$data, 'selectedtime', '')
-            this.selectedtimeupdate = ''
-          } else {
-            $('.appointment').removeClass('selected')
-            $(event.target.parentNode).addClass('selected')
-            // this.selectedtime = event.target.textContent
-            // this.$set(this.$data, 'selectedtime', event.target.textContent)
-            this.selectedtimeupdate = event.target.textContent
+          if (!$(event.target.parentNode).hasClass('booked')) {
+            if ($(event.target.parentNode).hasClass('selected')) {
+              $(event.target.parentNode).removeClass('selected')
+              // this.selectedtime = ''
+              // this.$set(this.$data, 'selectedtime', '')
+              this.selectedtimeupdate = ''
+            } else {
+              $('.appointment').removeClass('selected')
+              $(event.target.parentNode).addClass('selected')
+              this.selectedtimeupdate = event.target.textContent
+            }
           }
         }
       }
