@@ -158,11 +158,18 @@ def DoctorGetDoctorById(request, id = 0):
         doctor_serializer = DoctorSerializer(doctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
 
+@csrf_exempt
+def AppointmentGetAppointment(request, id = 0):
+    if request.method == 'POST':
+        request_data = JSONParser().parse(request)
+        schedule = Appointment.objects.filter(appointmentPatientID_id = request_data['appointmentPatientID_id']).values()
+        schedule_serializer = AppointmentSerializer(schedule, many = True)
+        return JsonResponse(schedule_serializer.data, safe = False)
 
 @csrf_exempt
 def ScheduleGetTime(request, id = 0):
     if request.method == 'GET':
-        schedule = Appointment.objects.all()
+        schedule = Appointment.objects.filter()
         schedule_serializer = AppointmentSerializer(schedule, many = True)
         return JsonResponse(schedule_serializer.data, safe = False)
     elif request.method == 'POST':

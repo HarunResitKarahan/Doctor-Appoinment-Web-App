@@ -130,7 +130,8 @@ export default {
     return {
       issignin: '',
       isregistered: '',
-      userinfo: ''
+      userinfo: '',
+      appointments: []
     }
   },
   created () {
@@ -147,6 +148,17 @@ export default {
       .then(data => {
         this.userinfo = data[0]
         // this.date = data[0].userCreateTime.split('T')
+      })
+    fetch('http://localhost:8000/appointment/getappointment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        appointmentPatientID_id: localStorage.username
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.appointments = data
       })
   },
   mounted () {
