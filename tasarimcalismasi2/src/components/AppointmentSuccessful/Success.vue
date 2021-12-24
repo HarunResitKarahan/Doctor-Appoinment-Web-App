@@ -1,6 +1,5 @@
 <template>
-  <div class="success-comp">
-    {{this.$route.params}}
+  <div class="success-comp" v-if="success == 'Added Successfully'">
       <div class="success">
         <div class="verify"><span class="material-icons">verified</span></div>
         <div class="appointment-info">
@@ -34,10 +33,30 @@ export default {
   },
   data () {
     return {
-      months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+      months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+      success: ''
     }
   },
   created () {
+    // aa
+    this.selectedtime = this.selectedtime.split(':').join('-')
+    var date = String(this.dateyear) + '-' + String(this.datemonth) + '-' + String(this.dateday) + '-' + String(this.selectedtime)
+    console.log(date)
+    fetch('http://localhost:8000/schedule/makeschedule', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        appointmentTime: date,
+        appointmentPatientID_id: localStorage.username,
+        appointmentDoctorID_id: this.doctor[0].doctorID,
+        appointmentDepartmanID_id: this.doctor[0].departmanID_id,
+        appointmentPoint: ''
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.success = data
+      })
   }
 }
 </script>

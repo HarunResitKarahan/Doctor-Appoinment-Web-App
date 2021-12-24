@@ -209,6 +209,7 @@ def ScheduleMakeSchedule(request, id = 0):
         request_data['appointmentTime'] = datetime(int(split[0]), int(split[1]), int(split[2]), int(split[3]), int(split[4]))
         if request_data['appointmentPoint'] == '':
             request_data['appointmentPoint'] = None
+        print(request_data)
         schedule_serializer = Appointmen2Serializer(data = request_data)
         # print(schedule_serializer)
         # if not schedule_serializer.is_valid():
