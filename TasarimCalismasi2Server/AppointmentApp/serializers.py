@@ -54,21 +54,9 @@ class PatientForeignSerializer(serializers.HyperlinkedModelSerializer):
 
 class Appointmen2Serializer(serializers.HyperlinkedModelSerializer):
     
-    appointmentDepartmanID_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    appointmentDoctorID_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    appointmentPatientID_id = serializers.PrimaryKeyRelatedField(many=True,read_only=True)
-    # appointmentDepartmanID_id = DepartmentForeignSerializer()
-    # appointmentDoctorID_i = DoctorForeignSerializer()
-    # appointmentPatientID_id = PatientForeignSerializer()
-    # appointmentDepartmanID_id = DepartmentForeignSerializer(source='departmanID',read_only=True)
-    # appointmentDoctorID_id = DoctorForeignSerializer(source='doctorID',read_only=True)
-    # appointmentPatientID_id = PatientForeignSerializer(source='patientID',read_only=True)
-    # appointmentDepartmanID_id = serializers.IntegerField(source='departmanID', read_only=True)
-    # appointmentDoctorID_id = serializers.IntegerField(source='doctorID', read_only=True)
-    # appointmentPatientID_id = serializers.CharField(source='patientID', read_only=True)
-    # appointmentDepartmanID_id = serializers.SlugRelatedField(slug_field='departmanID',read_only=True)
-    # appointmentDoctorID_id = serializers.SlugRelatedField(slug_field='doctorID', read_only=True)
-    # appointmentPatientID_id = serializers.SlugRelatedField(slug_field='patientID', read_only=True)
+    appointmentDepartmanID_id = serializers.IntegerField(min_value=0, max_value=10000)
+    appointmentDoctorID_id = serializers.IntegerField(min_value=0, max_value=10000)
+    appointmentPatientID_id = serializers.CharField()
     class Meta:
         model = Appointment
         fields=('appointmentTime', 'appointmentPoint', 'appointmentDepartmanID_id', 'appointmentDoctorID_id', 'appointmentPatientID_id')
