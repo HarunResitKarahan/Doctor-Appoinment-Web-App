@@ -53,9 +53,13 @@ class PatientForeignSerializer(serializers.HyperlinkedModelSerializer):
         fields=['patientID']
 
 class Appointmen2Serializer(serializers.HyperlinkedModelSerializer):
-    appointmentDepartmanID_id = DepartmentForeignSerializer()
-    appointmentDoctorID_id = DoctorForeignSerializer()
-    appointmentPatientID_id = PatientForeignSerializer()
+    
+    appointmentDepartmanID_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    appointmentDoctorID_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    appointmentPatientID_id = serializers.PrimaryKeyRelatedField(many=True,read_only=True)
+    # appointmentDepartmanID_id = DepartmentForeignSerializer()
+    # appointmentDoctorID_id = DoctorForeignSerializer()
+    # appointmentPatientID_id = PatientForeignSerializer()
     # appointmentDepartmanID_id = DepartmentForeignSerializer(source='departmanID',read_only=True)
     # appointmentDoctorID_id = DoctorForeignSerializer(source='doctorID',read_only=True)
     # appointmentPatientID_id = PatientForeignSerializer(source='patientID',read_only=True)
