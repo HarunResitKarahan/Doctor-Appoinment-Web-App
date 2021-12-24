@@ -23,43 +23,20 @@
                         padding: 20px 5px;
                         border: 0 solid #f0f0f0;
                         border-top-width: 1px;
-                        border-bottom-width: 1px;">
-              <div>
-                <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-              </div>
+                        border-bottom-width: 1px;" v-for="item in 3" :key="item">
+              <template v-if="doctor[0].doctorSex == 'Erkek'">
+                <div>
+                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+              </template>
+              <template v-else>
+                <div>
+                   <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </div>
+              </template>
               <div>
                 <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Enes Demir</p>
                 <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Dahiliye)</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
-              </div>
-            </div>
-            <div style="display: flex;
-                        width: 100%;
-                        padding: 20px 5px;
-                        border: 0 solid #f0f0f0;
-                        border-top-width: 1px;
-                        border-bottom-width: 1px;">
-              <div>
-                <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
-              </div>
-              <div>
-                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Fatma Aksu</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Cildiye)</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
-              </div>
-            </div>
-            <div style="display: flex;
-                        width: 100%;
-                        padding: 20px 5px;
-                        border: 0 solid #f0f0f0;
-                        border-top-width: 1px;
-                        border-bottom-width: 1px;">
-              <div>
-                <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-              </div>
-              <div>
-                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">(Göz Hastalıkları)</p>
                 <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">9 Aralık 2021 10:30</p>
               </div>
             </div>
@@ -83,7 +60,7 @@
               <th>Randevu Tarihi</th>
               <th>Puanla</th>
             </tr>
-            <tr v-for="item in 10" :key="item">
+            <tr v-for="item in 3" :key="item">
               <td><div style="display: flex;
                           align-items: center;
                           width: 100%;">
@@ -131,7 +108,8 @@ export default {
       issignin: '',
       isregistered: '',
       userinfo: '',
-      appointments: []
+      appointments: [],
+      doctor: []
     }
   },
   created () {
@@ -159,6 +137,17 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.appointments = data
+      })
+    fetch('http://localhost:8000/appointment/getappointment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        appointmentPatientID_id: localStorage.username
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.doctor = data
       })
   },
   mounted () {
