@@ -60,7 +60,7 @@
               <th>Randevu Tarihi</th>
               <th>Puanla</th>
             </tr>
-            <tr v-for="item in 3" :key="item">
+            <tr v-for="(i,index) in appointments" :key="index">
               <td><div style="display: flex;
                           align-items: center;
                           width: 100%;">
@@ -68,11 +68,11 @@
                   <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
                 </div>
                 <div>
-                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">Mehmet Akif Çeliktürk</p>
+                  <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">{{i.appointmentDoctorID_id}}</p>
                 </div>
               </div></td>
-              <td><div>Göz Hastalıkları</div></td>
-              <td><div>9 Aralık 2021 10:30</div> </td>
+              <td><div>{{i.appointmentDepartmanID_id}}</div></td>
+              <td><div>{{i.appointmentTime}}</div> </td>
               <td style="display: flex;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" >
                 <div class="rate"  v-for="item in 11" :key="item" style="display:flex;
                                                                          align-items: center;
@@ -109,7 +109,8 @@ export default {
       isregistered: '',
       userinfo: '',
       appointments: [],
-      doctor: []
+      doctor: [],
+      months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
     }
   },
   created () {
@@ -137,6 +138,15 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.appointments = data
+        this.appointments.forEach((item) => {
+          var day = item.appointmentTime.split('T')[0].split('-')[2]
+          var month = item.appointmentTime.split('T')[0].split('-')[1]
+          var year = item.appointmentTime.split('T')[0].split('-')[0]
+          var hour = item.appointmentTime.split('T')[1].split(':')[0]
+          var minute = item.appointmentTime.split('T')[1].split(':')[1]
+          item.appointmentTime = day + ' ' + this.months[month - 1] + ' ' + year + ' ' + hour + ':' + minute
+          console.log(day + ' ' + month + ' ' + year + ' ' + hour + ':' + minute)
+        })
       })
     fetch('http://localhost:8000/appointment/getappointment', {
       method: 'POST',

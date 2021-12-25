@@ -163,6 +163,12 @@ def AppointmentGetAppointment(request, id = 0):
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
         schedule = Appointment.objects.filter(appointmentPatientID_id = request_data['appointmentPatientID_id']).values()
+        for item in schedule:
+            doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+            departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
+            item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
+            item['appointmentDepartmanID_id'] = departman[0]['departmanName']
+            # item['appointmentTime'] = datetime.strptime(str(item['appointmentTime']), "%Y-%m-%d %H:%M:%S")
         schedule_serializer = AppointmentSerializer(schedule, many = True)
         return JsonResponse(schedule_serializer.data, safe = False)
 
