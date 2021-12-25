@@ -24,12 +24,12 @@
                         border: 0 solid #f0f0f0;
                         border-top-width: 1px;
                         border-bottom-width: 1px;" v-for="item in 3" :key="item">
-              <template v-if="doctor[0].doctorSex == 'Erkek'">
+              <!-- <template v-if="doctor[0].doctorSex == 'Erkek'">
                 <div>
                   <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
                 </div>
-              </template>
-              <template v-else>
+              </template> -->
+              <template>
                 <div>
                    <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
                 </div>
@@ -145,19 +145,7 @@ export default {
           var hour = item.appointmentTime.split('T')[1].split(':')[0]
           var minute = item.appointmentTime.split('T')[1].split(':')[1]
           item.appointmentTime = day + ' ' + this.months[month - 1] + ' ' + year + ' ' + hour + ':' + minute
-          console.log(day + ' ' + month + ' ' + year + ' ' + hour + ':' + minute)
         })
-      })
-    fetch('http://localhost:8000/appointment/getappointment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        appointmentPatientID_id: localStorage.username
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.doctor = data
       })
   },
   mounted () {
