@@ -2,7 +2,16 @@
   <div class="profile-component">
       <div class="profile-info col-3">
         <div class="card-body">
-          <img src="@/assets/malephoto.png" width="150" height="150">
+          <template v-if="userinfo.patientSex == 'Erkek'">
+            <div>
+              <img src="@/assets/malephoto.png" width="150" height="150">
+            </div>
+          </template>
+          <template v-else>
+            <div>
+              <img src="@/assets/femalephoto.png" width="150" height="150">
+            </div>
+          </template>
           <p style="font-weight: 500;">{{userinfo.patientName}} {{userinfo.patientSurname}}</p>
           <p style="color: #757575;
                     font-size: 13px;

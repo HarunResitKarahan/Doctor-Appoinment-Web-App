@@ -10,7 +10,7 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
 class GetPatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Patient
-        fields=('patientID', 'patientName', 'patientSurname', 'patientEmail', 'patientPassword', 'patientCreateTime')
+        fields=('patientID', 'patientName', 'patientSurname', 'patientSex', 'patientEmail', 'patientPassword', 'patientCreateTime')
     
 class AppointmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
