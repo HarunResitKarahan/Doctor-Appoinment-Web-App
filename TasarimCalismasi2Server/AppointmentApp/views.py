@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
 from AppointmentApp.models import Appointment, Doctor, Hospital, Patient, Departman, City
-from AppointmentApp.serializers import Appointmen2Serializer, AppointmentSerializer, HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
+from AppointmentApp.serializers import Appointment3Serializer, Appointmen2Serializer, AppointmentSerializer, HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
 
 from django.contrib.auth.hashers import make_password,check_password
 
@@ -169,8 +169,18 @@ def AppointmentGetAppointment(request, id = 0):
             item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
             item['appointmentDepartmanID_id'] = departman[0]['departmanName']
             # item['appointmentTime'] = datetime.strptime(str(item['appointmentTime']), "%Y-%m-%d %H:%M:%S")
-        schedule_serializer = AppointmentSerializer(schedule, many = True)
+        schedule_serializer = Appointment3Serializer(schedule, many = True)
         return JsonResponse(schedule_serializer.data, safe = False)
+    elif request.method=='PUT':
+        request_data = JSONParser().parse(request)
+        print(request_data)
+        appointment = Appointment.objects.get(id = request_data['id'])
+        appointment['appointmentPoint'] = request_data['appointmentPoint']
+        patient_serializer = Appointment3Serializer(appointment, data=appointment)
+        if patient_serializer.is_valid():
+            patient_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
 
 @csrf_exempt
 def ScheduleGetTime(request, id = 0):

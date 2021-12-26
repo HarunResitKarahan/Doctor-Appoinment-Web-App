@@ -17,6 +17,11 @@ class AppointmentSerializer(serializers.HyperlinkedModelSerializer):
         model = Appointment
         fields=('appointmentPatientID_id', 'appointmentDoctorID_id', 'appointmentDepartmanID_id', 'appointmentTime', 'appointmentPoint')
 
+class Appointment3Serializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Appointment
+        fields=('id' ,'appointmentPatientID_id', 'appointmentDoctorID_id', 'appointmentDepartmanID_id', 'appointmentTime', 'appointmentPoint')
+
 class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Departman
