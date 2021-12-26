@@ -69,7 +69,7 @@
               <th>Randevu Tarihi</th>
               <th>Puanla</th>
             </tr>
-            <tr class="doctors" v-for="(i,index) in appointments.reverse()" :key="index">
+            <tr class="doctors" v-for="(i,index) in reverseappointments" :key="index">
               <td><div style="display: flex;
                           align-items: center;
                           width: 100%;">
@@ -125,6 +125,7 @@ export default {
       isregistered: '',
       userinfo: '',
       appointments: [],
+      reverseappointments: [],
       doctor: [],
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
     }
@@ -162,6 +163,7 @@ export default {
           var minute = item.appointmentTime.split('T')[1].split(':')[1]
           item.appointmentTime = day + ' ' + this.months[month - 1] + ' ' + year + ' ' + hour + ':' + minute
         })
+        this.reverseappointments = this.appointments.reverse()
       })
   },
   updated () {
