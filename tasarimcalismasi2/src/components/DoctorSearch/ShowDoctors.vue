@@ -69,6 +69,9 @@
     <div class="see-more">
       <p>Daha Fazla Görüntüle</p>
     </div>
+    <div class="header">
+      <p>-Önerilen Doktorlar-</p>
+    </div>
     <VueSlickCarousel v-if="doctor.length > 0" :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
       <template v-for="item in doctor">
       <div class="suggestion-doctor-card" :key="item">

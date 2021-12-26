@@ -49,6 +49,15 @@
     justify-content: center;
     width: 100%;
 }
+.show-doctors .header {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    color: rgba(0, 0, 0, 0.445);
+    font-size: 28px;
+    font-weight: 500;
+    width: 100%;
+}
 .show-doctors .see-more p {
     padding: 12px;
     font-size: 0.85rem;
