@@ -177,8 +177,8 @@ export default {
       $(this).parent('td').find('.rate-show').append(rate)
       $(this).parent('td').css('justify-content', 'center')
       $(this).parent('td').find('.rate-show').css('display', 'block')
-      fetch('http://localhost:8000/patient', {
-        method: 'POST',
+      fetch('http://localhost:8000/appointment/getappointment', {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: Number($(this).parent('td').attr('id')),
