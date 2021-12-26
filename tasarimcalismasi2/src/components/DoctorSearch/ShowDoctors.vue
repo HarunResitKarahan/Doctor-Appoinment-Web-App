@@ -74,10 +74,10 @@
       <div class="suggestion-doctor-card" :key="item">
         <div class="doctor-image">
           <template v-if="item.doctorSex == 'Erkek'">
-            <img src="@/assets/maledoctor.png" width="75" height="75">
+            <img src="@/assets/maledoctor.png" width="85" height="85">
           </template>
           <template v-else>
-            <img src="@/assets/femaledoctor.png" width="75" height="75">
+            <img src="@/assets/femaledoctor.png" width="85" height="85">
           </template>
           <div class="info">
             <p>{{item.doctorName}} {{item.doctorSurname}}</p>
@@ -118,15 +118,16 @@
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
-                    </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><p class="after">{{item.doctorScore}}</p><p style="height: 22px;">154 Değerlendirme</p>
+                    </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <p class="after">{{item.doctorScore}}</p><p>154 Değerlendirme</p>
                 </div>
-          </div>
+            </div>
+            <div class="doctor-departmant">
+              <span class="material-icons">emergency</span><p>{{hospitalName}}</p>
+            </div>
           </div>
         </div>
         <div class="doctor-info">
-          <div class="doctor-departmant">
-              <span class="material-icons" style="color: rgb(2550, 0, 0, 0.300); font-size: 24px;padding: 1px; margin-right: 2px;">emergency</span><p style="padding-top: 3.5px;">{{hospitalName}}</p>
-          </div>
           <div class="make-appointment">
             <template v-if="issignin != 'Giriş Başarılı'">
                 <p @click="loginPage">Randevu Al</p>
