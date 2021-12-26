@@ -6,6 +6,7 @@ from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 import numpy as np
 import pandas as pd
+import json
 from mlxtend.frequent_patterns import apriori, association_rules
 
 from AppointmentApp.models import Appointment, Doctor, Hospital, Patient, Departman, City
@@ -251,34 +252,44 @@ def ScheduleMakeSchedule(request, id = 0):
 
 @csrf_exempt
 def Apriori(request, id = 0):
-    data = pd.read_excel('dandom2.xlsx')
-    # Stripping extra spaces in the description
-    data['DoktorName'] = data['DoktorName'].str.strip()
-    
-    # Dropping the rows without any invoice number
-    data.dropna(axis = 0, subset =['RandevuNo'], inplace = True)
-    data['RandevuNo'] = data['RandevuNo'].astype('str')
+    if request.method == 'GET':
+        data = Appointment.objects.all().values()
+        
+        # Stripping extra spaces in the description
+        for item in data:
+            doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+            departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
+            item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
+            item['appointmentDepartmanID_id'] = departman[0]['departmanName']
+            item['Quantity'] = 1
+        data = pd.DataFrame(data=data)
+        print(data)
+        data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
+        # Dropping the rows without any invoice number
+        data.dropna(axis = 0, subset =['id'], inplace = True)
+        data['id'] = data['id'].astype('str')
+        # Transactions done in France
+        basket_France = (data
+                .groupby(['appointmentPatientID_id', 'appointmentDoctorID_id'])['Quantity']
+                .sum().unstack().reset_index().fillna(0)
+                .set_index('appointmentPatientID_id'))
+        # for the concerned libraries
+        print(basket_France)
+        def hot_encode(x):
+            if(x<= 0):
+                return 0
+            if(x>= 1):
+                return 1
+        
+        # Encoding the datasets
+        basket_encoded = basket_France.applymap(hot_encode)
+        basket_France = basket_encoded
 
-    # Transactions done in France
-    basket_France = (data
-            .groupby(['HastaNo', 'DoktorName'])['Quantity']
-            .sum().unstack().reset_index().fillna(0)
-            .set_index('HastaNo'))
-
-    # for the concerned libraries
-    def hot_encode(x):
-        if(x<= 0):
-            return 0
-        if(x>= 1):
-            return 1
-    
-    # Encoding the datasets
-    basket_encoded = basket_France.applymap(hot_encode)
-    basket_France = basket_encoded
-
-    frq_items = apriori(basket_France, min_support = 0.05, use_colnames = True)
-    # Collecting the inferred rules in a dataframe
-    rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
-    rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
-    print(rules.head())
-    rules.to_excel("doktor.xlsx")
+        frq_items = apriori(basket_France, min_support = 0.05, use_colnames = True)
+        # Collecting the inferred rules in a dataframe
+        rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
+        rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
+        print(rules.head())
+        js = rules.head().to_json(orient = 'split')
+        parsed = json.loads(js)
+        return JsonResponse(json.dumps(parsed, indent=1),safe=False)
