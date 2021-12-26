@@ -72,7 +72,7 @@
     <div class="header">
       <p>-Önerilen Doktorlar-</p>
     </div>
-    <VueSlickCarousel v-if="doctor.length > 0" :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
+    <VueSlickCarousel style="width: 95%;margin: auto;" v-if="doctor.length > 0" :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
       <template v-for="item in doctor">
       <div class="suggestion-doctor-card" :key="item">
         <div class="doctor-image">
