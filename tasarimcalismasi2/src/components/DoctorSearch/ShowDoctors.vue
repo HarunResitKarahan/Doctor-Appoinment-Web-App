@@ -81,7 +81,7 @@
           </template>
           <div class="info">
             <p>{{item.doctorName}} {{item.doctorSurname}}</p>
-            <p>{{department}}</p>
+            <p class="departman">({{department}})</p>
             <div class="doctor-rank" style="margin: 0 0 7px 0">
                 <div class="star" :id="item.doctorID">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
