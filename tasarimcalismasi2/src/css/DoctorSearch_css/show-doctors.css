@@ -65,7 +65,7 @@
     border: 1px solid rgb(73, 201, 188);
 }
 /* Suggestion */
-.slick-slider .slick-slide{
+.show-doctors .slick-slider .slick-slide{
     margin: 15px 30px 15px 0;
 }
 .slick-slider .suggestion-doctor-card {
