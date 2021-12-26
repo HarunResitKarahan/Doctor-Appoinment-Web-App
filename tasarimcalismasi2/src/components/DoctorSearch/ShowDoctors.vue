@@ -69,7 +69,7 @@
     <div class="see-more">
       <p>Daha Fazla Görüntüle</p>
     </div>
-    <VueSlickCarousel :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
+    <VueSlickCarousel v-if="doctor.length > 0" :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
       <template v-for="item in doctor">
       <div class="suggestion-doctor-card" :key="item">
         <div class="doctor-image">
@@ -79,10 +79,12 @@
           <template v-else>
             <img src="@/assets/femaledoctor.png" width="75" height="75">
           </template>
+          <div class="info">
+            <p>{{item.doctorName}} {{item.doctorSurname}}</p>
+            <p>{{department}}</p>
+          </div>
         </div>
         <div class="doctor-info">
-          <p style="color: #2E3842;font-size: 20px;font-weight: 500;">{{item.doctorName}} {{item.doctorSurname}}</p>
-          <p style="font-size: 14px;color: #757575;margin-bottom: 5px;">{{department}}</p>
           <div class="doctor-rank" style="margin: 0 0 7px 0">
                 <div class="star" :id="item.doctorID">
                     <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">

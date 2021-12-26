@@ -74,7 +74,11 @@
     border: 1px solid rgba(0, 0, 0, 0.075);
 }
 .slick-slider .suggestion-doctor-card .doctor-image {
+    display: flex;
     margin: 0 20px 0 0;
+}
+.slick-slider .suggestion-doctor-card .doctor-image .info:first-child {
+    
 }
 .slick-slider .suggestion-doctor-card .doctor-info {
     width: 100%;
