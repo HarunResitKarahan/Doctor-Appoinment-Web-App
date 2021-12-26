@@ -1,5 +1,6 @@
 .show-doctors {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
     width: 100%;
@@ -44,5 +45,22 @@
     color: white;
 }
 .show-doctors .see-more {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.show-doctors .see-more p {
+    padding: 12px;
+    font-size: 0.85rem;
+    background-color: rgb(73, 201, 188);
+    border: 1px solid rgb(73, 201, 188);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    width: fit-content;
+}
+.show-doctors .see-more p:hover {
+    background-color: white;
+    color: rgb(73, 201, 188);
+    border: 1px solid rgb(73, 201, 188);
 }
