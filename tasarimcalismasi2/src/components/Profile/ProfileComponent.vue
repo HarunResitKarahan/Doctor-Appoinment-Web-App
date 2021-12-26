@@ -149,29 +149,28 @@ export default {
       })
   },
   updated () {
-    $(document).ready(function () {
-      // ----height option----
-      var height = $('.card-body').css('height')
-      $('.booking-history').css('height', height)
-      height = $('tr td:nth-child(1)').css('height')
-      $('td').css('height', height)
-      // ---------------------------
-      $('.rate').hover(function () {
-        $(this).next().prevAll('.rate:nth-child(n + 1):nth-child(-n + 3)').css({ 'background-color': '#ff6240', color: 'white' })
-        $(this).next().prevAll('.rate:nth-child(n + 4):nth-child(-n + 7)').css({ 'background-color': '#f6a31c', color: 'white' })
-        $(this).next().prevAll('.rate:nth-child(n + 8):nth-child(-n + 10)').css({ 'background-color': '#29cc81', color: 'white' })
-      }, function () {
-        $(this).next().prevAll('.rate:nth-child(n + 1):nth-child(-n + 3)').css({ 'background-color': 'white', color: '#ff6240' })
-        $(this).next().prevAll('.rate:nth-child(n + 4):nth-child(-n + 7)').css({ 'background-color': 'white', color: '#f6a31c' })
-        $(this).next().prevAll('.rate:nth-child(n + 8):nth-child(-n + 10)').css({ 'background-color': 'white', color: '#29cc81' })
-      })
-      $('.rate').click(function () {
-        var rate = $(this).text()
-        $(this).parent('td').find('.rate').hide()
-        $(this).parent('td').find('.rate-show').append(rate)
-        $(this).parent('td').css('justify-content', 'center')
-        $(this).parent('td').find('.rate-show').css('display', 'block')
-      })
+    // ----height option----
+    var height = $('.card-body').css('height')
+    $('.booking-history').css('height', height)
+    height = $('tr td:nth-child(1)').css('height')
+    $('td').css('height', height)
+    // ---------------------------
+    $('.rate').hover(function () {
+      $(this).next().prevAll('.rate:nth-child(n + 1):nth-child(-n + 3)').css({ 'background-color': '#ff6240', color: 'white' })
+      $(this).next().prevAll('.rate:nth-child(n + 4):nth-child(-n + 7)').css({ 'background-color': '#f6a31c', color: 'white' })
+      $(this).next().prevAll('.rate:nth-child(n + 8):nth-child(-n + 10)').css({ 'background-color': '#29cc81', color: 'white' })
+    }, function () {
+      $(this).next().prevAll('.rate:nth-child(n + 1):nth-child(-n + 3)').css({ 'background-color': 'white', color: '#ff6240' })
+      $(this).next().prevAll('.rate:nth-child(n + 4):nth-child(-n + 7)').css({ 'background-color': 'white', color: '#f6a31c' })
+      $(this).next().prevAll('.rate:nth-child(n + 8):nth-child(-n + 10)').css({ 'background-color': 'white', color: '#29cc81' })
+    })
+    $('.rate').click(function () {
+      var rate = $(this).text()
+      console.log(rate)
+      $(this).parent('td').find('.rate').hide()
+      $(this).parent('td').find('.rate-show').append(rate)
+      $(this).parent('td').css('justify-content', 'center')
+      $(this).parent('td').find('.rate-show').css('display', 'block')
     })
   }
 }
