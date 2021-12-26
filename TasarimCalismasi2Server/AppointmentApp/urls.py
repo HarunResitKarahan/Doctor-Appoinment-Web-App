@@ -14,5 +14,6 @@ urlpatterns = [
     url('doctor/bookingdoctorinfo', views.DoctorGetDoctorById),
     url('schedule/getschedule', views.ScheduleGetTime),
     url('schedule/makeschedule', views.ScheduleMakeSchedule),
-    url('appointment/getappointment', views.AppointmentGetAppointment)
+    url('appointment/getappointment', views.AppointmentGetAppointment),
+    url('apriori', views.Apriori)
 ]

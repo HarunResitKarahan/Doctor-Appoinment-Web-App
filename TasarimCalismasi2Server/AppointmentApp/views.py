@@ -4,6 +4,9 @@ from datetime import date, datetime,timedelta
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
+import numpy as np
+import pandas as pd
+from mlxtend.frequent_patterns import apriori, association_rules
 
 from AppointmentApp.models import Appointment, Doctor, Hospital, Patient, Departman, City
 from AppointmentApp.serializers import Appointment3Serializer, Appointmen2Serializer, AppointmentSerializer, HospitalSerializer,PatientSerializer,GetPatientSerializer, DepartmentSerializer, CitySerializer, DoctorSerializer
@@ -245,4 +248,37 @@ def ScheduleMakeSchedule(request, id = 0):
             if schedule_serializer.is_valid():
                 schedule_serializer.save()
                 return JsonResponse("Added Successfully", safe = False)
-        
+
+@csrf_exempt
+def Apriori(request, id = 0):
+    data = pd.read_excel('dandom2.xlsx')
+    # Stripping extra spaces in the description
+    data['DoktorName'] = data['DoktorName'].str.strip()
+    
+    # Dropping the rows without any invoice number
+    data.dropna(axis = 0, subset =['RandevuNo'], inplace = True)
+    data['RandevuNo'] = data['RandevuNo'].astype('str')
+
+    # Transactions done in France
+    basket_France = (data
+            .groupby(['HastaNo', 'DoktorName'])['Quantity']
+            .sum().unstack().reset_index().fillna(0)
+            .set_index('HastaNo'))
+
+    # for the concerned libraries
+    def hot_encode(x):
+        if(x<= 0):
+            return 0
+        if(x>= 1):
+            return 1
+    
+    # Encoding the datasets
+    basket_encoded = basket_France.applymap(hot_encode)
+    basket_France = basket_encoded
+
+    frq_items = apriori(basket_France, min_support = 0.05, use_colnames = True)
+    # Collecting the inferred rules in a dataframe
+    rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
+    rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
+    print(rules.head())
+    rules.to_excel("doktor.xlsx")
