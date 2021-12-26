@@ -236,9 +236,9 @@ def ScheduleMakeSchedule(request, id = 0):
         request_data['appointmentTime'] = datetime(int(split[0]), int(split[1]), int(split[2]), int(split[3]), int(split[4]))
         if request_data['appointmentPoint'] == '':
             request_data['appointmentPoint'] = None
-        schedule = Appointment.objects.filter(appointmentTime__gte = datetime.now(), appointmentDepartmanID_id = request_data['appointmentDepartmanID_id'], appointmentPatientID_id = request_data['appointmentPatientID_id'])
+        schedule = Appointment.objects.filter(appointmentTime__gte = datetime.now().date(), appointmentDepartmanID_id = request_data['appointmentDepartmanID_id'], appointmentPatientID_id = request_data['appointmentPatientID_id'])
         print(schedule.values())
-        if len(schedule) > 0:
+        if len(schedule.values()) > 0:
             return JsonResponse("Failed to", safe = False)
         else:
             schedule_serializer = Appointmen2Serializer(data = request_data)
