@@ -82,40 +82,37 @@
           <div class="info">
             <p>{{item.doctorName}} {{item.doctorSurname}}</p>
             <p>{{department}}</p>
-          </div>
-        </div>
-        <div class="doctor-info">
-          <div class="doctor-rank" style="margin: 0 0 7px 0">
+            <div class="doctor-rank" style="margin: 0 0 7px 0">
                 <div class="star" :id="item.doctorID">
-                    <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}a`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}1`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}2`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}3`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="margin: 0 -5px 0 0;padding: 1px;padding-bottom: 3px;font-size: 24px;" width="24" height="24" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                     <linearGradient :id="`${item.doctorID}4`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
@@ -124,6 +121,9 @@
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><p class="after">{{item.doctorScore}}</p><p style="height: 22px;">154 Değerlendirme</p>
                 </div>
           </div>
+          </div>
+        </div>
+        <div class="doctor-info">
           <div class="doctor-departmant">
               <span class="material-icons" style="color: rgb(2550, 0, 0, 0.300); font-size: 24px;padding: 1px; margin-right: 2px;">emergency</span><p style="padding-top: 3.5px;">{{hospitalName}}</p>
           </div>

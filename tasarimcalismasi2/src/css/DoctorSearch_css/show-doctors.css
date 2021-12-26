@@ -77,8 +77,14 @@
     display: flex;
     margin: 0 20px 0 0;
 }
-.slick-slider .suggestion-doctor-card .doctor-image .info:first-child {
-    
+.slick-slider .suggestion-doctor-card .doctor-image .info p {
+    font-size: 0.8rem;
+}
+.slick-slider .suggestion-doctor-card .doctor-image .info .doctor-rank .star .svg {
+    margin: 0 -5px 0 0;
+    padding: 1px;
+    padding-bottom: 3px;
+    font-size: 24px;
 }
 .slick-slider .suggestion-doctor-card .doctor-info {
     width: 100%;
