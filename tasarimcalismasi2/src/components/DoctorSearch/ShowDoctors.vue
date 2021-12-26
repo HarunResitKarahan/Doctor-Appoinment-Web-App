@@ -66,6 +66,12 @@
         </div>
     </div>
     </template>
+    <template>
+      <VueSlickCarousel :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
+        <div>asd</div>
+        <div>asd</div>
+      </VueSlickCarousel>
+    </template>
     <template v-if="doctor.length == 0">
       <div class="no-found-doctor">
         <p style="font-size: 36px;color: #c3c3c3;">Aradığınız Kriterlere Uygun Doktor Bulunamadı</p>
@@ -76,6 +82,9 @@
 
 <script>
 import $ from 'jquery'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
   name: 'ShowDoctors',
   props: {
@@ -83,6 +92,9 @@ export default {
     department: String,
     hospitalName: String,
     date: String
+  },
+  components: {
+    VueSlickCarousel
   },
   data () {
     return {

@@ -4,6 +4,7 @@
     align-content: flex-start;
     width: 100%;
     margin-top: 30px;
+    overflow: hidden;
 }
 .show-doctors .doctor-card {
     display: flex;
