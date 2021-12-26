@@ -66,12 +66,13 @@
         </div>
     </div>
     </template>
-    <template>
-      <VueSlickCarousel :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
-        <div>asd</div>
-        <div>asd</div>
-      </VueSlickCarousel>
-    </template>
+    <div class="see-more">
+      <p>Daha Fazla Görüntüle</p>
+    </div>
+    <VueSlickCarousel :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true" style="width: 80%;">
+      <div>asd</div>
+      <div>asd</div>
+    </VueSlickCarousel>
     <template v-if="doctor.length == 0">
       <div class="no-found-doctor">
         <p style="font-size: 36px;color: #c3c3c3;">Aradığınız Kriterlere Uygun Doktor Bulunamadı</p>
