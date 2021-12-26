@@ -69,7 +69,7 @@
               <th>Randevu Tarihi</th>
               <th>Puanla</th>
             </tr>
-            <tr class="doctors" v-for="(i,index) in appointments" :key="index">
+            <tr class="doctors" v-for="(i,index) in appointments.reverse()" :key="index">
               <td><div style="display: flex;
                           align-items: center;
                           width: 100%;">
