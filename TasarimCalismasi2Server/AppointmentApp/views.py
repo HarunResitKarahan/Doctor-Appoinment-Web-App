@@ -264,7 +264,6 @@ def Apriori(request, id = 0):
             item['appointmentDepartmanID_id'] = departman[0]['departmanName']
             item['Quantity'] = 1
         data = pd.DataFrame(data=data)
-        print(data)
         data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
         # Dropping the rows without any invoice number
         data.dropna(axis = 0, subset =['id'], inplace = True)
@@ -275,7 +274,6 @@ def Apriori(request, id = 0):
                 .sum().unstack().reset_index().fillna(0)
                 .set_index('appointmentPatientID_id'))
         # for the concerned libraries
-        print(basket_France)
         def hot_encode(x):
             if(x<= 0):
                 return 0
