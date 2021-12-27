@@ -169,7 +169,8 @@ export default {
   },
   data () {
     return {
-      issignin: ''
+      issignin: '',
+      suggestion: []
     }
   },
   watch: {
