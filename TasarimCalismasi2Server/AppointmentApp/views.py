@@ -314,6 +314,7 @@ def Apriori(request, id = 0):
             if not item['appointmentDoctorID_id'] in patient_doctors and item['appointmentDepartmanID_id'] == request_data['departman']:
                 patient_doctors.append(item['appointmentDoctorID_id'])
         print(patient_doctors)
+        print("---------------------------")
         # Stripping extra spaces in the description
         for item in data:
             doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
@@ -348,16 +349,29 @@ def Apriori(request, id = 0):
         rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
         # print(rules['antecedents'].to_string())
         listofsuggestions = defaultdict(dict)
+        suggestion = []
         for index, row in rules.iterrows():
             listofsuggestions[index]['antecedents'] = list(row['antecedents'])
             listofsuggestions[index]['consequents'] = list(row['consequents'])
             listofsuggestions[index]['confidence'] = row['confidence']
         for item in listofsuggestions:
-            print(listofsuggestions[item]['antecedents'])
+            counter = 0
+            for iter in listofsuggestions[item]['antecedents']:
+                if iter in patient_doctors:
+                    counter += 1
+            if counter == len(listofsuggestions[item]['antecedents']) and listofsuggestions[item]['confidence'] >= 0.5 and not listofsuggestions[item]['consequents'] in suggestion:
+                suggestion.append(listofsuggestions[item]['consequents'])
+        print(suggestion)
+        print("------------------")
+        return_suggestion = []
+        for item in suggestion:
+            for item2 in item:
+                if not item2 in return_suggestion and not item2 in patient_doctors:
+                    return_suggestion.append(item2)
         # js = rules.head().to_json(orient = 'values', force_ascii=False)
         # parsed = json.loads(js)
         # json.dumps(parsed, indent=1)
         # rules.index = rules.index.map(str)
         # rules.columns = rules.columns.map(str)
         # js = str(rules.to_dict()).replace("'", '"')
-        return JsonResponse(listofsuggestions,safe=False)
+        return JsonResponse(return_suggestion,safe=False)
