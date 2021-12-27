@@ -289,11 +289,16 @@ def Apriori(request, id = 0):
         # Collecting the inferred rules in a dataframe
         rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
         rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
-        print(rules)
+        # print(rules['antecedents'].to_string())
+        listofsuggestions = {}
+        for index, row in rules.iterrows():
+            listofsuggestions['id' + str(index)]['antecedents'] = list(row['antecedents'])
+            listofsuggestions['id' + str(index)]['consequents'] = list(row['consequents'])
+            print(list(row['antecedents']), list(row['consequents']))
         # js = rules.head().to_json(orient = 'values', force_ascii=False)
         # parsed = json.loads(js)
         # json.dumps(parsed, indent=1)
         rules.index = rules.index.map(str)
         rules.columns = rules.columns.map(str)
         js = str(rules.to_dict()).replace("'", '"')
-        return JsonResponse(js,safe=False)
+        return JsonResponse(listofsuggestions,safe=False)
