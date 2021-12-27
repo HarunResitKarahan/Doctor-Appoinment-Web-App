@@ -7,6 +7,7 @@ from django.http.response import JsonResponse
 import numpy as np
 import pandas as pd
 import json
+from collections import defaultdict
 from mlxtend.frequent_patterns import apriori, association_rules
 
 from AppointmentApp.models import Appointment, Doctor, Hospital, Patient, Departman, City
@@ -290,11 +291,10 @@ def Apriori(request, id = 0):
         rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
         rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
         # print(rules['antecedents'].to_string())
-        listofsuggestions = {}
+        listofsuggestions = defaultdict(dict)
         for index, row in rules.iterrows():
-            listofsuggestions['id' + str(index)]['antecedents'] = list(row['antecedents'])
-            listofsuggestions['id' + str(index)]['consequents'] = list(row['consequents'])
-            print(list(row['antecedents']), list(row['consequents']))
+            listofsuggestions[index]['antecedents'] = list(row['antecedents'])
+            listofsuggestions[index]['consequents'] = list(row['consequents'])
         # js = rules.head().to_json(orient = 'values', force_ascii=False)
         # parsed = json.loads(js)
         # json.dumps(parsed, indent=1)
