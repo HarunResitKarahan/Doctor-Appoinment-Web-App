@@ -306,15 +306,13 @@ def Apriori(request, id = 0):
         data = Appointment.objects.all().values()
         patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
         patient_doctors = []
-        counter = 0
         for item in patient_appointments:
             patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
             patient_appointments_departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
             item['appointmentDoctorID_id'] = patient_appointments_doctor[0]['doctorName'] + ' ' + patient_appointments_doctor[0]['doctorSurname']
             item['appointmentDepartmanID_id'] = patient_appointments_departman[0]['departmanName']
             if not item['appointmentDoctorID_id'] in patient_doctors and item['appointmentDepartmanID_id'] == request_data['departman']:
-                patient_doctors[counter] = item['appointmentDoctorID_id']
-                counter += 1
+                patient_doctors.append(item['appointmentDoctorID_id'])
         print(patient_doctors)
         # Stripping extra spaces in the description
         for item in data:
@@ -354,10 +352,12 @@ def Apriori(request, id = 0):
             listofsuggestions[index]['antecedents'] = list(row['antecedents'])
             listofsuggestions[index]['consequents'] = list(row['consequents'])
             listofsuggestions[index]['confidence'] = row['confidence']
+        for item in listofsuggestions:
+            print(listofsuggestions[item]['antecedents'])
         # js = rules.head().to_json(orient = 'values', force_ascii=False)
         # parsed = json.loads(js)
         # json.dumps(parsed, indent=1)
-        rules.index = rules.index.map(str)
-        rules.columns = rules.columns.map(str)
-        js = str(rules.to_dict()).replace("'", '"')
+        # rules.index = rules.index.map(str)
+        # rules.columns = rules.columns.map(str)
+        # js = str(rules.to_dict()).replace("'", '"')
         return JsonResponse(listofsuggestions,safe=False)
