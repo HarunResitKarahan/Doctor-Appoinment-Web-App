@@ -293,6 +293,7 @@ def Apriori(request, id = 0):
         for index, row in rules.iterrows():
             listofsuggestions[index]['antecedents'] = list(row['antecedents'])
             listofsuggestions[index]['consequents'] = list(row['consequents'])
+            listofsuggestions[index]['confidence'] = row['confidence']
         # js = rules.head().to_json(orient = 'values', force_ascii=False)
         # parsed = json.loads(js)
         # json.dumps(parsed, indent=1)
