@@ -301,3 +301,63 @@ def Apriori(request, id = 0):
         rules.columns = rules.columns.map(str)
         js = str(rules.to_dict()).replace("'", '"')
         return JsonResponse(listofsuggestions,safe=False)
+    if request.method == 'POST':
+        request_data = JSONParser().parse(request)
+        data = Appointment.objects.all().values()
+        patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
+        patient_doctors = []
+        counter = 0
+        for item in patient_appointments:
+            patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+            patient_appointments_departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
+            item['appointmentDoctorID_id'] = patient_appointments_doctor[0]['doctorName'] + ' ' + patient_appointments_doctor[0]['doctorSurname']
+            item['appointmentDepartmanID_id'] = patient_appointments_departman[0]['departmanName']
+            if not item['appointmentDoctorID_id'] in patient_doctors and item['appointmentDepartmanID_id'] == request_data['departman']:
+                patient_doctors[counter] = item['appointmentDoctorID_id']
+                counter += 1
+        print(patient_doctors)
+        # Stripping extra spaces in the description
+        for item in data:
+            doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+            departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
+            item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
+            item['appointmentDepartmanID_id'] = departman[0]['departmanName']
+            item['Quantity'] = 1
+        data = pd.DataFrame(data=data)
+        data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
+        # Dropping the rows without any invoice number
+        data.dropna(axis = 0, subset =['id'], inplace = True)
+        data['id'] = data['id'].astype('str')
+        # Transactions done in France
+        basket_France = (data
+                .groupby(['appointmentPatientID_id', 'appointmentDoctorID_id'])['Quantity']
+                .sum().unstack().reset_index().fillna(0)
+                .set_index('appointmentPatientID_id'))
+        # for the concerned libraries
+        def hot_encode(x):
+            if(x<= 0):
+                return 0
+            if(x>= 1):
+                return 1
+        
+        # Encoding the datasets
+        basket_encoded = basket_France.applymap(hot_encode)
+        basket_France = basket_encoded
+
+        frq_items = apriori(basket_France, min_support = 0.05, use_colnames = True)
+        # Collecting the inferred rules in a dataframe
+        rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
+        rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
+        # print(rules['antecedents'].to_string())
+        listofsuggestions = defaultdict(dict)
+        for index, row in rules.iterrows():
+            listofsuggestions[index]['antecedents'] = list(row['antecedents'])
+            listofsuggestions[index]['consequents'] = list(row['consequents'])
+            listofsuggestions[index]['confidence'] = row['confidence']
+        # js = rules.head().to_json(orient = 'values', force_ascii=False)
+        # parsed = json.loads(js)
+        # json.dumps(parsed, indent=1)
+        rules.index = rules.index.map(str)
+        rules.columns = rules.columns.map(str)
+        js = str(rules.to_dict()).replace("'", '"')
+        return JsonResponse(listofsuggestions,safe=False)
