@@ -347,7 +347,6 @@ def Apriori(request, id = 0):
         # Collecting the inferred rules in a dataframe
         rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
         rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
-        # print(rules['antecedents'].to_string())
         listofsuggestions = defaultdict(dict)
         suggestion = []
         for index, row in rules.iterrows():
