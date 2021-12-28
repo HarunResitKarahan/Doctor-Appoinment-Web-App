@@ -270,6 +270,18 @@ export default {
   },
   created () {
     this.issignin = localStorage.issignin
+    fetch('http://localhost:8000/apriori', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        patientID: localStorage.username,
+        departman: this.department
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
   }
 }
 </script>
