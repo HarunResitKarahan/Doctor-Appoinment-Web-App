@@ -374,13 +374,10 @@ def Apriori(request, id = 0):
                 if not item2 in return_suggestion and not item2 in patient_doctors:
                     return_suggestion.append(item2)
         print(return_suggestion)
-        # for item in return_suggestion:
-        #     return_suggestion_id = Doctor.objects.get(doctorName = str(item).split(' ')[0])
-        # print(return_suggestion_id)
-        # js = rules.head().to_json(orient = 'values', force_ascii=False)
-        # parsed = json.loads(js)
-        # json.dumps(parsed, indent=1)
-        # rules.index = rules.index.map(str)
-        # rules.columns = rules.columns.map(str)
-        # js = str(rules.to_dict()).replace("'", '"')
-        return JsonResponse(return_suggestion,safe=False)
+        return_doctors = []
+        for item in return_suggestion:
+            getdoctor = Doctor.objects.filter(doctorID = item).values()
+            # getdoctor_serializer = DoctorSerializer(getdoctor, many=True)
+            return_doctors.append(list(getdoctor))
+        print(return_doctors)
+        return JsonResponse(return_doctors,safe=False)

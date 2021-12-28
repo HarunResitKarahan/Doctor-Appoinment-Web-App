@@ -75,56 +75,56 @@
       </div>
     </template> -->
     <VueSlickCarousel style="width: 95%;margin: auto;" v-if="doctor.length > 0" :arrows="false" :dots="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
-      <template v-for="item in doctor">
+      <template v-for="item in suggestion">
       <div class="suggestion-doctor-card" :key="item">
         <div class="doctor-image">
-          <template v-if="item.doctorSex == 'Erkek'">
+          <template v-if="item[0].doctorSex == 'Erkek'">
             <img src="@/assets/maledoctor.png" width="85" height="85">
           </template>
           <template v-else>
             <img src="@/assets/femaledoctor.png" width="85" height="85">
           </template>
           <div class="info">
-            <p>{{item.doctorName}} {{item.doctorSurname}}</p>
+            <p>{{item[0].doctorName}} {{item[0].doctorSurname}}</p>
             <p class="departman">({{department}})</p>
             <div class="doctor-rank" style="margin: 0 0 7px 0">
-                <div class="star" :id="item.doctorID">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item.doctorID}a`">
+                <div class="star" :id="item[0].doctorID">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item[0].doctorID}a`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item.doctorID}1`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item[0].doctorID}1`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item.doctorID}2`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item[0].doctorID}2`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item.doctorID}3`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item[0].doctorID}3`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item.doctorID}4`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item[0].doctorID}4`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <p class="after">{{item.doctorScore}}</p><p>154 Değerlendirme</p>
+                    <p class="after">{{item[0].doctorScore}}</p><p>154 Değerlendirme</p>
                 </div>
             </div>
             <div class="doctor-departmant">
@@ -138,7 +138,7 @@
                 <p @click="loginPage">Randevu Al</p>
             </template>
             <template v-if="issignin == 'Giriş Başarılı'">
-                <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: hospitalName, department: department, date: date } }"><p>Randevu Al</p></router-link>
+                <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item[0].doctorID, hospitalName: hospitalName, department: department, date: date } }"><p>Randevu Al</p></router-link>
             </template>
           </div>
         </div>
