@@ -211,7 +211,7 @@ export default {
           this.hospitalName = undefined
           this.hospital = []
         }
-      } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined) {
+      } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined && this.date !== undefined) {
         fetch('http://localhost:8000/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
