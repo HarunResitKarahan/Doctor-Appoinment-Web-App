@@ -66,7 +66,7 @@ class Appointmen2Serializer(serializers.HyperlinkedModelSerializer):
         model = Appointment
         fields=('appointmentTime', 'appointmentPoint', 'appointmentDepartmanID_id', 'appointmentDoctorID_id', 'appointmentPatientID_id')
 
-# class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
+# class SuggestionSerializer(serializers.HyperlinkedModelSerializer):
 #     class Meta:
-#         model = Schedule
+#         model = Recommendation
 #         fields=['scheduleDate']

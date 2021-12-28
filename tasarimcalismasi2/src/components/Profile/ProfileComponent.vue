@@ -85,7 +85,7 @@
               <td><div>{{i.appointmentDepartmanID_id}}</div></td>
               <td><div>{{i.appointmentTime}}</div> </td>
               <td :id="i.id" style="display: flex;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" >
-                <template v-if="i.appointmentPoint == null && checktime(i.appointmentTime)">
+                <template v-if="i.appointmentPoint == null">
                   <div class="rate" v-for="item in 11" :key="item" style="display:flex;
                                                                           align-items: center;
                                                                           justify-content: center;
@@ -139,7 +139,7 @@ export default {
       var splittime = split[3].split(':')
       const d = new Date(split[2], this.months.findIndex(split[1]), split[0], splittime[0], splittime[1])
       print(d)
-      return false
+      return true
     }
   },
   created () {

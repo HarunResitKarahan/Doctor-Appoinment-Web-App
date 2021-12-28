@@ -307,9 +307,10 @@ def Apriori(request, id = 0):
         patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
         patient_doctors = []
         for item in patient_appointments:
-            patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+            # patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
             patient_appointments_departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
-            item['appointmentDoctorID_id'] = patient_appointments_doctor[0]['doctorName'] + ' ' + patient_appointments_doctor[0]['doctorSurname']
+            # item['appointmentDoctorID_id'] = patient_appointments_doctor[0]['doctorName'] + ' ' + patient_appointments_doctor[0]['doctorSurname']
+            item['appointmentDoctorID_id'] = str(item['appointmentDoctorID_id'])
             item['appointmentDepartmanID_id'] = patient_appointments_departman[0]['departmanName']
             if not item['appointmentDoctorID_id'] in patient_doctors and item['appointmentDepartmanID_id'] == request_data['departman']:
                 patient_doctors.append(item['appointmentDoctorID_id'])
@@ -317,12 +318,15 @@ def Apriori(request, id = 0):
         print("---------------------------")
         # Stripping extra spaces in the description
         for item in data:
-            doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
-            departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
-            item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
-            item['appointmentDepartmanID_id'] = departman[0]['departmanName']
+            # doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+            # departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
+            # item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
+            # item['appointmentDepartmanID_id'] = departman[0]['departmanName']
+            item['appointmentDoctorID_id'] = str(item['appointmentDoctorID_id'])
+            item['appointmentDepartmanID_id'] = str(item['appointmentDepartmanID_id'])
             item['Quantity'] = 1
         data = pd.DataFrame(data=data)
+        print(data)
         data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
         # Dropping the rows without any invoice number
         data.dropna(axis = 0, subset =['id'], inplace = True)
@@ -348,6 +352,7 @@ def Apriori(request, id = 0):
         rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
         rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
         listofsuggestions = defaultdict(dict)
+        print(rules)
         suggestion = []
         for index, row in rules.iterrows():
             listofsuggestions[index]['antecedents'] = list(row['antecedents'])
@@ -360,6 +365,7 @@ def Apriori(request, id = 0):
                     counter += 1
             if counter == len(listofsuggestions[item]['antecedents']) and listofsuggestions[item]['confidence'] >= 0.5 and not listofsuggestions[item]['consequents'] in suggestion:
                 suggestion.append(listofsuggestions[item]['consequents'])
+        print(listofsuggestions)
         print(suggestion)
         print("------------------")
         return_suggestion = []
@@ -368,9 +374,9 @@ def Apriori(request, id = 0):
                 if not item2 in return_suggestion and not item2 in patient_doctors:
                     return_suggestion.append(item2)
         print(return_suggestion)
-        for item in return_suggestion:
-            return_suggestion_id = Doctor.objects.filter(doctorName = str(item).split(' ')[0]).values
-        print(return_suggestion_id)
+        # for item in return_suggestion:
+        #     return_suggestion_id = Doctor.objects.get(doctorName = str(item).split(' ')[0])
+        # print(return_suggestion_id)
         # js = rules.head().to_json(orient = 'values', force_ascii=False)
         # parsed = json.loads(js)
         # json.dumps(parsed, indent=1)
