@@ -170,7 +170,7 @@ export default {
   data () {
     return {
       issignin: '',
-      suggestion: []
+      suggestion: undefined
     }
   },
   watch: {
@@ -282,6 +282,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.suggestion = data
+          console.log(data)
         })
     }
   }
