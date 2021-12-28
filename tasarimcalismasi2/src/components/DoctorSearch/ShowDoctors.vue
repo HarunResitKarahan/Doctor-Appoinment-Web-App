@@ -1,7 +1,7 @@
 <template>
   <div class="show-doctors">
-    <template v-for="item in doctor">
-      <div class="doctor-card" :key="item">
+    <template v-for="(item,index) in doctor">
+      <div class="doctor-card" :key="index">
         <div class="doctor-image">
           <template v-if="item.doctorSex == 'Erkek'">
             <img src="@/assets/maledoctor.png" width="150" height="150">
@@ -75,8 +75,8 @@
       </div>
     </template> -->
     <VueSlickCarousel style="width: 95%;margin: auto;" v-if="doctor.length > 0" :arrows="false" :dots="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
-      <template v-for="item in suggestion">
-      <div class="suggestion-doctor-card" :key="item">
+      <template v-for="(item,index) in suggestion">
+      <div class="suggestion-doctor-card" :key="index">
         <div class="doctor-image">
           <template v-if="item[0].doctorSex == 'Erkek'">
             <img src="@/assets/maledoctor.png" width="85" height="85">
@@ -178,6 +178,9 @@ export default {
   watch: {
     doctor: function () {
       this.star()
+    },
+    suggestion: function () {
+      this.starSuggestion()
     }
   },
   methods: {
@@ -185,6 +188,91 @@ export default {
       $('.login').css('display', 'flex')
       $('.login .login-card').css('display', 'block')
       $('.login .register-card').css('display', 'none')
+    },
+    starSuggestion () {
+      var doctor = this.suggestion
+      var getstar
+      var star
+      doctor.forEach(item => {
+        console.log(item)
+        var id = String(item[0].doctorID)
+        var hash = '#'
+        hash = hash.concat(id)
+        getstar = $('.doctor-rank').find(hash)
+        star = $(getstar).find('linearGradient stop')
+        if (Math.trunc((Number(item[0].doctorScore) % 1) * 100) <= 35) {
+          var text1 = String(Math.trunc((Number(item[0].doctorScore) % 1) * 100) + 10)
+          console.log(text1)
+        } else if (Math.trunc((Number(item[0].doctorScore) % 1) * 100) >= 75) {
+          text1 = String(Math.trunc((Number(item[0].doctorScore) % 1) * 100) - 10)
+        } else {
+          text1 = String(Math.trunc((Number(item[0].doctorScore) % 1) * 100))
+        }
+        var text2 = '%'
+        var concat = text1.concat(text2)
+        if (Number(item[0].doctorScore) >= 1 && Number(item[0].doctorScore) < 2) {
+          star[0].attributes[1].value = 'rgb(255, 185, 88)'
+          star[1].attributes[1].value = 'rgb(255, 185, 88)'
+          star[3].attributes[0].value = '0%'
+          star[2].attributes[1].value = 'white'
+          star[3].attributes[0].value = '0%'
+          star[3].attributes[1].value = 'white'
+          star[4].attributes[0].value = '0%'
+          star[4].attributes[1].value = 'rgb(255, 185, 88)'
+          star[5].attributes[0].value = concat
+          star[5].attributes[1].value = 'rgb(255, 185, 88)'
+          star[6].attributes[0].value = concat
+        } else if (Number(item[0].doctorScore) >= 2 && Number(item[0].doctorScore) < 3) {
+          star[0].attributes[1].value = 'rgb(255, 185, 88)'
+          star[1].attributes[1].value = 'rgb(255, 185, 88)'
+          star[2].attributes[1].value = 'rgb(255, 185, 88)'
+          star[3].attributes[1].value = 'rgb(255, 185, 88)'
+          star[4].attributes[1].value = 'rgb(255, 185, 88)'
+          star[5].attributes[1].value = 'rgb(255, 185, 88)'
+          star[6].attributes[1].value = 'rgb(255, 185, 88)'
+          star[7].attributes[1].value = 'rgb(255, 185, 88)'
+          star[8].attributes[0].value = concat
+          star[8].attributes[1].value = 'rgb(255, 185, 88)'
+          star[9].attributes[0].value = concat
+        } else if (Number(item[0].doctorScore) >= 3 && Number(item[0].doctorScore) < 4) {
+          star[0].attributes[1].value = 'rgb(255, 185, 88)'
+          star[1].attributes[1].value = 'rgb(255, 185, 88)'
+          star[2].attributes[1].value = 'rgb(255, 185, 88)'
+          star[3].attributes[1].value = 'rgb(255, 185, 88)'
+          star[4].attributes[1].value = 'rgb(255, 185, 88)'
+          star[5].attributes[1].value = 'rgb(255, 185, 88)'
+          star[6].attributes[1].value = 'rgb(255, 185, 88)'
+          star[7].attributes[1].value = 'rgb(255, 185, 88)'
+          star[8].attributes[1].value = 'rgb(255, 185, 88)'
+          star[9].attributes[1].value = 'rgb(255, 185, 88)'
+          star[10].attributes[1].value = 'rgb(255, 185, 88)'
+          star[11].attributes[1].value = 'rgb(255, 185, 88)'
+          star[12].attributes[0].value = concat
+          star[12].attributes[1].value = 'rgb(255, 185, 88)'
+          star[13].attributes[0].value = concat
+        } else if (Number(item[0].doctorScore) >= 4 && Number(item[0].doctorScore) < 5) {
+          star[0].attributes[1].value = 'rgb(255, 185, 88)'
+          star[1].attributes[1].value = 'rgb(255, 185, 88)'
+          star[2].attributes[1].value = 'rgb(255, 185, 88)'
+          star[3].attributes[1].value = 'rgb(255, 185, 88)'
+          star[4].attributes[1].value = 'rgb(255, 185, 88)'
+          star[5].attributes[1].value = 'rgb(255, 185, 88)'
+          star[6].attributes[1].value = 'rgb(255, 185, 88)'
+          star[7].attributes[1].value = 'rgb(255, 185, 88)'
+          star[8].attributes[1].value = 'rgb(255, 185, 88)'
+          star[9].attributes[1].value = 'rgb(255, 185, 88)'
+          star[10].attributes[1].value = 'rgb(255, 185, 88)'
+          star[11].attributes[1].value = 'rgb(255, 185, 88)'
+          star[12].attributes[1].value = 'rgb(255, 185, 88)'
+          star[13].attributes[1].value = 'rgb(255, 185, 88)'
+          star[14].attributes[1].value = 'rgb(255, 185, 88)'
+          star[15].attributes[1].value = 'rgb(255, 185, 88)'
+          star[16].attributes[1].value = 'rgb(255, 185, 88)'
+          star[17].attributes[0].value = concat
+          star[17].attributes[1].value = 'rgb(255, 185, 88)'
+          star[18].attributes[0].value = concat
+        }
+      })
     },
     star () {
       var doctor = this.doctor
