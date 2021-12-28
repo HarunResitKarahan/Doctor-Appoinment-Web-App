@@ -193,9 +193,7 @@ export default {
       var doctor = this.suggestion
       var getstar
       var star
-      console.log(doctor)
       doctor.forEach(item => {
-        console.log(item)
         var id = String(item.doctorID)
         var hash = '#'
         hash = hash.concat(id)
@@ -203,7 +201,6 @@ export default {
         star = $(getstar).find('linearGradient stop')
         if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
           var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
-          console.log(text1)
         } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {
           text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) - 10)
         } else {
@@ -305,7 +302,6 @@ export default {
           star = $(getstar).find('linearGradient stop')
           if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
             var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
-            console.log(text1)
           } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {
             text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) - 10)
           } else {

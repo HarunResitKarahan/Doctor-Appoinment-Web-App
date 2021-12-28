@@ -379,5 +379,8 @@ def Apriori(request, id = 0):
             getdoctor = Doctor.objects.filter(doctorID = item).values()
             # getdoctor_serializer = DoctorSerializer(getdoctor, many=True)
             return_doctors.append(list(getdoctor))
-        print(return_doctors)
+        for item in return_doctors:
+            print(item[0]['departmanID_id'])
+            departman = Departman.objects.filter(departmanID = item[0]['departmanID_id']).values()
+            item[0]['departmanID_id'] = departman[0]['departmanName']
         return JsonResponse(return_doctors,safe=False)
