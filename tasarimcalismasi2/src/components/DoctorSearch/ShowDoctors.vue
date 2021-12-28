@@ -78,53 +78,53 @@
       <template v-for="(item,index) in suggestion">
       <div class="suggestion-doctor-card" :key="index">
         <div class="doctor-image">
-          <template v-if="item[0].doctorSex == 'Erkek'">
+          <template v-if="item.doctorSex == 'Erkek'">
             <img src="@/assets/maledoctor.png" width="85" height="85">
           </template>
           <template v-else>
             <img src="@/assets/femaledoctor.png" width="85" height="85">
           </template>
           <div class="info">
-            <p>{{item[0].doctorName}} {{item[0].doctorSurname}}</p>
+            <p>{{item.doctorName}} {{item.doctorSurname}}</p>
             <p class="departman">({{department}})</p>
             <div class="doctor-rank" style="margin: 0 0 7px 0">
-                <div class="star" :id="item[0].doctorID">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item[0].doctorID}a`">
+                <div class="star" :id="item.doctorID">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item.doctorID}a`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item[0].doctorID}1`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item.doctorID}1`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item[0].doctorID}2`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item.doctorID}2`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item[0].doctorID}3`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item.doctorID}3`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item[0].doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-                    <linearGradient :id="`${item[0].doctorID}4`">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                    <linearGradient :id="`${item.doctorID}4`">
                         <stop offset="0%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                         <stop offset="60%" stop-color="white"/>
                         <stop offset="100%" stop-color="white"/>
                     </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    <p class="after">{{item[0].doctorScore}}</p><p>154 Değerlendirme</p>
+                    <p class="after">{{item.doctorScore}}</p><p>154 Değerlendirme</p>
                 </div>
             </div>
             <div class="doctor-departmant">
@@ -138,7 +138,7 @@
                 <p @click="loginPage">Randevu Al</p>
             </template>
             <template v-if="issignin == 'Giriş Başarılı'">
-                <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item[0].doctorID, hospitalName: hospitalName, department: department, date: date } }"><p>Randevu Al</p></router-link>
+                <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: hospitalName, department: department, date: date } }"><p>Randevu Al</p></router-link>
             </template>
           </div>
         </div>
@@ -193,24 +193,25 @@ export default {
       var doctor = this.suggestion
       var getstar
       var star
+      console.log(doctor)
       doctor.forEach(item => {
         console.log(item)
-        var id = String(item[0].doctorID)
+        var id = String(item.doctorID)
         var hash = '#'
         hash = hash.concat(id)
         getstar = $('.doctor-rank').find(hash)
         star = $(getstar).find('linearGradient stop')
-        if (Math.trunc((Number(item[0].doctorScore) % 1) * 100) <= 35) {
-          var text1 = String(Math.trunc((Number(item[0].doctorScore) % 1) * 100) + 10)
+        if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
+          var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
           console.log(text1)
-        } else if (Math.trunc((Number(item[0].doctorScore) % 1) * 100) >= 75) {
-          text1 = String(Math.trunc((Number(item[0].doctorScore) % 1) * 100) - 10)
+        } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {
+          text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) - 10)
         } else {
-          text1 = String(Math.trunc((Number(item[0].doctorScore) % 1) * 100))
+          text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100))
         }
         var text2 = '%'
         var concat = text1.concat(text2)
-        if (Number(item[0].doctorScore) >= 1 && Number(item[0].doctorScore) < 2) {
+        if (Number(item.doctorScore) >= 1 && Number(item.doctorScore) < 2) {
           star[0].attributes[1].value = 'rgb(255, 185, 88)'
           star[1].attributes[1].value = 'rgb(255, 185, 88)'
           star[3].attributes[0].value = '0%'
@@ -222,7 +223,7 @@ export default {
           star[5].attributes[0].value = concat
           star[5].attributes[1].value = 'rgb(255, 185, 88)'
           star[6].attributes[0].value = concat
-        } else if (Number(item[0].doctorScore) >= 2 && Number(item[0].doctorScore) < 3) {
+        } else if (Number(item.doctorScore) >= 2 && Number(item.doctorScore) < 3) {
           star[0].attributes[1].value = 'rgb(255, 185, 88)'
           star[1].attributes[1].value = 'rgb(255, 185, 88)'
           star[2].attributes[1].value = 'rgb(255, 185, 88)'
@@ -234,7 +235,7 @@ export default {
           star[8].attributes[0].value = concat
           star[8].attributes[1].value = 'rgb(255, 185, 88)'
           star[9].attributes[0].value = concat
-        } else if (Number(item[0].doctorScore) >= 3 && Number(item[0].doctorScore) < 4) {
+        } else if (Number(item.doctorScore) >= 3 && Number(item.doctorScore) < 4) {
           star[0].attributes[1].value = 'rgb(255, 185, 88)'
           star[1].attributes[1].value = 'rgb(255, 185, 88)'
           star[2].attributes[1].value = 'rgb(255, 185, 88)'
@@ -250,7 +251,7 @@ export default {
           star[12].attributes[0].value = concat
           star[12].attributes[1].value = 'rgb(255, 185, 88)'
           star[13].attributes[0].value = concat
-        } else if (Number(item[0].doctorScore) >= 4 && Number(item[0].doctorScore) < 5) {
+        } else if (Number(item.doctorScore) >= 4 && Number(item.doctorScore) < 5) {
           star[0].attributes[1].value = 'rgb(255, 185, 88)'
           star[1].attributes[1].value = 'rgb(255, 185, 88)'
           star[2].attributes[1].value = 'rgb(255, 185, 88)'
@@ -275,6 +276,23 @@ export default {
       })
     },
     star () {
+      if (this.doctor.length > 0) {
+        fetch('http://localhost:8000/apriori', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            patientID: localStorage.username,
+            departman: this.department
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            this.suggestion = data
+            this.suggestion.forEach((item, index) => {
+              this.suggestion[index] = item[0]
+            })
+          })
+      }
       var doctor = this.doctor
       var getstar
       var star
@@ -361,22 +379,8 @@ export default {
       })
     }
   },
-  updated () {
-    if (this.doctor.length > 0) {
-      this.issignin = localStorage.issignin
-      fetch('http://localhost:8000/apriori', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          patientID: localStorage.username,
-          departman: this.department
-        })
-      })
-        .then(response => response.json())
-        .then(data => {
-          this.suggestion = data
-        })
-    }
+  created () {
+    this.issignin = localStorage.issignin
   }
 }
 </script>
