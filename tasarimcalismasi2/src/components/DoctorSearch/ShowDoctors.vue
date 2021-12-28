@@ -66,14 +66,14 @@
         </div>
     </div>
     </template>
-    <!-- <div class="see-more">
+    <div class="see-more">
       <p>Daha Fazla Görüntüle</p>
     </div>
     <template v-if="suggestion.length > 0">
       <div class="header">
         <p>-Önerilen Doktorlar-</p>
       </div>
-    </template> -->
+    </template>
     <VueSlickCarousel style="width: 95%;margin: auto;" v-if="doctor.length > 0" :arrows="false" :dots="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
       <template v-for="(item,index) in suggestion">
       <div class="suggestion-doctor-card" :key="index">
@@ -289,6 +289,8 @@ export default {
               this.suggestion[index] = item[0]
             })
           })
+      } else {
+        this.suggestion = undefined
       }
       var doctor = this.doctor
       var getstar
