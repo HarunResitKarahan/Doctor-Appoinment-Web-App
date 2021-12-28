@@ -28,7 +28,7 @@
                     padding: 15px; ">
             <p class="h6" style="margin:0;margin-bottom: 5px;">Son Randevular</p>
             <template v-if="appointments.length > 0">
-              <div v-for="(item,index) in 3" :key="index" style="display: flex;
+              <div v-for="(item,index) in reverseappointments3" :key="index" style="display: flex;
                           width: 100%;
                           padding: 20px 5px;
                           border: 0 solid #f0f0f0;
@@ -85,7 +85,7 @@
               <td><div>{{i.appointmentDepartmanID_id}}</div></td>
               <td><div>{{i.appointmentTime}}</div> </td>
               <td :id="i.id" style="display: flex;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" >
-                <template v-if="i.appointmentPoint == null">
+                <template v-if="i.appointmentPoint == null && checktime(i.appointmentTime)">
                   <div class="rate" v-for="item in 11" :key="item" style="display:flex;
                                                                           align-items: center;
                                                                           justify-content: center;
@@ -128,8 +128,18 @@ export default {
       userinfo: '',
       appointments: [],
       reverseappointments: [],
+      reverseappointments3: [],
       doctor: [],
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+    }
+  },
+  methods: {
+    checktime (appointmentTime) {
+      var split = appointmentTime.split(' ')
+      var splittime = split[3].split(':')
+      const d = new Date(split[2], this.months.findIndex(split[1]), split[0], splittime[0], splittime[1])
+      print(d)
+      return false
     }
   },
   created () {
@@ -166,6 +176,15 @@ export default {
           item.appointmentTime = day + ' ' + this.months[month - 1] + ' ' + year + ' ' + hour + ':' + minute
         })
         this.reverseappointments = this.appointments.reverse()
+        if (this.reverseappointments.length >= 3) {
+          this.reverseappointments3[0] = this.reverseappointments[0]
+          this.reverseappointments3[1] = this.reverseappointments[1]
+          this.reverseappointments3[2] = this.reverseappointments[2]
+        } else {
+          this.reverseappointments.forEach((item) => {
+            this.reverseappointments3.push(item)
+          })
+        }
       })
   },
   updated () {

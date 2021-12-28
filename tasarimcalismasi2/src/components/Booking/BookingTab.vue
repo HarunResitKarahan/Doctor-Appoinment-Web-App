@@ -265,6 +265,9 @@ export default {
             }
           })
       })
+  },
+  updated () {
+
   }
   // mounted () {
   //   $(document).ready(function () {
