@@ -27,28 +27,30 @@
                     margin-top:30px;
                     padding: 15px; ">
             <p class="h6" style="margin:0;margin-bottom: 5px;">Son Randevular</p>
-            <div v-for="(item,index) in 3" :key="index" style="display: flex;
-                        width: 100%;
-                        padding: 20px 5px;
-                        border: 0 solid #f0f0f0;
-                        border-top-width: 1px;
-                        border-bottom-width: 1px;">
-              <!-- <template v-if="doctor[0].doctorSex == 'Erkek'">
+            <template v-if="appointments.length > 0">
+              <div v-for="(item,index) in 3" :key="index" style="display: flex;
+                          width: 100%;
+                          padding: 20px 5px;
+                          border: 0 solid #f0f0f0;
+                          border-top-width: 1px;
+                          border-bottom-width: 1px;">
+                <!-- <template v-if="doctor[0].doctorSex == 'Erkek'">
+                  <div>
+                    <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                  </div>
+                </template> -->
+                <template>
+                  <div>
+                    <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                  </div>
+                </template>
                 <div>
-                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                  <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">{{appointments[index].appointmentDoctorID_id}}</p>
+                  <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">({{appointments[index].appointmentDepartmanID_id}})</p>
+                  <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">{{appointments[index].appointmentTime}}</p>
                 </div>
-              </template> -->
-              <template>
-                <div>
-                   <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
-              </template>
-              <div>
-                <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">{{appointments[index].appointmentDoctorID_id}}</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">({{appointments[index].appointmentDepartmanID_id}})</p>
-                <p style="margin-left: 8px;font-weight: 300;font-size: 0.8rem;">{{appointments[index].appointmentTime}}</p>
               </div>
-            </div>
+            </template>
         </div>
         </div>
       </div>
