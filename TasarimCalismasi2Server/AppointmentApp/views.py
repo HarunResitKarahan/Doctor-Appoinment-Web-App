@@ -368,6 +368,9 @@ def Apriori(request, id = 0):
                 if not item2 in return_suggestion and not item2 in patient_doctors:
                     return_suggestion.append(item2)
         print(return_suggestion)
+        for item in return_suggestion:
+            return_suggestion_id = Doctor.objects.filter(doctorName = str(item).split(' ')[0]).values
+        print(return_suggestion_id)
         # js = rules.head().to_json(orient = 'values', force_ascii=False)
         # parsed = json.loads(js)
         # json.dumps(parsed, indent=1)
