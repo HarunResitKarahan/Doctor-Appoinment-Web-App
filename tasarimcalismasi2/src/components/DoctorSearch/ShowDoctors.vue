@@ -86,7 +86,7 @@
           </template>
           <div class="info">
             <p>{{item.doctorName}} {{item.doctorSurname}}</p>
-            <p class="departman">({{department}})</p>
+            <p class="departman">({{item.departmanID_id}})</p>
             <div class="doctor-rank" style="margin: 0 0 7px 0">
                 <div class="star" :id="item.doctorID">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div class="doctor-departmant">
-              <span class="material-icons">emergency</span><p>{{hospitalName}}</p>
+              <span class="material-icons">emergency</span><p>{{item.hospitalID_id}}</p>
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@
                 <p @click="loginPage">Randevu Al</p>
             </template>
             <template v-if="issignin == 'Giriş Başarılı'">
-                <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: hospitalName, department: department, date: date } }"><p>Randevu Al</p></router-link>
+                <router-link class="appointment" :to="{ name: 'Booking', params: { doctorID: item.doctorID, hospitalName: item.hospitalID_id, department: item.departmanID_id, date: date } }"><p>Randevu Al</p></router-link>
             </template>
           </div>
         </div>
