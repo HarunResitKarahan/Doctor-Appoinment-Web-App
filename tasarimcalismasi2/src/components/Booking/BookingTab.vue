@@ -69,7 +69,7 @@
                 <template v-for="index in 14">
                     <div @click="getappointment($event)" class="date" :key="index">
                         <p style="color: #272B41;">{{days[(day + index) - 1]}}</p>
-                        <p class="h5" style="color: #757575;">{{(dateday + index) - 1}} {{months[datemonth - 1]}} {{dateyear}}</p>
+                        <p class="h5" style="color: #757575;"><span class="dayy">{{newdate.getDate()}}</span> <span class="month">{{months[datemonth - 1]}}</span> <span class="year">{{dateyear}}</span></p>
                     </div>
                 </template>
             </VueSlickCarousel>
@@ -132,7 +132,8 @@ export default {
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       bookedtime: [],
       doctor: [],
-      selectedtime: ''
+      selectedtime: '',
+      newdate: Date
     }
   },
   computed: {
@@ -260,6 +261,7 @@ export default {
       this.datemonth = Number(this.date.split('-')[1])
       this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
     }
+    this.newdate = new Date(this.dateyear, this.datemonth, this.dateday)
     fetch('http://localhost:8000/doctor/bookingdoctorinfo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

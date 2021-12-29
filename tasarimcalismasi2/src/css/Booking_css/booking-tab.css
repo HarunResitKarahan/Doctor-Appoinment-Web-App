@@ -91,6 +91,9 @@
     font-size: 14px;
     color: #757575;
 }
+/* .booking-tab .schedule-tab .day .date .h5 span {
+    width: fit-content;
+} */
 .booking-tab .schedule-tab .day .date:hover {
     background-color: rgba(73, 201, 188, 0.685);
     transition-duration: 0s;
