@@ -75,9 +75,14 @@
               <td><div style="display: flex;
                           align-items: center;
                           width: 100%;">
-                <div>
-                  <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
-                </div>
+                <template v-if="i.doctorSex == 'Erkek'">
+                  <div>
+                    <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                  </div>
+                </template>
+                <template v-else>
+                  <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                </template>
                 <div>
                   <p style="margin-left: 16px;font-weight: 500;font-size: 0.9rem;">{{i.appointmentDoctorID_id}}</p>
                 </div>

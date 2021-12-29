@@ -173,9 +173,10 @@ def AppointmentGetAppointment(request, id = 0):
             departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
             item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
             item['appointmentDepartmanID_id'] = departman[0]['departmanName']
+            item['doctorSex'] = doctor[0]['doctorSex']
             # item['appointmentTime'] = datetime.strptime(str(item['appointmentTime']), "%Y-%m-%d %H:%M:%S")
-        schedule_serializer = Appointment3Serializer(schedule, many = True)
-        return JsonResponse(schedule_serializer.data, safe = False)
+        # schedule_serializer = Appointment3Serializer(schedule, many = True)
+        return JsonResponse(list(schedule), safe = False)
     elif request.method=='PUT':
         request_data = JSONParser().parse(request)
         print(request_data)
