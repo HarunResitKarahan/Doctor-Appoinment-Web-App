@@ -14,7 +14,7 @@
     </template>
     <template v-if="issignin == 'Giriş Başarılı'">
       <div class="log-in">
-          <div><router-link to="/profile">PROFİLE</router-link></div>
+          <div><router-link to="/profile">PROFİL</router-link></div>
           <div @click="signout"><router-link to="/" style="border-left-width: 0;">ÇIKIŞ</router-link></div>
       </div>
     </template>
