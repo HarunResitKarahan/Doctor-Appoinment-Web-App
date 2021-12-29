@@ -377,6 +377,7 @@ def Apriori(request, id = 0):
         return_doctors = []
         for item in return_suggestion:
             getdoctor = Doctor.objects.filter(doctorID = item).values()
+            # departman = Departman.objects.filter(departmanID = item[0]['departmanID_id']).values()
             # getdoctor_serializer = DoctorSerializer(getdoctor, many=True)
             return_doctors.append(list(getdoctor))
         for item in return_doctors:
@@ -384,4 +385,12 @@ def Apriori(request, id = 0):
             hospital = Hospital.objects.filter(hospitalID = item[0]['hospitalID_id']).values()
             item[0]['departmanID_id'] = departman[0]['departmanName']
             item[0]['hospitalID_id'] = hospital[0]['hospitalName']
+        willdelete = []
+        for item in return_doctors:
+            if item[0]['departmanID_id'] != request_data['departman']:
+                print("-----------------------------------")
+                print(item[0])
+                willdelete.append(item)
+        for item in willdelete:
+            return_doctors.remove(item)
         return JsonResponse(return_doctors,safe=False)
