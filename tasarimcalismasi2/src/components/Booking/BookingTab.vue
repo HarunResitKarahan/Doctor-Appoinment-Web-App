@@ -383,7 +383,24 @@ export default {
     })
     var date = document.getElementsByClassName('date')
     var datetext = document.querySelector('.datetext .h5').textContent
-    date.forEach((item) => {
+    var gir
+    date.forEach((item, index) => {
+      if (index > 0) {
+        this.newdate.setDate(this.newdate.getDate() + 1)
+        item.querySelector('.h5 .dayy').textContent = this.newdate.getDate()
+        if (this.newdate.getDate() === 1) {
+          gir = 'gir'
+        }
+        if (this.datemonth === 12 && gir === 'gir') {
+          this.datemonth = 1
+          console.log(this.months[this.datemonth - 1])
+        } else if (gir === 'gir') {
+          this.datemonth += 1
+        }
+        if (gir === 'gir') {
+          item.querySelector('.h5 .month').textContent = this.months[this.datemonth - 1]
+        }
+      }
       if (item.querySelector('.h5').textContent === datetext) {
         item.style.backgroundColor = 'rgba(73, 201, 188, 0.685)'
         item.style.transitionDuration = '0s'
