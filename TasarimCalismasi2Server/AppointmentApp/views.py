@@ -303,8 +303,10 @@ def Apriori(request, id = 0):
         return JsonResponse(listofsuggestions,safe=False)
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
+        print(request_data)
         data = Appointment.objects.all().values()
         patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
+        print(patient_appointments)
         patient_doctors = []
         for item in patient_appointments:
             # patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
@@ -312,8 +314,9 @@ def Apriori(request, id = 0):
             # item['appointmentDoctorID_id'] = patient_appointments_doctor[0]['doctorName'] + ' ' + patient_appointments_doctor[0]['doctorSurname']
             item['appointmentDoctorID_id'] = str(item['appointmentDoctorID_id'])
             item['appointmentDepartmanID_id'] = patient_appointments_departman[0]['departmanName']
-            if not item['appointmentDoctorID_id'] in patient_doctors and item['appointmentDepartmanID_id'] == request_data['departman']:
+            if not item['appointmentDoctorID_id'] in patient_doctors:
                 patient_doctors.append(item['appointmentDoctorID_id'])
+        print(patient_appointments)
         print(patient_doctors)
         print("---------------------------")
         # Stripping extra spaces in the description
@@ -326,7 +329,7 @@ def Apriori(request, id = 0):
             item['appointmentDepartmanID_id'] = str(item['appointmentDepartmanID_id'])
             item['Quantity'] = 1
         data = pd.DataFrame(data=data)
-        print(data)
+        # print(data)
         data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
         # Dropping the rows without any invoice number
         data.dropna(axis = 0, subset =['id'], inplace = True)
@@ -367,7 +370,7 @@ def Apriori(request, id = 0):
                 suggestion.append(listofsuggestions[item]['consequents'])
         print(listofsuggestions)
         print(suggestion)
-        print("------------------")
+        # print("------------------")
         return_suggestion = []
         for item in suggestion:
             for item2 in item:
@@ -388,8 +391,8 @@ def Apriori(request, id = 0):
         willdelete = []
         for item in return_doctors:
             if item[0]['departmanID_id'] != request_data['departman']:
-                print("-----------------------------------")
-                print(item[0])
+                # print("-----------------------------------")
+                # print(item[0])
                 willdelete.append(item)
         for item in willdelete:
             return_doctors.remove(item)
