@@ -17,11 +17,46 @@
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
             <p style="font-size: 14px;color: #757575;margin-bottom: 5px;padding-left: 4px;">{{department}}</p>
-            <div class="doctor-rank">
-                <div class="star">
-                    <span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><span class="material-icons" >star</span ><p class="after">{{doctor[0].doctorScore}}</p><p style="height: 22px;">154 Değerlendirme</p>
-                </div>
-            </div>
+            <div class="doctor-rank" style="margin: 0 0 7px 0">
+                  <div class="star" :id="doctor[0].doctorID">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${doctor[0].doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <linearGradient :id="`${doctor[0].doctorID}a`">
+                          <stop  offset="0%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                          <stop  offset="60%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                      </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${doctor[0].doctorID}1)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <linearGradient :id="`${doctor[0].doctorID}1`">
+                          <stop  offset="0%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                          <stop  offset="60%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                      </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${doctor[0].doctorID}2)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <linearGradient :id="`${doctor[0].doctorID}2`">
+                          <stop  offset="0%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                          <stop  offset="60%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                      </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${doctor[0].doctorID}3)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <linearGradient :id="`${doctor[0].doctorID}3`">
+                          <stop  offset="0%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                          <stop  offset="60%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                      </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${doctor[0].doctorID}4)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                      <linearGradient :id="`${doctor[0].doctorID}4`">
+                          <stop  offset="0%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                          <stop  offset="60%" stop-color="white"/>
+                          <stop  offset="100%" stop-color="white"/>
+                      </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <p class="after">{{doctor[0].doctorScore}}</p><p>154 Değerlendirme</p>
+                  </div>
+              </div>
             <div class="doctor-departmant" style="margin-top: 10px;">
                 <span class="material-icons" style="color: rgb(0, 0, 0, 0.500); font-size: 24px;padding: 1px;
     margin-right: 2px;">location_on</span><p style="padding-top: 3px;">{{hospitalName}}</p>
