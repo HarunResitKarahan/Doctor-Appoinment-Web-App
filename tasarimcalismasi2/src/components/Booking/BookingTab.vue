@@ -203,7 +203,6 @@ export default {
             // this.selectedtime = ''
             // this.$set(this.$data, 'selectedtime', '')
             this.selectedtimeupdate = ''
-            console.log(this.selectedtimeupdate)
           } else {
             $('.appointment').removeClass('selected')
             $(event.target).addClass('selected')
@@ -303,13 +302,11 @@ export default {
   },
   updated () {
     this.doctor.forEach((item) => {
-      console.log(item)
       var id = String(item.doctorID)
       var hash = '#'
       hash = hash.concat(id)
       var getstar = $('.doctor-rank').find(hash)
       var star = $(getstar).find('linearGradient stop')
-      console.log(star)
       if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
         var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
       } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {
@@ -382,24 +379,19 @@ export default {
         star[18].attributes[0].value = concat
       }
     })
+    var date = document.getElementsByClassName('date')
+    var datetext = document.querySelector('.datetext .h5').textContent
+    console.log(datetext)
+    date.forEach((item) => {
+      if (item.querySelector('.h5').textContent === datetext) {
+        item.style.backgroundColor = 'rgba(73, 201, 188, 0.685)'
+        item.style.transitionDuration = '0s'
+        item.querySelector('.h5').style.transitionDuration = '0s'
+        item.querySelector('.h5').style.color = 'white'
+        item.querySelector('p').style.transitionDuration = '0s'
+        item.querySelector('p').style.color = 'white'
+      }
+    })
   }
-  // mounted () {
-  //   $(document).ready(function () {
-  //     $('.appointment').click(function () {
-  //       if ($(this).hasClass('selected')) {
-  //         $(this).removeClass('selected')
-  //       } else {
-  //         $('.appointment').removeClass('selected')
-  //         $(this).addClass('selected')
-  //       }
-  //     })
-  //     $('.date').click(function () {
-  //       $('.date').css('background-color', 'white')
-  //       $('.date p').css('color', '#757575')
-  //       $(this).css('background-color', 'rgb(73, 201, 188)')
-  //       $(this).find('p').css('color', 'white')
-  //     })
-  //   })
-  // }
 }
 </script>
