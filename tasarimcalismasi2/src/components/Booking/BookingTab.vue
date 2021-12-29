@@ -390,12 +390,12 @@ export default {
         item.querySelector('.h5 .dayy').textContent = this.newdate.getDate()
         if (this.newdate.getDate() === 1) {
           gir = 'gir'
-        }
-        if (this.datemonth === 12 && gir === 'gir') {
-          this.datemonth = 1
-          console.log(this.months[this.datemonth - 1])
-        } else if (gir === 'gir') {
-          this.datemonth += 1
+          if (this.datemonth === 12) {
+            this.datemonth = 1
+            console.log(this.months[this.datemonth - 1])
+          } else {
+            this.datemonth += 1
+          }
         }
         if (gir === 'gir') {
           item.querySelector('.h5 .month').textContent = this.months[this.datemonth - 1]
