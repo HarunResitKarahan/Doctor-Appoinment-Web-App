@@ -392,13 +392,14 @@ export default {
           gir = 'gir'
           if (this.datemonth === 12) {
             this.datemonth = 1
-            console.log(this.months[this.datemonth - 1])
+            this.newdate.setDate(this.newdate.getYear() + 1)
           } else {
             this.datemonth += 1
           }
         }
         if (gir === 'gir') {
           item.querySelector('.h5 .month').textContent = this.months[this.datemonth - 1]
+          item.querySelector('.h5 .year').textContent = this.newdate.getFullYear()
         }
       }
       if (item.querySelector('.h5').textContent === datetext) {
