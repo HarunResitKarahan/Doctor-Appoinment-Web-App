@@ -87,7 +87,7 @@
             <div class="info">
               <p>{{item.doctorName}} {{item.doctorSurname}}</p>
               <p class="departman">({{item.departmanID_id}})</p>
-              <div class="doctor-rank" style="margin: 0 0 7px 0">
+              <div class="suggestion-doctor-rank" style="margin: 0 0 7px 0">
                   <div class="star" :id="item.doctorID">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" :fill="`url(#${item.doctorID}a)`" stroke="rgb(255, 185, 88)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
                       <linearGradient :id="`${item.doctorID}a`">
@@ -297,9 +297,9 @@ export default {
       var id = String(item.doctorID)
       var hash = '#'
       hash = hash.concat(id)
-      var getstar = $('.doctor-rank').find(hash)
+      var getstar = $('.suggestion-doctor-rank').find(hash)
       var star = $(getstar).find('linearGradient stop')
-      console.log(star)
+      console.log(getstar)
       if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
         var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
       } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {

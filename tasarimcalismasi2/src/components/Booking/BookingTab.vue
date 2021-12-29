@@ -381,7 +381,6 @@ export default {
     })
     var date = document.getElementsByClassName('date')
     var datetext = document.querySelector('.datetext .h5').textContent
-    console.log(datetext)
     date.forEach((item) => {
       if (item.querySelector('.h5').textContent === datetext) {
         item.style.backgroundColor = 'rgba(73, 201, 188, 0.685)'
