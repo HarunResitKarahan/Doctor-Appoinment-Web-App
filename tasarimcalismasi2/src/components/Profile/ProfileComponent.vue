@@ -109,10 +109,14 @@
                     Randevuya Verdiğiniz Puan:
                   </div>
                 </template>
-                <template v-else>
+                <template v-if="i.appointmentPoint == null && new Date(Number(i.year), Number(i.month), Number(i.day), Number(i.hour), Number(i.minute), 0) > new Date()">
+                  <div style="width: 100%;text-align: center;">
+                    Randevunuza Gidiniz !
+                  </div>
+                </template>
+                <template v-if="i.appointmentPoint != null ">
                   <div style="width: 100%;text-align: center;">
                     Randevuya Verdiğiniz Puan: {{i.appointmentPoint}}
-                    <div v-if="new Date(Number(i.year), Number(i.month), Number(i.day), Number(i.hour), Number(i.minute), 0) < new Date()">küçük</div>
                   </div>
                 </template>
               </td>
