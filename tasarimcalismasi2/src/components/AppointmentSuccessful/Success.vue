@@ -20,7 +20,7 @@
         <router-link to="/"><p class="return-homepage">Ana Sayfa'ya Dön</p></router-link>
       </div>
     </template>
-    <template v-else>
+    <template v-if="success != 'Added Successfully'">
       <div class="success">
         <div class="verify"><span class="material-icons" style="color: #ff8282;">new_releases</span></div>
         <div class="appointment-info">
