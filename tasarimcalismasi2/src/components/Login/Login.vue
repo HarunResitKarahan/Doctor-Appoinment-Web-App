@@ -53,6 +53,14 @@
               <span>E-posta: </span>
               <input v-model="email" type="text">
           </div>
+          <div class="username">
+              <span>Cinsiyet: </span>
+              <select style="width: 100%; padding: 14px;line-height: 1.4;margin: 0 0 15px 0;border-radius: 5px;border:none;background-color: rgba(255, 255, 255, 0.589);" v-model="sex" name="sex" id="sex" default="Cinsiyet">
+                <option value="" selected disabled hidden>Cinsiyet Seçin</option>
+                <option value="Erkek">Erkek</option>
+                <option value="Kadın">Kadın</option>
+              </select>
+          </div>
           <div class="password">
               <span>Şifre: </span>
               <input v-model="registerpassword" type="password">

@@ -44,6 +44,15 @@
 .login .login-card input:focus {
     transform: scale(1.01);
 }
+.username select {
+    color: white !important;
+}
+.username select option{
+    background: #66b7cb;
+}
+.username select option:hover{
+    background-color: rgba(255, 255, 255, 0.493) !important;
+}
 .login .login-card .username {
     display: flex;
     flex-direction: column;
