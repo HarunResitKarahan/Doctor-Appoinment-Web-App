@@ -5,7 +5,7 @@ from AppointmentApp.models import Patient,Appointment, Departman,City,Doctor,Hos
 class PatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Patient
-        fields=('patientID', 'patientName', 'patientSurname', 'patientEmail', 'patientPassword')
+        fields=('patientID', 'patientName', 'patientSurname', 'patientEmail', 'patientPassword', 'patientSex')
 
 class GetPatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

@@ -71,7 +71,7 @@
           <template v-if="isregistered == 'Failed to Add'">
             <p style="color: red;margin: 5px 0;">Kayıt Olunamadı Kimlik Numarası Zaten Kayıtlı</p>
           </template>
-          <div @click="registerbutton(id, name, surname, email, registerpassword)" class="log-in">
+          <div @click="registerbutton(id, name, surname, email, registerpassword, sex)" class="log-in">
               <p>Kayıt Ol</p>
           </div>
           <p @click="loginPageOpen" class="register">Üye misiniz ?</p>
@@ -127,7 +127,7 @@ export default {
           }
         })
     },
-    registerbutton (id, name, surname, email, registerpassword) {
+    registerbutton (id, name, surname, email, registerpassword, sex) {
       fetch('http://localhost:8000/patient', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -136,7 +136,8 @@ export default {
           patientName: name,
           patientSurname: surname,
           patientEmail: email,
-          patientPassword: registerpassword
+          patientPassword: registerpassword,
+          patientSex: sex
         })
       })
         .then(response => response.json())
