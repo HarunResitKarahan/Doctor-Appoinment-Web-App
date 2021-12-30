@@ -90,7 +90,7 @@
               <td><div>{{i.appointmentDepartmanID_id}}</div></td>
               <td><div>{{i.appointmentTime}}</div> </td>
               <td :id="i.id" style="display: flex;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" >
-                <template v-if="i.appointmentPoint == null">
+                <template v-if="i.appointmentPoint == null && new Date(Number(i.year), Number(i.month), Number(i.day), Number(i.hour), Number(i.minute), 0) < new Date()">
                   <div class="rate" v-for="item in 11" :key="item" style="display:flex;
                                                                           align-items: center;
                                                                           justify-content: center;
@@ -112,6 +112,7 @@
                 <template v-else>
                   <div style="width: 100%;text-align: center;">
                     Randevuya Verdiğiniz Puan: {{i.appointmentPoint}}
+                    <div v-if="new Date(Number(i.year), Number(i.month), Number(i.day), Number(i.hour), Number(i.minute), 0) < new Date()">küçük</div>
                   </div>
                 </template>
               </td>
@@ -179,6 +180,11 @@ export default {
           var hour = item.appointmentTime.split('T')[1].split(':')[0]
           var minute = item.appointmentTime.split('T')[1].split(':')[1]
           item.appointmentTime = day + ' ' + this.months[month - 1] + ' ' + year + ' ' + hour + ':' + minute
+          item.day = day
+          item.month = month - 1
+          item.year = year
+          item.hour = hour
+          item.minute = minute
         })
         this.reverseappointments = this.appointments.reverse()
         if (this.reverseappointments.length >= 3) {

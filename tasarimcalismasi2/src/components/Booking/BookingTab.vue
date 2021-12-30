@@ -12,7 +12,7 @@
           </div>
         </template>
         <div class="doctor-info">
-          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday)}} {{months[datemonth - 1]}} {{dateyear}}</p></div>
+          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday)}} {{months[Number(date.split('-')[1]) - 1]}} {{dateyear}}</p></div>
             <div class="doctor-name">
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
@@ -404,8 +404,6 @@ export default {
       date.forEach((item, index) => {
         if (index > 0) {
           this.newdate.setDate(this.newdate.getDate() + 1)
-          console.log(this.newdate.getDate())
-          console.log(this.newdate)
           if (this.newdate.getDate() === 1) {
             if (this.datemonth === 12) {
               this.datemonth = 1
