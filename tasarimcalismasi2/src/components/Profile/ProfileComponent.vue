@@ -155,7 +155,7 @@ export default {
   created () {
     this.localusername = localStorage.username
     this.issignin = localStorage.issignin
-    fetch('http://localhost:8000/patient/getuser', {
+    fetch('https://cuddly-seahorse-66.loca.lt/patient/getuser', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -167,7 +167,7 @@ export default {
         this.userinfo = data[0]
         // this.date = data[0].userCreateTime.split('T')
       })
-    fetch('http://localhost:8000/appointment/getappointment', {
+    fetch('https://cuddly-seahorse-66.loca.lt/appointment/getappointment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -224,7 +224,7 @@ export default {
       $(this).parent('td').find('.rate-show').append(rate)
       $(this).parent('td').css('justify-content', 'center')
       $(this).parent('td').find('.rate-show').css('display', 'block')
-      fetch('http://localhost:8000/appointment/getappointment', {
+      fetch('https://cuddly-seahorse-66.loca.lt/appointment/getappointment', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
