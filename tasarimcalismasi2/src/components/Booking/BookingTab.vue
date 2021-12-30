@@ -65,15 +65,21 @@
     </div>
     <div class="schedule-tab">
         <div @click="selectedDay" class="day">
-            <VueSlickCarousel :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
+            <!-- <VueSlickCarousel :arrows="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
                 <template v-for="index in 14">
                     <div @click="getappointment($event)" class="date" :key="index">
                         <p style="color: #272B41;">{{days[(day + index) - 1]}}</p>
                         <p class="h5" style="color: #757575;">{{newdate.getDate()}} {{months[datemonth - 1]}} {{newdate.getFullYear()}}</p>
-                        <!-- <p class="h5" style="color: #757575;"><span class="dayy">{{newdate.getDate()}}</span> <span class="month">{{months[datemonth - 1]}}</span> <span class="year">{{dateyear}}</span></p> -->
                     </div>
                 </template>
-            </VueSlickCarousel>
+            </VueSlickCarousel> -->
+            <template v-for="index in 14">
+                <div @click="getappointment($event)" class="date" :key="index">
+                    <p style="color: #272B41;">{{days[(day + index) - 1]}}</p>
+                    <p class="h5" style="color: #757575;">{{newdate.getDate()}} {{months[datemonth - 1]}} {{newdate.getFullYear()}}</p>
+                    <!-- <p class="h5" style="color: #757575;"><span class="dayy">{{newdate.getDate()}}</span> <span class="month">{{months[datemonth - 1]}}</span> <span class="year">{{dateyear}}</span></p> -->
+                </div>
+            </template>
         </div>
         <div class="schedule">
             <div class="time">
@@ -100,7 +106,7 @@
 <script>
 import $ from 'jquery'
 // import Vue from 'vue'
-import VueSlickCarousel from 'vue-slick-carousel'
+// import VueSlickCarousel from 'vue-slick-carousel'
 // import { mapState } from 'vuex'
 
 export default {
@@ -112,18 +118,18 @@ export default {
     date: String
   },
   components: {
-    VueSlickCarousel
+    // VueSlickCarousel
   },
   data () {
     return {
-      settings: {
-        arrows: true,
-        speed: 1000,
-        variableWidth: true,
-        infinite: false,
-        slidesToScroll: 3,
-        swipeToSlide: true
-      },
+      // settings: {
+      //   arrows: true,
+      //   speed: 1000,
+      //   variableWidth: true,
+      //   infinite: false,
+      //   slidesToScroll: 3,
+      //   swipeToSlide: true
+      // },
       days: ['PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
       dateday: Number,
