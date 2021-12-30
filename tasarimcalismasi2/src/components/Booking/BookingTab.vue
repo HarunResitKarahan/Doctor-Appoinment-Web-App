@@ -12,7 +12,7 @@
           </div>
         </template>
         <div class="doctor-info">
-          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday)}} {{months[Number(date.split('-')[1]) - 1]}} {{dateyear}}</p></div>
+          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday)}} {{months[datemonthh - 1]}} {{dateyear}}</p></div>
             <div class="doctor-name">
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
@@ -69,7 +69,7 @@
                 <template v-for="index in 14">
                     <div @click="getappointment($event)" class="date" :key="index">
                         <p style="color: #272B41;">{{days[(day + index) - 1]}}</p>
-                        <p class="h5" style="color: #757575;">{{dateday}} {{months[datemonth - 1]}} {{dateyear}}</p>
+                        <p class="h5" style="color: #757575;">{{dateday}} {{months[datemonthh - 1]}} {{dateyear}}</p>
                     </div>
                 </template>
             </VueSlickCarousel>
@@ -134,6 +134,7 @@ export default {
       dateday: Number,
       dateyear: Number,
       datemonth: Number,
+      datemonthh: Number,
       day: Number,
       time: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'],
       bookedtime: [],
@@ -270,11 +271,13 @@ export default {
       this.dateyear = Number(this.date.split('-')[0])
       this.dateday = Number(this.date.split('-')[2])
       this.datemonth = Number(this.months.indexOf(this.date.split('-')[1]) + 1)
+      this.datemonthh = Number(this.months.indexOf(this.date.split('-')[1]) + 1)
       this.day = new Date(Number(this.date.split('-')[0]), Number(this.months.indexOf(this.date.split('-')[1])), Number(this.date.split('-')[2])).getDay()
     } else {
       this.dateyear = Number(this.date.split('-')[0])
       this.dateday = Number(this.date.split('-')[2])
       this.datemonth = Number(this.date.split('-')[1])
+      this.datemonthh = Number(this.date.split('-')[1])
       this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
     }
     this.newdate = new Date(this.dateyear, (this.datemonth - 1), this.dateday)
