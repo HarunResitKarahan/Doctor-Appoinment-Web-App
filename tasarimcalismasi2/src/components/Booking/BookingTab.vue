@@ -12,7 +12,7 @@
           </div>
         </template>
         <div class="doctor-info">
-          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(dateday)}} {{months[datemonthh - 1]}} {{dateyear}}</p></div>
+          <div class="datetext"><span class="material-icons">today</span><p class="h5">{{(datedayy)}} {{months[datemonthh - 1]}} {{dateyearr}}</p></div>
             <div class="doctor-name">
                 {{doctor[0].doctorName}} {{doctor[0].doctorSurname}}
             </div>
@@ -69,7 +69,7 @@
                 <template v-for="index in 14">
                     <div @click="getappointment($event)" class="date" :key="index">
                         <p style="color: #272B41;">{{days[(day + index) - 1]}}</p>
-                        <p class="h5" style="color: #757575;">{{dateday}} {{months[datemonthh - 1]}} {{dateyear}}</p>
+                        <p class="h5" style="color: #757575;">{{datedayy}} {{months[datemonthh - 1]}} {{dateyearr}}</p>
                     </div>
                 </template>
             </VueSlickCarousel>
@@ -121,18 +121,12 @@ export default {
   },
   data () {
     return {
-      // settings: {
-      //   arrows: true,
-      //   speed: 1000,
-      //   variableWidth: true,
-      //   infinite: false,
-      //   slidesToScroll: 3,
-      //   swipeToSlide: true
-      // },
       days: ['PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PAZ'],
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
       dateday: Number,
+      datedayy: Number,
       dateyear: Number,
+      dateyearr: Number,
       datemonth: Number,
       datemonthh: Number,
       day: Number,
@@ -162,7 +156,12 @@ export default {
   methods: {
     getappointment (event) {
       var date = event.target.parentNode.lastChild.textContent.split(' ')
+      console.log('date: ' + date)
       var month = this.getmonth(date[1])
+      console.log(month)
+      this.datemonth = Number(month)
+      this.dateday = Number(date[0])
+      this.dateyear = Number(date[2])
       date = date[2] + '-' + String(month) + '-' + date[0]
       fetch('http://localhost:8000/schedule/getschedule', {
         method: 'POST',
@@ -269,13 +268,17 @@ export default {
     $('.make-a-apointment a:nth-child(1)').hide()
     if (this.months.includes(this.date.split('-')[1])) {
       this.dateyear = Number(this.date.split('-')[0])
+      this.dateyearr = Number(this.date.split('-')[0])
       this.dateday = Number(this.date.split('-')[2])
+      this.datedayy = Number(this.date.split('-')[2])
       this.datemonth = Number(this.months.indexOf(this.date.split('-')[1]) + 1)
       this.datemonthh = Number(this.months.indexOf(this.date.split('-')[1]) + 1)
       this.day = new Date(Number(this.date.split('-')[0]), Number(this.months.indexOf(this.date.split('-')[1])), Number(this.date.split('-')[2])).getDay()
     } else {
       this.dateyear = Number(this.date.split('-')[0])
+      this.dateyearr = Number(this.date.split('-')[0])
       this.dateday = Number(this.date.split('-')[2])
+      this.datedayy = Number(this.date.split('-')[2])
       this.datemonth = Number(this.date.split('-')[1])
       this.datemonthh = Number(this.date.split('-')[1])
       this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
