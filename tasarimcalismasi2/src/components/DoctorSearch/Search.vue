@@ -114,7 +114,7 @@ export default {
   },
   mounted () {
     var today = new Date()
-    var dd = today.getDate()
+    var dd = today.getDate() + 1
     var dd2 = today.getDate() + 14
     var mm = today.getMonth() + 1
     var yyyy = today.getFullYear()
