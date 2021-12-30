@@ -132,7 +132,7 @@ export default {
     document.getElementById('date').setAttribute('min', today)
     document.getElementById('date').setAttribute('max', today2)
     if (this.location !== undefined) {
-      fetch('http://localhost:8000/hospital/gethospital', {
+      fetch('https://cuddly-seahorse-66.loca.lt/hospital/gethospital', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -177,7 +177,7 @@ export default {
     datechange () {
       this.datereverse = String(this.date).split('-').reverse().join('/')
       if (this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined && this.date !== undefined) {
-        fetch('http://localhost:8000/doctor/getdoctor', {
+        fetch('https://cuddly-seahorse-66.loca.lt/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -212,7 +212,7 @@ export default {
           this.hospital = []
         }
       } else if (event.target.checked === true && this.location !== undefined && this.gender !== undefined && this.department !== undefined && this.hospitalName !== undefined && this.date !== undefined) {
-        fetch('http://localhost:8000/doctor/getdoctor', {
+        fetch('https://cuddly-seahorse-66.loca.lt/doctor/getdoctor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -231,7 +231,7 @@ export default {
       if (event.target.checked === true && event.target.attributes.name.textContent === 'checklocation') {
         this.hospitalName = undefined
         this.doctor = []
-        fetch('http://localhost:8000/hospital/gethospital', {
+        fetch('https://cuddly-seahorse-66.loca.lt/hospital/gethospital', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

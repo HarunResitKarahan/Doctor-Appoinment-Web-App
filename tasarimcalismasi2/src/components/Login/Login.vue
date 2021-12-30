@@ -108,7 +108,7 @@ export default {
       $('.register-card').css('display', 'block')
     },
     signin (username, password) {
-      fetch('http://localhost:8000/patient/signin', {
+      fetch('https://cuddly-seahorse-66.loca.lt/patient/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -128,7 +128,7 @@ export default {
         })
     },
     registerbutton (id, name, surname, email, registerpassword, sex) {
-      fetch('http://localhost:8000/patient', {
+      fetch('https://cuddly-seahorse-66.loca.lt/patient', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

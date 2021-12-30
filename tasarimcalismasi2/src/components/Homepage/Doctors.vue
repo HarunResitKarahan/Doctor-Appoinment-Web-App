@@ -65,7 +65,7 @@ export default {
   },
   created () {
     this.issignin = localStorage.issignin
-    fetch('http://localhost:8000/doctor/getdoctor', {
+    fetch('https://cuddly-seahorse-66.loca.lt/doctor/getdoctor', {
       method: 'GET'
     })
       .then(response => response.json())

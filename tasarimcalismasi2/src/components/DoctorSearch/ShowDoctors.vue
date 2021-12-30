@@ -189,7 +189,7 @@ export default {
     },
     star () {
       if (this.doctor.length > 0) {
-        fetch('http://localhost:8000/apriori', {
+        fetch('https://cuddly-seahorse-66.loca.lt/apriori', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

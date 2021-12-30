@@ -59,14 +59,14 @@ export default {
     }
   },
   created () {
-    fetch('http://localhost:8000/department/getclinics', {
+    fetch('https://cuddly-seahorse-66.loca.lt/department/getclinics', {
       method: 'GET'
     })
       .then(response => response.json())
       .then(data => {
         this.policlinics = data
       })
-    fetch('http://localhost:8000/city/getcitys', {
+    fetch('https://cuddly-seahorse-66.loca.lt/city/getcitys', {
       method: 'GET'
     })
       .then(response => response.json())
