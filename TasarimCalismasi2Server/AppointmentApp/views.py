@@ -320,10 +320,10 @@ def Apriori(request, id = 0):
         return JsonResponse(listofsuggestions,safe=False)
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
-        print(request_data)
+        # print(request_data)
         data = Appointment.objects.all().values()
         patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
-        print(patient_appointments)
+        # print(patient_appointments)
         patient_doctors = []
         for item in patient_appointments:
             # patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
@@ -333,9 +333,9 @@ def Apriori(request, id = 0):
             item['appointmentDepartmanID_id'] = patient_appointments_departman[0]['departmanName']
             if not item['appointmentDoctorID_id'] in patient_doctors:
                 patient_doctors.append(item['appointmentDoctorID_id'])
-        print(patient_appointments)
-        print(patient_doctors)
-        print("---------------------------")
+        # print(patient_appointments)
+        # print(patient_doctors)
+        # print("---------------------------")
         # Stripping extra spaces in the description
         for item in data:
             # doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
@@ -372,7 +372,7 @@ def Apriori(request, id = 0):
         rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
         rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
         listofsuggestions = defaultdict(dict)
-        print(rules)
+        # print(rules)
         suggestion = []
         for index, row in rules.iterrows():
             listofsuggestions[index]['antecedents'] = list(row['antecedents'])
@@ -385,15 +385,15 @@ def Apriori(request, id = 0):
                     counter += 1
             if counter == len(listofsuggestions[item]['antecedents']) and listofsuggestions[item]['confidence'] >= 0.5 and not listofsuggestions[item]['consequents'] in suggestion:
                 suggestion.append(listofsuggestions[item]['consequents'])
-        print(listofsuggestions)
-        print(suggestion)
+        # print(listofsuggestions)
+        # print(suggestion)
         # print("------------------")
         return_suggestion = []
         for item in suggestion:
             for item2 in item:
                 if not item2 in return_suggestion and not item2 in patient_doctors:
                     return_suggestion.append(item2)
-        print(return_suggestion)
+        # print(return_suggestion)
         return_doctors = []
         for item in return_suggestion:
             getdoctor = Doctor.objects.filter(doctorID = item).values()
