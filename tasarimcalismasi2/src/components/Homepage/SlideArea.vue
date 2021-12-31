@@ -3,7 +3,7 @@
       <div class="image col-6 col-xl-7 col-lg-7 col-md-7" align="Right">
           <img style="border-radius: 30px;" src="@/./assets/hospital.png" width="600" height="400" alt="">
       </div>
-      <div class="col-6 col-xl-5 col-lg-5 col-md-5">
+      <div class="tab col-6 col-xl-5 col-lg-5 col-md-5">
         <div class="appointment-tab">
           <h2>Doktorunu Seç, Randevunu Al</h2>
           <div class="inputs">
