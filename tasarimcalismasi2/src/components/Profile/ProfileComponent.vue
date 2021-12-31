@@ -39,10 +39,13 @@
                     <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
                   </div>
                 </template> -->
-                <template>
+                <template v-if="item.doctorSex == 'Erkek'">
                   <div>
-                    <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
+                    <img src="@/assets/maledoctor.png" width="55" height="55" style="border-radius: 100%;">
                   </div>
+                </template>
+                <template v-else>
+                  <img src="@/assets/femaledoctor.png" width="55" height="55" style="border-radius: 100%;">
                 </template>
                 <div>
                   <p style="margin-left: 8px;font-weight: 500;font-size: 0.9rem;">{{appointments[index].appointmentDoctorID_id}}</p>
