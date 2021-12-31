@@ -1,6 +1,6 @@
 <template>
   <div class="search-content">
-    <div class="search col-3">
+    <div class="search col-xl-3 col-lg-4 col-md-5">
       <div class="filter-search">
           <h5>Filtreli Arama</h5>
           <div class="card-body">
