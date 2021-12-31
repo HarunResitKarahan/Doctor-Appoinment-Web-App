@@ -181,15 +181,27 @@ def AppointmentGetAppointment(request, id = 0):
         request_data = JSONParser().parse(request)
         request = Appointment.objects.filter(id = request_data['id']).values()
         snippet = Appointment.objects.get(id=request_data['id'])
-        doctor = Doctor.objects.filter(doctorID = request['appointmentDoctorID_id']).values()
-        doctorID = Doctor.objects.get(doctorID =  request['appointmentDoctorID_id'])
         request_data['appointmentPatientID_id'] = request[0]['appointmentPatientID_id']
         request_data['appointmentDoctorID_id'] = request[0]['appointmentDoctorID_id']
         request_data['appointmentDepartmanID_id'] = request[0]['appointmentDepartmanID_id']
         request_data['appointmentTime'] = request[0]['appointmentTime']
-        doctor['countOfRating'] = doctor['countOfRating'] + 1
         patient_serializer = Appointment3Serializer(snippet, data=request_data)
-        doctor_serializer = DoctorSerializer(doctorID, doctor)
+        doctor = Doctor.objects.filter(doctorID = request[0]['appointmentDoctorID_id']).values()
+        doctorID = Doctor.objects.get(doctorID = request[0]['appointmentDoctorID_id'])
+        doctor[0]['countOfRating'] = doctor[0]['countOfRating'] + 1
+        doctorrating = 0
+        counter = 0
+        appointments = Appointment.objects.filter(appointmentDoctorID_id = doctorID).values()
+        for item in appointments:
+            if not item['appointmentPoint'] == None:
+                counter = counter + 1
+                doctorrating += int(item['appointmentPoint'])
+        doctor2= doctor[0]
+        doctor2['doctorScore'] = str((doctorrating / 2) / counter)
+        print(doctor2['doctorScore'])
+        print(str((doctorrating / 2) / counter))
+        print(doctor2)
+        doctor_serializer = DoctorSerializer(doctorID, doctor2)
         if not patient_serializer.is_valid():
             print(patient_serializer.errors)
         if patient_serializer.is_valid():
