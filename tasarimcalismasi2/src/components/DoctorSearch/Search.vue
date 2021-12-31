@@ -114,8 +114,11 @@ export default {
   },
   mounted () {
     var today = new Date()
-    var dd = today.getDate() + 1
-    var dd2 = today.getDate() + 14
+    var dd = today.getDate()
+    var mm1 = today.getMonth() + 1
+    var yyyy1 = today.getFullYear()
+    today.setDate(today.getDate() + 14)
+    var dd2 = today.getDate()
     var mm = today.getMonth() + 1
     var yyyy = today.getFullYear()
     if (dd < 10) {
@@ -127,7 +130,7 @@ export default {
     if (mm < 10) {
       mm = '0' + mm
     }
-    today = yyyy + '-' + mm + '-' + dd
+    today = yyyy1 + '-' + mm1 + '-' + dd
     var today2 = yyyy + '-' + mm + '-' + dd2
     document.getElementById('date').setAttribute('min', today)
     document.getElementById('date').setAttribute('max', today2)
