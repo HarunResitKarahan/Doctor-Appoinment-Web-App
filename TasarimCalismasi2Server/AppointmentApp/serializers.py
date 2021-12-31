@@ -40,7 +40,7 @@ class HospitalSerializer(serializers.HyperlinkedModelSerializer):
 class DoctorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Doctor
-        fields=['doctorID', 'doctorName', 'doctorSurname', 'doctorCreateTime', 'departmanID_id', 'hospitalID_id', 'doctorScore', 'doctorSex']
+        fields=['doctorID', 'doctorName', 'doctorSurname', 'doctorCreateTime', 'departmanID_id', 'hospitalID_id', 'doctorScore', 'doctorSex', 'countOfRating']
 
 class DoctorForeignSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

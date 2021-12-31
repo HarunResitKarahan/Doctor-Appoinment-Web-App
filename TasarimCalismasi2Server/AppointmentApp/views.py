@@ -179,20 +179,24 @@ def AppointmentGetAppointment(request, id = 0):
         return JsonResponse(list(schedule), safe = False)
     elif request.method=='PUT':
         request_data = JSONParser().parse(request)
-        print(request_data)
         request = Appointment.objects.filter(id = request_data['id']).values()
         snippet = Appointment.objects.get(id=request_data['id'])
+        doctor = Doctor.objects.filter(doctorID = request['appointmentDoctorID_id']).values()
+        doctorID = Doctor.objects.get(doctorID =  request['appointmentDoctorID_id'])
         request_data['appointmentPatientID_id'] = request[0]['appointmentPatientID_id']
         request_data['appointmentDoctorID_id'] = request[0]['appointmentDoctorID_id']
         request_data['appointmentDepartmanID_id'] = request[0]['appointmentDepartmanID_id']
         request_data['appointmentTime'] = request[0]['appointmentTime']
-        print(request_data)
+        doctor['countOfRating'] = doctor['countOfRating'] + 1
         patient_serializer = Appointment3Serializer(snippet, data=request_data)
+        doctor_serializer = DoctorSerializer(doctorID, doctor)
         if not patient_serializer.is_valid():
             print(patient_serializer.errors)
         if patient_serializer.is_valid():
             patient_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
+            if doctor_serializer.is_valid():
+                doctor_serializer.save()
+                return JsonResponse("Updated Successfully",safe=False)
         return JsonResponse("Failed to Update",safe=False)
 
 @csrf_exempt
