@@ -75,7 +75,7 @@
     <template v-if="doctor.length > 0">
       <div v-if="suggestion.length > 0" style="font-weight: 300;font-size: 1.2rem;margin-top: 30px;margin-bottom: 5px;">Size Önerilenler:</div>
     </template>
-    <VueSlickCarousel style="width: 95%;margin: auto;" v-if="doctor.length > 0" :arrows="false" :dots="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
+    <VueSlickCarousel style="width: 95%;margin: auto;" v-if="suggestion.length > 0 && doctor.length > 0" :arrows="false" :dots="true" :speed="500" :variableWidth="true" :infinite="false" :slidesToScroll="3" :swipeToSlide="true">
       <template v-for="(item,index) in suggestion">
         <div class="suggestion-doctor-card" :key="index">
           <div class="doctor-image">
