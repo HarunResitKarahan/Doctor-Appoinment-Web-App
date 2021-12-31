@@ -1,0 +1,8 @@
+@media only screen and (max-width: 1023px) {
+    .navbar {
+      background-color: lightblue !important;
+    }
+    .slide-area {
+        padding: 15px !important;
+    }
+  }

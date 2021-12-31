@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import '@/css/body.css'
+import '@/css/@media-only-screen.css'
 import '@/css/Home_css/navbar.css'
 import '@/css/Home_css/slide-area.css'
 import '@/css/Home_css/clinic.css'
