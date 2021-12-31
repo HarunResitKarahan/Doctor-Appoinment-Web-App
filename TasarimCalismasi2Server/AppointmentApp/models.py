@@ -34,7 +34,7 @@ class Doctor(models.Model):
     departmanID = models.ForeignKey(Departman, default= None, on_delete=models.CASCADE)
     hospitalID = models.ForeignKey(Hospital, default= None, on_delete=models.CASCADE)
     doctorCreateTime = models.DateTimeField(default=timezone.now)
-    countOfRating = models.CharField(max_length=200)
+    countOfRating = models.IntegerField(null=True)
 
 class Recommendation(models.Model):
     recommendationPatientID = models.ForeignKey(Patient, default= None, on_delete=models.CASCADE)
