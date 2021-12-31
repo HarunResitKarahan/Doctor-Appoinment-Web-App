@@ -163,7 +163,7 @@ export default {
       this.dateday = Number(date[0])
       this.dateyear = Number(date[2])
       date = date[2] + '-' + String(month) + '-' + date[0]
-      fetch('https://cuddly-seahorse-66.loca.lt/schedule/getschedule', {
+      fetch('http://127.0.0.1:8000//schedule/getschedule', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -284,7 +284,7 @@ export default {
       this.day = new Date(Number(this.date.split('-')[0]), Number(this.date.split('-')[1]) - 1, Number(this.date.split('-')[2])).getDay()
     }
     this.newdate = new Date(this.dateyear, (this.datemonth - 1), this.dateday)
-    fetch('https://cuddly-seahorse-66.loca.lt/doctor/bookingdoctorinfo', {
+    fetch('http://127.0.0.1:8000//doctor/bookingdoctorinfo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -294,7 +294,7 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.doctor = data
-        fetch('https://cuddly-seahorse-66.loca.lt/schedule/getschedule', {
+        fetch('http://127.0.0.1:8000//schedule/getschedule', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
