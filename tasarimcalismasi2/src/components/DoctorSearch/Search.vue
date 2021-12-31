@@ -114,6 +114,7 @@ export default {
   },
   mounted () {
     var today = new Date()
+    today.setDate(today.getDate() + 1)
     var dd = today.getDate()
     var mm1 = today.getMonth() + 1
     var yyyy1 = today.getFullYear()
@@ -129,6 +130,9 @@ export default {
     }
     if (mm < 10) {
       mm = '0' + mm
+    }
+    if (mm1 < 10) {
+      mm1 = '0' + mm1
     }
     today = yyyy1 + '-' + mm1 + '-' + dd
     var today2 = yyyy + '-' + mm + '-' + dd2
