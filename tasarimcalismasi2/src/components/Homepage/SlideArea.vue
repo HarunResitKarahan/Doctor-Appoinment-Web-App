@@ -59,14 +59,14 @@ export default {
     }
   },
   created () {
-    fetch('http://127.0.0.1:8000//department/getclinics', {
+    fetch('http://127.0.0.1:8000/department/getclinics', {
       method: 'GET'
     })
       .then(response => response.json())
       .then(data => {
         this.policlinics = data
       })
-    fetch('http://127.0.0.1:8000//city/getcitys', {
+    fetch('http://127.0.0.1:8000/city/getcitys', {
       method: 'GET'
     })
       .then(response => response.json())

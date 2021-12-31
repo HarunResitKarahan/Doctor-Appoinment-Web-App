@@ -189,7 +189,7 @@ export default {
     },
     star () {
       if (this.doctor.length > 0) {
-        fetch('http://127.0.0.1:8000//apriori', {
+        fetch('http://127.0.0.1:8000/apriori', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

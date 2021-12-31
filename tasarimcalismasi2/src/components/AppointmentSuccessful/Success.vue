@@ -55,7 +55,7 @@ export default {
     this.selectedtime = this.selectedtime.split(':').join('-')
     var date = String(this.dateyear) + '-' + String(this.datemonth) + '-' + String(this.dateday) + '-' + String(this.selectedtime)
     console.log(date)
-    fetch('http://127.0.0.1:8000//schedule/makeschedule', {
+    fetch('http://127.0.0.1:8000/schedule/makeschedule', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
