@@ -7,10 +7,10 @@
     position: relative;
 }
 .slide-area .image{
-    width: 700px;
+    margin-right: 50px;
 }
 .slide-area .appointment-tab {
-    width: 375px;
+    max-width: 375px;
     background: white;
     border-radius: 30px;
     padding: 30px;
@@ -22,12 +22,12 @@
 }
 .slide-area .appointment-tab .inputs .location #sex {
     width: 95%;
-    padding: 15px;
+    padding: 1em;
     margin-bottom: 10px;
 }
 .slide-area .appointment-tab .inputs .location #department {
     width: 95%;
-    padding: 15px;
+    padding: 1em;
     letter-spacing: 0.7px;
 }
 /* .slide-area .appointment-tab .inputs .location #sex option {

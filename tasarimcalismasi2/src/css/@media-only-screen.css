@@ -1,8 +1,52 @@
-@media only screen and (max-width: 1023px) {
+@media only screen and (min-width: 0px) {
     .navbar {
-      background-color: lightblue !important;
+        background-color: rgb(255, 0, 0) !important;
     }
     .slide-area {
-        padding: 15px !important;
+        padding:  45px 45px 45px 45px !important;
     }
-  }
+    .slide-area .image img{
+        width: 500px;
+    }
+    .slide-area .appointment-tab {
+        max-width: 300px !important;
+    }
+    .slide-area .appointment-tab h2 {
+        font-size: 1.4rem;
+    }
+    .slide-area .appointment-tab .inputs {
+        font-size: 0.8rem;
+    }
+    .slide-area .appointment-tab .inputs input {
+        padding: 1em !important;
+    }
+    .slide-area .appointment-tab .inputs .search p {
+        padding: 1.2em !important;
+    }
+}
+@media only screen and (min-width: 1085px) {
+    .navbar {
+        background-color: rgb(99, 67, 151) !important;
+    }
+    .slide-area {
+        padding: 45px 45px 45px 45px !important;
+    }
+    .slide-area .image img{
+        width: 550px;
+    }
+    .slide-area .appointment-tab {
+        max-width: 375px !important;
+    }
+}
+@media only screen and (min-width: 1313px) {
+    .navbar {
+        background-color: chartreuse !important;
+    }
+    .slide-area .image img{
+        width: 600px;
+        margin-right: 100px;
+    }
+    .slide-area .appointment-tab {
+        max-width: 375px !important;
+    }
+ }
