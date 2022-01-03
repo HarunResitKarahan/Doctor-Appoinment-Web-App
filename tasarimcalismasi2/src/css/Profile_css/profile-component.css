@@ -40,13 +40,19 @@ table tr td {
 }
 table tr td .cancel {
     display: flex;
-    font-size: 13px;
+    font-size: 12px;
     padding: 1em 0.3em 1em 0.3em;
     justify-content: center;
     align-items: center;
     border-radius: 7px;
-    background-color: rgba(255, 52, 86, 0.733);
+    background-color: rgb(255, 98, 98);
+    border: 1px solid rgb(255, 135, 98);
     color: white;
+    cursor: pointer;
+}
+table tr td .cancel:hover {
+    background-color: white;
+    color: rgb(255, 135, 98);
 }
 table tr:hover {
     background-color: rgba(132, 168, 235, 0.096);
