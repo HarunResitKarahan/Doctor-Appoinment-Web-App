@@ -123,9 +123,15 @@
                   </div>
                 </template>
               </td>
-              <td>
-                <p @click="cancel(i.id)" class="cancel">Randevuyu İptal Et</p>
-              </td>
+              <template v-if="new Date(Number(i.year), Number(i.month), Number(i.day), Number(i.hour), Number(i.minute), 0) > new Date()">
+                <td>
+                  <p @click="cancel(i.id)" class="cancel">Randevuyu İptal Et</p>
+                </td>
+              </template>
+              <template v-else>
+                <td>
+                </td>
+              </template>
             </tr>
           </table>
         </div>
@@ -158,19 +164,20 @@ export default {
       return true
     },
     cancel (appointmentID) {
-      console.log(appointmentID)
-      fetch('http://127.0.0.1:8000/appointment/getappointment/`${appointmentID}`', {
+      fetch('http://127.0.0.1:8000/appointment/getappointment', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          patientID: localStorage.username
+          id: appointmentID
         })
       })
-        .then(res => res.json())
-        .then(data => {
-          this.userinfo = data[0]
-          // this.date = data[0].userCreateTime.split('T')
-        })
+      // .then(res => res.json())
+      // .then(data => {
+      //   this.userinfo = data[0]
+      //   // this.date = data[0].userCreateTime.split('T')
+      // })
+      console.log(event.target.parentNode.parentElement.style.css = 'none')
+      event.target.parentNode.parentElement.style.display = 'none'
     }
   },
   created () {

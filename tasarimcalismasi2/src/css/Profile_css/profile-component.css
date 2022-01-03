@@ -54,7 +54,7 @@ table tr td .cancel:hover {
     background-color: white;
     color: rgb(255, 135, 98);
 }
-table tr:hover {
+table .doctors:hover {
     background-color: rgba(132, 168, 235, 0.096);
 }
 .rate {
