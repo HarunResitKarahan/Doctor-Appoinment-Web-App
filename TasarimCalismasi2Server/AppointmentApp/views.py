@@ -328,102 +328,105 @@ def Apriori(request, id = 0):
         js = str(rules.to_dict()).replace("'", '"')
         return JsonResponse(listofsuggestions,safe=False)
     if request.method == 'POST':
-        request_data = JSONParser().parse(request)
-        # print(request_data)
-        data = Appointment.objects.all().values()
-        patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
-        print("---------------------------")
-        print(patient_appointments)
-        print("---------------------------")
-        patient_doctors = []
-        for item in patient_appointments:
-            # patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
-            patient_appointments_departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
-            # item['appointmentDoctorID_id'] = patient_appointments_doctor[0]['doctorName'] + ' ' + patient_appointments_doctor[0]['doctorSurname']
-            item['appointmentDoctorID_id'] = str(item['appointmentDoctorID_id'])
-            item['appointmentDepartmanID_id'] = patient_appointments_departman[0]['departmanName']
-            if not item['appointmentDoctorID_id'] in patient_doctors:
-                patient_doctors.append(item['appointmentDoctorID_id'])
-        # print(patient_appointments)
-        print("---------------------------")
-        print(patient_doctors)
-        print("---------------------------")
-        # Stripping extra spaces in the description
-        for item in data:
-            # doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
-            # departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
-            # item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
-            # item['appointmentDepartmanID_id'] = departman[0]['departmanName']
-            item['appointmentDoctorID_id'] = str(item['appointmentDoctorID_id'])
-            item['appointmentDepartmanID_id'] = str(item['appointmentDepartmanID_id'])
-            item['Quantity'] = 1
-        data = pd.DataFrame(data=data)
-        print(data)
-        data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
-        # Dropping the rows without any invoice number
-        data.dropna(axis = 0, subset =['id'], inplace = True)
-        data['id'] = data['id'].astype('str')
-        # Transactions done in France
-        basket_France = (data
-                .groupby(['appointmentPatientID_id', 'appointmentDoctorID_id'])['Quantity']
-                .sum().unstack().reset_index().fillna(0)
-                .set_index('appointmentPatientID_id'))
-        # for the concerned libraries
-        def hot_encode(x):
-            if(x<= 0):
-                return 0
-            if(x>= 1):
-                return 1
-        
-        # Encoding the datasets
-        basket_encoded = basket_France.applymap(hot_encode)
-        basket_France = basket_encoded
+        try:
+            request_data = JSONParser().parse(request)
+            # print(request_data)
+            data = Appointment.objects.all().values()
+            patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
+            print("---------------------------")
+            print(patient_appointments)
+            print("---------------------------")
+            patient_doctors = []
+            for item in patient_appointments:
+                # patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+                patient_appointments_departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
+                # item['appointmentDoctorID_id'] = patient_appointments_doctor[0]['doctorName'] + ' ' + patient_appointments_doctor[0]['doctorSurname']
+                item['appointmentDoctorID_id'] = str(item['appointmentDoctorID_id'])
+                item['appointmentDepartmanID_id'] = patient_appointments_departman[0]['departmanName']
+                if not item['appointmentDoctorID_id'] in patient_doctors:
+                    patient_doctors.append(item['appointmentDoctorID_id'])
+            # print(patient_appointments)
+            print("---------------------------")
+            print(patient_doctors)
+            print("---------------------------")
+            # Stripping extra spaces in the description
+            for item in data:
+                # doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
+                # departman = Departman.objects.filter(departmanID = item['appointmentDepartmanID_id']).values()
+                # item['appointmentDoctorID_id'] = doctor[0]['doctorName'] + ' ' + doctor[0]['doctorSurname']
+                # item['appointmentDepartmanID_id'] = departman[0]['departmanName']
+                item['appointmentDoctorID_id'] = str(item['appointmentDoctorID_id'])
+                item['appointmentDepartmanID_id'] = str(item['appointmentDepartmanID_id'])
+                item['Quantity'] = 1
+            data = pd.DataFrame(data=data)
+            print(data)
+            data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
+            # Dropping the rows without any invoice number
+            data.dropna(axis = 0, subset =['id'], inplace = True)
+            data['id'] = data['id'].astype('str')
+            # Transactions done in France
+            basket_France = (data
+                    .groupby(['appointmentPatientID_id', 'appointmentDoctorID_id'])['Quantity']
+                    .sum().unstack().reset_index().fillna(0)
+                    .set_index('appointmentPatientID_id'))
+            # for the concerned libraries
+            def hot_encode(x):
+                if(x<= 0):
+                    return 0
+                if(x>= 1):
+                    return 1
+            
+            # Encoding the datasets
+            basket_encoded = basket_France.applymap(hot_encode)
+            basket_France = basket_encoded
 
-        frq_items = apriori(basket_France, min_support = 0.05, use_colnames = True)
-        # Collecting the inferred rules in a dataframe
-        rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
-        rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
-        listofsuggestions = defaultdict(dict)
-        print(rules)
-        suggestion = []
-        for index, row in rules.iterrows():
-            listofsuggestions[index]['antecedents'] = list(row['antecedents'])
-            listofsuggestions[index]['consequents'] = list(row['consequents'])
-            listofsuggestions[index]['confidence'] = row['confidence']
-        for item in listofsuggestions:
-            counter = 0
-            for iter in listofsuggestions[item]['antecedents']:
-                if iter in patient_doctors:
-                    counter += 1
-            if counter == len(listofsuggestions[item]['antecedents']) and listofsuggestions[item]['confidence'] >= 0.5 and not listofsuggestions[item]['consequents'] in suggestion:
-                suggestion.append(listofsuggestions[item]['consequents'])
-        print("------------------")
-        # print(listofsuggestions)
-        print(suggestion)
-        print("------------------")
-        return_suggestion = []
-        for item in suggestion:
-            for item2 in item:
-                if not item2 in return_suggestion and not item2 in patient_doctors:
-                    return_suggestion.append(item2)
-        print(return_suggestion)
-        return_doctors = []
-        for item in return_suggestion:
-            getdoctor = Doctor.objects.filter(doctorID = item).values()
-            # departman = Departman.objects.filter(departmanID = item[0]['departmanID_id']).values()
-            # getdoctor_serializer = DoctorSerializer(getdoctor, many=True)
-            return_doctors.append(list(getdoctor))
-        for item in return_doctors:
-            departman = Departman.objects.filter(departmanID = item[0]['departmanID_id']).values()
-            hospital = Hospital.objects.filter(hospitalID = item[0]['hospitalID_id']).values()
-            item[0]['departmanID_id'] = departman[0]['departmanName']
-            item[0]['hospitalID_id'] = hospital[0]['hospitalName']
-        willdelete = []
-        for item in return_doctors:
-            if item[0]['departmanID_id'] != request_data['departman']:
-                print("-----------------------------------")
-                print(item[0])
-                willdelete.append(item)
-        for item in willdelete:
-            return_doctors.remove(item)
-        return JsonResponse(return_doctors,safe=False)
+            frq_items = apriori(basket_France, min_support = 0.05, use_colnames = True)
+            # Collecting the inferred rules in a dataframe
+            rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
+            rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
+            listofsuggestions = defaultdict(dict)
+            print(rules)
+            suggestion = []
+            for index, row in rules.iterrows():
+                listofsuggestions[index]['antecedents'] = list(row['antecedents'])
+                listofsuggestions[index]['consequents'] = list(row['consequents'])
+                listofsuggestions[index]['confidence'] = row['confidence']
+            for item in listofsuggestions:
+                counter = 0
+                for iter in listofsuggestions[item]['antecedents']:
+                    if iter in patient_doctors:
+                        counter += 1
+                if counter == len(listofsuggestions[item]['antecedents']) and listofsuggestions[item]['confidence'] >= 0.5 and not listofsuggestions[item]['consequents'] in suggestion:
+                    suggestion.append(listofsuggestions[item]['consequents'])
+            print("------------------")
+            # print(listofsuggestions)
+            print(suggestion)
+            print("------------------")
+            return_suggestion = []
+            for item in suggestion:
+                for item2 in item:
+                    if not item2 in return_suggestion and not item2 in patient_doctors:
+                        return_suggestion.append(item2)
+            print(return_suggestion)
+            return_doctors = []
+            for item in return_suggestion:
+                getdoctor = Doctor.objects.filter(doctorID = item).values()
+                # departman = Departman.objects.filter(departmanID = item[0]['departmanID_id']).values()
+                # getdoctor_serializer = DoctorSerializer(getdoctor, many=True)
+                return_doctors.append(list(getdoctor))
+            for item in return_doctors:
+                departman = Departman.objects.filter(departmanID = item[0]['departmanID_id']).values()
+                hospital = Hospital.objects.filter(hospitalID = item[0]['hospitalID_id']).values()
+                item[0]['departmanID_id'] = departman[0]['departmanName']
+                item[0]['hospitalID_id'] = hospital[0]['hospitalName']
+            willdelete = []
+            for item in return_doctors:
+                if item[0]['departmanID_id'] != request_data['departman']:
+                    print("-----------------------------------")
+                    print(item[0])
+                    willdelete.append(item)
+            for item in willdelete:
+                return_doctors.remove(item)
+            return JsonResponse(return_doctors,safe=False)
+        except:
+            return JsonResponse('Başarısız',safe=False)
