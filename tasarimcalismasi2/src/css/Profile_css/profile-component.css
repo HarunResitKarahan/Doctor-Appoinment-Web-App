@@ -38,6 +38,16 @@ table tr td {
     text-align: left;
     padding: 15px;
 }
+table tr td .cancel {
+    display: flex;
+    font-size: 13px;
+    padding: 1em 0.3em 1em 0.3em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    background-color: rgb(255, 31, 69);
+    color: white;
+}
 table tr:hover {
     background-color: rgba(132, 168, 235, 0.096);
 }

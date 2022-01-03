@@ -92,7 +92,7 @@
               </div></td>
               <td><div>{{i.appointmentDepartmanID_id}}</div></td>
               <td><div>{{i.appointmentTime}}</div> </td>
-              <td :id="i.id" style="display: flex;justify-content: space-between;align-items: center;padding: 15px;width: 80%;" >
+              <td :id="i.id" style="display: flex;justify-content: space-between;align-items: center;padding: 15px;margin-right: 30px;" >
                 <template v-if="i.appointmentPoint == null && new Date(Number(i.year), Number(i.month), Number(i.day), Number(i.hour), Number(i.minute), 0) < new Date()">
                   <div class="rate" v-for="item in 11" :key="item" style="display:flex;
                                                                           align-items: center;
@@ -108,20 +108,23 @@
                       {{item}}
                     </span>
                   </div>
-                  <div class="rate-show" style="display:none; text-align: center;">
+                  <div class="rate-show" style="display:none;">
                     Randevuya Verdiğiniz Puan:
                   </div>
                 </template>
                 <template v-if="i.appointmentPoint == null && new Date(Number(i.year), Number(i.month), Number(i.day), Number(i.hour), Number(i.minute), 0) > new Date()">
-                  <div style="width: 100%;text-align: center;">
+                  <div style="width: 100%">
                     Randevunuza Gidiniz !
                   </div>
                 </template>
                 <template v-if="i.appointmentPoint != null ">
-                  <div style="width: 100%;text-align: center;">
+                  <div style="width: 100%;">
                     Randevuya Verdiğiniz Puan: {{i.appointmentPoint}}
                   </div>
                 </template>
+              </td>
+              <td>
+                <p class="cancel">Randevuyu İptal Et</p>
               </td>
             </tr>
           </table>
