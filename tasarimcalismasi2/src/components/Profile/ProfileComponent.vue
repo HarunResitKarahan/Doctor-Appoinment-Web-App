@@ -176,7 +176,6 @@ export default {
       //   this.userinfo = data[0]
       //   // this.date = data[0].userCreateTime.split('T')
       // })
-      console.log(event.target.parentNode.parentElement.style.css = 'none')
       event.target.parentNode.parentElement.style.display = 'none'
     }
   },
