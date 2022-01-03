@@ -198,9 +198,9 @@ def AppointmentGetAppointment(request, id = 0):
                 doctorrating += int(item['appointmentPoint'])
         doctor2= doctor[0]
         doctor2['doctorScore'] = str((doctorrating / 2) / counter)
-        print(doctor2['doctorScore'])
-        print(str((doctorrating / 2) / counter))
-        print(doctor2)
+        # print(doctor2['doctorScore'])
+        # print(str((doctorrating / 2) / counter))
+        # print(doctor2)
         doctor_serializer = DoctorSerializer(doctorID, doctor2)
         if not patient_serializer.is_valid():
             print(patient_serializer.errors)
@@ -210,6 +210,11 @@ def AppointmentGetAppointment(request, id = 0):
                 doctor_serializer.save()
                 return JsonResponse("Updated Successfully",safe=False)
         return JsonResponse("Failed to Update",safe=False)
+    elif request.method=='DELETE':
+        request_data = JSONParser().parse(request)
+        appointment=Appointment.objects.get(id = int(request_data['id']))
+        appointment.delete()
+        return JsonResponse("Deleted Successfully",safe=False)
 
 @csrf_exempt
 def ScheduleGetTime(request, id = 0):

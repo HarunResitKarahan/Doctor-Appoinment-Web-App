@@ -124,7 +124,7 @@
                 </template>
               </td>
               <td>
-                <p class="cancel">Randevuyu İptal Et</p>
+                <p @click="cancel(i.id)" class="cancel">Randevuyu İptal Et</p>
               </td>
             </tr>
           </table>
@@ -156,6 +156,21 @@ export default {
       const d = new Date(split[2], this.months.findIndex(split[1]), split[0], splittime[0], splittime[1])
       print(d)
       return true
+    },
+    cancel (appointmentID) {
+      console.log(appointmentID)
+      fetch('http://127.0.0.1:8000/appointment/getappointment/`${appointmentID}`', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patientID: localStorage.username
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.userinfo = data[0]
+          // this.date = data[0].userCreateTime.split('T')
+        })
     }
   },
   created () {
