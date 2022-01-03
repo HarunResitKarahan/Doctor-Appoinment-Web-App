@@ -5,12 +5,15 @@
     display: flex;
     justify-content: center;
     padding: 30px;
+    position: relative;
 }
 .doctor-search .search-content .search .filter-search {
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.075);
     text-align: center;
     background-color: white;
+    height: fit-content;
+    padding-bottom: 80px;
 }
 .doctor-search .search-content .search .filter-search h5{
     font-size: 18px;
