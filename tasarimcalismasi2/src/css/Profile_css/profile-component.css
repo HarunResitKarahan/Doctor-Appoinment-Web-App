@@ -18,26 +18,22 @@
 .profile .profile-component .profile-info .card-body .makeappointment {
     margin-top: 10px;
     font-size: 12px;
-    padding: 0.75em;
     background-color: white;
     color: rgb(132, 168, 235);
-    border: 1px solid rgb(132, 168, 235);
+    border-inline: 1px solid rgb(132, 168, 235);
     border-radius: 7px;
     position: relative;
 }
 .profile .profile-component .profile-info .card-body .makeappointment p{
     z-index: 2;
+    margin: 0.75em;
     position: relative;
 }
 .profile .profile-component .profile-info .card-body .makeappointment .animation {
     z-index: 1;
-    border: 1px solid rgb(132, 168, 235);
     background-color: rgb(132, 168, 235);
     position: absolute;
     width: 100%;
-    left: -1px;
-    top: -1px;
-    transition-duration: 1s;
     transition-timing-function: cubic-bezier(.5,1.6,.4,.7);
 }
 /* .profile .profile-component .profile-info .card-body .makeappointment:hover {
