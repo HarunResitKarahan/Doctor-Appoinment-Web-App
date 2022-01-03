@@ -323,7 +323,9 @@ def Apriori(request, id = 0):
         # print(request_data)
         data = Appointment.objects.all().values()
         patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
-        # print(patient_appointments)
+        print("---------------------------")
+        print(patient_appointments)
+        print("---------------------------")
         patient_doctors = []
         for item in patient_appointments:
             # patient_appointments_doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
@@ -334,8 +336,9 @@ def Apriori(request, id = 0):
             if not item['appointmentDoctorID_id'] in patient_doctors:
                 patient_doctors.append(item['appointmentDoctorID_id'])
         # print(patient_appointments)
-        # print(patient_doctors)
-        # print("---------------------------")
+        print("---------------------------")
+        print(patient_doctors)
+        print("---------------------------")
         # Stripping extra spaces in the description
         for item in data:
             # doctor = Doctor.objects.filter(doctorID = item['appointmentDoctorID_id']).values()
@@ -346,7 +349,7 @@ def Apriori(request, id = 0):
             item['appointmentDepartmanID_id'] = str(item['appointmentDepartmanID_id'])
             item['Quantity'] = 1
         data = pd.DataFrame(data=data)
-        # print(data)
+        print(data)
         data['appointmentDoctorID_id'] = data['appointmentDoctorID_id'].str.strip()
         # Dropping the rows without any invoice number
         data.dropna(axis = 0, subset =['id'], inplace = True)
@@ -372,7 +375,7 @@ def Apriori(request, id = 0):
         rules = association_rules(frq_items, metric ="lift", min_threshold = 1)
         rules = rules.sort_values(['confidence', 'lift'], ascending =[False, False])
         listofsuggestions = defaultdict(dict)
-        # print(rules)
+        print(rules)
         suggestion = []
         for index, row in rules.iterrows():
             listofsuggestions[index]['antecedents'] = list(row['antecedents'])
@@ -385,15 +388,16 @@ def Apriori(request, id = 0):
                     counter += 1
             if counter == len(listofsuggestions[item]['antecedents']) and listofsuggestions[item]['confidence'] >= 0.5 and not listofsuggestions[item]['consequents'] in suggestion:
                 suggestion.append(listofsuggestions[item]['consequents'])
+        print("------------------")
         # print(listofsuggestions)
-        # print(suggestion)
-        # print("------------------")
+        print(suggestion)
+        print("------------------")
         return_suggestion = []
         for item in suggestion:
             for item2 in item:
                 if not item2 in return_suggestion and not item2 in patient_doctors:
                     return_suggestion.append(item2)
-        # print(return_suggestion)
+        print(return_suggestion)
         return_doctors = []
         for item in return_suggestion:
             getdoctor = Doctor.objects.filter(doctorID = item).values()
@@ -408,8 +412,8 @@ def Apriori(request, id = 0):
         willdelete = []
         for item in return_doctors:
             if item[0]['departmanID_id'] != request_data['departman']:
-                # print("-----------------------------------")
-                # print(item[0])
+                print("-----------------------------------")
+                print(item[0])
                 willdelete.append(item)
         for item in willdelete:
             return_doctors.remove(item)
