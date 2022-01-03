@@ -193,14 +193,18 @@ def AppointmentGetAppointment(request, id = 0):
         counter = 0
         appointments = Appointment.objects.filter(appointmentDoctorID_id = doctorID).values()
         for item in appointments:
-            if not item['appointmentPoint'] == None:
+            if item['appointmentPoint'] == None:
+                item['appointmentPoint'] = 0
+            else:
                 counter = counter + 1
-                doctorrating += int(item['appointmentPoint'])
+            doctorrating += int(item['appointmentPoint'])
+        if counter == 0:
+            counter = 1
         doctor2= doctor[0]
-        doctor2['doctorScore'] = str((doctorrating / 2) / counter)
-        # print(doctor2['doctorScore'])
-        # print(str((doctorrating / 2) / counter))
-        # print(doctor2)
+        doctor2['doctorScore'] = str((float(doctorrating) / 2) / float(counter))
+        print(doctor2['doctorScore'])
+        print(str((doctorrating / 2) / counter))
+        print(doctor2)
         doctor_serializer = DoctorSerializer(doctorID, doctor2)
         if not patient_serializer.is_valid():
             print(patient_serializer.errors)

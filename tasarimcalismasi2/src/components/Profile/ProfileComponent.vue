@@ -22,7 +22,7 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;"
                     ><b>TC Kimlik No:</b> {{userinfo.patientID}} </p>
-          <div class="makeappointment"><div class="animation"></div> <p>Şimdi Randevu Al</p></div>
+          <div @click="randevual" class="makeappointment"><div class="animation"></div> <p>Şimdi Randevu Al</p></div>
         <div style="text-align: left;
                     width: 100%;
                     margin-top:30px;
@@ -157,12 +157,15 @@ export default {
     }
   },
   methods: {
-    checktime (appointmentTime) {
-      var split = appointmentTime.split(' ')
-      var splittime = split[3].split(':')
-      const d = new Date(split[2], this.months.findIndex(split[1]), split[0], splittime[0], splittime[1])
-      print(d)
-      return true
+    // checktime (appointmentTime) {
+    //   var split = appointmentTime.split(' ')
+    //   var splittime = split[3].split(':')
+    //   const d = new Date(split[2], this.months.findIndex(split[1]), split[0], splittime[0], splittime[1])
+    //   print(d)
+    //   return true
+    // },
+    randevual () {
+      this.$router.push({ name: 'DoctorSearch' })
     },
     cancel (appointmentID) {
       fetch('http://127.0.0.1:8000/appointment/getappointment', {
