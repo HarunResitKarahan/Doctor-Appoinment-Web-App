@@ -15,6 +15,5 @@ urlpatterns = [
     re_path('schedule/getschedule', views.ScheduleGetTime),
     re_path('schedule/makeschedule', views.ScheduleMakeSchedule),
     re_path('appointment/getappointment', views.AppointmentGetAppointment),
-    re_path('appointment/getappointment/<str:id>', views.AppointmentGetAppointment),
     re_path('apriori', views.Apriori)
 ]
