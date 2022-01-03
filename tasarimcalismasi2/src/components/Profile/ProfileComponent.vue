@@ -264,11 +264,11 @@ export default {
     // ------------------------------------
     $('.makeappointment').hover(function () {
       // $('.makeappointment').css({ border: 'none' })
-      $('.animation').css({ height: '100%', 'border-radius': '7px' })
+      $('.animation').css({ height: '100%', 'border-radius': '7px', 'transition-duration': '0.5s' })
       $('.makeappointment p').css({ color: 'white' })
     }, function () {
       // $('.makeappointment').css({ border: '1px solid rgb(132, 168, 235)' })
-      $('.animation').css({ height: '0px', 'border-radius': '7px' })
+      $('.animation').css({ height: '0px', 'border-radius': '7px', 'transition-duration': '0.2s' })
       $('.makeappointment p').css({ color: 'rgb(132, 168, 235)' })
     })
   }
