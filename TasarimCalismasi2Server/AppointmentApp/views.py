@@ -188,7 +188,6 @@ def AppointmentGetAppointment(request, id = 0):
         patient_serializer = Appointment3Serializer(snippet, data=request_data)
         doctor = Doctor.objects.filter(doctorID = request[0]['appointmentDoctorID_id']).values()
         doctorID = Doctor.objects.get(doctorID = request[0]['appointmentDoctorID_id'])
-        doctor[0]['countOfRating'] = doctor[0]['countOfRating'] + 1
         doctorrating = 0
         counter = 0
         appointments = Appointment.objects.filter(appointmentDoctorID_id = doctorID).values()
@@ -201,6 +200,7 @@ def AppointmentGetAppointment(request, id = 0):
         if counter == 0:
             counter = 1
         doctor2= doctor[0]
+        doctor2['countOfRating'] = counter
         doctor2['doctorScore'] = str((float(doctorrating) / 2) / float(counter))
         print(doctor2['doctorScore'])
         print(str((doctorrating / 2) / counter))

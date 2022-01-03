@@ -253,7 +253,6 @@ export default {
       var rate = $(this).text()
       $(this).parent('td').find('.rate').hide()
       $(this).parent('td').find('.rate-show').append(rate)
-      $(this).parent('td').css('justify-content', 'center')
       $(this).parent('td').find('.rate-show').css('display', 'block')
       fetch('http://127.0.0.1:8000/appointment/getappointment', {
         method: 'PUT',
@@ -267,11 +266,11 @@ export default {
     // ------------------------------------
     $('.makeappointment').hover(function () {
       // $('.makeappointment').css({ border: 'none' })
-      $('.animation').css({ height: '100%', 'border-radius': '7px', 'transition-duration': '0.5s' })
+      $('.animation').css({ width: '100%', 'border-radius': '7px', 'transition-duration': '0.5s' })
       $('.makeappointment p').css({ color: 'white' })
     }, function () {
       // $('.makeappointment').css({ border: '1px solid rgb(132, 168, 235)' })
-      $('.animation').css({ height: '0px', 'border-radius': '7px', 'transition-duration': '0.2s' })
+      $('.animation').css({ width: '0px', 'border-radius': '7px', 'transition-duration': '0.2s' })
       $('.makeappointment p').css({ color: 'rgb(132, 168, 235)' })
     })
   }
