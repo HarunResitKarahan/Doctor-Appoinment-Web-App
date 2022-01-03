@@ -36,9 +36,9 @@ class Doctor(models.Model):
     doctorCreateTime = models.DateTimeField(default=timezone.now)
     countOfRating = models.IntegerField(null=True)
 
-class Recommendation(models.Model):
-    recommendationPatientID = models.ForeignKey(Patient, default= None, on_delete=models.CASCADE)
-    recommendationDoctorID =  models.ForeignKey(Doctor, default= None, on_delete=models.CASCADE)
+# class Recommendation(models.Model):
+#     recommendationPatientID = models.ForeignKey(Patient, default= None, on_delete=models.CASCADE)
+#     recommendationDoctorID =  models.ForeignKey(Doctor, default= None, on_delete=models.CASCADE)
 
 # class Schedule(models.Model):
 #     scheduleID = models.AutoField(primary_key=True)
