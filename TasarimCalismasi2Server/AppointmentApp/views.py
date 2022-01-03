@@ -259,23 +259,26 @@ def ScheduleGetTime(request, id = 0):
 @csrf_exempt
 def ScheduleMakeSchedule(request, id = 0):
     if request.method == 'POST':
-        request_data = JSONParser().parse(request)
-        request_data['appointmentDepartmanID_id'] = int(request_data['appointmentDepartmanID_id'])
-        request_data['appointmentDoctorID_id'] = int(request_data['appointmentDoctorID_id'])
-        request_data['appointmentPatientID_id'] = str(request_data['appointmentPatientID_id'])
-        split = request_data['appointmentTime'].split('-')
-        request_data['appointmentTime'] = datetime(int(split[0]), int(split[1]), int(split[2]), int(split[3]), int(split[4]))
-        if request_data['appointmentPoint'] == '':
-            request_data['appointmentPoint'] = None
-        schedule = Appointment.objects.filter(appointmentTime__gte = datetime.now().date(), appointmentDepartmanID_id = request_data['appointmentDepartmanID_id'], appointmentPatientID_id = request_data['appointmentPatientID_id'])
-        print(schedule.values())
-        if len(schedule.values()) > 0:
-            return JsonResponse("Failed to", safe = False)
-        else:
-            schedule_serializer = Appointmen2Serializer(data = request_data)
-            if schedule_serializer.is_valid():
-                schedule_serializer.save()
-                return JsonResponse("Added Successfully", safe = False)
+        try:
+            request_data = JSONParser().parse(request)
+            request_data['appointmentDepartmanID_id'] = int(request_data['appointmentDepartmanID_id'])
+            request_data['appointmentDoctorID_id'] = int(request_data['appointmentDoctorID_id'])
+            request_data['appointmentPatientID_id'] = str(request_data['appointmentPatientID_id'])
+            split = request_data['appointmentTime'].split('-')
+            request_data['appointmentTime'] = datetime(int(split[0]), int(split[1]), int(split[2]), int(split[3]), int(split[4]))
+            if request_data['appointmentPoint'] == '':
+                request_data['appointmentPoint'] = None
+            schedule = Appointment.objects.filter(appointmentTime__gte = datetime.now().date(), appointmentDepartmanID_id = request_data['appointmentDepartmanID_id'], appointmentPatientID_id = request_data['appointmentPatientID_id'])
+            print(schedule.values())
+            if len(schedule.values()) > 0:
+                return JsonResponse("Failed to", safe = False)
+            else:
+                schedule_serializer = Appointmen2Serializer(data = request_data)
+                if schedule_serializer.is_valid():
+                    schedule_serializer.save()
+                    return JsonResponse("Added Successfully", safe = False)
+        except:
+            return JsonResponse('Başarısız',safe=False)
 
 @csrf_exempt
 def Apriori(request, id = 0):
@@ -429,4 +432,4 @@ def Apriori(request, id = 0):
                 return_doctors.remove(item)
             return JsonResponse(return_doctors,safe=False)
         except:
-            return JsonResponse('Başarısız',safe=False)
+            return JsonResponse([],safe=False)
