@@ -22,6 +22,7 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;"
                     ><b>TC Kimlik No:</b> {{userinfo.patientID}} </p>
+          <div class="makeappointment"><div class="animation"></div> <p>Şimdi Randevu Al</p></div>
         <div style="text-align: left;
                     width: 100%;
                     margin-top:30px;
@@ -259,6 +260,14 @@ export default {
           appointmentPoint: rate
         })
       })
+    })
+    // ------------------------------------
+    $('.makeappointment').hover(function () {
+      $('.animation').css({ height: '100%', 'border-radius': '7px' })
+      $('.makeappointment p').css({ color: 'white' })
+    }, function () {
+      $('.animation').css({ height: '0px', 'border-radius': '7px' })
+      $('.makeappointment p').css({ color: 'rgb(132, 168, 235)' })
     })
   }
 }
