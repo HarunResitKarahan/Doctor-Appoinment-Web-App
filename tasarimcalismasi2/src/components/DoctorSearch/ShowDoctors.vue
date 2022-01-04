@@ -204,7 +204,9 @@ export default {
       this.sayac += 3
     },
     sortby (event) {
-      // var j, key
+      if (this.backupdoctor === undefined) {
+        this.backupdoctor = this.doctor
+      }
       if (event.target.value === 'countOfRating') {
         var sortable = []
         this.doctor.forEach((doctor) => {
@@ -265,7 +267,6 @@ export default {
   },
   created () {
     this.issignin = localStorage.issignin
-    this.backupdoctor = this.doctor
   },
   updated () {
     this.suggestion.forEach((item) => {
