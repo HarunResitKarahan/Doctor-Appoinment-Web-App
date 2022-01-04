@@ -1,13 +1,13 @@
 <template>
   <div class="show-doctors">
     <template v-if="slicedDoctor.length > 0">
-      <div class="sort">
+      <!-- <div class="sort">
         <select v-model="sort" @change="sortby($event)" name="sort" id="sort">
           <option value="empty" selected>Sıralama</option>
           <option value="countOfRating">Doktor Puanı</option>
           <option value="rating">Değerlendirme Sayısı</option>
         </select>
-      </div>
+      </div> -->
     </template>
     <template v-for="(item,index) in slicedDoctor">
       <div class="doctor-card" :key="index">
