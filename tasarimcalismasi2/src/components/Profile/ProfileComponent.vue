@@ -22,7 +22,7 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;"
                     ><b>TC Kimlik No:</b> {{userinfo.patientID}} </p>
-          <div @click="randevual" class="makeappointment"><div class="animation"></div> <p>Şimdi Randevu Al</p></div>
+          <div @click="randevual" class="makeappointment"><div class="animation"></div><div class="animation2"></div><p>Şimdi Randevu Al</p></div>
         <div style="text-align: left;
                     width: 100%;
                     margin-top:30px;
@@ -266,11 +266,13 @@ export default {
     // ------------------------------------
     $('.makeappointment').hover(function () {
       // $('.makeappointment').css({ border: 'none' })
-      $('.animation').css({ width: '100%', 'border-radius': '7px', 'transition-duration': '0.5s' })
+      $('.animation').css({ width: '50%', 'border-radius': '7px', 'border-top-right-radius': '0', 'border-bottom-right-radius': '0', 'transition-duration': '0.5s' })
+      $('.animation2').css({ width: '50%', 'border-radius': '7px', 'border-top-left-radius': '0', 'border-bottom-left-radius': '0', 'transition-duration': '0.5s' })
       $('.makeappointment p').css({ color: 'white' })
     }, function () {
       // $('.makeappointment').css({ border: '1px solid rgb(132, 168, 235)' })
       $('.animation').css({ width: '0px', 'border-radius': '7px', 'transition-duration': '0.2s' })
+      $('.animation2').css({ width: '0', 'border-radius': '7px', 'transition-duration': '0.5s' })
       $('.makeappointment p').css({ color: 'rgb(132, 168, 235)' })
     })
   }
