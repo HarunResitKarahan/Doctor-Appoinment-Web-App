@@ -37,6 +37,7 @@
     height: 100%;
     width: 0px;
     transition-timing-function: cubic-bezier(.5,1.6,.4,.7);
+    /* left: 50%; */
     left: 0;
 }
 .profile .profile-component .profile-info .card-body .makeappointment .animation2 {
@@ -46,6 +47,7 @@
     height: 100%;
     width: 0px;
     transition-timing-function: cubic-bezier(.5,1.6,.4,.7);
+    /* right: 50%; */
     right: 0;
 }
 /* .profile .profile-component .profile-info .card-body .makeappointment:hover {
