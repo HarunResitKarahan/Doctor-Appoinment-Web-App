@@ -1,6 +1,6 @@
 <template>
   <div class="show-doctors">
-    <template v-for="(item,index) in doctor">
+    <template v-for="(item,index) in slicedDoctor">
       <div class="doctor-card" :key="index">
         <div class="doctor-image">
           <template v-if="item.doctorSex == 'Erkek'">
@@ -66,7 +66,7 @@
         </div>
     </div>
     </template>
-    <template v-if="doctor.length > 4">
+    <template v-if="doctor.length > 3">
       <div class="see-more">
         <p>Daha Fazla Görüntüle</p>
       </div>
@@ -173,12 +173,18 @@ export default {
   data () {
     return {
       issignin: '',
-      suggestion: undefined
+      suggestion: undefined,
+      sliceddoctor: []
     }
   },
   watch: {
     doctor: function () {
       this.star()
+    }
+  },
+  computed: {
+    slicedDoctor () {
+      return this.doctor.slice(0, 3)
     }
   },
   methods: {
@@ -188,6 +194,9 @@ export default {
       $('.login .register-card').css('display', 'none')
     },
     star () {
+      // for (var x = 0; x < 4; x++) {
+      //   this.sliceddoctor[x] = this.doctor[x]
+      // }
       if (this.doctor.length > 0) {
         fetch('http://127.0.0.1:8000/apriori', {
           method: 'POST',
