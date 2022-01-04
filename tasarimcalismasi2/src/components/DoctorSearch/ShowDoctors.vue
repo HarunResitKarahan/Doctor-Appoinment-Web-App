@@ -2,10 +2,10 @@
   <div class="show-doctors">
     <template v-if="slicedDoctor.length > 0">
       <div class="sort">
-        <select v-model="sort" name="sort" id="sort" default="Cinsiyet">
-          <option value="" selected disabled hidden>Cinsiyet Seçin</option>
-          <option value="Erkek">Erkek</option>
-          <option value="Kadın">Kadın</option>
+        <select v-model="sort" name="sort" id="sort">
+          <option value="" selected>Sıralama</option>
+          <option value="Erkek">Değerlendirme Sayısı</option>
+          <option value="Kadın">Doktor Puanı</option>
         </select>
       </div>
     </template>
