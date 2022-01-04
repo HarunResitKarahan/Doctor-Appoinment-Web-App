@@ -13,19 +13,20 @@
               <span>Şifre: </span>
               <input v-model="password" type="password">
           </div>
-          <div class="remind-me">
+          <div class="remind-me"></div>
+          <!-- <div class="remind-me">
               <label class="checkbox">
                   <input type="checkbox"><p style="width: 300px;text-align: left;">Beni Hatırla</p>
               </label>
               <div class="forgot-password">
                   <p>Şifremi Unuttum?</p>
               </div>
-          </div>
+          </div> -->
           <template v-if="issignin == 'Giriş Başarılı'">
             <p style="color: lime;">Giriş Başarılı</p>
           </template>
-          <template v-if="issignin == 'Giriş Başarısız'">
-            <p style="color: red;margin: 5px 0;">Giriş Başarısız</p>
+          <template v-if="issignin == 'Kullanıcı Adı veya Şifre Hatalı'">
+            <p class="failed" style="color: red;margin: 5px 0;">Kullanıcı Adı veya Şifre Hatalı</p>
           </template>
           <div @click="signin(username, password)" class="log-in">
               <p>Giriş Yap</p>
@@ -120,10 +121,14 @@ export default {
         .then(data => {
           this.issignin = data
           if (this.issignin === 'Giriş Başarılı') {
+            $('.failed').show()
             localStorage.username = username
             localStorage.issignin = this.issignin
             this.localusername = localStorage.username
             setInterval(function () { location.reload() }, 750)
+          } else {
+            $('.failed').show()
+            setTimeout(() => { $('.failed').hide() }, 1000)
           }
         })
     },

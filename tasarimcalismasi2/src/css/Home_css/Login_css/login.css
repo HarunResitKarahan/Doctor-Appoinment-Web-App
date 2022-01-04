@@ -32,6 +32,7 @@
 }
 .login .login-card input {
     background: rgba(0, 0, 0, 0.1);
+    min-width: 400px;
     margin: 0 0 30px 0;
     line-height: 1.4;
     font-size: 14px;

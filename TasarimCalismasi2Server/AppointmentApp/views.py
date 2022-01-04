@@ -46,13 +46,13 @@ def PatientApi(request, id = 0):
 @csrf_exempt
 def PatientApiSignIn(request, id = 0):
     if request.method == 'POST':
-        patient_data = JSONParser().parse(request)
         try:
+            patient_data = JSONParser().parse(request)
             patient = Patient.objects.filter(patientID = patient_data['patientID']).values()   
             if check_password(patient_data['patientPassword'], patient[0]['patientPassword']) == True:
                 return JsonResponse("Giriş Başarılı", safe = False)
-        except IndexError:
-            return JsonResponse("Giriş Başarısız", safe = False)
+        except:
+            return JsonResponse("Kullanıcı Adı veya Şifre Hatalı", safe = False)
 
 @csrf_exempt
 def PatientApiGetUser(request, id = 0):
