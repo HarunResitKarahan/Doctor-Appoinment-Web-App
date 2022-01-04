@@ -191,6 +191,18 @@ export default {
     slicedDoctorMore (more) {
       this.sayac += 3
     },
+    sortbyRating () {
+      var temp
+      this.doctor.forEach((item) => {
+        this.doctor.forEach((i) => {
+          if (Number(item.doctorScore) > Number(i.doctorScore)) {
+            temp = item
+            item = i
+            i = temp
+          }
+        })
+      })
+    },
     loginPage () {
       $('.login').css('display', 'flex')
       $('.login .login-card').css('display', 'block')
