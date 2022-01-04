@@ -193,6 +193,10 @@ export default {
           }
         })
       this.selectedDate(event)
+      $('.selected').removeClass('selected')
+      this.selectedtimeupdate = ''
+      $('.make-a-apointment a:nth-child(1)').hide()
+      $('.make-a-apointment a:nth-child(2)').show()
     },
     selectedDate (event) {
       var checkboxes = document.getElementsByClassName('date')
