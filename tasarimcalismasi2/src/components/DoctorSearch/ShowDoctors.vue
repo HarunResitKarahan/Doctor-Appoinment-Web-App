@@ -174,7 +174,8 @@ export default {
     doctor: Array,
     department: String,
     hospitalName: String,
-    date: String
+    date: String,
+    location: String
   },
   components: {
     VueSlickCarousel
@@ -252,7 +253,8 @@ export default {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             patientID: localStorage.username,
-            departman: this.department
+            departman: this.department,
+            city: this.location
           })
         })
           .then(response => response.json())

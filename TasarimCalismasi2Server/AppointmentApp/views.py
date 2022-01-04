@@ -338,7 +338,7 @@ def Apriori(request, id = 0):
     if request.method == 'POST':
         try:
             request_data = JSONParser().parse(request)
-            # print(request_data)
+            print(request_data)
             data = Appointment.objects.all().values()
             patient_appointments = Appointment.objects.filter(appointmentPatientID_id = request_data['patientID']).values()
             print("---------------------------")
@@ -425,11 +425,14 @@ def Apriori(request, id = 0):
             for item in return_doctors:
                 departman = Departman.objects.filter(departmanID = item[0]['departmanID_id']).values()
                 hospital = Hospital.objects.filter(hospitalID = item[0]['hospitalID_id']).values()
+                city = City.objects.filter(cityID = hospital[0]['hospitalCity_id']).values()
                 item[0]['departmanID_id'] = departman[0]['departmanName']
                 item[0]['hospitalID_id'] = hospital[0]['hospitalName']
+                item[0]['city'] = city[0]['cityName']
             willdelete = []
+            print(return_doctors)
             for item in return_doctors:
-                if item[0]['departmanID_id'] != request_data['departman']:
+                if item[0]['departmanID_id'] != request_data['departman'] or item[0]['city'] != request_data['city']:
                     print("-----------------------------------")
                     print(item[0])
                     willdelete.append(item)
