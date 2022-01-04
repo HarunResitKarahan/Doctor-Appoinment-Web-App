@@ -2,8 +2,8 @@
   <div class="show-doctors">
     <template v-if="slicedDoctor.length > 0">
       <div class="sort">
-        <select @change="sort(sort)" v-model="sort" name="sort" id="sort">
-          <option value="" selected>Sıralama</option>
+        <select v-model="sort" @change="sortby($event)" name="sort" id="sort">
+          <option value="empty" selected>Sıralama</option>
           <option value="countOfRating">Değerlendirme Sayısı</option>
           <option value="rating">Doktor Puanı</option>
         </select>
@@ -192,29 +192,31 @@ export default {
     }
   },
   computed: {
-    slicedDoctor () {
-      return this.doctor.slice(0, this.sayac)
+    slicedDoctor: {
+      get () {
+        return this.doctor.slice(0, this.sayac)
+      }
     }
   },
   methods: {
     slicedDoctorMore (more) {
       this.sayac += 3
     },
-    sort (sort) {
-      console.log(sort)
-      var j, key
-      if (sort === 'countOfRating') {
-        var doctor = this.doctor
-        doctor = doctor.slice(1, doctor.length)
-        doctor.forEach((item, index) => {
-          key = item
-          j = index - 1
-          while (j >= 0 && Number(this.doctor[j].doctorScore) > Number(key.doctorScore)) {
-            this.doctor[j + 1] = this.doctor[j]
-            j = j - 1
-          }
-          this.doctor[j + 1] = key
+    sortby (event) {
+      // var j, key
+      if (event.target.value === 'countOfRating') {
+        var sortable = []
+        this.doctor.forEach((doctor) => {
+          sortable.push([doctor, doctor.doctorScore])
         })
+        sortable.sort(function (a, b) {
+          return b[1] - a[1]
+        })
+        sortable.forEach((item, index) => {
+          item.pop(1)
+          sortable[index] = item[0]
+        })
+        this.doctor = sortable
       }
     },
     loginPage () {

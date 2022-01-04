@@ -122,7 +122,8 @@ def DoctorGetDoctors(request, id = 0):
                 splitedDate[2] = year
                 newyear = ' '.join(splitedDate)
                 item['doctorCreateTime'] = newyear
-        doctor_serializer = DoctorSerializer(doctors, many = True)
+        firstTwentyDoctor = doctors[0:20]
+        doctor_serializer = DoctorSerializer(firstTwentyDoctor, many = True)
         return JsonResponse(doctor_serializer.data, safe = False)
     if request.method == 'POST':
         request_data = JSONParser().parse(request)
