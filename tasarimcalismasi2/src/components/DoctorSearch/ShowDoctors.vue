@@ -68,7 +68,7 @@
     </template>
     <template v-if="doctor.length > 3">
       <div class="see-more">
-        <p>Daha Fazla Görüntüle</p>
+        <p @click="slicedDoctorMore(3)">Daha Fazla Görüntüle</p>
       </div>
     </template>
     <hr />
@@ -174,7 +174,7 @@ export default {
     return {
       issignin: '',
       suggestion: undefined,
-      sliceddoctor: []
+      sayac: 3
     }
   },
   watch: {
@@ -184,19 +184,22 @@ export default {
   },
   computed: {
     slicedDoctor () {
-      return this.doctor.slice(0, 3)
+      return this.doctor.slice(0, this.sayac)
     }
   },
   methods: {
+    slicedDoctorMore (more) {
+      this.sayac += 3
+    },
     loginPage () {
       $('.login').css('display', 'flex')
       $('.login .login-card').css('display', 'block')
       $('.login .register-card').css('display', 'none')
     },
     star () {
-      // for (var x = 0; x < 4; x++) {
-      //   this.sliceddoctor[x] = this.doctor[x]
-      // }
+      if (!this.doctor.length > 0) {
+        this.sayac = 3
+      }
       if (this.doctor.length > 0) {
         fetch('http://127.0.0.1:8000/apriori', {
           method: 'POST',
