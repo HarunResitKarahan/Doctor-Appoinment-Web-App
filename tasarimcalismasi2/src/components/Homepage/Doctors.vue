@@ -15,7 +15,7 @@
                 <p class="doctor-name">{{item.doctorName}} {{item.doctorSurname}}</p>
                 <p class="doctor-departmant">({{item.departmanID_id}})</p>
                 <div class="star">
-                    <span class="material-icons" >star</span ><p class="after">{{item.doctorScore}}</p><p>154 Değerlendirme</p>
+                    <span class="material-icons" >star</span ><p class="after">{{item.doctorScore}}</p><p>{{item.countOfRating}} Değerlendirme</p>
                 </div>
                 <p class="doctor-location"><span class="material-icons">place</span>{{item.hospitalID_id}}</p>
                 <p class="doctor-soon-appointmant"><span class="material-icons">schedule</span>Randevu Tarihi {{item.doctorCreateTime}}</p>
