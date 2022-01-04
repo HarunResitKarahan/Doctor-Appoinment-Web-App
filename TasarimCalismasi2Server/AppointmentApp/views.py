@@ -197,8 +197,6 @@ def AppointmentGetAppointment(request, id = 0):
                 print("randevu puanı:")
                 print(item['appointmentPoint'])
                 doctorrating += int(item['appointmentPoint'])
-        if counter == 0:
-            counter = 1
         doctor2= doctor[0]
         doctor2['countOfRating'] = counter + 1
         doctor2['doctorScore'] = str((float(doctorrating) / float(2)) / float(counter + 1))

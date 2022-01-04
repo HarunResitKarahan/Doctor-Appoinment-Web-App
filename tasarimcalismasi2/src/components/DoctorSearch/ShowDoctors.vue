@@ -2,10 +2,10 @@
   <div class="show-doctors">
     <template v-if="slicedDoctor.length > 0">
       <div class="sort">
-        <select v-model="sort" name="sort" id="sort">
+        <select @change="sort(sort)" v-model="sort" name="sort" id="sort">
           <option value="" selected>Sıralama</option>
-          <option value="Erkek">Değerlendirme Sayısı</option>
-          <option value="Kadın">Doktor Puanı</option>
+          <option value="countOfRating">Değerlendirme Sayısı</option>
+          <option value="rating">Doktor Puanı</option>
         </select>
       </div>
     </template>
@@ -200,17 +200,22 @@ export default {
     slicedDoctorMore (more) {
       this.sayac += 3
     },
-    sortbyRating () {
-      var temp
-      this.doctor.forEach((item) => {
-        this.doctor.forEach((i) => {
-          if (Number(item.doctorScore) > Number(i.doctorScore)) {
-            temp = item
-            item = i
-            i = temp
+    sort (sort) {
+      console.log(sort)
+      var j, key
+      if (sort === 'countOfRating') {
+        var doctor = this.doctor
+        doctor = doctor.slice(1, doctor.length)
+        doctor.forEach((item, index) => {
+          key = item
+          j = index - 1
+          while (j >= 0 && Number(this.doctor[j].doctorScore) > Number(key.doctorScore)) {
+            this.doctor[j + 1] = this.doctor[j]
+            j = j - 1
           }
+          this.doctor[j + 1] = key
         })
-      })
+      }
     },
     loginPage () {
       $('.login').css('display', 'flex')
