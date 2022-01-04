@@ -32,6 +32,8 @@ import '@/css/Profile_css/profile-component.css'
 import '@/css/AppointmentSuccess_css/appointment-success.css'
 import '@/css/AppointmentSuccess_css/success.css'
 
+import '@/css/LoaderScene_css/loader.css'
+
 import './scripts/Home_js/clinic.js'
 
 Vue.use(BootstrapVue)

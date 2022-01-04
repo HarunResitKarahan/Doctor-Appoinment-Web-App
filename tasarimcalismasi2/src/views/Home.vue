@@ -1,5 +1,6 @@
 <template>
   <div class='home'>
+    <LoaderScene />
     <Login />
     <Navbar />
     <SlideArea />
@@ -16,10 +17,12 @@ import Clinic from '@/components/Homepage/Clinics.vue'
 import Footer from '@/components/Homepage/Footer.vue'
 import Doctors from '@/components/Homepage/Doctors.vue'
 import Login from '@/components/Login/Login.vue'
+import LoaderScene from '@/components/LoaderScene/Loader.vue'
 
 export default {
   name: 'Home',
   components: {
+    LoaderScene,
     Navbar,
     SlideArea,
     Clinic,

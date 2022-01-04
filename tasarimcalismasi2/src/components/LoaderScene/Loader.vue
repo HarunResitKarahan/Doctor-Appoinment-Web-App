@@ -1,11 +1,11 @@
 <template>
 <div class="loader-scene">
-    asd    
+    asd
 </div>
 </template>
 
 <script>
 export default {
-    name: 'Loader',
+  name: 'Loader'
 }
 </script>
