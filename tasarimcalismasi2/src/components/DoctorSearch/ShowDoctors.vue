@@ -4,8 +4,8 @@
       <div class="sort">
         <select v-model="sort" @change="sortby($event)" name="sort" id="sort">
           <option value="empty" selected>Sıralama</option>
-          <option value="countOfRating">Değerlendirme Sayısı</option>
-          <option value="rating">Doktor Puanı</option>
+          <option value="countOfRating">Doktor Puanı</option>
+          <option value="rating">Değerlendirme Sayısı</option>
         </select>
       </div>
     </template>
@@ -183,7 +183,8 @@ export default {
     return {
       issignin: '',
       suggestion: undefined,
-      sayac: 3
+      sayac: 3,
+      backupdoctor: undefined
     }
   },
   watch: {
@@ -217,6 +218,21 @@ export default {
           sortable[index] = item[0]
         })
         this.doctor = sortable
+      } else if (event.target.value === 'rating') {
+        sortable = []
+        this.doctor.forEach((doctor) => {
+          sortable.push([doctor, doctor.countOfRating])
+        })
+        sortable.sort(function (a, b) {
+          return b[1] - a[1]
+        })
+        sortable.forEach((item, index) => {
+          item.pop(1)
+          sortable[index] = item[0]
+        })
+        this.doctor = sortable
+      } else {
+        this.doctor = this.backupdoctor
       }
     },
     loginPage () {
@@ -249,6 +265,7 @@ export default {
   },
   created () {
     this.issignin = localStorage.issignin
+    this.backupdoctor = this.doctor
   },
   updated () {
     this.suggestion.forEach((item) => {
