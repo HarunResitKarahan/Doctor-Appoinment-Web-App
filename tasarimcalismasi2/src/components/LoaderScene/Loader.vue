@@ -1,6 +1,6 @@
 <template>
 <div class="loader-scene">
-    asd
+    <div class="loader"></div>
 </div>
 </template>
 
