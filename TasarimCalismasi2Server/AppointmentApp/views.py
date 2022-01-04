@@ -432,7 +432,8 @@ def Apriori(request, id = 0):
             willdelete = []
             print(return_doctors)
             for item in return_doctors:
-                if item[0]['departmanID_id'] != request_data['departman'] or item[0]['city'] != request_data['city']:
+                # if item[0]['departmanID_id'] != request_data['departman'] or item[0]['city'] != request_data['city']:
+                if item[0]['city'] != request_data['city']:
                     print("-----------------------------------")
                     print(item[0])
                     willdelete.append(item)
