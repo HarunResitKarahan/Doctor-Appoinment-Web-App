@@ -188,23 +188,29 @@ def AppointmentGetAppointment(request, id = 0):
         patient_serializer = Appointment3Serializer(snippet, data=request_data)
         doctor = Doctor.objects.filter(doctorID = request[0]['appointmentDoctorID_id']).values()
         doctorID = Doctor.objects.get(doctorID = request[0]['appointmentDoctorID_id'])
-        doctorrating = 0
+        doctorrating = int(request_data['appointmentPoint'])
         counter = 0
         appointments = Appointment.objects.filter(appointmentDoctorID_id = doctorID).values()
         for item in appointments:
-            if item['appointmentPoint'] == None:
-                item['appointmentPoint'] = 0
-            else:
+            if not item['appointmentPoint'] == None:
                 counter = counter + 1
-            doctorrating += int(item['appointmentPoint'])
+                print("randevu puanı:")
+                print(item['appointmentPoint'])
+                doctorrating += int(item['appointmentPoint'])
         if counter == 0:
             counter = 1
         doctor2= doctor[0]
-        doctor2['countOfRating'] = counter
-        doctor2['doctorScore'] = str((float(doctorrating) / 2) / float(counter))
+        doctor2['countOfRating'] = counter + 1
+        doctor2['doctorScore'] = str((float(doctorrating) / float(2)) / float(counter))
+        print("--------------------")
+        print(counter)
+        print("--------------------")
         print(doctor2['doctorScore'])
-        print(str((doctorrating / 2) / counter))
+        print("--------------------")
+        print(doctorrating)
+        print("--------------------")
         print(doctor2)
+        print("--------------------")
         doctor_serializer = DoctorSerializer(doctorID, doctor2)
         if not patient_serializer.is_valid():
             print(patient_serializer.errors)
