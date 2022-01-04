@@ -18,6 +18,8 @@ import Footer from '@/components/Homepage/Footer.vue'
 import Doctors from '@/components/Homepage/Doctors.vue'
 import Login from '@/components/Login/Login.vue'
 import LoaderScene from '@/components/LoaderScene/Loader.vue'
+// import $ from 'jquery'
+// import func from 'vue-editor-bridge'
 
 export default {
   name: 'Home',

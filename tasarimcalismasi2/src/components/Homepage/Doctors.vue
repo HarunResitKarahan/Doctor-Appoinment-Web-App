@@ -72,6 +72,11 @@ export default {
       .then(data => {
         this.doctors = data
       })
+  },
+  updated () {
+    if ($('.cards').length > 0) {
+      $('.loader-scene').css({ display: 'none' })
+    }
   }
 }
 </script>
