@@ -1,5 +1,14 @@
 <template>
   <div class="show-doctors">
+    <template v-if="slicedDoctor.length > 0">
+      <div class="sort">
+        <select v-model="sort" name="sort" id="sort" default="Cinsiyet">
+          <option value="" selected disabled hidden>Cinsiyet Seçin</option>
+          <option value="Erkek">Erkek</option>
+          <option value="Kadın">Kadın</option>
+        </select>
+      </div>
+    </template>
     <template v-for="(item,index) in slicedDoctor">
       <div class="doctor-card" :key="index">
         <div class="doctor-image">
