@@ -54,7 +54,7 @@
                           <stop  offset="60%" stop-color="white"/>
                           <stop  offset="100%" stop-color="white"/>
                       </linearGradient><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                      <p class="after">{{doctor[0].doctorScore}}</p><p>154 Değerlendirme</p>
+                      <p class="after">{{doctor[0].doctorScore}}</p><p>{{doctor[0].countOfRating}} Değerlendirme</p>
                   </div>
               </div>
             <div class="doctor-departmant" style="margin-top: 10px;">
