@@ -266,13 +266,13 @@ export default {
     // ------------------------------------
     $('.makeappointment').hover(function () {
       // $('.makeappointment').css({ border: 'none' })
-      $('.animation').css({ width: '50%', 'border-radius': '7px', 'border-top-right-radius': '0', 'border-bottom-right-radius': '0', 'transition-duration': '0.5s' })
-      $('.animation2').css({ width: '50%', 'border-radius': '7px', 'border-top-left-radius': '0', 'border-bottom-left-radius': '0', 'transition-duration': '0.5s' })
+      $('.animation').css({ width: '50%', 'border-radius': '7px', 'border-top-right-radius': '0', 'border-bottom-right-radius': '0', 'transition-duration': '0.4s' })
+      $('.animation2').css({ width: '50%', 'border-radius': '7px', 'border-top-left-radius': '0', 'border-bottom-left-radius': '0', 'transition-duration': '0.4s' })
       $('.makeappointment p').css({ color: 'white' })
     }, function () {
       // $('.makeappointment').css({ border: '1px solid rgb(132, 168, 235)' })
       $('.animation').css({ width: '0px', 'border-radius': '7px', 'transition-duration': '0.2s' })
-      $('.animation2').css({ width: '0', 'border-radius': '7px', 'transition-duration': '0.5s' })
+      $('.animation2').css({ width: '0', 'border-radius': '7px', 'transition-duration': '0.2s' })
       $('.makeappointment p').css({ color: 'rgb(132, 168, 235)' })
     })
   }
