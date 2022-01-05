@@ -21,6 +21,7 @@
                   <span>Cinsiyet</span>
                   <select v-model="gender" name="sex" id="sex">
                     <option value="" selected disabled hidden>Cinsiyet Seçin</option>
+                    <option value="Farketmez">Farketmez</option>
                     <option value="Erkek">Erkek</option>
                     <option value="Kadın">Kadın</option>
                   </select>
