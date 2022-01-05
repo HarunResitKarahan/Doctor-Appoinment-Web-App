@@ -44,6 +44,9 @@
               <div>
                 <h6 style="font-size: 15px;margin-top: 20px;">Cinsiyet</h6>
                 <label class="checkbox">
+                      <input @click="onlyOneForgender($event)" @change="change($event)" type="checkbox" name="checkgender" :checked="gender == 'Farketmez' ? 'checked' : false"><p style="text-align: left;">Farketmez</p>
+                </label>
+                <label class="checkbox">
                       <input @click="onlyOneForgender($event)" @change="change($event)" type="checkbox" name="checkgender" :checked="gender == 'Erkek' ? 'checked' : false"><p style="text-align: left;">Erkek</p>
                 </label>
                 <label class="checkbox">
