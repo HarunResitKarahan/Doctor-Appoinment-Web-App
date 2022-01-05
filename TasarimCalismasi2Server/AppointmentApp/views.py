@@ -130,7 +130,10 @@ def DoctorGetDoctors(request, id = 0):
         department = Departman.objects.filter(departmanName = request_data['departmanName']).values()
         city = City.objects.filter(cityName = request_data['cityName']).values()
         hospital = Hospital.objects.filter(hospitalName = request_data['hospitalName'], hospitalCity_id = city[0]['cityID']).values()
-        doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalID']).values()
+        if request_data['doctorSex'] == 'Farketmez':
+            doctor = Doctor.objects.filter(departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalID']).values()
+        else:
+            doctor = Doctor.objects.filter(doctorSex = request_data['doctorSex'], departmanID_id = department[0]['departmanID'], hospitalID_id = hospital[0]['hospitalID']).values()
         appointment = Appointment.objects.filter(appointmentDepartmanID_id = department[0]['departmanID']).values()
         # print(appointment)
         # print(datetime.strptime(str(appointment[0]['appointmentTime']), "%Y-%m-%d %H:%M:%S").date()) # %H:%M:%S
