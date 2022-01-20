@@ -6,6 +6,9 @@
   line-height:24px;
   color:#ffffff;
 }
+.site-footer .row .col-sm-12 {
+  display: none;
+}
 .site-footer hr
 {
   border-top-color:#bbb;
