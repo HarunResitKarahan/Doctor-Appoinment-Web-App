@@ -88,7 +88,9 @@ def HospitalGetHospital(request, id = 0):
 @csrf_exempt
 def DoctorGetDoctors(request, id = 0):
     if request.method == 'GET':
-        doctors = Doctor.objects.all().order_by('-doctorScore').values()
+        # doctors = Doctor.objects.all().order_by('-doctorScore').values()
+        # doctors = Doctor.objects.filter(countOfRating__gte=0).order_by('-doctorScore').values()
+        doctors = Doctor.objects.filter(countOfRating__gte=1).order_by('-doctorScore').values()
         today = datetime.now()
         increasedtoday = datetime.now()
         months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
