@@ -186,8 +186,8 @@ export default {
     return {
       issignin: '',
       suggestion: undefined,
-      sayac: 3,
       backupdoctor: undefined,
+      sayac: 3,
       sort: '',
       defaultsort: 'Sıralama'
     }
@@ -195,6 +195,9 @@ export default {
   watch: {
     doctor: function () {
       this.star()
+    },
+    sort: function () {
+      this.starchange()
     }
   },
   computed: {
@@ -238,7 +241,7 @@ export default {
           sortable[index] = item[0]
         })
         this.doctor = sortable
-      } else {
+      } else if (event.target.value === 'empty') {
         this.doctor = this.backupdoctor
       }
     },
@@ -270,6 +273,124 @@ export default {
           })
       }
     }
+    // starchange () {
+    //   var doctor = this.doctor
+    //   var getstar
+    //   var star
+    //   doctor.forEach(item => {
+    //     var id = String(item.doctorID)
+    //     var hash = '#'
+    //     hash = hash.concat(id)
+    //     getstar = $('.doctor-rank').find(hash)
+    //     star = $(getstar).find('linearGradient stop')
+    //     if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
+    //       var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
+    //     } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {
+    //       text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) - 10)
+    //     } else {
+    //       text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100))
+    //     }
+    //     var text2 = '%'
+    //     var concat = text1.concat(text2)
+    //     if (Number(item.doctorScore) >= 1 && Number(item.doctorScore) < 2) {
+    //       star[0].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[1].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[3].attributes[0].value = '0%'
+    //       star[2].attributes[1].value = 'white'
+    //       star[3].attributes[0].value = '0%'
+    //       star[3].attributes[1].value = 'white'
+    //       star[4].attributes[0].value = '0%'
+    //       star[4].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[5].attributes[0].value = concat
+    //       star[5].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[6].attributes[0].value = concat
+    //       star[6].attributes[1].value = 'white'
+    //       star[7].attributes[1].value = 'white'
+    //       star[8].attributes[1].value = 'white'
+    //       star[9].attributes[1].value = 'white'
+    //       star[10].attributes[1].value = 'white'
+    //       star[11].attributes[1].value = 'white'
+    //       star[12].attributes[1].value = 'white'
+    //       star[13].attributes[1].value = 'white'
+    //       star[14].attributes[1].value = 'white'
+    //       star[15].attributes[1].value = 'white'
+    //       star[16].attributes[1].value = 'white'
+    //       star[17].attributes[1].value = 'white'
+    //       star[18].attributes[1].value = 'white'
+    //       star[19].attributes[1].value = 'white'
+    //     } else if (Number(item.doctorScore) >= 2 && Number(item.doctorScore) < 3) {
+    //       star[0].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[1].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[2].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[3].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[4].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[5].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[6].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[7].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[8].attributes[0].value = concat
+    //       star[8].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[9].attributes[0].value = concat
+    //       star[9].attributes[1].value = 'white'
+    //       star[10].attributes[1].value = 'white'
+    //       star[11].attributes[1].value = 'white'
+    //       star[12].attributes[1].value = 'white'
+    //       star[13].attributes[1].value = 'white'
+    //       star[14].attributes[1].value = 'white'
+    //       star[15].attributes[1].value = 'white'
+    //       star[16].attributes[1].value = 'white'
+    //       star[17].attributes[1].value = 'white'
+    //       star[18].attributes[1].value = 'white'
+    //       star[19].attributes[1].value = 'white'
+    //     } else if (Number(item.doctorScore) >= 3 && Number(item.doctorScore) < 4) {
+    //       star[0].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[1].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[2].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[3].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[4].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[5].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[6].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[7].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[8].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[9].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[10].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[11].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[12].attributes[0].value = concat
+    //       star[12].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[13].attributes[0].value = concat
+    //       star[13].attributes[1].value = 'white'
+    //       star[14].attributes[1].value = 'white'
+    //       star[15].attributes[1].value = 'white'
+    //       star[16].attributes[1].value = 'white'
+    //       star[17].attributes[1].value = 'white'
+    //       star[18].attributes[1].value = 'white'
+    //       star[19].attributes[1].value = 'white'
+    //     } else if (Number(item.doctorScore) >= 4 && Number(item.doctorScore) < 5) {
+    //       star[0].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[1].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[2].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[3].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[4].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[5].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[6].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[7].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[8].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[9].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[10].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[11].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[12].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[13].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[14].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[15].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[16].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[17].attributes[0].value = concat
+    //       star[17].attributes[1].value = 'rgb(255, 185, 88)'
+    //       star[18].attributes[0].value = concat
+    //       star[18].attributes[1].value = 'white'
+    //       star[19].attributes[1].value = 'white'
+    //       star[20].attributes[1].value = 'white'
+    //     }
+    //   })
+    // }
   },
   created () {
     this.issignin = localStorage.issignin
@@ -281,7 +402,6 @@ export default {
       hash = hash.concat(id)
       var getstar = $('.suggestion-doctor-rank').find(hash)
       var star = $(getstar).find('linearGradient stop')
-      console.log(getstar)
       if (Math.trunc((Number(item.doctorScore) % 1) * 100) <= 35) {
         var text1 = String(Math.trunc((Number(item.doctorScore) % 1) * 100) + 10)
       } else if (Math.trunc((Number(item.doctorScore) % 1) * 100) >= 75) {
@@ -358,6 +478,7 @@ export default {
     var getstar
     var star
     doctor.forEach(item => {
+      console.log(star)
       var id = String(item.doctorID)
       var hash = '#'
       hash = hash.concat(id)
@@ -384,6 +505,20 @@ export default {
         star[5].attributes[0].value = concat
         star[5].attributes[1].value = 'rgb(255, 185, 88)'
         star[6].attributes[0].value = concat
+        star[6].attributes[1].value = 'white'
+        star[7].attributes[1].value = 'white'
+        star[8].attributes[1].value = 'white'
+        star[9].attributes[1].value = 'white'
+        star[10].attributes[1].value = 'white'
+        star[11].attributes[1].value = 'white'
+        star[12].attributes[1].value = 'white'
+        star[13].attributes[1].value = 'white'
+        star[14].attributes[1].value = 'white'
+        star[15].attributes[1].value = 'white'
+        star[16].attributes[1].value = 'white'
+        star[17].attributes[1].value = 'white'
+        star[18].attributes[1].value = 'white'
+        star[19].attributes[1].value = 'white'
       } else if (Number(item.doctorScore) >= 2 && Number(item.doctorScore) < 3) {
         star[0].attributes[1].value = 'rgb(255, 185, 88)'
         star[1].attributes[1].value = 'rgb(255, 185, 88)'
@@ -396,6 +531,17 @@ export default {
         star[8].attributes[0].value = concat
         star[8].attributes[1].value = 'rgb(255, 185, 88)'
         star[9].attributes[0].value = concat
+        star[9].attributes[1].value = 'white'
+        star[10].attributes[1].value = 'white'
+        star[11].attributes[1].value = 'white'
+        star[12].attributes[1].value = 'white'
+        star[13].attributes[1].value = 'white'
+        star[14].attributes[1].value = 'white'
+        star[15].attributes[1].value = 'white'
+        star[16].attributes[1].value = 'white'
+        star[17].attributes[1].value = 'white'
+        star[18].attributes[1].value = 'white'
+        star[19].attributes[1].value = 'white'
       } else if (Number(item.doctorScore) >= 3 && Number(item.doctorScore) < 4) {
         star[0].attributes[1].value = 'rgb(255, 185, 88)'
         star[1].attributes[1].value = 'rgb(255, 185, 88)'
@@ -412,6 +558,13 @@ export default {
         star[12].attributes[0].value = concat
         star[12].attributes[1].value = 'rgb(255, 185, 88)'
         star[13].attributes[0].value = concat
+        star[13].attributes[1].value = 'white'
+        star[14].attributes[1].value = 'white'
+        star[15].attributes[1].value = 'white'
+        star[16].attributes[1].value = 'white'
+        star[17].attributes[1].value = 'white'
+        star[18].attributes[1].value = 'white'
+        star[19].attributes[1].value = 'white'
       } else if (Number(item.doctorScore) >= 4 && Number(item.doctorScore) < 5) {
         star[0].attributes[1].value = 'rgb(255, 185, 88)'
         star[1].attributes[1].value = 'rgb(255, 185, 88)'
@@ -433,6 +586,72 @@ export default {
         star[17].attributes[0].value = concat
         star[17].attributes[1].value = 'rgb(255, 185, 88)'
         star[18].attributes[0].value = concat
+        star[18].attributes[1].value = 'white'
+        star[19].attributes[1].value = 'white'
+      } else if (Number(item.doctorScore) >= 0 && Number(item.doctorScore) < 1) {
+        star[0].attributes[0].value = concat
+        star[0].attributes[1].value = 'rgb(255, 185, 88)'
+        star[1].attributes[0].value = concat
+        star[1].attributes[1].value = 'white'
+        star[2].attributes[1].value = 'white'
+        star[3].attributes[1].value = 'white'
+        star[4].attributes[1].value = 'white'
+        star[5].attributes[1].value = 'white'
+        star[6].attributes[1].value = 'white'
+        star[7].attributes[1].value = 'white'
+        star[8].attributes[1].value = 'white'
+        star[9].attributes[1].value = 'white'
+        star[10].attributes[1].value = 'white'
+        star[11].attributes[1].value = 'white'
+        star[12].attributes[1].value = 'white'
+        star[13].attributes[1].value = 'white'
+        star[14].attributes[1].value = 'white'
+        star[15].attributes[1].value = 'white'
+        star[16].attributes[1].value = 'white'
+        star[17].attributes[1].value = 'white'
+        star[18].attributes[1].value = 'white'
+        star[19].attributes[1].value = 'white'
+      } else if (Number(item.doctorScore) === 0) {
+        star[0].attributes[1].value = 'white'
+        star[1].attributes[1].value = 'white'
+        star[2].attributes[1].value = 'white'
+        star[3].attributes[1].value = 'white'
+        star[4].attributes[1].value = 'white'
+        star[5].attributes[1].value = 'white'
+        star[6].attributes[1].value = 'white'
+        star[7].attributes[1].value = 'white'
+        star[8].attributes[1].value = 'white'
+        star[9].attributes[1].value = 'white'
+        star[10].attributes[1].value = 'white'
+        star[11].attributes[1].value = 'white'
+        star[12].attributes[1].value = 'white'
+        star[13].attributes[1].value = 'white'
+        star[14].attributes[1].value = 'white'
+        star[15].attributes[1].value = 'white'
+        star[16].attributes[1].value = 'white'
+        star[17].attributes[1].value = 'white'
+        star[18].attributes[1].value = 'white'
+        star[19].attributes[1].value = 'white'
+      } else if (Number(item.doctorScore) === 5) {
+        star[0].attributes[1].value = 'rgb(255, 185, 88)'
+        star[1].attributes[1].value = 'rgb(255, 185, 88)'
+        star[3].attributes[1].value = 'rgb(255, 185, 88)'
+        star[4].attributes[1].value = 'rgb(255, 185, 88)'
+        star[5].attributes[1].value = 'rgb(255, 185, 88)'
+        star[6].attributes[1].value = 'rgb(255, 185, 88)'
+        star[7].attributes[1].value = 'rgb(255, 185, 88)'
+        star[8].attributes[1].value = 'rgb(255, 185, 88)'
+        star[9].attributes[1].value = 'rgb(255, 185, 88)'
+        star[10].attributes[1].value = 'rgb(255, 185, 88)'
+        star[11].attributes[1].value = 'rgb(255, 185, 88)'
+        star[12].attributes[1].value = 'rgb(255, 185, 88)'
+        star[13].attributes[1].value = 'rgb(255, 185, 88)'
+        star[14].attributes[1].value = 'rgb(255, 185, 88)'
+        star[15].attributes[1].value = 'rgb(255, 185, 88)'
+        star[16].attributes[1].value = 'rgb(255, 185, 88)'
+        star[17].attributes[1].value = 'rgb(255, 185, 88)'
+        star[18].attributes[1].value = 'rgb(255, 185, 88)'
+        star[19].attributes[1].value = 'rgb(255, 185, 88)'
       }
     })
   }
