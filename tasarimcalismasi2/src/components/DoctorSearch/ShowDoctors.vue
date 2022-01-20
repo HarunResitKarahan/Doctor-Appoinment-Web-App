@@ -196,8 +196,21 @@ export default {
     doctor: function () {
       this.star()
     },
-    sort: function () {
-      this.starchange()
+    department () {
+      this.backupdoctor = undefined
+      this.sort = ''
+    },
+    hospitalName () {
+      this.backupdoctor = undefined
+      this.sort = ''
+    },
+    date () {
+      this.backupdoctor = undefined
+      this.sort = ''
+    },
+    location () {
+      this.backupdoctor = undefined
+      this.sort = ''
     }
   },
   computed: {
