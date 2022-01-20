@@ -6,7 +6,7 @@
           </span>
           <p class="h2">GİRİŞ YAPIN</p>
           <div class="username">
-              <span>Kullanıcı Adı: </span>
+              <span>Kullanıcı ID: </span>
               <input v-model="username" type="text">
           </div>
           <div class="password">
